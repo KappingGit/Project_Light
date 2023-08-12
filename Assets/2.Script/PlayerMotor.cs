@@ -17,7 +17,7 @@ public class PlayerMotor : MonoBehaviour
         Movement();
     }
 
-    private float speed = 10.0f; // 캐릭터 속도
+    private float speed = 15.0f; // 캐릭터 속도
 
     private Vector3 moveVector;
 
