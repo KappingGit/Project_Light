@@ -12,6 +12,8 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField]
     private Transform shotPos; // 총알이 발사될 위치
 
+    private float shotSpeed = 40.0f; // 공격 속도
+
     private void Awake()
     {
         bullet = GetComponent<GameObject>();
@@ -25,7 +27,7 @@ public class PlayerShooting : MonoBehaviour
 
             bullet.transform.position = shotPos.transform.position;
 
-            bullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 25), ForceMode.Impulse); //해당 오브젝트에 Rigidbody에 접근 
+            bullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, shotSpeed), ForceMode.Impulse); //해당 오브젝트에 Rigidbody에 접근 
         }
     }
 
