@@ -55,27 +55,33 @@ public class PlayerMotor : MonoBehaviour
         //Debug.Log(Screen.width);
         //Debug.Log(Screen.height);
 
-        //if (Input.touchCount > 0) // Input.touchCount => 손가락 개수
-        //{
+        if (Input.touchCount > 0) // Input.touchCount => 손가락 개수
+        {
 
-        //    if (Input.GetTouch(0).position.x > (Screen.width / 2))
-        //    {
-        //        Debug.Log("우측 화면을 터치했습니다.");
-        //        //controller.Move(Vector3.right* speed * Time.deltaTime);
+            if (Input.GetTouch(0).position.x > (Screen.width / 2))
+            {
+                Debug.Log("우측 화면을 터치했습니다.");
+                controller.Move(Vector3.right * speed * Time.deltaTime);
 
-        //    }
-        //    else
-        //    {
-        //        Debug.Log("좌측 화면을 터치했습니다.");
-        //        //controller.Move(Vector3.left * speed * Time.deltaTime);
+            }
+            else
+            {
+                Debug.Log("좌측 화면을 터치했습니다.");
+                controller.Move(Vector3.left * speed * Time.deltaTime);
 
-        //    }
+            }
 
-        //    if (Input.GetTouch(0).phase == TouchPhase.Ended) // Ended 손가락이 화면 위를 벗어나 떨어지게 되는 순간...
-        //    {
-        //        Debug.Log("화면에서 손가락을 뗐습니다.");
-        //    }
-        //}
+            if (Input.GetTouch(0).phase == TouchPhase.Ended) // Ended 손가락이 화면 위를 벗어나 떨어지게 되는 순간...
+            {
+                Debug.Log("화면에서 손가락을 뗐습니다.");
+            }
+        }
+
+        #endregion
+
+        #region 인풋 필드로 움직임 제어
+
+
 
         #endregion
 

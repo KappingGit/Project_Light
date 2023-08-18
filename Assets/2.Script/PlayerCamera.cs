@@ -9,7 +9,7 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField]
     private Transform playerTrans;
 
-    private Vector3 startOffset;
+    private Vector3 startOffset; // 카메라의 해당 위치 값
 
     private void Awake()
     {
