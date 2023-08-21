@@ -10,11 +10,15 @@ public class EnemySpawn : MonoBehaviour
 
     private float settingPos; // 에너미 스폰의 위치 값
 
+    private float firstSpawn = 1f; // 첫 생성 시간
+
+    private float spawnCycle = 1f; // 생성 주기(생성 주기부분을 캐릭터 스피드와 연결시켜서 게임 스피드가 빨라지면 스폰도 빨라지게 구현)
+
     private void Awake()
     {
         settingPos = transform.position.z - playerTrans.position.z; // 해당 좌표의 거리
 
-        InvokeRepeating("Spawn", 1f, 2f); // Invokerepeating은 해당 함수를 1초후에 2초 간격으로 실행하는 용도
+        InvokeRepeating("Spawn", firstSpawn, spawnCycle); // Invokerepeating은 해당 함수를 1초후에 2초 간격으로 실행하는 용도
 
     }
 
@@ -44,26 +48,26 @@ public class EnemySpawn : MonoBehaviour
         #region 스폰 방식 1 : x축 제한 범위 안에서 랜덤하게 적을 스폰
 
         // 스폰 영역 제한
-        //xMax = transform.position.x + 5f; // 적이 나타날 구간 최대치(좌우)
-        //xMin = transform.position.x - 5f; // 적이 나타날 구간 최소치(좌우)
+        xMax = transform.position.x + 5f; // 적이 나타날 구간 최대치(좌우)
+        xMin = transform.position.x - 5f; // 적이 나타날 구간 최소치(좌우)
 
-        ////spawnTrans.x = Mathf.Clamp(spawn_X, xMax, xMin); // 해당 Mathf의 함수는  xMax와 xMin의 사이에서 Value값(spawn_X)을 반환받는 것을 사용
+        //spawnTrans.x = Mathf.Clamp(spawn_X, xMax, xMin); // 해당 Mathf의 함수는  xMax와 xMin의 사이에서 Value값(spawn_X)을 반환받는 것을 사용
 
-        //float rand = Random.Range(xMax, xMin);
+        float rand = Random.Range(xMax, xMin);
 
-        //Instantiate(enemyObject[0], new Vector3(rand, transform.position.y, transform.position.z), transform.rotation);
+        Instantiate(enemyObject[0], new Vector3(rand, transform.position.y, transform.position.z), transform.rotation);
 
         #endregion
 
-        #region 스폰 방식 2 : 차선 도로와 같은 방식의 스폰
+        #region 스폰 방식 2 : 차선 도로와 같은 방식의 스폰 (이방식을 채택)
 
-        xLoad[0] = transform.position.x - 3f;
-        xLoad[1] = transform.position.x;
-        xLoad[2] = transform.position.x + 3f;
+        //xLoad[0] = transform.position.x - 3f;
+        //xLoad[1] = transform.position.x;
+        //xLoad[2] = transform.position.x + 3f;
 
-        int randInt = Random.Range(0,3);
+        //int randInt = Random.Range(0,3);
 
-        Instantiate(enemyObject[0], new Vector3(xLoad[randInt], transform.position.y, transform.position.z), transform.rotation);
+        //Instantiate(enemyObject[0], new Vector3(xLoad[randInt], transform.position.y, transform.position.z), transform.rotation);
 
         #endregion
 

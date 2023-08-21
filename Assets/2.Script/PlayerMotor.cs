@@ -17,6 +17,7 @@ public class PlayerMotor : MonoBehaviour
         Movement();
     }
 
+    [SerializeField] // 캐릭터 속도 조절 접근
     private float speed = 15.0f; // 캐릭터 속도 기존 15
 
     private Vector3 moveVector;
