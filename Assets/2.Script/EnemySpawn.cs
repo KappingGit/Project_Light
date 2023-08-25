@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
-
-    [SerializeField]
-    private Transform playerTrans;
-
-    private float settingPos; // 에너미 스폰의 위치 값
-
+   
     private float firstSpawn = 1f; // 첫 생성 시간
 
     private float spawnCycle = 1f; // 생성 주기(생성 주기부분을 캐릭터 스피드와 연결시켜서 게임 스피드가 빨라지면 스폰도 빨라지게 구현)
 
     private void Awake()
     {
-        settingPos = transform.position.z - playerTrans.position.z; // 해당 좌표의 거리
 
         InvokeRepeating("Spawn", firstSpawn, spawnCycle); // Invokerepeating은 해당 함수를 1초후에 2초 간격으로 실행하는 용도
 
@@ -24,13 +18,6 @@ public class EnemySpawn : MonoBehaviour
 
     private void Update()
     {
-        FollowSpawn();
-
-    }
-
-    private void FollowSpawn()
-    {
-        transform.position = new Vector3(0f, 1f, playerTrans.position.z + settingPos); //y축 좌표에 따라 몬스터 스폰y축이 고정됨, 몬스터 스포너 위치값 = 플레이어 좌표 + 해당좌표의 거리 
 
     }
 
@@ -43,7 +30,7 @@ public class EnemySpawn : MonoBehaviour
     private float[]xLoad = new float[3]; // x축 차선을 활용
 
     // 기획적인 부분 : 만약 도로와 같이 1차선 2차선 3차선으로 할 경우 랜덤함수를 쓰는 것이 아닌 배열로 값으로 해당 포지션 값을 반환하는 것
-    private void Spawn()
+    private void Spawn(GameObject obj)
     {
         #region 스폰 방식 1 : x축 제한 범위 안에서 랜덤하게 적을 스폰 (이방식을 채택)
 
@@ -55,7 +42,9 @@ public class EnemySpawn : MonoBehaviour
 
         float rand = Random.Range(xMax, xMin);
 
-        Instantiate(enemyObject[0], new Vector3(rand, transform.position.y, transform.position.z), transform.rotation);
+        //Instantiate(enemyObject[0], new Vector3(rand, transform.position.y, transform.position.z), transform.rotation);
+        obj.gameObject.SetActive(true);
+        
 
         #endregion
 

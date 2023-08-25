@@ -88,4 +88,33 @@ public class PlayerMotor : MonoBehaviour
 
     }
 
+    // 플레이어가 화면을 클릭하고 있으면 공격, 화면을 때면 공격하지 않게끔...
+    private bool isTouch;
+
+    private PlayerShooting playerShooting;
+
+    public bool TouchInput
+    {
+
+        set 
+        {
+            isTouch = value;
+
+            if (isTouch == true)
+            {
+                //공격
+                
+            }
+            else
+            {
+                //공격 금지
+            }
+
+        }
+
+    }
+
+
+
+
 }

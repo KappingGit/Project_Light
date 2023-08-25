@@ -14,6 +14,8 @@ public class PlayerShooting : MonoBehaviour
 
     private float shotSpeed = 40.0f; // 공격 속도
 
+    private bool isInit = false; // 초기화 작업용
+
     private void Awake()
     {
         bullet = GetComponent<GameObject>();
@@ -21,14 +23,67 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        #region 최적화 안한 코드
+
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
+
+        //    bullet.transform.position = shotPos.transform.position;
+
+        //    bullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, shotSpeed), ForceMode.Impulse); //해당 오브젝트에 Rigidbody에 접근 
+        //}
+
+        #endregion
+
+    }
+
+    public void Init(GameObject projectile, float rate) // 초기화 작업
+    {
+        if (projectile != null && rate > 0.0f) //만약 Init에 있는 게임 오브젝트가 들어가있고 rate가 0보다 크다면 무기 상태가 초기화 되어있다...
         {
-            bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
-
-            bullet.transform.position = shotPos.transform.position;
-
-            bullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, shotSpeed), ForceMode.Impulse); //해당 오브젝트에 Rigidbody에 접근 
+            bulletPrefab = projectile; // projectile은 총알을 프리펩
+            shotSpeed = rate; // 공격속도를 뜻함
+            
+            isInit = true; // 초기화 성공했으니 true로 변환
         }
+        else // 검증을 항상 남겨두는 버릇을 들여놓기
+        {
+            isInit = false;
+            Debug.Log(" 무기 초기화에 실패하였습니다."); // 디버그로 무기 초기화가 이루어져있는지 확인
+        }
+    }
+
+    private bool isFiring; // 발사중인지 확인
+
+    public bool Shooting // 총알을 발사하는 프로퍼티
+    {
+        set 
+        {
+            isFiring = value; // isFiring값은 value로 불러온다 
+
+            if (isInit) // 기본적인 초기화가 이루어지면...
+            {
+                if (isFiring) // 발사 상태이면...
+                {
+                    // todo : 발사
+                }
+                else
+                {
+                    // todo : 발사 금지
+                }
+            }
+            else //초기화가 이루어져있지 않습니다.
+            {
+                Debug.Log("Init이 초기화가 되어있지 않습니다.");
+            }
+        }
+
+        get
+        {
+            return isFiring;
+        }
+       
     }
 
 }
