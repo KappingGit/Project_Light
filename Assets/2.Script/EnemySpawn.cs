@@ -30,7 +30,7 @@ public class EnemySpawn : MonoBehaviour
 
     private void FollowSpawn()
     {
-        transform.position = new Vector3(0f, 1.5f, playerTrans.position.z + settingPos); // 몬스터 스포너 위치값 = 플레이어 좌표 + 해당좌표의 거리 
+        transform.position = new Vector3(0f, 1f, playerTrans.position.z + settingPos); //y축 좌표에 따라 몬스터 스폰y축이 고정됨, 몬스터 스포너 위치값 = 플레이어 좌표 + 해당좌표의 거리 
 
     }
 
@@ -40,12 +40,12 @@ public class EnemySpawn : MonoBehaviour
     private float xMax;
     private float xMin;
 
-    private float[]xLoad = new float[3];
+    private float[]xLoad = new float[3]; // x축 차선을 활용
 
     // 기획적인 부분 : 만약 도로와 같이 1차선 2차선 3차선으로 할 경우 랜덤함수를 쓰는 것이 아닌 배열로 값으로 해당 포지션 값을 반환하는 것
     private void Spawn()
     {
-        #region 스폰 방식 1 : x축 제한 범위 안에서 랜덤하게 적을 스폰
+        #region 스폰 방식 1 : x축 제한 범위 안에서 랜덤하게 적을 스폰 (이방식을 채택)
 
         // 스폰 영역 제한
         xMax = transform.position.x + 5f; // 적이 나타날 구간 최대치(좌우)
@@ -59,7 +59,7 @@ public class EnemySpawn : MonoBehaviour
 
         #endregion
 
-        #region 스폰 방식 2 : 차선 도로와 같은 방식의 스폰 (이방식을 채택)
+        #region 스폰 방식 2 : 차선 도로와 같은 방식의 스폰
 
         //xLoad[0] = transform.position.x - 3f;
         //xLoad[1] = transform.position.x;
@@ -73,4 +73,5 @@ public class EnemySpawn : MonoBehaviour
 
     }
 
+    
 }

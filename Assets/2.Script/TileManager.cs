@@ -37,7 +37,7 @@ public class TileManager : MonoBehaviour
     {
         float mean = (spawnZ - tileOnScreen * tileLenght);
 
-        Debug.Log("     spawnZ:    " + spawnZ + "    tileOnScreen:    "+ tileOnScreen + "   tileLenght:    " + tileLenght+ "   mean:   "+ mean);
+        //Debug.Log("     spawnZ:    " + spawnZ + "    tileOnScreen:    "+ tileOnScreen + "   tileLenght:    " + tileLenght+ "   mean:   "+ mean);
 
         // 끝없이 길이 생성
         if (playerTransform.position.z - safeZone > mean) // 플레이어의 z위치값이  [](첫 스폰 - 보여지는 타일 개수 * 스폰거리) 보다 크다면

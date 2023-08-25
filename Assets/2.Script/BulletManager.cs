@@ -19,6 +19,7 @@ public class BulletManager : MonoBehaviour
         // 만약 가상의 벽에 닿으면 삭제
         if (other.gameObject.CompareTag("Tile")) // 나중에 태그 바꿀 것 => DestroyArea
         {
+            //other.gameObject.SetActive(false);
             Destroy(gameObject);
         }
     }
