@@ -10,15 +10,15 @@ public class TileManager : MonoBehaviour
     [SerializeField]
     private Transform playerTransform;
 
-    private float spawnZ = 0.0f; // 첫 스폰되는 위치(기준치)
+    private float spawnZ = 270.0f; // 첫 스폰되는 위치(기준치)
 
-    private float tileLenght = 15.0f; // 앞으로 나올 스폰 거리(각각 타일의 사이 길이)
+    private float tileLenght = 296.0f; // 앞으로 나올 스폰 거리(각각 타일의 사이 길이)
 
-    private int tileOnScreen = 20; // 앞으로 소환될 타일 개수
+    private int tileOnScreen = 2; // 앞으로 소환될 타일 개수
 
     private List<GameObject> activeTiles;
 
-    private float safeZone = 15.0f;
+    private float safeZone = 50.0f;
 
     private int lastPrefabsIndex = 0; // 지면 플랫폼 랜덤성을 부여하기 위한 인덱스
 

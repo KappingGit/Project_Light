@@ -22,5 +22,13 @@ public class BulletManager : MonoBehaviour
             //other.gameObject.SetActive(false);
             Destroy(gameObject);
         }
+        else if (other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("총알에 맞았습니다.");
+            Destroy(other.gameObject);
+        }
+
+
+
     }
 }

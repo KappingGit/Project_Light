@@ -12,7 +12,7 @@ public class EnemySpawn : MonoBehaviour
     private void Awake()
     {
 
-        InvokeRepeating("Spawn", firstSpawn, spawnCycle); // Invokerepeating은 해당 함수를 1초후에 2초 간격으로 실행하는 용도
+        InvokeRepeating("SpawnForm", firstSpawn, spawnCycle); // Invokerepeating은 해당 함수를 1초후에 2초 간격으로 실행하는 용도
 
     }
 
@@ -30,7 +30,7 @@ public class EnemySpawn : MonoBehaviour
     private float[]xLoad = new float[3]; // x축 차선을 활용
 
     // 기획적인 부분 : 만약 도로와 같이 1차선 2차선 3차선으로 할 경우 랜덤함수를 쓰는 것이 아닌 배열로 값으로 해당 포지션 값을 반환하는 것
-    private void Spawn(GameObject obj)
+    private void SpawnForm()
     {
         #region 스폰 방식 1 : x축 제한 범위 안에서 랜덤하게 적을 스폰 (이방식을 채택)
 
@@ -42,9 +42,8 @@ public class EnemySpawn : MonoBehaviour
 
         float rand = Random.Range(xMax, xMin);
 
-        //Instantiate(enemyObject[0], new Vector3(rand, transform.position.y, transform.position.z), transform.rotation);
-        obj.gameObject.SetActive(true);
-        
+        Instantiate(enemyObject[0], new Vector3(rand, 0.75f, transform.position.z), Quaternion.Euler(new Vector3(0f, 180f, 0f)));
+        //obj.gameObject.SetActive(true);
 
         #endregion
 
@@ -59,6 +58,14 @@ public class EnemySpawn : MonoBehaviour
         //Instantiate(enemyObject[0], new Vector3(xLoad[randInt], transform.position.y, transform.position.z), transform.rotation);
 
         #endregion
+
+    }
+
+    private void Spawn(GameObject obj)
+    {
+        //Instantiate(enemyObject[0], new Vector3(rand, transform.position.y, transform.position.z), transform.rotation);
+        //obj.gameObject.SetActive(true);
+        //해당 오브젝트에 SetActive를 활성화
 
     }
 

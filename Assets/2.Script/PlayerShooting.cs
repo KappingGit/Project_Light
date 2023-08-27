@@ -25,14 +25,14 @@ public class PlayerShooting : MonoBehaviour
     {
         #region 최적화 안한 코드
 
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
 
-        //    bullet.transform.position = shotPos.transform.position;
+            bullet.transform.position = shotPos.transform.position;
 
-        //    bullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, shotSpeed), ForceMode.Impulse); //해당 오브젝트에 Rigidbody에 접근 
-        //}
+            bullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, shotSpeed), ForceMode.Impulse); //해당 오브젝트에 Rigidbody에 접근 
+        }
 
         #endregion
 
