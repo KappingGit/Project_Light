@@ -9,11 +9,17 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField]
     private Transform playerTrans;
 
-    private Vector3 startOffset; // 카메라의 해당 위치 값
+    private Vector3 startOffset; // 카메라의 해당 위치 값(지속적 위치값)
+
+    private float startOffset_X = 0;
+
+    private float startOffset_Y = 3.5f;
+
+    
 
     private void Awake()
     {
-        startOffset = transform.position - playerTrans.position;
+        startOffset.z = transform.position.z - playerTrans.position.z; // 카메라의 위치 - 플레이어의 위치
     }
 
     private void Update()
@@ -23,6 +29,9 @@ public class PlayerCamera : MonoBehaviour
 
     private void FollowCamera()
     {
-        transform.position = playerTrans.position + startOffset;
+        //transform.position = playerTrans.position + startOffset; // 카메라의 위치는 
+
+        transform.position = new Vector3(startOffset_X, startOffset_Y, playerTrans.position.z + startOffset.z);
+
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5721594073176690428}
   - component: {fileID: 5721594073176690427}
   - component: {fileID: -9053961201861620554}
+  - component: {fileID: 2116518920945414475}
   m_Layer: 0
   m_Name: TestEnemy
   m_TagString: Enemy
@@ -115,3 +116,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 0
+--- !u!114 &2116518920945414475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5721594073176690426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b85ed9fe2e84441af83240a256163d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

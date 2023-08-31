@@ -899,6 +899,7 @@ GameObject:
   - component: {fileID: 8103997643393487154}
   - component: {fileID: 8646233531155598025}
   - component: {fileID: 919132148296428924}
+  - component: {fileID: 1120198608}
   m_Layer: 0
   m_Name: S_WindSlime
   m_TagString: Enemy
@@ -953,3 +954,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &1120198608
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8880252149949401992}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 6470e1f75a61ec7478065f78b80dd261, type: 3}
+  m_Controller: {fileID: 9100000, guid: 41e8a3f8a294aee47a1618c8009872c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

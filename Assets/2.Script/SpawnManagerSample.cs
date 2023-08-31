@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Redcode.Pools;
 
-public class SpawnManager : MonoBehaviour
+public class SpawnManagerSample : MonoBehaviour
 {
     [SerializeField]
     private int maxCount; // 몬스터 최대 생성수

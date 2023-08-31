@@ -18,7 +18,9 @@ public class PlayerMotor : MonoBehaviour
     }
 
     [SerializeField] // 캐릭터 속도 조절 접근
-    private float speed = 15.0f; // 캐릭터 속도 기존 15
+    private float speed; // 캐릭터 속도
+
+    private float speed_X = 5f; // 좌우 속도
 
     private Vector3 moveVector;
 
@@ -31,7 +33,7 @@ public class PlayerMotor : MonoBehaviour
         moveVector = Vector3.zero; // 계속 초기화
 
         // x - 왼쪽 오른쪽 컨트롤
-        moveVector.x = Input.GetAxisRaw("Horizontal") * speed; // 기본적인 테스트용
+        moveVector.x = Input.GetAxisRaw("Horizontal") * speed_X; // 기본적인 테스트용
 
         // y - 위 아래 컨트롤
         moveVector.y = verticalVelocity;
