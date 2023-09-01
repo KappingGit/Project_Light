@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 846661368263274385, guid: 331e9bd35cd2cc74c930447ebe1c518c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -4.374
       objectReference: {fileID: 0}
     - target: {fileID: 846661368263274385, guid: 331e9bd35cd2cc74c930447ebe1c518c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -839,7 +839,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521751744}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d085f0ddacf776746bca71fae3dc9be6, type: 3}
   m_Name: 
@@ -914,7 +914,6 @@ GameObject:
   - component: {fileID: 1755187534}
   - component: {fileID: 1755187533}
   - component: {fileID: 1755187537}
-  - component: {fileID: 1755187538}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -1014,24 +1013,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTrans: {fileID: 7390631901333345163}
---- !u!114 &1755187538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1755187532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 733f4e1ff483611408f4a8d4fc9202ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pools:
-  - _name: Monster01
-    _component: {fileID: 1439597959}
-    _count: 5
-    _container: {fileID: 0}
-    _nonLazy: 0
 --- !u!1 &1850835667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,6 +1063,24 @@ MonoBehaviour:
     _count: 10
     _container: {fileID: 0}
     _nonLazy: 0
+--- !u!1 &1922898836 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8880252149949401992, guid: 67dce07d55fdf154da031899eff74c83, type: 3}
+  m_PrefabInstance: {fileID: 8646233531489167091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1922898841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922898836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b85ed9fe2e84441af83240a256163d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idName: C_Slime
 --- !u!4 &7390631901333345163 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7390631901809400334, guid: 1da3015328d4d754498bea8fc1a693b6, type: 3}
@@ -1119,7 +1118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103997643393487154, guid: 67dce07d55fdf154da031899eff74c83, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -4.374
       objectReference: {fileID: 0}
     - target: {fileID: 8103997643393487154, guid: 67dce07d55fdf154da031899eff74c83, type: 3}
       propertyPath: m_LocalRotation.w
