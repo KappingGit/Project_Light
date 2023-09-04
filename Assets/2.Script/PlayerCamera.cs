@@ -20,6 +20,7 @@ public class PlayerCamera : MonoBehaviour
     private void Awake()
     {
         startOffset.z = transform.position.z - playerTrans.position.z; // 카메라의 위치 - 플레이어의 위치
+        //startOffset.y = transform.position.y - playerTrans.position.y;
     }
 
     private void Update()
