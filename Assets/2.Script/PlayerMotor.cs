@@ -17,8 +17,8 @@ public class PlayerMotor : MonoBehaviour
         Movement();
     }
 
-    [SerializeField] // 캐릭터 속도 조절 접근
-    private float speed; // 캐릭터 속도
+    //[SerializeField] // 캐릭터 속도 조절 접근
+    private float speed; // 정면캐릭터 속도(필요없음)
 
     private float speed_X = 5f; // 좌우 속도
 
@@ -39,7 +39,7 @@ public class PlayerMotor : MonoBehaviour
         moveVector.y = verticalVelocity;
 
         // z - 앞 뒤 컨트롤
-        moveVector.z = speed;
+        moveVector.z = 0f;
 
         controller.Move(moveVector * Time.deltaTime); // 캐릭터 컨트롤러Move를 통해 캐릭터 자동 움직임을 설정
 
@@ -64,13 +64,13 @@ public class PlayerMotor : MonoBehaviour
             if (Input.GetTouch(0).position.x > (Screen.width / 2))
             {
                 Debug.Log("우측 화면을 터치했습니다.");
-                controller.Move(Vector3.right * speed * Time.deltaTime);
+                controller.Move(Vector3.right * speed_X * Time.deltaTime);
 
             }
             else
             {
                 Debug.Log("좌측 화면을 터치했습니다.");
-                controller.Move(Vector3.left * speed * Time.deltaTime);
+                controller.Move(Vector3.left * speed_X * Time.deltaTime);
 
             }
 
