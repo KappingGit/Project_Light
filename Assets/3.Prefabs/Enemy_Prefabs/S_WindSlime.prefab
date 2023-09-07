@@ -900,13 +900,14 @@ GameObject:
   - component: {fileID: 8646233531155598025}
   - component: {fileID: 919132148296428924}
   - component: {fileID: 1120198608}
+  - component: {fileID: 1922898846}
   m_Layer: 0
   m_Name: S_WindSlime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8103997643393487154
 Transform:
   m_ObjectHideFlags: 0
@@ -975,3 +976,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1922898846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8880252149949401992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b85ed9fe2e84441af83240a256163d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idName: Monster01
+  spawnerPos: {fileID: 0}
+  maxHp: 10

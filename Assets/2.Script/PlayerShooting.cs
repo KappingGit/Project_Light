@@ -19,13 +19,14 @@ public class PlayerShooting : MonoBehaviour
     private void Awake()
     {
         bullet = GetComponent<GameObject>();
+        
     }
-
+    // || Input.GetTouch(0).phase == TouchPhase.Moved
     private void Update()
     {
         #region 최적화 안한 코드
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))  //터치 누르고 있을때...
         {
             bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
 
@@ -35,6 +36,20 @@ public class PlayerShooting : MonoBehaviour
         }
 
         #endregion
+
+        // 터치 발사
+        if (Input.touchCount > 0)
+        {
+            if (Input.GetTouch(0).phase == TouchPhase.Moved)
+            {
+                //todo: 총알이 발사되는 코드
+                bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
+
+                bullet.transform.position = shotPos.transform.position;
+
+                bullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, shotSpeed), ForceMode.Impulse); //해당 오브젝트에 Rigidbody에 접근 
+            }
+        }
 
     }
 

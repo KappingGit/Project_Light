@@ -33,6 +33,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject
 
     private void Update()
     {
+
         #region 애니메이션 관련
         //Vector3 reVelocity = transform.InverseTransformDirection(ai.velocity); // 각각의 AI객체에 anim 추가
         //reVelocity = 0;
@@ -51,20 +52,18 @@ public class EnemyScript : MonoBehaviour, IPoolObject
         //}
         #endregion
 
-
     }
 
-    private void OnEnable() // 활성화 될때마다 호출 (논외: Ondisable() => 비활성화 될때마다 호출)
-    {
-        Init();
-    }
+    //private void OnEnable() // 활성화 될때마다 호출 (논외: Ondisable() => 비활성화 될때마다 호출)
+    //{
+    //    Init();
+    //}
 
     [SerializeField]
     private float maxHp; // 몬스터의 최대체력
 
     private float currHp; // 몬스터의 현재 체력
     
-
     public void Init() // 생성되는 기본 정보
     {
 
@@ -87,8 +86,6 @@ public class EnemyScript : MonoBehaviour, IPoolObject
             //todo : 몬스터 사망 처리
         }
 
-        
-
     }
 
     private void Attack()
@@ -96,34 +93,34 @@ public class EnemyScript : MonoBehaviour, IPoolObject
         // todo : 몬스터 공격관련
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag ("Tile"))
         {
-            Debug.Log("부딪혀서 반환했습니다.");
+            Debug.Log("몬스터를 반환했습니다.");
             //todo : 몬스터서 플레이어랑 부딪히면...  => 몬스터가 사라짐 or 몬스터가 잠시 무적상태로 비활성화
             OnTargetReached(); //관련 타겟에 부딪히면 다시 반환시켜준다...
         }
     }
 
-
     private void OnTargetReached()
     {
         EnemyManager.instance.ReturnPool(this); // 해당 오브젝트를 다시 반환 시켜준다
-        Debug.Log("다시 반환");
+        //Debug.Log("다시 반환");
     }
 
     // 인터페이스 IPoolObject을 명시적으로 구현
     public void OnCreatedInPool()
     {
-       
+       // 해당 오브젝트가 처음 생성됐을때 실행 함수
     }
 
     // 인터페이스 IPoolObject을 명시적으로 구현
     public void OnGettingFromPool() //풀에서 관련된 풀 오브젝트를 가져올때...
     {
+        // 해당 오브젝트가 가져올때마다 실행
         Init(); // 재사용하기 위해 초기화 로직(몬스터 기본 상태값)을 작성
         Debug.Log("OnGettingFromPool상태");
     }
+
 }
