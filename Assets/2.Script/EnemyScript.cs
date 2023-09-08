@@ -25,16 +25,19 @@ public class EnemyScript : MonoBehaviour, IPoolObject
     private void Awake()
     {
         enemyRig = GetComponent<Rigidbody>();
+
         //ai = GetComponent<NavMeshAgent>(); // Ai에 접근
+
         // 해당 스크립트 인스턴스
         if (EnemyScript.instance = null)
         {
             instance = this;
         }
 
+        // 해당 몬스터 오브젝트 바라보는 방향 조정
         transform.rotation = Quaternion.Euler(0f, 180f, 0f);
 
-        SpawnPos();
+        SpawnPos(); // 소환되는 position값
 
     }
 
@@ -153,7 +156,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject
     }
 
 
-    private float enemySpeed = 25.0f; // 적 오브젝트 속도
+    private float enemySpeed = 25.0f; // 적 오브젝트 속도, 몬스터 속도
 
     private void EnemySpeed()
     {
@@ -170,12 +173,14 @@ public class EnemyScript : MonoBehaviour, IPoolObject
     public void OnCreatedInPool()
     {
        // 해당 오브젝트가 처음 생성됐을때 실행 함수
+
     }
 
     // 인터페이스 IPoolObject을 명시적으로 구현
     public void OnGettingFromPool() //풀에서 관련된 풀 오브젝트를 가져올때...
     {
         // 해당 오브젝트가 가져올때마다 실행
+
         Init(); // 재사용하기 위해 초기화 로직(몬스터 기본 상태값)을 작성
         Debug.Log("OnGettingFromPool상태");
     }

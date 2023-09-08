@@ -51,7 +51,7 @@ public class EnemyManager : MonoBehaviour
         EnemyScript newEnemy = poolManager.GetFromPool<EnemyScript>(0);
     }
 
-    public void ReturnPool(EnemyScript clone) // TakeToPool은 다시 돌려준다는 행위
+    public virtual void ReturnPool(EnemyScript clone) // TakeToPool은 다시 돌려준다는 행위
     {
         //poolManager.TakeToPool<EnemyScript>(clone);
         poolManager.TakeToPool<EnemyScript>(clone.idName, clone); //TakeToPool : 지정된 풀에 반환 (idName : EnemyScript에서 idName으로 리턴 풀링시킬 오브젝트 이름 지정)
