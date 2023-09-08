@@ -3,7 +3,12 @@ guid: 6470e1f75a61ec7478065f78b80dd261
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_C_WindSlime
+    second: {fileID: 2100000, guid: 22d7caca98b69b44eaaa10c8a06d90f2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

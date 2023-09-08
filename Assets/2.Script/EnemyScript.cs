@@ -20,14 +20,21 @@ public class EnemyScript : MonoBehaviour, IPoolObject
 
     //NavMeshAgent ai;
 
+    private Rigidbody enemyRig;
+
     private void Awake()
     {
+        enemyRig = GetComponent<Rigidbody>();
         //ai = GetComponent<NavMeshAgent>(); // Ai에 접근
         // 해당 스크립트 인스턴스
         if (EnemyScript.instance = null)
         {
             instance = this;
         }
+
+        transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+
+        SpawnPos();
 
     }
 
@@ -51,6 +58,8 @@ public class EnemyScript : MonoBehaviour, IPoolObject
         //    isAtDestination = false;
         //}
         #endregion
+
+        EnemySpeed();
 
     }
 
@@ -101,6 +110,54 @@ public class EnemyScript : MonoBehaviour, IPoolObject
             //todo : 몬스터서 플레이어랑 부딪히면...  => 몬스터가 사라짐 or 몬스터가 잠시 무적상태로 비활성화
             OnTargetReached(); //관련 타겟에 부딪히면 다시 반환시켜준다...
         }
+    }
+
+    private float xMax;
+    private float xMin;
+
+    private float[] xLoad = new float[3]; // x축 차선을 활용할때
+
+    [SerializeField]
+    private Transform spawnerPos; // 스폰되는 좌표
+
+    public void SpawnPos() // 스폰되는 영역
+    {
+        #region 스폰 방식 1 : x축 제한 범위 안에서 랜덤하게 적을 스폰 (이방식을 채택)
+
+        // 스폰 영역 제한
+        xMax = spawnerPos.position.x + 2f; // 적이 나타날 구간 최대치(좌우)
+        xMin = spawnerPos.position.x - 2f; // 적이 나타날 구간 최소치(좌우)
+
+        float rand = Random.Range(xMin, xMax);
+
+        //int randIndex = Random.Range(0, 9); // 풀링 매니저의 오브젝트 해당 인덱스 풀 (예시 => 0번 몬스터 : 일반몬스터, 1번 몬스터 : 보스 몬스터)
+
+        transform.position = new Vector3(rand, spawnerPos.position.y, spawnerPos.position.z);
+
+        Debug.Log("스폰 실행");
+
+        #endregion
+
+        #region 스폰 방식 2 : 차선 도로와 같은 방식의 스폰
+
+        //xLoad[0] = transform.position.x - 3f;
+        //xLoad[1] = transform.position.x;
+        //xLoad[2] = transform.position.x + 3f;
+
+        //int randInt = Random.Range(0,3);
+
+        //Instantiate(enemyObject[0], new Vector3(xLoad[randInt], transform.position.y, transform.position.z), transform.rotation);
+
+        #endregion
+
+    }
+
+
+    private float enemySpeed = 25.0f; // 적 오브젝트 속도
+
+    private void EnemySpeed()
+    {
+        enemyRig.velocity = new Vector3(0, 0, -enemySpeed);
     }
 
     private void OnTargetReached()
