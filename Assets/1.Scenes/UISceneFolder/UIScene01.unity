@@ -554,6 +554,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ingame
       objectReference: {fileID: 0}
+    - target: {fileID: 3721770727594899301, guid: ad465b69a82c4bd40a5d0ab94bb9fc05, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4022925462923462860, guid: ad465b69a82c4bd40a5d0ab94bb9fc05, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -652,6 +656,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4502992163704482143, guid: ad465b69a82c4bd40a5d0ab94bb9fc05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961121483325337812, guid: ad465b69a82c4bd40a5d0ab94bb9fc05, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612895383725538009, guid: ad465b69a82c4bd40a5d0ab94bb9fc05, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5964322126469836971, guid: ad465b69a82c4bd40a5d0ab94bb9fc05, type: 3}
