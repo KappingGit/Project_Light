@@ -18,6 +18,8 @@ public class EnemyScript : MonoBehaviour, IPoolObject
 
     public static EnemyScript instance;
 
+    private PoolManager poolManager; //풀매니저 스크립트에 접근
+
     //NavMeshAgent ai;
 
     private Rigidbody enemyRig;
@@ -107,9 +109,9 @@ public class EnemyScript : MonoBehaviour, IPoolObject
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag ("Tile"))
+        if (other.gameObject.CompareTag("Tile"))
         {
-            Debug.Log("몬스터를 반환했습니다.");
+            Debug.Log("몬스터를 반환시도.");
             //todo : 몬스터서 플레이어랑 부딪히면...  => 몬스터가 사라짐 or 몬스터가 잠시 무적상태로 비활성화
             OnTargetReached(); //관련 타겟에 부딪히면 다시 반환시켜준다...
         }
@@ -166,7 +168,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject
     private void OnTargetReached()
     {
         EnemyManager.instance.ReturnPool(this); // 해당 오브젝트를 다시 반환 시켜준다
-        //Debug.Log("다시 반환");
+        Debug.Log("반환되었습니다.");
     }
 
     // 인터페이스 IPoolObject을 명시적으로 구현
