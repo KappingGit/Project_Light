@@ -31,15 +31,13 @@ public class EnemyScript : MonoBehaviour, IPoolObject
         //ai = GetComponent<NavMeshAgent>(); // Ai에 접근
 
         // 해당 스크립트 인스턴스
-        if (EnemyScript.instance = null)
+        if (EnemyScript.instance == null)
         {
             instance = this;
         }
 
         // 해당 몬스터 오브젝트 바라보는 방향 조정
         transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-
-        SpawnPos(); // 소환되는 position값
 
     }
 
@@ -68,11 +66,6 @@ public class EnemyScript : MonoBehaviour, IPoolObject
 
     }
 
-    //private void OnEnable() // 활성화 될때마다 호출 (논외: Ondisable() => 비활성화 될때마다 호출)
-    //{
-    //    Init();
-    //}
-
     [SerializeField]
     private float maxHp; // 몬스터의 최대체력
 
@@ -83,10 +76,11 @@ public class EnemyScript : MonoBehaviour, IPoolObject
 
         // todo: Gamemanger 싱글톤 작업 아직 미진행
 
+        SpawnPos(); // 소환되는 position값
+
         currHp = maxHp; // 현재 체력에 저장
 
         //Debug.Log("기본값");
-
         
         //Transform[] spawnPos = GameManger.instance.points; //  스폰 포인트를 지정
 
@@ -111,7 +105,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject
     {
         if (other.gameObject.CompareTag("Tile"))
         {
-            Debug.Log("몬스터를 반환시도.");
+            //Debug.Log("몬스터를 반환시도.");
             //todo : 몬스터서 플레이어랑 부딪히면...  => 몬스터가 사라짐 or 몬스터가 잠시 무적상태로 비활성화
             OnTargetReached(); //관련 타겟에 부딪히면 다시 반환시켜준다...
         }
@@ -139,7 +133,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject
 
         transform.position = new Vector3(rand, spawnerPos.position.y, spawnerPos.position.z);
 
-        Debug.Log("스폰 실행");
+        //Debug.Log("스폰 실행");
 
         #endregion
 
@@ -157,7 +151,6 @@ public class EnemyScript : MonoBehaviour, IPoolObject
 
     }
 
-
     private float enemySpeed = 25.0f; // 적 오브젝트 속도, 몬스터 속도
 
     private void EnemySpeed()
@@ -165,10 +158,10 @@ public class EnemyScript : MonoBehaviour, IPoolObject
         enemyRig.velocity = new Vector3(0, 0, -enemySpeed);
     }
 
-    private void OnTargetReached()
+    private void OnTargetReached() // 반환 작업용 함수
     {
         EnemyManager.instance.ReturnPool(this); // 해당 오브젝트를 다시 반환 시켜준다
-        Debug.Log("반환되었습니다.");
+        //Debug.Log("반환되었습니다.");
     }
 
     // 인터페이스 IPoolObject을 명시적으로 구현
@@ -184,7 +177,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject
         // 해당 오브젝트가 가져올때마다 실행
 
         Init(); // 재사용하기 위해 초기화 로직(몬스터 기본 상태값)을 작성
-        Debug.Log("OnGettingFromPool상태");
+        //Debug.Log("OnGettingFromPool상태");
     }
 
 }

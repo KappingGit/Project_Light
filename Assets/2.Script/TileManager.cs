@@ -18,14 +18,14 @@ public class TileManager : MonoBehaviour
 
     private List<GameObject> activeTiles;
 
-    private float safeZone = 35.0f;
+    private float safeZone = 25.0f;
 
     private int lastPrefabsIndex = 0; // Áö¸é ÇÃ·§Æû ·£´ý¼ºÀ» ºÎ¿©ÇÏ±â À§ÇÑ ÀÎµ¦½º
 
     //[SerializeField]
     //private Rigidbody tileRig;
 
-    private float tileSpeed = 25f;
+    private float tileSpeed = 35f;
 
     private void Awake()
     {

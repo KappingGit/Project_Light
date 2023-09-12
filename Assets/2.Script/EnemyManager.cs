@@ -20,9 +20,9 @@ public class EnemyManager : MonoBehaviour
 
         poolManager = GetComponent<PoolManager>();
 
-        if (EnemyManager.instance = null)
+        if (EnemyManager.instance == null)
         {
-            Debug.Log("EnemySpawn.instance가 null상태입니다.");
+            Debug.Log("EnemyManager.instance가 null상태입니다.");
             instance = this;
         }
 

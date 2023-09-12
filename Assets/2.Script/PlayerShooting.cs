@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject bulletPrefab; // 총알 오브젝트 프리팹
+    //[SerializeField]
+    //private GameObject bulletPrefab; // 총알 오브젝트 프리팹
 
     private GameObject bullet;
 
-    [SerializeField]
-    private Transform shotPos; // 총알이 발사될 위치
-
-    private float shotSpeed = 40.0f; // 공격 속도
+    private float shotSpeed = 40.0f; // 공격 속도 설정
 
     private bool isInit = false; // 초기화 작업용
 
@@ -28,11 +25,14 @@ public class PlayerShooting : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))  //터치 누르고 있을때...
         {
-            bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
+            Debug.Log("발사를 시도합니다.");
+            BulletManager.instance.GetPoolBullet(); // 총알 불러오기
 
-            bullet.transform.position = shotPos.transform.position;
+            //bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
 
-            bullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, shotSpeed), ForceMode.Impulse); //해당 오브젝트에 Rigidbody에 접근 
+            //bullet.transform.position = shotPos.transform.position;
+
+            //bullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, shotSpeed), ForceMode.Impulse); //해당 오브젝트에 Rigidbody에 접근 
         }
 
         #endregion
@@ -43,11 +43,11 @@ public class PlayerShooting : MonoBehaviour
             if (Input.GetTouch(0).phase == TouchPhase.Moved)
             {
                 //todo: 총알이 발사되는 코드
-                bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
+                //bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
 
-                bullet.transform.position = shotPos.transform.position;
+                //bullet.transform.position = shotPos.transform.position;
 
-                bullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, shotSpeed), ForceMode.Impulse); //해당 오브젝트에 Rigidbody에 접근 
+                //bullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, shotSpeed), ForceMode.Impulse); //해당 오브젝트에 Rigidbody에 접근 
             }
         }
 
@@ -57,7 +57,7 @@ public class PlayerShooting : MonoBehaviour
     {
         if (projectile != null && rate > 0.0f) //만약 Init에 있는 게임 오브젝트가 들어가있고 rate가 0보다 크다면 무기 상태가 초기화 되어있다...
         {
-            bulletPrefab = projectile; // projectile은 총알을 프리펩
+            //bulletPrefab = projectile; // projectile은 총알을 프리펩
             shotSpeed = rate; // 공격속도를 뜻함
             
             isInit = true; // 초기화 성공했으니 true로 변환
