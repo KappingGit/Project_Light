@@ -12,10 +12,6 @@ public class EnemySpawner : MonoBehaviour
 
     private PoolManager poolManager; //풀매니저 스크립트에 접근
 
-    private float firstSpawn = 1f; // 첫 생성 시간
-
-    private float spawnCycle = 3f; // 생성 주기(생성 주기부분을 캐릭터 스피드와 연결시켜서 게임 스피드가 빨라지면 스폰도 빨라지게 구현)
-
     private void Awake()
     {
         poolManager = GetComponent<PoolManager>();

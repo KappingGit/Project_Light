@@ -9,8 +9,6 @@ public class BulletScript : MonoBehaviour, IPoolObject
 
     private PoolManager poolManager;
 
-    private Transform bulletTrans;
-
     private Rigidbody bulletRig;
 
     private float bulletSpeed = 40.0f; // 투사체 속도
@@ -22,18 +20,20 @@ public class BulletScript : MonoBehaviour, IPoolObject
     {
         bulletRig = GetComponent<Rigidbody>();
 
+        shotPos = GetComponent<Transform>();
+
         if (BulletScript.instance == null)
         {
             Debug.Log("BulletScript.instance가 Null상태입니다");
             instance = this;
         }
-
-       
+        //Debug.Log("총알 위치: x = " + transform.position.x + "    y = " + transform.position.y + "    z = " + transform.position.z);
+     
     }
 
     private void Update()
     {
-        BulletSpeed();
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,6 +41,7 @@ public class BulletScript : MonoBehaviour, IPoolObject
         if (other.gameObject.CompareTag("Weapon")) // 어느 곳에서 충돌하면 총알 사라짐
         {
             OnTargetReached();
+            Debug.Log("총알을 반환시켰습니다.");
         }
     }
 
@@ -51,12 +52,14 @@ public class BulletScript : MonoBehaviour, IPoolObject
 
     private void InitBullet() // 초기화 로직 함수
     {
-        bulletTrans.transform.position = shotPos.transform.position; // 총알이 생성되었을때 위치
+        transform.position = shotPos.transform.position; // 총알이 생성되었을때 위치
+        BulletSpeed();
     }
 
     private void OnTargetReached() // 반환 작업용 함수
     {
         BulletManager.instance.ReturnBullet(this);
+        
     }
 
     // 인터페이스 IPoolObject을 명시적으로 구현
@@ -72,6 +75,7 @@ public class BulletScript : MonoBehaviour, IPoolObject
         // 해당 오브젝트가 가져올때마다 실행
 
         InitBullet(); // 재사용하기 위해 초기화 로직(총알 기본 상태값)을 작성
-        
+        Debug.Log("총알 초기화시켰습니다.");
+
     }
 }

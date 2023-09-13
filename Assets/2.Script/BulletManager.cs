@@ -12,6 +12,8 @@ public class BulletManager : MonoBehaviour
 
     private void Awake()
     {
+        poolManager = GetComponent<PoolManager>();
+
         if (BulletManager.instance == null)
         {
             Debug.Log("BulletManager.instance가 null상태입니다.");

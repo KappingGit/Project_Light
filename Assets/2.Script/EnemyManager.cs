@@ -12,7 +12,7 @@ public class EnemyManager : MonoBehaviour
 
     private float firstSpawn = 1f; // 첫 생성 시간
 
-    private float spawnCycle = 1f; // 생성 주기(생성 주기부분을 캐릭터 스피드와 연결시켜서 게임 스피드가 빨라지면 스폰도 빨라지게 구현)
+    private float spawnCycle = 0.5f; // 생성 주기(생성 주기부분을 캐릭터 스피드와 연결시켜서 게임 스피드가 빨라지면 스폰도 빨라지게 구현)
 
 
     private void Awake()
