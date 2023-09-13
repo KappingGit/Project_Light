@@ -7,15 +7,12 @@ public class PlayerShooting : MonoBehaviour
     //[SerializeField]
     //private GameObject bulletPrefab; // 총알 오브젝트 프리팹
 
-    private GameObject bullet;
-
     private float shotSpeed = 40.0f; // 공격 속도 설정
 
     private bool isInit = false; // 초기화 작업용
 
     private void Awake()
     {
-        bullet = GetComponent<GameObject>();
         
     }
     // || Input.GetTouch(0).phase == TouchPhase.Moved
@@ -26,6 +23,7 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))  //터치 누르고 있을때...
         {
             Debug.Log("발사를 시도합니다.");
+
             BulletManager.instance.GetPoolBullet(); // 총알 불러오기
 
             //bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화

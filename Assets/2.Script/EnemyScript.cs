@@ -161,7 +161,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject
     private void OnTargetReached() // 반환 작업용 함수
     {
         EnemyManager.instance.ReturnPool(this); // 해당 오브젝트를 다시 반환 시켜준다
-        //Debug.Log("반환되었습니다.");
+        //Debug.Log(" 몬스터 반환되었습니다.");
     }
 
     // 인터페이스 IPoolObject을 명시적으로 구현
@@ -177,7 +177,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject
         // 해당 오브젝트가 가져올때마다 실행
 
         Init(); // 재사용하기 위해 초기화 로직(몬스터 기본 상태값)을 작성
-        //Debug.Log("OnGettingFromPool상태");
+        //Debug.Log("몬스터 초기화");
     }
 
 }

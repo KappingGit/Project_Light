@@ -48,6 +48,7 @@ public class EnemyManager : MonoBehaviour
 
     public void Spawn()
     {
+        //Debug.Log("몬스터 스폰");
         EnemyScript newEnemy = poolManager.GetFromPool<EnemyScript>(0);
     }
 

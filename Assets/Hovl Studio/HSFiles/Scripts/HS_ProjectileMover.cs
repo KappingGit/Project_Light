@@ -53,9 +53,9 @@ public class HS_ProjectileMover : MonoBehaviour
         //rb.constraints = RigidbodyConstraints.FreezeAll;
         speed = 0;
 
-        ContactPoint contact = collision.contacts[0];
-        Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-        Vector3 pos = contact.point + contact.normal * hitOffset;
+        //ContactPoint contact = collision.contacts[0];
+        //Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+        //Vector3 pos = contact.point + contact.normal * hitOffset;
 
         //Spawn hit effect on collision
         //if (hit != null)
