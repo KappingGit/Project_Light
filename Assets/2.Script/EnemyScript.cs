@@ -109,6 +109,14 @@ public class EnemyScript : MonoBehaviour, IPoolObject
             //todo : 몬스터서 플레이어랑 부딪히면...  => 몬스터가 사라짐 or 몬스터가 잠시 무적상태로 비활성화
             OnTargetReached(); //관련 타겟에 부딪히면 다시 반환시켜준다...
         }
+
+        if (other.gameObject.CompareTag("Weapon"))
+        {
+            //Debug.Log("몬스터를 반환시도.");
+            //todo : 몬스터서 플레이어랑 부딪히면...  => 몬스터가 사라짐 or 몬스터가 잠시 무적상태로 비활성화
+            OnTargetReached(); //관련 타겟에 부딪히면 다시 반환시켜준다...
+        }
+
     }
 
     private float xMax;

@@ -33,17 +33,18 @@ public class BulletScript : MonoBehaviour, IPoolObject
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Weapon")) // 어느 곳에서 충돌하면 총알 사라짐
-        {
-            OnTargetReached();
-            Debug.Log("한계점 벽에 닿았습니다.");
-        }
+        //if (other.gameObject.CompareTag("Tile")) // 어느 곳에서 충돌하면 총알 사라짐
+        //{
+        //    OnTargetReached();
+        //    Debug.Log("한계점 벽에 닿았습니다.");
+        //}
 
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy")) // 어느 곳에서 충돌하면 총알 사라짐
         {
             OnTargetReached();
             Debug.Log("몬스터와 충돌했습니다");
         }
+
     }
 
     [SerializeField]
@@ -51,7 +52,7 @@ public class BulletScript : MonoBehaviour, IPoolObject
 
     private void BulletSpawnPos()
     {
-        transform.position = new Vector3(shootPos.position.x, shootPos.position.y, shootPos.position.z); // 총알이 생성되었을때 위치
+        transform.position = new Vector3(shootPos.position.x, 1f, shootPos.position.z); // 총알이 생성되었을때 위치
     }
 
     private void BulletSpeed()// 총알의 투사체 힘

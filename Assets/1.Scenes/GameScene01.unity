@@ -274,10 +274,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: S_WindSlime
       objectReference: {fileID: 0}
-    - target: {fileID: 8880252149949401992, guid: 67dce07d55fdf154da031899eff74c83, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67dce07d55fdf154da031899eff74c83, type: 3}
 --- !u!114 &513738440 stripped
@@ -309,6 +305,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 625091856, guid: 02edbfddcd157ee45924aa1a6e92e534, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 903272001, guid: 02edbfddcd157ee45924aa1a6e92e534, type: 3}
       propertyPath: shootPos
       value: 
@@ -319,15 +319,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2509996242926040404, guid: 02edbfddcd157ee45924aa1a6e92e534, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.268
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 2509996242926040404, guid: 02edbfddcd157ee45924aa1a6e92e534, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.592
+      value: 3.838
       objectReference: {fileID: 0}
     - target: {fileID: 2509996242926040404, guid: 02edbfddcd157ee45924aa1a6e92e534, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.195
+      value: 2.846
       objectReference: {fileID: 0}
     - target: {fileID: 2509996242926040404, guid: 02edbfddcd157ee45924aa1a6e92e534, type: 3}
       propertyPath: m_LocalRotation.w
@@ -360,6 +360,18 @@ PrefabInstance:
     - target: {fileID: 2512905689250168978, guid: 02edbfddcd157ee45924aa1a6e92e534, type: 3}
       propertyPath: m_Name
       value: WindSlash_use
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512905689250168978, guid: 02edbfddcd157ee45924aa1a6e92e534, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512905689250168978, guid: 02edbfddcd157ee45924aa1a6e92e534, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543763515927067122, guid: 02edbfddcd157ee45924aa1a6e92e534, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02edbfddcd157ee45924aa1a6e92e534, type: 3}
@@ -471,7 +483,7 @@ GameObject:
   - component: {fileID: 792998761}
   m_Layer: 0
   m_Name: BulletDestroyArea
-  m_TagString: Weapon
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1212,7 +1224,7 @@ MonoBehaviour:
   _pools:
   - _name: Bullet01
     _component: {fileID: 625091850}
-    _count: 10
+    _count: 15
     _container: {fileID: 1850835668}
     _nonLazy: 1
 --- !u!114 &1850835670
