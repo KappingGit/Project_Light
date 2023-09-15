@@ -26,7 +26,7 @@ public class DirectCamera : MonoBehaviour
             var y = circleR * Mathf.Cos(rad);
             
             transform.position = transform.position + new Vector3(x, y);
-            transform.rotation = Quaternion.Euler(0, deg * -1, 0); //가운데를 바라보게 각도 조절
+            transform.rotation = Quaternion.Euler(10f, deg * -1, 0); //가운데를 바라보게 각도 조절
         }
         else
         {
