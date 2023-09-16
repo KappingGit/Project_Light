@@ -41,7 +41,7 @@ public class ChangeSceneManager : MonoBehaviour
     {
         yield return YieldInstuctionCash.WaitForSeconds(1.5f);
         stageUI.gameObject.SetActive(true);
-        yield return YieldInstuctionCash.WaitForSeconds(2f);
+        yield return YieldInstuctionCash.WaitForSeconds(1.9f); // 나중에 애니메이션 루프 조정하기
         stageUI.gameObject.SetActive(false);
     }
 }
