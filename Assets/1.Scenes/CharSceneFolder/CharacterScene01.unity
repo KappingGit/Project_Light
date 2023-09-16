@@ -551,11 +551,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5b44236ddb5a2b747964ecaf81220db7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a5a5ea7582845c54d800d7cfb8553517, type: 2}
     - target: {fileID: 919132149155446097, guid: 5b44236ddb5a2b747964ecaf81220db7, type: 3}
       propertyPath: m_Name
       value: B_Temple_Ceiling
       objectReference: {fileID: 0}
     - target: {fileID: 6830197775831725453, guid: 5b44236ddb5a2b747964ecaf81220db7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a5a5ea7582845c54d800d7cfb8553517, type: 2}
+    - target: {fileID: 7254453947214595070, guid: 5b44236ddb5a2b747964ecaf81220db7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a5a5ea7582845c54d800d7cfb8553517, type: 2}
