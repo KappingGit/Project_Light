@@ -26,6 +26,10 @@ public class EnemyManager : MonoBehaviour
             instance = this;
         }
 
+        //if (BossManager.instance.BossTimer().) // 마저 제작하기 todo: 보스 등장시 스폰을 멈추고 지금까지 나온 모든 몬스터 반환시키기
+        //{
+
+        //}
         InvokeRepeating("Spawn", firstSpawn, spawnCycle); // Invokerepeating은 해당 함수를 firstSpawn초후에 spawnCycle초 간격으로 실행하는 용도
 
     }

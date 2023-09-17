@@ -18,7 +18,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject
 
     public static EnemyScript instance;
 
-    private PoolManager poolManager; //풀매니저 스크립트에 접근
+    //private PoolManager poolManager; //풀매니저 스크립트에 접근
 
     //NavMeshAgent ai;
 

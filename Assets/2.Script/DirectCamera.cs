@@ -8,7 +8,7 @@ public class DirectCamera : MonoBehaviour
 
     float circleR; //반지름
     float deg; //각도
-    float objSpeed = 20f; //원운동 속도
+    float objSpeed = 10f; //원운동 속도
 
     private void Awake()
     {
