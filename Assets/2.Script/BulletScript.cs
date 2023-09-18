@@ -42,7 +42,7 @@ public class BulletScript : MonoBehaviour, IPoolObject
         if (other.gameObject.CompareTag("Enemy")) // 어느 곳에서 충돌하면 총알 사라짐
         {
             OnTargetReached();
-            Debug.Log("몬스터와 충돌했습니다");
+            Debug.Log("몬스터 또는 벽에 충돌했습니다");
         }
 
     }

@@ -31,6 +31,26 @@ public class BossScript : MonoBehaviour, IPoolObject
         
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Weapon"))
+        {
+            bossCurHP -= 1f; //todo : 보스 공격의 데미지 스크립트를 따로 제작하기
+            Debug.Log("보스 현재 체력 : " + bossCurHP);
+            if (bossCurHP < 0f)
+            {
+                //todo: 사망 처리
+                OnTargetReached();
+            }
+
+        }
+    }
+
+    private void OnTargetReached() // 반환 작업용 함수
+    {
+        BossManager.instance.BossReturnPool(this);
+    }
+
     [SerializeField]
     private Transform spawnerPos; // 스폰되는 좌표
 
@@ -40,14 +60,23 @@ public class BossScript : MonoBehaviour, IPoolObject
 
     }
 
+    [SerializeField]
+    private float bossMaxHP; // 보스 최대체력
+
+    private float bossCurHP; // 보스 현재체력
+
     private void BossInit()
     {
         BossSpawn();
 
         //todo: 보스 기본 정보 초기화 넣을 것
 
-        // hp
+        bossCurHP = bossMaxHP; // 체력 초기화
+
+
     }
+
+
 
     // 인터페이스 IPoolObject을 명시적으로 구현
 

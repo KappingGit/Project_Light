@@ -30,14 +30,23 @@ public class EnemyManager : MonoBehaviour
         //{
 
         //}
+
         InvokeRepeating("Spawn", firstSpawn, spawnCycle); // Invokerepeating은 해당 함수를 firstSpawn초후에 spawnCycle초 간격으로 실행하는 용도
+
+        //SpawnReapeating();
 
     }
 
     private void Update()
     {
         //Debug.Log("스포너 위치값 : " + spawnerPos.position.x + "   " + spawnerPos.position.y + "   " + spawnerPos.position.z);
-        
+
+        // 보스 출현시 일반 몬스터 생성 중단
+        if (!BossManager.instance.bossSpawnTimerSet)
+        {
+            CancelInvoke("Spawn");
+        }
+
     }
 
     // 기획적인 부분 : 만약 도로와 같이 1차선 2차선 3차선으로 할 경우 랜덤함수를 쓰는 것이 아닌 배열로 값으로 해당 포지션 값을 반환하는 것

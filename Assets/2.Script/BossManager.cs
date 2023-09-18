@@ -10,9 +10,14 @@ public class BossManager : MonoBehaviour
 
     private PoolManager poolManager;
 
-    private float time = 0f;
+    [HideInInspector]
+    public float curTime = 0f;  // 게임 시간, 다른 스크립트에 사용하기 위해 만듦
 
-    private bool bossSpawnTimer;
+    [SerializeField]
+    public float bossAppearanceTime; // 보스 출현 시간
+
+    [HideInInspector]
+    public bool bossSpawnTimerSet; // 보스 출현 여부
 
     private void Awake()
     {
@@ -23,7 +28,7 @@ public class BossManager : MonoBehaviour
             instance = this;
         }
 
-        bossSpawnTimer = true;
+        bossSpawnTimerSet = true;
 
     }
 
@@ -31,20 +36,20 @@ public class BossManager : MonoBehaviour
     {
         BossTimer();
 
-
     }
 
+    // 보스 등장 시간 조절
     public void BossTimer()
     {
-        if (bossSpawnTimer)
+        if (bossSpawnTimerSet)
         {
-            time += Time.deltaTime;
-            Debug.Log("걸린 시간" + time.ToString("F1"));
+            curTime += Time.deltaTime;
+            Debug.Log("걸린 시간" + curTime.ToString("F1"));
 
-            if (time > 10f)
+            if (curTime > bossAppearanceTime)
             {
                 BossSpawn();
-                bossSpawnTimer = false;
+                bossSpawnTimerSet = false;
             }
         }
     }

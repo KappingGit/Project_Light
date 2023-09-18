@@ -41,6 +41,9 @@ public class PlayerShooting : MonoBehaviour
             if (Input.GetTouch(0).phase == TouchPhase.Moved)
             {
                 //todo: 총알이 발사되는 코드
+
+                BulletManager.instance.GetPoolBullet(); // 총알 불러오기
+
                 //bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
 
                 //bullet.transform.position = shotPos.transform.position;
