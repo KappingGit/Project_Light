@@ -22,7 +22,7 @@ public class PlayerShooting : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))  //터치 누르고 있을때...
         {
-            Debug.Log("발사를 시도합니다.");
+            //Debug.Log("발사를 시도합니다.");
 
             BulletManager.instance.GetPoolBullet(); // 총알 불러오기
 

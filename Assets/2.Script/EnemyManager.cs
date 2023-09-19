@@ -42,7 +42,7 @@ public class EnemyManager : MonoBehaviour
         //Debug.Log("스포너 위치값 : " + spawnerPos.position.x + "   " + spawnerPos.position.y + "   " + spawnerPos.position.z);
 
         // 보스 출현시 일반 몬스터 생성 중단
-        if (!BossManager.instance.bossSpawnTimerSet)
+        if (BossManager.instance.bossSpawnActive)
         {
             CancelInvoke("Spawn");
         }

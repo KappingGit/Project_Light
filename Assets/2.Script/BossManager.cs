@@ -17,7 +17,7 @@ public class BossManager : MonoBehaviour
     public float bossAppearanceTime; // 보스 출현 시간
 
     [HideInInspector]
-    public bool bossSpawnTimerSet; // 보스 출현 여부
+    public bool bossSpawnActive; // 보스 출현 여부
 
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class BossManager : MonoBehaviour
             instance = this;
         }
 
-        bossSpawnTimerSet = true;
+        bossSpawnActive = false;
 
     }
 
@@ -41,15 +41,15 @@ public class BossManager : MonoBehaviour
     // 보스 등장 시간 조절
     public void BossTimer()
     {
-        if (bossSpawnTimerSet)
+        if (!bossSpawnActive)
         {
             curTime += Time.deltaTime;
             Debug.Log("걸린 시간" + curTime.ToString("F1"));
 
-            if (curTime > bossAppearanceTime)
+            if (curTime > bossAppearanceTime + 2f)
             {
                 BossSpawn();
-                bossSpawnTimerSet = false;
+                bossSpawnActive = true;
             }
         }
     }

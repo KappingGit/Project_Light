@@ -65,7 +65,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject
         EnemySpeed();
 
         // 보스 등장시 모두 반환
-        if (!BossManager.instance.bossSpawnTimerSet)
+        if (BossManager.instance.bossSpawnActive)
         {
             OnTargetReached();
         }

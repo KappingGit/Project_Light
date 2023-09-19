@@ -9,14 +9,13 @@ public class ChangeSceneManager : MonoBehaviour
     [SerializeField]
     private Image fadeImage;
 
-    [SerializeField]
-    private GameObject stageUI;
+    
 
     private void Awake()
     {
         fadeImage.color = new Color(0, 0, 0, 1.0f); // 기본 초기화
         StartCoroutine(FadeInOut()); // 쌩으로 넣는 것은 하면안된다(코루틴이 지속적으로 처리가 되는 문제가 발생 단, 조건문을 활용하면 가능)
-        StartCoroutine(UIforTime());
+        
     }
 
     private void Update()
@@ -37,11 +36,5 @@ public class ChangeSceneManager : MonoBehaviour
         }
     }
 
-    IEnumerator UIforTime() // 애니메이션 효과 시간 맞추기
-    {
-        yield return YieldInstuctionCash.WaitForSeconds(1.5f);
-        stageUI.gameObject.SetActive(true);
-        yield return YieldInstuctionCash.WaitForSeconds(1.9f); // 나중에 애니메이션 루프 조정하기
-        stageUI.gameObject.SetActive(false);
-    }
+    
 }

@@ -41,6 +41,9 @@ public class BossScript : MonoBehaviour, IPoolObject
             {
                 //todo: 사망 처리
                 OnTargetReached();
+                //BossManager.instance.bossSpawnActive = false;
+
+                Debug.Log("보스 죽음" + BossManager.instance.bossSpawnActive);
             }
 
         }
@@ -61,9 +64,10 @@ public class BossScript : MonoBehaviour, IPoolObject
     }
 
     [SerializeField]
-    private float bossMaxHP; // 보스 최대체력
+    public float bossMaxHP; // 보스 최대체력
 
-    private float bossCurHP; // 보스 현재체력
+    [HideInInspector]
+    public float bossCurHP; // 보스 현재체력
 
     private void BossInit()
     {
