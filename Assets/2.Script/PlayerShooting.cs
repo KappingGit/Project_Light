@@ -11,20 +11,26 @@ public class PlayerShooting : MonoBehaviour
 
     private bool isInit = false; // 초기화 작업용
 
+    private Animator anim;
+
     private void Awake()
     {
-        
+        anim = GetComponent<Animator>();
     }
     // || Input.GetTouch(0).phase == TouchPhase.Moved
     private void Update()
     {
         #region 최적화 안한 코드
 
-        if (Input.GetKeyDown(KeyCode.Space))  //터치 누르고 있을때...
+        if (Input.GetKey(KeyCode.Space))  //터치 누르고 있을때...
         {
             //Debug.Log("발사를 시도합니다.");
 
-            BulletManager.instance.GetPoolBullet(); // 총알 불러오기
+            //BulletManager.instance.GetPoolBullet(); // 총알 불러오기
+
+            anim.SetBool("isFire", true);
+
+            StartCoroutine(Attack());
 
             //bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
 
@@ -32,7 +38,11 @@ public class PlayerShooting : MonoBehaviour
 
             //bullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, shotSpeed), ForceMode.Impulse); //해당 오브젝트에 Rigidbody에 접근 
         }
-
+        else if(Input.GetKeyUp(KeyCode.Space))
+        {
+            anim.SetBool("isFire", false);
+            StopCoroutine(Attack());
+        }
         #endregion
 
         // 터치 발사
@@ -42,13 +52,23 @@ public class PlayerShooting : MonoBehaviour
             {
                 //todo: 총알이 발사되는 코드
 
-                BulletManager.instance.GetPoolBullet(); // 총알 불러오기
+                anim.SetBool("isFire", true);
+
+                BulletManager.instance.GetPoolBullet();
+
+                //BulletManager.instance.GetPoolBullet(); // 총알 불러오기
 
                 //bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
 
                 //bullet.transform.position = shotPos.transform.position;
 
                 //bullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, shotSpeed), ForceMode.Impulse); //해당 오브젝트에 Rigidbody에 접근 
+            }
+            else if (Input.GetTouch(0).phase == TouchPhase.Ended) // Ended 손가락이 화면 위를 벗어나 떨어지게 되는 순간...
+            {
+                anim.SetBool("isFire", false);
+                
+                Debug.Log("화면에서 손가락을 뗐습니다.");
             }
         }
 
@@ -100,6 +120,14 @@ public class PlayerShooting : MonoBehaviour
             return isFiring;
         }
        
+    }
+
+    // 공격 속도 지연시키기
+    IEnumerator Attack()
+    {
+        BulletManager.instance.GetPoolBullet();
+        yield return YieldInstuctionCash.WaitForSeconds(1.5f);
+        
     }
 
 }
