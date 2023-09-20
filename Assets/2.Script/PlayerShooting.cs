@@ -22,15 +22,15 @@ public class PlayerShooting : MonoBehaviour
     {
         #region 최적화 안한 코드
 
-        if (Input.GetKey(KeyCode.Space))  //터치 누르고 있을때...
+        if (Input.GetKeyDown(KeyCode.Space))  //터치 누르고 있을때...
         {
             //Debug.Log("발사를 시도합니다.");
 
-            //BulletManager.instance.GetPoolBullet(); // 총알 불러오기
+            BulletManager.instance.GetPoolBullet(); // 총알 불러오기
 
             anim.SetBool("isFire", true);
 
-            StartCoroutine(Attack());
+            //StartCoroutine(Attack());
 
             //bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
 
@@ -41,7 +41,7 @@ public class PlayerShooting : MonoBehaviour
         else if(Input.GetKeyUp(KeyCode.Space))
         {
             anim.SetBool("isFire", false);
-            StopCoroutine(Attack());
+            //StopCoroutine(Attack());
         }
         #endregion
 
