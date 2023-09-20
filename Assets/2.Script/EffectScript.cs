@@ -1,0 +1,77 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Redcode.Pools;
+
+public class EffectScript : MonoBehaviour, IPoolObject
+{
+    [SerializeField]
+    public string idName; // 풀링작업에 사용될 오브젝트 닉네임
+
+    //private GameObject effectObj;
+
+    private void Awake()
+    {
+        // 해당 자신의 이펙트를 지정 (나중에 하나의 스크립트에서 여러개 사용할 거면 Serialize로 해결할 것)
+        //effectObj = GetComponent<GameObject>();
+
+    }
+
+    private void Update()
+    {
+        //EffectInit();
+        
+    }
+
+    private void EffectInit()
+    {
+        StartCoroutine(EffectCoroutine());
+        if (EnemyScript.instance.isDie) 
+        {
+            //  초기화 될때 실시간 위치값을 받아서 함수에 집어넣기
+            Vector3 monsterTrans = EnemyScript.instance.nowPos;
+            EffectPos(monsterTrans);
+            
+        }
+    }
+
+    // 오브젝트 실행 함수
+    private void EffectPos(Vector3 monsterTrans) // 이펙트가 발생되는 몬스터 위치값 함수
+    {
+        transform.position = monsterTrans; // 이펙트 위치
+        Debug.Log("이펙트 좌표값: x" + transform.position.x + "   y" + transform.position.y + "   z" + transform.position.z);
+        
+    }
+
+
+    private void OnTargetReached() // 반환 작업용 함수
+    {
+        // 해당 오브젝트를 다시 반환 시켜준다
+        
+    }
+
+
+    // 인터페이스 IPoolObject을 명시적으로 구현
+
+    // 해당 오브젝트가 처음 생성됐을때 실행 함수
+    public void OnCreatedInPool()
+    {
+        
+    }
+
+    // 해당 오브젝트가 가져올때마다 실행
+    public void OnGettingFromPool()
+    {
+        // 파티클 속성값 초기화
+        EffectInit();
+        
+    }
+
+    IEnumerator EffectCoroutine() // 이펙트 반환
+    {
+        yield return YieldInstuctionCash.WaitForSeconds(1f);
+        EffectManager.instance.EffectReturnPool(this);
+        StopCoroutine(EffectCoroutine());
+    }
+
+}

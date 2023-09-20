@@ -4902,6 +4902,7 @@ GameObject:
   - component: {fileID: 4586680873895153566}
   - component: {fileID: 4586680873895153537}
   - component: {fileID: 4586680873895153536}
+  - component: {fileID: 100434895}
   m_Layer: 0
   m_Name: Death_Use
   m_TagString: Untagged
@@ -9719,6 +9720,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &100434895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4586680873895153539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6035d657542f6184891c0c8ef937979e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idName: DieEffect01
 --- !u!1 &4586680875223193018
 GameObject:
   m_ObjectHideFlags: 0

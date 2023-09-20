@@ -57,7 +57,7 @@ public class BossScript : MonoBehaviour, IPoolObject
     [SerializeField]
     private Transform spawnerPos; // 스폰되는 좌표
 
-    private void BossSpawn()
+    private void BossSpawnPos()
     {
         transform.position = new Vector3(spawnerPos.position.x, 1f, 10f);
 
@@ -71,7 +71,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
     private void BossInit()
     {
-        BossSpawn();
+        BossSpawnPos();
 
         //todo: 보스 기본 정보 초기화 넣을 것
 

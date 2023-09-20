@@ -44,11 +44,11 @@ public class BossManager : MonoBehaviour
         if (!bossSpawnActive)
         {
             curTime += Time.deltaTime;
-            Debug.Log("걸린 시간" + curTime.ToString("F1"));
+            //Debug.Log("걸린 시간" + curTime.ToString("F1"));
 
             if (curTime > bossAppearanceTime + 2f)
             {
-                BossSpawn();
+                BossSpawn(); // 여기서 보스 소환 처리
                 bossSpawnActive = true;
             }
         }

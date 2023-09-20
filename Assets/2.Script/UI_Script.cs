@@ -44,7 +44,9 @@ public class UI_Script : MonoBehaviour
         {
             BossHPUI();
         }
-        
+
+        PausePopup();
+
     }
 
     [SerializeField]
@@ -82,7 +84,7 @@ public class UI_Script : MonoBehaviour
     private bool pauseActive = false; // 일시정지 상태 여부
 
     //일시정지 버튼
-    public void PauseBtn()
+    public void PauseBtn() // 재시작 버튼도 겸하고있음
     {
 
         if (pauseActive)
@@ -96,6 +98,21 @@ public class UI_Script : MonoBehaviour
             pauseActive = true;
         }
 
+    }
+
+    [SerializeField]
+    private GameObject pausePopup;
+
+    private void PausePopup()
+    {
+        if (pauseActive)
+        {
+            pausePopup.gameObject.SetActive(true);
+        }
+        else if (!pauseActive)
+        {
+            pausePopup.gameObject.SetActive(false);
+        }
     }
 
     [SerializeField]

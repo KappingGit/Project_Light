@@ -107,6 +107,15 @@ public class EnemyScript : MonoBehaviour, IPoolObject
         // todo : 몬스터 공격관련
     }
 
+    [HideInInspector]
+    public Vector3 nowPos; // 실시간 좌표 추출
+
+    [HideInInspector]
+    public bool isDie = false;
+
+    [HideInInspector]
+    public bool extractionPos; // 좌표 추출 여부
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Tile"))
@@ -119,8 +128,30 @@ public class EnemyScript : MonoBehaviour, IPoolObject
         if (other.gameObject.CompareTag("Weapon"))
         {
             //Debug.Log("몬스터를 반환시도.");
-            //todo : 몬스터서 플레이어랑 부딪히면...  => 몬스터가 사라짐 or 몬스터가 잠시 무적상태로 비활성화
-            OnTargetReached(); //관련 타겟에 부딪히면 다시 반환시켜준다...
+           
+             //관련 타겟에 부딪히면 다시 반환시켜준다...
+
+            isDie = true;
+
+            nowPos = this.gameObject.transform.position; // 이 문장이 if문 안에들어가는거랑 안들어가는 거랑 차이가 있음 나중에 확인할 것
+
+            if (isDie)
+            {
+                 // 실시간 좌표 추출
+
+                EffectManager.instance.EnemyDieEffect(); // 이펙트 효과 발생(풀 불러오기)
+                OnTargetReached();  // 몬스터 반환
+                //extractionPos = true;
+                //if (extractionPos)
+                //{
+
+                //    extractionPos = false; // 여부 초기화
+                //}
+
+                isDie = false;
+                
+            }
+            
         }
 
     }
