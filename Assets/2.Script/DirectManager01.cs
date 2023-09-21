@@ -35,6 +35,7 @@ public class DirectManager01 : MonoBehaviour
     private void Awake()
     {
         bossObj_Anim = bossObj.gameObject.GetComponent<Animator>();
+
         bossObj.gameObject.SetActive(false);
         StartCoroutine(DelayTime());
     }
@@ -59,23 +60,31 @@ public class DirectManager01 : MonoBehaviour
         yield return YieldInstuctionCash.WaitForSeconds(3f);
 
         mainCamera02.gameObject.SetActive(false);
-        bossObj.gameObject.SetActive(true);
-        mainCamera03.gameObject.SetActive(true);
 
-        yield return YieldInstuctionCash.WaitForSeconds(1.5f);
-
-        // 이사이에 펑퍼지는 효과 넣으면 될듯...
+        // 이 사이에 펑퍼지는 효과 넣으면 될듯...
 
         effect01.gameObject.SetActive(false);
         effect02.gameObject.SetActive(false);
         effect03.gameObject.SetActive(false);
 
-        yield return YieldInstuctionCash.WaitForSeconds(2.5f);
+        bossObj.gameObject.SetActive(true);
 
-        bossObj_Anim.SetBool("isHowling", true);
-        
+        mainCamera03.gameObject.SetActive(true);
+
+        yield return YieldInstuctionCash.WaitForSeconds(3f);
+
+        //bossObj_Anim.SetBool("isHowling", true);
+
         mainCamera03.gameObject.SetActive(false);
         mainCamera04.gameObject.SetActive(true);
+
+        //yield return YieldInstuctionCash.WaitForSeconds(1.5f);
+
+       
+
+        
+
+        
 
         //mainCamera04.gameObject.SetActive(true);
 
