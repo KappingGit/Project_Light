@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water-Test
-  m_Shader: {fileID: -6465566751694194690, guid: 0aa0b42a793008641bf3d5a73838731a, type: 3}
+  m_Name: M_Ocean-Water
+  m_Shader: {fileID: -6465566751694194690, guid: c014832ef69cb774991137640266071b, type: 3}
   m_ValidKeywords:
   - _BUILTIN_SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
@@ -98,16 +98,16 @@ Material:
     - _BUILTIN_ZWriteControl: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _Depth: 0.3
+    - _Depth: 0.861
     - _DepthFalloff: 0.6
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Float: 0
+    - _Float: 3
     - _FoamAmount: 0.1
     - _FoamCutout: 0
     - _FoamDepth: 1.04
     - _FoamFalloff: 0.7
-    - _FoamShoreWidth: 0.89
+    - _FoamShoreWidth: 0.7
     - _FoamTilling: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -115,19 +115,21 @@ Material:
     - _Metal: 0.3
     - _Metallic: 0
     - _Mode: 0
+    - _NormalStrenght: 0.3
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _WaveIntensity: 0.01
-    - _WaveSpeed: 2
+    - _WaveIntensity: 0.15
+    - _WaveSpeed: 1.5
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.007787468, g: 0.19407307, b: 0.3301887, a: 1}
+    - _Color: {r: 0.10346207, g: 0.8269677, b: 0.8773585, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FoamColor: {r: 0.47378963, g: 0.7362914, b: 0.8584906, a: 1}
+    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _FoamSpeed: {r: 0.05, g: 0.05, b: 0, a: 0}
-    - _ShoreColor: {r: 0, g: 0.08024051, b: 0.16981131, a: 0}
+    - _ShoreColor: {r: 0.15566039, g: 1, b: 0.8143336, a: 0}
+    - _WaveColor: {r: 0.7216981, g: 1, b: 0.9352188, a: 1}
   m_BuildTextureStacks: []
