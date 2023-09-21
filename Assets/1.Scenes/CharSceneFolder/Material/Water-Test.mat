@@ -63,6 +63,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NormalFromTexture_1fc976b5873840429e4ac72c33aa2d0a_Texture_0:
+        m_Texture: {fileID: 2800000, guid: 1af1fa0cc6a864c49922680254f00d15, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTexture:
+        m_Texture: {fileID: 2800000, guid: 1af1fa0cc6a864c49922680254f00d15, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -113,8 +121,8 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _WaveIntensity: 0.05
-    - _WaveSpeed: 1
+    - _WaveIntensity: 0.01
+    - _WaveSpeed: 2
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.007787468, g: 0.19407307, b: 0.3301887, a: 1}
