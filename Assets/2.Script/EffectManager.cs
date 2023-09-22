@@ -15,6 +15,8 @@ public class EffectManager : MonoBehaviour
     {
         poolManager = GetComponent<PoolManager>();
 
+        effectObjPool = gameObject.GetComponent<GameObject>();
+
         if (EffectManager.instance == null)
         {
             instance = this;
