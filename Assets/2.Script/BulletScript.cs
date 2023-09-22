@@ -33,11 +33,6 @@ public class BulletScript : MonoBehaviour, IPoolObject
         //Debug.Log("자식 오브젝트 이름 : "+hitObj.gameObject.name);
     }
 
-    [SerializeField]
-    private GameObject hitObj;
-
-    private bool hitEffectActive;
-
     private void OnTriggerEnter(Collider other)
     {
         //if (other.gameObject.CompareTag("Tile")) // 어느 곳에서 충돌하면 총알 사라짐
@@ -48,17 +43,10 @@ public class BulletScript : MonoBehaviour, IPoolObject
 
         if (other.gameObject.CompareTag("Enemy")) // 어느 곳에서 충돌하면 총알 사라짐
         {
-            hitObj.gameObject.SetActive(true);
-            
-            hitEffectActive = true;
+
+            OnTargetReached();// 총알 반환
+
             Debug.Log("타격 이펙트");
-
-            if (hitEffectActive)
-            {
-                StartCoroutine(EffectDelay());
-
-            }
-            
             
             //Debug.Log("몬스터 또는 벽에 충돌했습니다");
         }
@@ -83,8 +71,8 @@ public class BulletScript : MonoBehaviour, IPoolObject
         BulletSpawnPos();
 
         //hitObj = GetComponentInChildren<GameObject>();
-        hitEffectActive = false;
-        hitObj.gameObject.SetActive(false);
+       
+       
     }
 
     private void OnTargetReached() // 반환 작업용 함수
@@ -113,8 +101,7 @@ public class BulletScript : MonoBehaviour, IPoolObject
     IEnumerator EffectDelay()
     {
         yield return YieldInstuctionCash.WaitForSeconds(1f);
-        OnTargetReached();
-        
+       
     }
 
 }

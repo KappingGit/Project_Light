@@ -9,6 +9,8 @@ public class EffectManager : MonoBehaviour
 
     private PoolManager poolManager;
 
+    private GameObject effectObjPool;
+
     private void Awake()
     {
         poolManager = GetComponent<PoolManager>();
@@ -25,9 +27,11 @@ public class EffectManager : MonoBehaviour
         
     }
 
-    public void EnemyDieEffect()
+    public void EnemyDieEffectPool()
     {
         EffectScript newEffect01 = poolManager.GetFromPool<EffectScript>(0);
+        // 해당 오브젝트를 꺼냈을때 원하는 위치로 리턴할 것...
+       
     }
 
     public void EffectReturnPool(EffectScript clone)

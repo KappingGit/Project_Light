@@ -8,37 +8,40 @@ public class EffectScript : MonoBehaviour, IPoolObject
     [SerializeField]
     public string idName; // 풀링작업에 사용될 오브젝트 닉네임
 
-    //private GameObject effectObj;
+    private GameObject effectObj;
 
     private void Awake()
     {
         // 해당 자신의 이펙트를 지정 (나중에 하나의 스크립트에서 여러개 사용할 거면 Serialize로 해결할 것)
-        //effectObj = GetComponent<GameObject>();
+        effectObj = GetComponent<GameObject>();
 
     }
 
     private void Update()
     {
-        //EffectInit();
+        
         
     }
 
+
     private void EffectInit()
     {
-        StartCoroutine(EffectCoroutine());
-        if (EnemyScript.instance.isDie) 
-        {
-            //  초기화 될때 실시간 위치값을 받아서 함수에 집어넣기
-            Vector3 monsterTrans = EnemyScript.instance.nowPos;
-            EffectPos(monsterTrans);
-            
-        }
+
+        EffectPos();
+
+        StartCoroutine(EffectCoroutine()); // 일정 시간 지난후 다시 반환
+
+        //IDie monsterIsDie = GetComponent<IDie>();
+
+        //monsterIsDie.Die();
+
     }
 
     // 오브젝트 실행 함수
-    private void EffectPos(Vector3 monsterTrans) // 이펙트가 발생되는 몬스터 위치값 함수
+    private void EffectPos() // 이펙트가 발생되는 몬스터 위치값 함수
     {
-        transform.position = monsterTrans; // 이펙트 위치
+
+        //transform.position = EnemyScript.instance.nowPos; // 이펙트 위치
         Debug.Log("이펙트 좌표값: x" + transform.position.x + "   y" + transform.position.y + "   z" + transform.position.z);
         
     }
@@ -51,8 +54,8 @@ public class EffectScript : MonoBehaviour, IPoolObject
     }
 
 
-    // 인터페이스 IPoolObject을 명시적으로 구현
 
+    // 인터페이스 IPoolObject을 명시적으로 구현
     // 해당 오브젝트가 처음 생성됐을때 실행 함수
     public void OnCreatedInPool()
     {

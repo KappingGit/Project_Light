@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Redcode.Pools;
 
-public class EnemyScript : MonoBehaviour, IPoolObject
+public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IEffect
 {
     [SerializeField]
     public string idName; // 풀링작업에 사용될 오브젝트 닉네임
@@ -22,11 +22,19 @@ public class EnemyScript : MonoBehaviour, IPoolObject
 
     //NavMeshAgent ai;
 
+    private GameObject enemyObj;
+
+    private Transform enemyTrans;
+
     private Rigidbody enemyRig;
 
     private void Awake()
     {
+        enemyObj = GetComponent<GameObject>();
+
         enemyRig = GetComponent<Rigidbody>();
+
+        enemyTrans = GetComponent<Transform>();
 
         //ai = GetComponent<NavMeshAgent>(); // Ai에 접근
 
@@ -86,11 +94,15 @@ public class EnemyScript : MonoBehaviour, IPoolObject
 
         currHp = maxHp; // 현재 체력에 저장
 
+        isDie = false;
+
         //Debug.Log("기본값");
-        
+
         //Transform[] spawnPos = GameManger.instance.points; //  스폰 포인트를 지정
 
         //ai.SetDestination(spawnPos[Random.Range(0, spawnPos.Length)].position); //해당 스폰 포인트로 이동
+
+        
     }
 
     private void Hit()
@@ -116,42 +128,50 @@ public class EnemyScript : MonoBehaviour, IPoolObject
     [HideInInspector]
     public bool extractionPos; // 좌표 추출 여부
 
+    // IDie의 인턴페이스 참조문
+    public void Die()
+    {
+        isDie = true;
+        OnTargetReached();  // 몬스터 반환
+    }
+
+    private Vector3 newDieEffect;
+
+    // IEffect 인터페이스 활용
+    public void DieEffect()
+    {
+        // 이펙트가 작동되는거 기입
+        // 오브젝트 활성화
+        //effectObj.gameObject.SetActive(true);
+        EffectManager.instance.EnemyDieEffectPool();// 죽는 이펙트 불러오기 불러오는 과정에서 좌표???
+
+        /*newDieEffect = enemyObj.transform.position;*/ //자기자신의 위치에 해당 이펙트 오브젝트를 소환
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Tile"))
         {
             //Debug.Log("몬스터를 반환시도.");
             //todo : 몬스터서 플레이어랑 부딪히면...  => 몬스터가 사라짐 or 몬스터가 잠시 무적상태로 비활성화
-            OnTargetReached(); //관련 타겟에 부딪히면 다시 반환시켜준다...
+            Die(); //관련 타겟에 부딪히면 다시 반환시켜준다...
         }
 
         if (other.gameObject.CompareTag("Weapon"))
         {
             //Debug.Log("몬스터를 반환시도.");
-           
-             //관련 타겟에 부딪히면 다시 반환시켜준다...
 
-            isDie = true;
+            //todo : 죽는 이펙트 처리하기 인터페이스 말고 오브젝트 풀링 스크립트상 관련으로 분석할 것...
+            //DieEffect(); // 죽는 이펙트 처리
 
-            nowPos = this.gameObject.transform.position; // 이 문장이 if문 안에들어가는거랑 안들어가는 거랑 차이가 있음 나중에 확인할 것
-
-            if (isDie)
-            {
-                 // 실시간 좌표 추출
-
-                EffectManager.instance.EnemyDieEffect(); // 이펙트 효과 발생(풀 불러오기)
-                OnTargetReached();  // 몬스터 반환
-                //extractionPos = true;
-                //if (extractionPos)
-                //{
-
-                //    extractionPos = false; // 여부 초기화
-                //}
-
-                isDie = false;
-                
-            }
+            //인터페이스화 시킴
+            Die();// 죽음 처리
             
+            //IEffect dieEffct = GetComponent<IEffect>(); // 무슨 의미..?
+            //dieEffct.DieEffect();
+           
+
         }
 
     }
