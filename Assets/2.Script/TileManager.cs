@@ -25,6 +25,7 @@ public class TileManager : MonoBehaviour
     //[SerializeField]
     //private Rigidbody tileRig;
 
+    [SerializeField]
     private float tileSpeed = 35f;
 
     private void Awake()

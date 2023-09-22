@@ -26,7 +26,7 @@ public class MainSceneManager : MonoBehaviour
             Debug.Log("마우스 버튼이 눌렸습니다.");
             if (clicking) // 파라매터 넣어서 "현재 페이드가 진행중이라면 클릭 안되게 처리
             {
-                StartCoroutine(FadeInOut()); 
+                StartCoroutine(FadeOut()); 
             }
             
         }
@@ -38,10 +38,10 @@ public class MainSceneManager : MonoBehaviour
         SceneManager.LoadScene("GameScene01"); // 해당 씬으로 이동 나중에 선택한 월드로 이동하게 설정
     }
 
-    private float fadeCount = 0f; // 페이드 인아웃에 사용될 변수
+    private float fadeCount = 0f; // 페이드 아웃에 사용될 변수
 
     // 속도 조절에 사용될 코루틴 YieldInstuctionCash: 캐싱 작업해 놓은것 불러오기
-    IEnumerator FadeInOut()
+    IEnumerator FadeOut()// 점점 어두워지게
     {
         while (fadeCount < 1.0f)
         {

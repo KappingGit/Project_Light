@@ -10,6 +10,7 @@ public class BulletScript : MonoBehaviour, IPoolObject
 
     private Rigidbody bulletRig;
 
+    [SerializeField]
     private float bulletSpeed = 40.0f; // 투사체 속도
 
     private void Awake()

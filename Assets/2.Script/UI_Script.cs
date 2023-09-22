@@ -33,6 +33,7 @@ public class UI_Script : MonoBehaviour
 
         if (BossManager.instance.bossAppearanceTime < bossProgress && bossProgress < BossManager.instance.bossAppearanceTime + 1f) // 해당 코루틴에 if문을 넣는 것으로 바꿀것
         {
+            //todo : 보스가 나타날 시점
             Warnnig();
         }
 
@@ -77,7 +78,6 @@ public class UI_Script : MonoBehaviour
     {
 
         //Debug.Log("경고 문구 생성");
-        //todo : 경고문구 집어 넣기
         StartCoroutine(BossWarning());
     }
 
@@ -147,7 +147,10 @@ public class UI_Script : MonoBehaviour
     {
         warningUI.gameObject.SetActive(true);
         yield return YieldInstuctionCash.WaitForSeconds(2.0f);
-        warningUI.gameObject.SetActive(false);
+        warningUI.gameObject.SetActive(false); // 페이드 및 씬전환 적용해보고 위치 조정
+
+        //페이드 아웃과 씬전환을 넣을 것
+
         StopCoroutine(BossWarning());
     }
 

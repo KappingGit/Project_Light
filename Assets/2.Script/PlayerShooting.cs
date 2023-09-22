@@ -26,9 +26,13 @@ public class PlayerShooting : MonoBehaviour
         {
             //Debug.Log("발사를 시도합니다.");
 
-            BulletManager.instance.GetPoolBullet(); // 총알 불러오기
+            if (!ChangeSceneManager.instance.fadeInOuting) // 페이드 중이 아니라면 발사하게
+            {
+                BulletManager.instance.GetPoolBullet(); // 총알 불러오기
 
-            anim.SetBool("isFire", true);
+                anim.SetBool("isFire", true);
+            }
+            
 
             //StartCoroutine(Attack());
 

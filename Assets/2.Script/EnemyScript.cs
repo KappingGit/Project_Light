@@ -196,6 +196,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject
 
     }
 
+    [SerializeField]
     private float enemySpeed = 25.0f; // 적 오브젝트 속도, 몬스터 속도
 
     private void EnemySpeed()
