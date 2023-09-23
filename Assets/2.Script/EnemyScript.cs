@@ -135,7 +135,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IEffect
         OnTargetReached();  // 몬스터 반환
     }
 
-    private Vector3 newDieEffect;
+    private GameObject newDieEffect;
 
     // IEffect 인터페이스 활용
     public void DieEffect()
@@ -143,13 +143,20 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IEffect
         // 이펙트가 작동되는거 기입
         // 오브젝트 활성화
         //effectObj.gameObject.SetActive(true);
-        EffectManager.instance.EnemyDieEffectPool();// 죽는 이펙트 불러오기 불러오는 과정에서 좌표???
+        //EffectManager.instance.EnemyDieEffectPool();// 죽는 이펙트 불러오기 불러오는 과정에서 좌표???
+
+        newDieEffect = EffectManager.instance.EnemyDieEffectPool();
+
+        newDieEffect.transform.position = transform.position; // 적오브젝트 위치에 생성
+
+        Debug.Log("죽는 이펙트 나올때 좌표 : " + newDieEffect.transform.position);
+
+        //return newDieEffect;
+
         // 해당 풀링을 오브젝트로 변경
 
         /*풀링에서 가져오신 컴포넌트 변수에서 .gameObject로 접근하시면 게임오브젝트 단계로 올라갈 수 있습니다.
 이후에 .GetComponent()로 다시 원하는 컴포넌트로 접근하실 수 있으니 참고 바랍니다.*/
-
-        /*newDieEffect = enemyObj.transform.position;*/ //자기자신의 위치에 해당 이펙트 오브젝트를 소환
 
     }
 

@@ -13,7 +13,7 @@ public class EffectScript : MonoBehaviour, IPoolObject
     private void Awake()
     {
         // 해당 자신의 이펙트를 지정 (나중에 하나의 스크립트에서 여러개 사용할 거면 Serialize로 해결할 것)
-        effectObj = gameObject.GetComponent<GameObject>();
+        effectObj = GetComponent<GameObject>();
 
     }
 

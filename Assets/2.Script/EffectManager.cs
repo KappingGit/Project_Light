@@ -9,13 +9,11 @@ public class EffectManager : MonoBehaviour
 
     private PoolManager poolManager;
 
-    private GameObject effectObjPool;
+    private GameObject effectObjPop;
 
     private void Awake()
     {
-        poolManager = GetComponent<PoolManager>();
-
-        effectObjPool = gameObject.GetComponent<GameObject>();
+        poolManager = GetComponent<PoolManager>(); // PoolManager에 접근
 
         if (EffectManager.instance == null)
         {
@@ -29,11 +27,15 @@ public class EffectManager : MonoBehaviour
         
     }
 
-    public void EnemyDieEffectPool()
+    public GameObject EnemyDieEffectPool()
     {
-        EffectScript newEffect01 = poolManager.GetFromPool<EffectScript>(0);
+        EffectScript newEffect01 = poolManager.GetFromPool<EffectScript>(0); //EffctScript의 newEffect01로 풀링(꺼낸다)
+
+        effectObjPop = newEffect01.gameObject.GetComponent<GameObject>();
+
+        return effectObjPop;
+
         // 해당 오브젝트를 꺼냈을때 원하는 위치로 리턴할 것...
-       
     }
 
     public void EffectReturnPool(EffectScript clone)
