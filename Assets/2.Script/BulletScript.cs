@@ -46,7 +46,7 @@ public class BulletScript : MonoBehaviour, IPoolObject
 
             OnTargetReached();// 총알 반환
 
-            Debug.Log("타격 이펙트");
+            //Debug.Log("타격 이펙트");
             
             //Debug.Log("몬스터 또는 벽에 충돌했습니다");
         }

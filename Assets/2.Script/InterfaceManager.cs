@@ -20,6 +20,13 @@ public interface IEffect
     void DieEffect();
 }
 
+public interface IActiveSkiil
+{
+    void ActiveSkillSpeed(); //스킬 속도
+
+    void ActiveSkillPos(); // 스킬 포지션
+}
+
 // 실시간 좌표
 public interface ICurPos
 {

@@ -47,6 +47,26 @@ public class PlayerShooting : MonoBehaviour
             anim.SetBool("isFire", false);
             //StopCoroutine(Attack());
         }
+
+        // 액티브 스킬 관련 : UI 배치도에 맞게 키값 설정 나중에 주의...
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            //파이어 드래곤 스킬
+            SkillManager.instance.GetPoolSkill(0);
+        }
+        else if(Input.GetKeyDown(KeyCode.K))
+        {
+            //궁극기 스킬 (합성 스킬)
+            SkillManager.instance.GetPoolSkill(2);
+        }
+        else if(Input.GetKeyDown(KeyCode.L))
+        {
+            // 윈드레이 스킬
+            SkillManager.instance.GetPoolSkill(1);
+        }
+
+
+
         #endregion
 
         // 터치 발사

@@ -22,7 +22,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IEffect
 
     //NavMeshAgent ai;
 
-    private GameObject enemyObj;
+    //private GameObject enemyObj;
 
     private Transform enemyTrans;
 
@@ -30,7 +30,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IEffect
 
     private void Awake()
     {
-        enemyObj = GetComponent<GameObject>();
+        //enemyObj = GetComponent<GameObject>();
 
         enemyRig = GetComponent<Rigidbody>();
 
@@ -47,7 +47,11 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IEffect
         // 해당 몬스터 오브젝트 바라보는 방향 조정
         transform.rotation = Quaternion.Euler(0f, 180f, 0f);
 
+        
+
     }
+
+    private Vector3 nowPos; // 실시간 좌표 추출
 
     private void Update()
     {
@@ -78,6 +82,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IEffect
             OnTargetReached();
         }
 
+        enemyTrans.transform.position = transform.position;
     }
 
     [SerializeField]
@@ -120,13 +125,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IEffect
     }
 
     [HideInInspector]
-    public Vector3 nowPos; // 실시간 좌표 추출
-
-    [HideInInspector]
     public bool isDie = false;
-
-    [HideInInspector]
-    public bool extractionPos; // 좌표 추출 여부
 
     // IDie의 인턴페이스 참조문
     public void Die()
@@ -145,19 +144,26 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IEffect
         //effectObj.gameObject.SetActive(true);
         //EffectManager.instance.EnemyDieEffectPool();// 죽는 이펙트 불러오기 불러오는 과정에서 좌표???
 
-        newDieEffect = EffectManager.instance.EnemyDieEffectPool();
+        GameObject newDieEffect = EffectManager.instance.EnemyDieEffectPool();
 
         newDieEffect.transform.position = transform.position; // 적오브젝트 위치에 생성
 
         Debug.Log("죽는 이펙트 나올때 좌표 : " + newDieEffect.transform.position);
-
-        //return newDieEffect;
 
         // 해당 풀링을 오브젝트로 변경
 
         /*풀링에서 가져오신 컴포넌트 변수에서 .gameObject로 접근하시면 게임오브젝트 단계로 올라갈 수 있습니다.
 이후에 .GetComponent()로 다시 원하는 컴포넌트로 접근하실 수 있으니 참고 바랍니다.*/
 
+    }
+
+    //임시 방편 코드
+    [SerializeField]
+    private GameObject dieEffectTest;
+    private void NoneOptimizationDieEffect()
+    {
+        Instantiate(dieEffectTest, enemyTrans);
+        //dieEffectTest.gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -178,10 +184,9 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IEffect
 
             //인터페이스화 시킴
             Die();// 죽음 처리
-            
+
             //IEffect dieEffct = GetComponent<IEffect>(); // 무슨 의미..?
             //dieEffct.DieEffect();
-           
 
         }
 
@@ -255,6 +260,13 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IEffect
 
         Init(); // 재사용하기 위해 초기화 로직(몬스터 기본 상태값)을 작성
         //Debug.Log("몬스터 초기화");
+    }
+
+    IEnumerator WaitForTime()
+    {
+        yield return YieldInstuctionCash.WaitForSeconds(2f);
+        Die();
+        StopCoroutine(WaitForTime());
     }
 
 }

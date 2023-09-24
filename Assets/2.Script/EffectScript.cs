@@ -10,19 +10,28 @@ public class EffectScript : MonoBehaviour, IPoolObject
 
     private GameObject effectObj;
 
+    public static EffectScript instance;
+
     private void Awake()
     {
         // 해당 자신의 이펙트를 지정 (나중에 하나의 스크립트에서 여러개 사용할 거면 Serialize로 해결할 것)
-        effectObj = GetComponent<GameObject>();
+        //effectObj = GetComponent<GameObject>();
 
+        if (EffectScript.instance == null)
+        {
+            instance = this;
+        }
+        effectObj = GetComponent<GameObject>();
     }
 
     private void Update()
     {
-        
-        
-    }
+        //effectObj.gameObject.SetActive(true);
 
+        //임시방편
+        //Destroy(this, destroyTime);
+
+    }
 
     private void EffectInit()
     {
@@ -54,7 +63,6 @@ public class EffectScript : MonoBehaviour, IPoolObject
     }
 
 
-
     // 인터페이스 IPoolObject을 명시적으로 구현
     // 해당 오브젝트가 처음 생성됐을때 실행 함수
     public void OnCreatedInPool()
@@ -73,7 +81,8 @@ public class EffectScript : MonoBehaviour, IPoolObject
     IEnumerator EffectCoroutine() // 이펙트 반환
     {
         yield return YieldInstuctionCash.WaitForSeconds(1f);
-        EffectManager.instance.EffectReturnPool(this);
+        //EffectManager.instance.EffectReturnPool(this);
+        
         StopCoroutine(EffectCoroutine());
     }
 

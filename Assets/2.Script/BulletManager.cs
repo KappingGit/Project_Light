@@ -27,11 +27,7 @@ public class BulletManager : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-       //todo : 적오브젝트에 닿았을때 구현 
-
-    }
+    
 
     public void GetPoolBullet()
     {
