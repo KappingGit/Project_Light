@@ -23,7 +23,7 @@ public class WindRaySkill : MonoBehaviour, IPoolObject, IActiveSkiil
 
     private void Update()
     {
-        
+        ActiveSkillPos();
     }
 
     [SerializeField]

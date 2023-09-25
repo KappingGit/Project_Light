@@ -51,7 +51,7 @@ public class FireDragonSkill : MonoBehaviour, IPoolObject, IActiveSkiil
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.gameObject.CompareTag("Enemy")) // 어느 곳에서 충돌하면 총알 사라짐
+        if (other.gameObject.CompareTag("Tile")) // 어느 곳에서 충돌하면 총알 사라짐
         {
 
             OnTargetReached();
