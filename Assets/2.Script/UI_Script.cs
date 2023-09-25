@@ -146,7 +146,7 @@ public class UI_Script : MonoBehaviour
     IEnumerator BossWarning()
     {
         warningUI.gameObject.SetActive(true);
-        yield return YieldInstuctionCash.WaitForSeconds(2.0f);
+        yield return YieldInstuctionCash.WaitForSeconds(2.0f); // 경고 UI 시간조율
         warningUI.gameObject.SetActive(false); // 페이드 및 씬전환 적용해보고 위치 조정
 
         //페이드 아웃과 씬전환을 넣을 것

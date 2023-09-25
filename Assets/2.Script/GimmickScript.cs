@@ -76,7 +76,7 @@ public class GimmickScript : MonoBehaviour, IPoolObject
 
         int rand = Random.Range(0, 3);
 
-        transform.position = new Vector3(xLoad[rand], spawnerPos.position.y, spawnerPos.position.z);
+        transform.position = new Vector3(xLoad[rand], spawnerPos.position.y, 55f);
 
         #endregion
 

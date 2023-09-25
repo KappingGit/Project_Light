@@ -18,7 +18,8 @@ public class GimmickManager : MonoBehaviour
             instance = this;
         }
 
-        
+        InvokeRepeating("GimmickSpawn", firstSpawn, spawnCycle);
+
     }
 
     [SerializeField]
@@ -37,11 +38,10 @@ public class GimmickManager : MonoBehaviour
 
             if (gimmickActive)
             {
-                InvokeRepeating("GimmickSpawn", firstSpawn, spawnCycle);
                 
             }
-            
         }
+        
     }
 
     public void GimmickSpawn()

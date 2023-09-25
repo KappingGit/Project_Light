@@ -46,7 +46,7 @@ public class BossManager : MonoBehaviour
             curTime += Time.deltaTime;
             //Debug.Log("걸린 시간" + curTime.ToString("F1"));
 
-            if (curTime > bossAppearanceTime + 2f)
+            if (curTime > bossAppearanceTime + 2f) // 경고 UI 나타나는 시간 관련으로 조율하기
             {
                 BossSpawn(); // 여기서 보스 소환 처리
                 bossSpawnActive = true;

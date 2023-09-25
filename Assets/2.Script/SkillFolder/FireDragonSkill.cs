@@ -73,6 +73,7 @@ public class FireDragonSkill : MonoBehaviour, IPoolObject, IActiveSkiil
     private void InitSkill()
     {
         ActiveSkillPos();
+        StartCoroutine(DestroyTime());
     }
 
     public void OnCreatedInPool()
@@ -83,6 +84,13 @@ public class FireDragonSkill : MonoBehaviour, IPoolObject, IActiveSkiil
     public void OnGettingFromPool()
     {
         InitSkill();
+    }
+
+    IEnumerator DestroyTime()
+    {
+        yield return YieldInstuctionCash.WaitForSeconds(5f);
+        OnTargetReached();
+        StopCoroutine(DestroyTime());
     }
 
 }
