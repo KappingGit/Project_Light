@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6fcb38c023078d04e8137953f7678c8b
+guid: fce8d3585bebdfd41b9cf55be2ab586e
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: M_C_Hero
+    second: {fileID: 2100000, guid: a2f588745490e5a40be13b415ea02d2a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material
-    second: {fileID: 2100000, guid: 29501f765c980894aa082c6dd67ae516, type: 2}
+    second: {fileID: 2100000, guid: 2abbe7872d168234ca6927c515332b1b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
