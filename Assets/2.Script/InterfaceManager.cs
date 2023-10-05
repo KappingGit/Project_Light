@@ -12,13 +12,13 @@ public class InterfaceManager : MonoBehaviour
 public interface IDie
 {
     void Die();
+
+    // Á×´Â ÀÌÆåÆ®
+    GameObject DieEffect();
+    
 }
 
-// Á×´Â ÀÌÆåÆ® ÀÎÅÍÆäÀÌ½º
-public interface IEffect
-{
-    void DieEffect();
-}
+
 
 public interface IActiveSkiil
 {

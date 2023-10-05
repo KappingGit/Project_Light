@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Redcode.Pools;
 
-public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IEffect
+public class EnemyScript : MonoBehaviour, IPoolObject, IDie
 {
     [SerializeField]
     public string idName; // 풀링작업에 사용될 오브젝트 닉네임
@@ -128,43 +128,34 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IEffect
     public bool isDie = false;
 
     // IDie의 인턴페이스 참조문
-    public void Die()
+    public void Die()// 몬스터 죽는 함수
     {
         isDie = true;
         OnTargetReached();  // 몬스터 반환
+
+        DieEffect();
+
+       
     }
 
-    private GameObject newDieEffect;
-
-    // IEffect 인터페이스 활용
-    public void DieEffect()
+    // 죽는 이펙트 인터페이스 함수
+    public GameObject DieEffect()
     {
-        // 이펙트가 작동되는거 기입
-        // 오브젝트 활성화
-        //effectObj.gameObject.SetActive(true);
-        //EffectManager.instance.EnemyDieEffectPool();// 죽는 이펙트 불러오기 불러오는 과정에서 좌표???
+        //사용법: 에너미 스크립트에 죽는 이펙트를 자식으로 불러온다???, 죽는 이펙트에 에너미 스크립트를 자식으로 불러온다???
 
-        GameObject newDieEffect = EffectManager.instance.EnemyDieEffectPool();
+        GameObject newDieEffect01 = EffectManager.instance.EnemyDieEffectPool();
 
-        newDieEffect.transform.position = transform.position; // 적오브젝트 위치에 생성
+        // 싱글톤 처리하지 말것
+        //GameObject newDieEffect = EffectManager.instance.EnemyDieEffectPool();
 
-        Debug.Log("죽는 이펙트 나올때 좌표 : " + newDieEffect.transform.position);
+        newDieEffect01.transform.position = transform.position; // 적오브젝트 위치에 생성
 
-        // 해당 풀링을 오브젝트로 변경
+        Debug.Log("죽는 이펙트 나올때 좌표 : " + newDieEffect01.transform.position);
 
-        /*풀링에서 가져오신 컴포넌트 변수에서 .gameObject로 접근하시면 게임오브젝트 단계로 올라갈 수 있습니다.
-이후에 .GetComponent()로 다시 원하는 컴포넌트로 접근하실 수 있으니 참고 바랍니다.*/
-
+        return newDieEffect01;
     }
 
-    //임시 방편 코드
-    [SerializeField]
-    private GameObject dieEffectTest;
-    private void NoneOptimizationDieEffect()
-    {
-        Instantiate(dieEffectTest, enemyTrans);
-        //dieEffectTest.gameObject.SetActive(true);
-    }
+    private GameObject newDieEffect01;
 
     private void OnTriggerEnter(Collider other)
     {

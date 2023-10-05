@@ -21,7 +21,7 @@ public class EffectScript : MonoBehaviour, IPoolObject
         {
             instance = this;
         }
-        effectObj = GetComponent<GameObject>();
+        //effectObj = GetComponent<GameObject>();
     }
 
     private void Update()
@@ -36,7 +36,7 @@ public class EffectScript : MonoBehaviour, IPoolObject
     private void EffectInit()
     {
 
-        EffectPos();
+        EffectPos(); // 아직은 현재 좌표를 보려고 만든 함수임(위치값 초기화 함수 아님 유의)
 
         StartCoroutine(EffectCoroutine()); // 일정 시간 지난후 다시 반환
 
@@ -78,7 +78,7 @@ public class EffectScript : MonoBehaviour, IPoolObject
         
     }
 
-    IEnumerator EffectCoroutine() // 이펙트 반환
+    IEnumerator EffectCoroutine() // 일정 시간에 따른 이펙트 반환
     {
         yield return YieldInstuctionCash.WaitForSeconds(1f);
         //EffectManager.instance.EffectReturnPool(this);
