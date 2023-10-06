@@ -6,19 +6,9 @@ using Redcode.Pools;
 public class EnemyScript : MonoBehaviour, IPoolObject, IDie
 {
     [SerializeField]
-    public string idName; // 풀링작업에 사용될 오브젝트 닉네임
-
-    //[SerializeField]
-    //private Animator anim;
-
-    //[SerializeField]
-    //private Vector3 targetPos;
-
-    //private bool isAtDestination;
+    public string idName; // 풀링작업에 사용될 오브젝트 닉네임   
 
     public static EnemyScript instance;
-
-    //private PoolManager poolManager; //풀매니저 스크립트에 접근
 
     //NavMeshAgent ai;
 
@@ -143,12 +133,12 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
     {
         //사용법: 에너미 스크립트에 죽는 이펙트를 자식으로 불러온다???, 죽는 이펙트에 에너미 스크립트를 자식으로 불러온다???
 
-        GameObject newDieEffect01 = EffectManager.instance.EnemyDieEffectPool();
+        var newDieEffect01 = EffectManager.instance.EnemyDieEffectPool();
 
         // 싱글톤 처리하지 말것
         //GameObject newDieEffect = EffectManager.instance.EnemyDieEffectPool();
 
-        newDieEffect01.transform.position = transform.position; // 적오브젝트 위치에 생성
+        newDieEffect01.transform.position = gameObject.transform.position; // 적오브젝트 위치에 생성
 
         Debug.Log("죽는 이펙트 나올때 좌표 : " + newDieEffect01.transform.position);
 

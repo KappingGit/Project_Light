@@ -22,7 +22,7 @@ public class EffectManager : MonoBehaviour
             instance = this;
         }
 
-        //InvokeRepeating("EnemyDieEffectPool", 1, 5);
+        InvokeRepeating("EnemyDieEffectPool", 1, 5);
 
     }
 
