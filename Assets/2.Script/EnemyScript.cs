@@ -133,10 +133,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
     {
         //사용법: 에너미 스크립트에 죽는 이펙트를 자식으로 불러온다???, 죽는 이펙트에 에너미 스크립트를 자식으로 불러온다???
 
-        var newDieEffect01 = EffectManager.instance.EnemyDieEffectPool();
-
-        // 싱글톤 처리하지 말것
-        //GameObject newDieEffect = EffectManager.instance.EnemyDieEffectPool();
+        GameObject newDieEffect01 = EffectManager.instance.EnemyDieEffectPool(); // 이펙트 매니저에서 게임오브젝트화를 거쳐서 GameObject로 변경이 가능함
 
         newDieEffect01.transform.position = gameObject.transform.position; // 적오브젝트 위치에 생성
 

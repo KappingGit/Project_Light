@@ -22,7 +22,7 @@ public class EffectManager : MonoBehaviour
             instance = this;
         }
 
-        InvokeRepeating("EnemyDieEffectPool", 1, 5);
+        //InvokeRepeating("EnemyDieEffectPool", 1, 5);
 
     }
 
@@ -34,32 +34,11 @@ public class EffectManager : MonoBehaviour
     public GameObject EnemyDieEffectPool()
     {
 
-        EffectScript newEffect01 = poolManager.GetFromPool<EffectScript>(0); //EffctScript의 newEffect01로 풀링(꺼낸다)
+        EffectScript newEffect01 = poolManager.GetFromPool<EffectScript>(0); //인덱스 0은 사망이펙트부분
 
-        if (newEffect01 == null)
-        {
-            Debug.Log("newEffect01가 널 상태입니다");
-        }
-        else if (newEffect01 != null)
-        {
-            Debug.Log("newEffect01가 널 상태가 아닙니다");
-        }
+        GameObject newEffectObj01 = newEffect01.gameObject; // 문제 해결: GetComponent를 남발하는 과정에서 생긴 문제 이부분을 빼면 정상작동
 
-        GameObject effectObjPop01;
-
-        effectObjPop01 = newEffect01.gameObject.GetComponent<GameObject>(); // 불러온 해당 풀 오브젝트를 객체화 시킴
-
-        if (effectObjPop01 == null)
-        {
-            Debug.Log("effectObjPop가 널 상태입니다");
-        }
-        else if (effectObjPop01 != null)
-        {
-            Debug.Log("effectObjPop 널 상태가 아닙니다");
-        }
-
-        return effectObjPop01;
-        // 해당 오브젝트를 꺼냈을때 원하는 위치로 리턴할 것...
+        return newEffectObj01;
     }
 
     //임시 주석처리 
