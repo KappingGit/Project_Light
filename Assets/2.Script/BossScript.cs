@@ -31,6 +31,23 @@ public class BossScript : MonoBehaviour, IPoolObject
         
     }
 
+    [SerializeField]
+    public float bossMaxHP; // 보스 최대체력
+
+    [HideInInspector]
+    public float bossCurHP; // 보스 현재체력
+
+    private void BossInit()
+    {
+        BossSpawnPos();
+
+        //todo: 보스 기본 정보 초기화 넣을 것
+
+        bossCurHP = bossMaxHP; // 체력 초기화
+
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Weapon"))
@@ -63,22 +80,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
     }
 
-    [SerializeField]
-    public float bossMaxHP; // 보스 최대체력
-
-    [HideInInspector]
-    public float bossCurHP; // 보스 현재체력
-
-    private void BossInit()
-    {
-        BossSpawnPos();
-
-        //todo: 보스 기본 정보 초기화 넣을 것
-
-        bossCurHP = bossMaxHP; // 체력 초기화
-
-
-    }
+   
 
 
 

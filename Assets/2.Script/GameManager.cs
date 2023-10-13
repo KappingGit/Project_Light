@@ -20,15 +20,17 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        timer += Time.deltaTime;
+        //timer += Time.deltaTime;
 
-        if (timer > 0.1f)
-        {
-            timer = 0f;
-            //Spawn();
-        }
+        //if (timer > 0.1f)
+        //{
+        //    timer = 0f;
+        //    //Spawn();
+        //}
 
     }
+
+    // 여기서 난이도를 관리할 듯
 
     //public virtual void Spawn()
     //{

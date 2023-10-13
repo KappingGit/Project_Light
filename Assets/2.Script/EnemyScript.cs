@@ -100,6 +100,34 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
         
     }
 
+    // 스테이터스 작업에서 상속 개념을 활용해보기
+    // 몬스터 HP (난이도 테이블 고려)
+    private void EnemyHP() 
+    {
+
+    }
+
+    // 몬스터 이동 속도
+    [SerializeField]
+    private float enemySpeed = 25.0f; // 적 오브젝트 속도, 몬스터 속도
+
+    private void EnemySpeed()
+    {
+        enemyRig.velocity = new Vector3(0, 0, -enemySpeed);
+    }
+
+    //몬스터 획득 경험치 (난이도 테이블 고려)
+    private void EnemyEXP()
+    {
+
+    }
+
+    //몬스터 획득 골드 (난이도 테이블 고려)
+    private void EnemyGold()
+    {
+
+    }
+
     private void Hit()
     {
         if (0 < currHp) // 현재 체력이 떨어지면...
@@ -142,7 +170,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
         return newDieEffect01;
     }
 
-    // 드랍 아이템 인터페이스 - 인터페이스 스크립트에서 한번 확인할 것
+    // 드랍 아이템 인터페이스 - 인터페이스 스크립트에서 한번 확인할 것(아직 비활성화)
     public void DropItem()
     {
         // todo: 몬스터 드랍 아이템 관련 GameObject DropItem();
@@ -207,14 +235,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
         #endregion
 
     }
-
-    [SerializeField]
-    private float enemySpeed = 25.0f; // 적 오브젝트 속도, 몬스터 속도
-
-    private void EnemySpeed()
-    {
-        enemyRig.velocity = new Vector3(0, 0, -enemySpeed);
-    }
+    
 
     private void OnTargetReached() // 반환 작업용 함수
     {

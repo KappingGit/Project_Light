@@ -33,7 +33,6 @@ public class PlayerShooting : MonoBehaviour
                 anim.SetBool("isFire", true);
             }
             
-
             //StartCoroutine(Attack());
 
             //bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
@@ -146,7 +145,7 @@ public class PlayerShooting : MonoBehaviour
        
     }
 
-    // 공격 속도 지연시키기
+    // 공격 속도 지연시키기(내부에 while문을 집어넣어서 터치하고 있을때~~ StartCourutine을 시키고 터치에서 때면 StopCourutine을 시킨다.)
     IEnumerator Attack()
     {
         BulletManager.instance.GetPoolBullet();
