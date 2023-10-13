@@ -16,7 +16,7 @@ public interface IDie
     // 죽는 이펙트
     GameObject DieEffect();
 
-    // todo: 몬스터 드랍 아이템 관련 GameObject DropItem();
+    //GameObject DropItem();// todo: 몬스터 드랍 아이템 관련 GameObject DropItem();
 
     // todo: 타격 이펙트 관련 GameObject HitEffect();
 

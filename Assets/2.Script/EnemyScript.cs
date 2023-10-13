@@ -121,11 +121,11 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
     public void Die()// 몬스터 죽는 함수
     {
         isDie = true;
+
         OnTargetReached();  // 몬스터 반환
 
         DieEffect();
 
-       
     }
 
     // 죽는 이펙트 인터페이스 함수
@@ -142,7 +142,11 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
         return newDieEffect01;
     }
 
-    private GameObject newDieEffect01;
+    // 드랍 아이템 인터페이스 - 인터페이스 스크립트에서 한번 확인할 것
+    public void DropItem()
+    {
+        // todo: 몬스터 드랍 아이템 관련 GameObject DropItem();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -157,14 +161,8 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
         {
             //Debug.Log("몬스터를 반환시도.");
 
-            //todo : 죽는 이펙트 처리하기 인터페이스 말고 오브젝트 풀링 스크립트상 관련으로 분석할 것...
-            //DieEffect(); // 죽는 이펙트 처리
-
             //인터페이스화 시킴
             Die();// 죽음 처리
-
-            //IEffect dieEffct = GetComponent<IEffect>(); // 무슨 의미..?
-            //dieEffct.DieEffect();
 
         }
 
