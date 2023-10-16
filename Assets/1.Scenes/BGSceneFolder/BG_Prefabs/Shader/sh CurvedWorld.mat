@@ -24,12 +24,18 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_e415bbc7c3aa4e1c8b86c739100937a8_Out_0:
+        m_Texture: {fileID: 2800000, guid: 1af1fa0cc6a864c49922680254f00d15, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
     - _Float: 0
-    - _curvestrength: 0.002
+    - _Wave_Intensity: 0.2
+    - _Wave_Speed: 0.1
+    - _curvestrength: 0.0007
     - _tilingscale: 1
     m_Colors:
     - _sk: {r: 5, g: 0, b: 0, a: 0}
