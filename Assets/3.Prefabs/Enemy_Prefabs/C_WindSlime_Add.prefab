@@ -189,7 +189,7 @@ Transform:
   - {fileID: 8622405443828706670}
   - {fileID: 6936059022367833379}
   m_Father: {fileID: 8504333126783616484}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1829634980125804543
 GameObject:
@@ -221,7 +221,6 @@ Transform:
   m_Children:
   - {fileID: 767132820438584423}
   - {fileID: 7170921322668047821}
-  - {fileID: 6227557489955942436}
   m_Father: {fileID: 8622405443828706670}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -639,14 +638,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6303199506320220474}
-  m_LocalRotation: {x: 0, y: 0, z: 1.8189894e-12, w: 1}
-  m_LocalPosition: {x: -0.00000006488699, y: -0.000000059604645, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6471556342996136973}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 8504333126783616484}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &504743313772734367
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -852,6 +851,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6227557489955942436}
   - {fileID: 1765688469749271544}
   m_Father: {fileID: 8211782261942166692}
   m_RootOrder: 0
@@ -904,11 +904,11 @@ GameObject:
   - component: {fileID: 891632502}
   m_Layer: 0
   m_Name: C_WindSlime_Add
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8211782261942166692
 Transform:
   m_ObjectHideFlags: 0
@@ -997,7 +997,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 22d7caca98b69b44eaaa10c8a06d90f2, type: 2}
+  - {fileID: 2100000, guid: 40017c01463b46c4eb5e03528f8f2b38, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1033,8 +1033,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idName: Monster01
   maxHp: 10
-  nowPos: {x: 0, y: 0, z: 0}
-  isDie: 0
-  extractionPos: 0
-  spawnerPos: {fileID: 0}
   enemySpeed: 25
+  isDie: 0
+  spawnerPos: {fileID: 0}

@@ -1814,6 +1814,18 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4586680873895153566, guid: 12d788f6a20b9cd428754cd71bde19a4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586680873895153566, guid: 12d788f6a20b9cd428754cd71bde19a4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586680873895153566, guid: 12d788f6a20b9cd428754cd71bde19a4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586680873895153566, guid: 12d788f6a20b9cd428754cd71bde19a4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -4657,21 +4669,13 @@ PrefabInstance:
       propertyPath: spawnerPos
       value: 
       objectReference: {fileID: 1755187536}
-    - target: {fileID: 891632502, guid: 11f6e204a533e084fb34872b4909fc09, type: 3}
-      propertyPath: testEffect
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 891632502, guid: 11f6e204a533e084fb34872b4909fc09, type: 3}
-      propertyPath: dieEffectTest
-      value: 
-      objectReference: {fileID: 4586680873895153539, guid: 12d788f6a20b9cd428754cd71bde19a4, type: 3}
     - target: {fileID: 8211782261942166692, guid: 11f6e204a533e084fb34872b4909fc09, type: 3}
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8211782261942166692, guid: 11f6e204a533e084fb34872b4909fc09, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.857
       objectReference: {fileID: 0}
     - target: {fileID: 8211782261942166692, guid: 11f6e204a533e084fb34872b4909fc09, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4714,8 +4718,8 @@ PrefabInstance:
       value: C_WindSlime_Add
       objectReference: {fileID: 0}
     - target: {fileID: 8844450475829558814, guid: 11f6e204a533e084fb34872b4909fc09, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11f6e204a533e084fb34872b4909fc09, type: 3}
