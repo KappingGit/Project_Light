@@ -90,10 +90,12 @@ public class PlayerShooting : MonoBehaviour
             else if (Input.GetTouch(0).phase == TouchPhase.Ended) // Ended 손가락이 화면 위를 벗어나 떨어지게 되는 순간...
             {
                 anim.SetBool("isFire", false);
-                
+
                 Debug.Log("화면에서 손가락을 뗐습니다.");
             }
         }
+
+        //PlayerAnimControl();
 
     }
 
@@ -143,6 +145,14 @@ public class PlayerShooting : MonoBehaviour
             return isFiring;
         }
        
+    }
+
+    private void PlayerAnimControl()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(1).normalizedTime > 0.5f)
+        {
+            anim.SetLayerWeight(1, 0);
+        }
     }
 
     // 공격 속도 지연시키기(내부에 while문을 집어넣어서 터치하고 있을때~~ StartCourutine을 시키고 터치에서 때면 StopCourutine을 시킨다.)

@@ -73,6 +73,9 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
         }
 
         enemyTrans.transform.position = transform.position;
+
+        EnemyHP();
+
     }
 
     [SerializeField]
@@ -87,7 +90,9 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
 
         SpawnPos(); // 소환되는 position값
 
-        currHp = maxHp; // 현재 체력에 저장
+        currHp = maxHp; // 초기화
+
+         
 
         isDie = false;
 
@@ -101,10 +106,10 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
     }
 
     // 스테이터스 작업에서 상속 개념을 활용해보기
-    // 몬스터 HP (난이도 테이블 고려)
+    // 몬스터 HP (난이도 테이블 사용)
     private void EnemyHP() 
     {
-
+         // 현재 체력에 저장
     }
 
     // 몬스터 이동 속도
@@ -116,13 +121,13 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
         enemyRig.velocity = new Vector3(0, 0, -enemySpeed);
     }
 
-    //몬스터 획득 경험치 (난이도 테이블 고려)
+    //몬스터 획득 경험치 (난이도 테이블 사용)
     private void EnemyEXP()
     {
 
     }
 
-    //몬스터 획득 골드 (난이도 테이블 고려)
+    //몬스터 획득 골드 (난이도 테이블 사용)
     private void EnemyGold()
     {
 
