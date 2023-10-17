@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour
 {
 
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        
         //timer += Time.deltaTime;
 
         //if (timer > 0.1f)
@@ -29,6 +31,8 @@ public class GameManager : MonoBehaviour
         //}
 
     }
+
+    
 
     // 여기서 난이도를 관리할 듯
 
@@ -41,4 +45,7 @@ public class GameManager : MonoBehaviour
     //{
     //    //..
     //}
+
+
+
 }

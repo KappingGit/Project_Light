@@ -10,18 +10,20 @@ public class EffectScript : MonoBehaviour, IPoolObject
 
     public static EffectScript instance;
 
+    private Rigidbody effectRig;
+
     private void Awake()
     {      
         if (EffectScript.instance == null)
         {
             instance = this;
         }
-       
+        effectRig = GetComponent<Rigidbody>();
     }
 
     private void Update()
-    {       
-
+    {
+        EnemySpeed();
     }
 
     private void EffectInit()
@@ -42,10 +44,17 @@ public class EffectScript : MonoBehaviour, IPoolObject
     {
 
         //transform.position = EnemyScript.instance.nowPos; // 이펙트 위치
-        Debug.Log("이펙트 좌표값: x" + transform.position.x + "   y" + transform.position.y + "   z" + transform.position.z);
+        //Debug.Log("이펙트 좌표값: x" + transform.position.x + "   y" + transform.position.y + "   z" + transform.position.z);
         
     }
 
+    private float effectSpeed = 25.0f;
+
+    private void EnemySpeed()
+    {
+
+        effectRig.velocity = new Vector3(0, 0, -effectSpeed); // 나중에 속도 느려지게 하는 효과를 넣으면 수식 변경
+    }
 
     private void OnTargetReached() // 반환 작업용 함수
     {

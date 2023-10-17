@@ -74,14 +74,9 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
 
         enemyTrans.transform.position = transform.position;
 
-        EnemyHP();
+    }    
 
-    }
-
-    [SerializeField]
-    private float maxHp; // 몬스터의 최대체력
-
-    private float currHp; // 몬스터의 현재 체력
+    
     
     public void Init() // 생성되는 기본 정보
     {
@@ -90,9 +85,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
 
         SpawnPos(); // 소환되는 position값
 
-        currHp = maxHp; // 초기화
-
-         
+        EnemyHP();       
 
         isDie = false;
 
@@ -106,19 +99,31 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
     }
 
     // 스테이터스 작업에서 상속 개념을 활용해보기
+
+    [SerializeField]
+    private DB_Status statusDB; // 에셋화 되어있는 데이터테이블 가져오기
+
+    private int maxHp; // 몬스터의 최대 체력
+
+    private int currHp; // 몬스터의 현재 체력
+
     // 몬스터 HP (난이도 테이블 사용)
     private void EnemyHP() 
     {
-         // 현재 체력에 저장
+        // 현재 체력에 저장
+        maxHp = statusDB.MonsterStatus[0].monsterHP;
+        currHp = maxHp; // 초기화  
     }
 
     // 몬스터 이동 속도
-    [SerializeField]
-    private float enemySpeed = 25.0f; // 적 오브젝트 속도, 몬스터 속도
+    //[SerializeField]
+    //private float enemySpeed = 25.0f; // 적 오브젝트 속도, 몬스터 속도
 
     private void EnemySpeed()
     {
-        enemyRig.velocity = new Vector3(0, 0, -enemySpeed);
+        float enemySpeed = statusDB.MonsterStatus[0].monsterSpeed;
+
+        enemyRig.velocity = new Vector3(0, 0, -enemySpeed); // 나중에 속도 느려지게 하는 효과를 넣으면 수식 변경
     }
 
     //몬스터 획득 경험치 (난이도 테이블 사용)
@@ -135,9 +140,18 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
 
     private void Hit()
     {
-        if (0 < currHp) // 현재 체력이 떨어지면...
+        if (currHp > 0)
         {
-            //todo : 몬스터 사망 처리
+            
+            currHp -= 5; // 수치부분에 플레이어 공격 관련 수치를 넣으면 해결
+            
+        }
+
+        if (currHp < 1) // 현재 체력이 떨어지면...
+        {
+            Die();
+
+            PlayerStatus.instance.GetGold(); // 골드 획득(플레이어가 죽이면 골드 얻게 함)
         }
 
     }
@@ -170,7 +184,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
 
         newDieEffect01.transform.position = gameObject.transform.position; // 적오브젝트 위치에 생성
 
-        Debug.Log("죽는 이펙트 나올때 좌표 : " + newDieEffect01.transform.position);
+        //Debug.Log("죽는 이펙트 나올때 좌표 : " + newDieEffect01.transform.position);
 
         return newDieEffect01;
     }
@@ -194,9 +208,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
         {
             //Debug.Log("몬스터를 반환시도.");
 
-            //인터페이스화 시킴
-            Die();// 죽음 처리
-
+            Hit();
         }
 
     }

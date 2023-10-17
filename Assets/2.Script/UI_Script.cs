@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UI_Script : MonoBehaviour
 {
@@ -47,6 +48,10 @@ public class UI_Script : MonoBehaviour
         }
 
         PausePopup();
+
+        CurrentPlayerHP_UI(); // 현재 캐릭터의 hp UI 함수
+
+        CurrentPlayerGold_UI(); // 현재 캐릭터의 골드 UI 함수
 
     }
 
@@ -131,6 +136,28 @@ public class UI_Script : MonoBehaviour
         {
             bossHPBar.gameObject.SetActive(false);
         }
+    }
+
+    [SerializeField]
+    private TextMeshProUGUI playerHpUI;    
+
+    //이부분 정리 - 여기서부터 반응형 UI
+    //private int currentHP = PlayerStatus.instance.maxHP;
+
+    private void CurrentPlayerHP_UI()
+    {
+        int currentHP = PlayerStatus.instance.currHP;
+        playerHpUI.text = currentHP.ToString(); // 해당 텍스트의 자료에 .text를 접근하고 해당 정보를 수치  => 글자(ToString())으로 변환 기입을 하면된다.
+    }
+
+    // 획득 골드량(나중에 추가 골드 획득량을 조절할 수 도 있어서 분리함)
+    [SerializeField]
+    private TextMeshProUGUI playerGold;
+
+    private void CurrentPlayerGold_UI()
+    {
+        int currentGold = PlayerStatus.instance.playerGetGold;
+        playerGold.text = currentGold.ToString();
     }
 
     //YieldInstuctionCash 미리 캐싱해둔것

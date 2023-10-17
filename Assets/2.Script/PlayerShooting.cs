@@ -79,13 +79,6 @@ public class PlayerShooting : MonoBehaviour
 
                 BulletManager.instance.GetPoolBullet();
 
-                //BulletManager.instance.GetPoolBullet(); // 총알 불러오기
-
-                //bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
-
-                //bullet.transform.position = shotPos.transform.position;
-
-                //bullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, shotSpeed), ForceMode.Impulse); //해당 오브젝트에 Rigidbody에 접근 
             }
             else if (Input.GetTouch(0).phase == TouchPhase.Ended) // Ended 손가락이 화면 위를 벗어나 떨어지게 되는 순간...
             {
@@ -103,7 +96,7 @@ public class PlayerShooting : MonoBehaviour
     {
         if (projectile != null && rate > 0.0f) //만약 Init에 있는 게임 오브젝트가 들어가있고 rate가 0보다 크다면 무기 상태가 초기화 되어있다...
         {
-            //bulletPrefab = projectile; // projectile은 총알을 프리펩
+            
             shotSpeed = rate; // 공격속도를 뜻함
             
             isInit = true; // 초기화 성공했으니 true로 변환
