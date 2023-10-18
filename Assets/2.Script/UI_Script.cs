@@ -53,6 +53,7 @@ public class UI_Script : MonoBehaviour
 
         CurrentPlayerGold_UI(); // 현재 캐릭터의 골드 UI 함수
 
+        CurrentPlayerEXP_UI(); // 현재 캐릭터의 경험치 UI 함수
     }
 
     [SerializeField]
@@ -158,6 +159,37 @@ public class UI_Script : MonoBehaviour
     {
         int currentGold = PlayerStatus.instance.playerGetGold;
         playerGold.text = currentGold.ToString();
+    }
+
+    [SerializeField]
+    private TextMeshProUGUI playerLevelText;
+
+    [SerializeField]
+    private Image expFill; // 경험치 채워지는 바 이미지
+
+    private int playerLevel = 1;
+
+    private int expMaxFill = 10; // 이부분 다시 생각해보기
+
+    private bool isLevelUp = false;
+
+    private void CurrentPlayerEXP_UI()
+    {
+        expFill.fillAmount = PlayerStatus.instance.playerAddEXP / expMaxFill;
+
+        Debug.Log("AddEXP : " + PlayerStatus.instance.playerAddEXP);
+
+        if (expFill.fillAmount == 1)
+        {
+            expFill.fillAmount = 0;
+
+            playerLevel++;
+
+            expMaxFill += 10;
+
+            playerLevelText.text = playerLevel.ToString();
+            
+        }
     }
 
     //YieldInstuctionCash 미리 캐싱해둔것

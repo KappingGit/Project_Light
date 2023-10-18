@@ -29,7 +29,7 @@ public class PlayerStatus : MonoBehaviour
         AttackDamage();
         AttackRate();
         CoolDownTime();
-        AddEXP();
+        //GetEXP();
 
         playerGetGold = 0; // 골드 0으로 초기화
 
@@ -108,11 +108,19 @@ public class PlayerStatus : MonoBehaviour
     }
 
     // 플레이어 추가 경험치 획득
-    private float playerAddEXP;
+    [HideInInspector]
+    public float playerAddEXP;
 
-    private void AddEXP()
+    public void GetEXP()
     {
-        playerAddEXP = statusDB.PlayerStatus[0].addEXP;
+        float getEXP = statusDB.PlayerStatus[0].addEXP;
+        playerAddEXP += getEXP;
+    }
+
+    // 플레이어 레벨
+    private void PlayerLevel()
+    {
+
     }
 
     // 획득 골드량(나중에 추가 골드 획득량을 조절할 수 도 있어서 분리함)

@@ -13,6 +13,9 @@ public class PlayerShooting : MonoBehaviour
 
     private Animator anim;
 
+    [SerializeField]
+    private DB_Status statusDB;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -93,13 +96,18 @@ public class PlayerShooting : MonoBehaviour
             {
                 //todo: 총알이 발사되는 코드
                 //BulletManager.instance.GetPoolBullet(); // 총알 오브젝트를 불러오는 코드
-                anim.SetBool("isFire", true);
-
-                isFire = true;
-               
-                if (isFire)
+                if (!ChangeSceneManager.instance.fadeInOuting) // 페이드 중이 아니라면 발사하게
                 {
-                    StartCoroutine(AttackRate());
+                    anim.SetBool("isFire", true);
+
+                    isFire = true;
+
+                    if (isFire)
+                    {
+                        StartCoroutine(AttackRate());
+
+                    }
+
                 }
 
             }
@@ -178,18 +186,22 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    private float rate = 0.5f;
+    private float rateDB;
 
     // 공격 속도 지연시키기(내부에 while문을 집어넣어서 터치하고 있을때~~ StartCourutine을 시키고 터치에서 때면 StopCourutine을 시킨다.)
     IEnumerator AttackRate()
     {
-        
+        rateDB = statusDB.PlayerStatus[0].attackRate;
+
+        float rate = rateDB / 2; // 수식
+
         while (isFire)
         {
             BulletManager.instance.GetPoolBullet(); // 총알 오브젝트 불러오게하는 코드
             yield return YieldInstuctionCash.WaitForSeconds(rate);
+            //Debug.Log("rate" + rate);
         }
-        Debug.Log("총알 발사 테스트");
+        //Debug.Log("총알 발사 테스트");
         
     }
 

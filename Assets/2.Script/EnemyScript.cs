@@ -152,6 +152,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
             Die();
 
             PlayerStatus.instance.GetGold(); // 골드 획득(플레이어가 죽이면 골드 얻게 함)
+            PlayerStatus.instance.GetEXP(); // 경험치 획득(플레이어가 죽이면 경험치 얻게 함)
         }
 
     }
