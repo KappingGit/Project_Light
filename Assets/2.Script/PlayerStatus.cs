@@ -37,6 +37,7 @@ public class PlayerStatus : MonoBehaviour
 
     private void Update()
     {
+        MaxEXP();
         //Debug.Log("현재hp테스트 : " + currHP);
         //Debug.Log("hp테스트 : " + maxHP+ "    공격력 테스트 : " + playerATK +"    추가 경험치 테스트 :"+playerAddEXP+ "    공속 테스트 : " + playerAR + "     쿨타임 테스트 : " + playerCDT);
     }
@@ -107,6 +108,20 @@ public class PlayerStatus : MonoBehaviour
         playerCDT = statusDB.PlayerStatus[0].coolDownTime;
     }
 
+    
+
+    private int playerLevel = 1;
+
+    public void MaxEXP()
+    {
+        if (UI_Script.instance.isLevelUp)
+        {
+            playerLevel++;
+            Debug.Log("플레이어 레벨 : " + playerLevel);
+        }
+        
+    }
+
     // 플레이어 추가 경험치 획득
     [HideInInspector]
     public float playerAddEXP;
@@ -115,6 +130,7 @@ public class PlayerStatus : MonoBehaviour
     {
         float getEXP = statusDB.PlayerStatus[0].addEXP;
         playerAddEXP += getEXP;
+        Debug.Log("playerAddEXP : " + playerAddEXP);
     }
 
     // 플레이어 레벨

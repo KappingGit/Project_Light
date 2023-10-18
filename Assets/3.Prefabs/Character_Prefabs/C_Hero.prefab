@@ -21398,6 +21398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c00cb13c2210f4cafc0bc2b27160c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statusDB: {fileID: 11400000, guid: 004adbcc68a2c034c9deaf3a46df007b, type: 2}
 --- !u!114 &6997034661028937192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21422,8 +21423,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1dd6fd3194e4fb4ea221e30f8c7992e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indexNum: 0
   statusDB: {fileID: 11400000, guid: 004adbcc68a2c034c9deaf3a46df007b, type: 2}
+  maxHP: 0
+  currHP: 0
+  playerAddEXP: 0
+  playerGetGold: 0
 --- !u!95 &7915951702423144754
 Animator:
   serializedVersion: 5

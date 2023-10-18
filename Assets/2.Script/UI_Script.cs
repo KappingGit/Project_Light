@@ -171,24 +171,33 @@ public class UI_Script : MonoBehaviour
 
     private int expMaxFill = 10; // 이부분 다시 생각해보기
 
-    private bool isLevelUp = false;
+    [HideInInspector]
+    public bool isLevelUp = false;
 
     private void CurrentPlayerEXP_UI()
-    {
+    {        
+
         expFill.fillAmount = PlayerStatus.instance.playerAddEXP / expMaxFill;
 
         Debug.Log("AddEXP : " + PlayerStatus.instance.playerAddEXP);
-
+        
         if (expFill.fillAmount == 1)
         {
-            expFill.fillAmount = 0;
+            isLevelUp = true;
 
-            playerLevel++;
+            if (isLevelUp)
+            {
+                isLevelUp = false;
 
-            expMaxFill += 10;
+                expFill.fillAmount = 0;
 
-            playerLevelText.text = playerLevel.ToString();
-            
+                playerLevel++;
+
+                expMaxFill = 100;
+
+                playerLevelText.text = playerLevel.ToString();
+            }
+                                               
         }
     }
 

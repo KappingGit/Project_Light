@@ -18,6 +18,8 @@ public class DB_StatusEntity
 
     public float attackDamage; // 공격력
 
+   
+
     // 몬스터 수치
 
     public int indexNum02;

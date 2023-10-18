@@ -53,14 +53,14 @@ public class BossScript : MonoBehaviour, IPoolObject
         if (other.gameObject.CompareTag("Weapon"))
         {
             bossCurHP -= 1f; //todo : 보스 공격의 데미지 스크립트를 따로 제작하기
-            Debug.Log("보스 현재 체력 : " + bossCurHP);
+            //Debug.Log("보스 현재 체력 : " + bossCurHP);
             if (bossCurHP < 0f)
             {
                 //todo: 사망 처리
                 OnTargetReached();
                 //BossManager.instance.bossSpawnActive = false;
 
-                Debug.Log("보스 죽음" + BossManager.instance.bossSpawnActive);
+                //Debug.Log("보스 죽음" + BossManager.instance.bossSpawnActive);
             }
 
         }
