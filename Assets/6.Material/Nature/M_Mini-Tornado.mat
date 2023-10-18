@@ -20,18 +20,19 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Tornado_In
+  m_Name: M_Mini-Tornado
   m_Shader: {fileID: -6465566751694194690, guid: 1978194cbb897ac4f988e335e47c59e2, type: 3}
   m_ValidKeywords:
   - _BUILTIN_ALPHATEST_ON
   - _BUILTIN_AlphaClip
+  - _BUILTIN_SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap:
-    RenderType: TransparentCutout
+    RenderType: Transparent
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -81,16 +82,16 @@ Material:
     - _BUILTIN_AlphaClip: 1
     - _BUILTIN_Blend: 2
     - _BUILTIN_CullMode: 2
-    - _BUILTIN_DstBlend: 0
+    - _BUILTIN_DstBlend: 1
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _BUILTIN_SrcBlend: 1
-    - _BUILTIN_Surface: 0
+    - _BUILTIN_SrcBlend: 5
+    - _BUILTIN_Surface: 1
     - _BUILTIN_ZTest: 4
-    - _BUILTIN_ZWrite: 1
+    - _BUILTIN_ZWrite: 0
     - _BUILTIN_ZWriteControl: 0
     - _BumpScale: 1
-    - _Clip_Threshold: 0.45
+    - _Clip_Threshold: 0.7
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _Dissolve: 0.079
@@ -106,13 +107,13 @@ Material:
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 3
+    - _Speed: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.6313726, g: 0.8392157, b: 0.6547776, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _NoiseSpeed: {r: -0.5, g: 0, b: 0, a: 0}
-    - _Tiling: {r: 1, g: 2, b: 0, a: 0}
+    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
