@@ -8,16 +8,31 @@ public class BulletManagerTwo : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        ParticleSystem Wind = Instantiate(bomb);
+        ParticleSystem Bomb = Instantiate(bomb);
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Wind.transform.position = this.transform.position;
+            Bomb.transform.position = this.transform.position;
             // Destroy(collision.gameObject); 적이 사라진다.
             Destroy(this.gameObject);
-            Destroy(Wind.gameObject, 0.5f);
+            Destroy(Bomb.gameObject, 0.5f);
         }
         
     }
-   
+    public void OnTriggerEnter(Collider other)
+    {
+        
+
+        if (other.gameObject.tag == "Enemy")
+        {
+            ParticleSystem Bomb = Instantiate(bomb);
+            Debug.Log("현재 충돌되는 오브젝트는" + other.gameObject.tag + "입니다");
+            Bomb.transform.position = other.transform.position;
+            // Destroy(collision.gameObject); 적이 사라진다.
+            //Destroy(this.gameObject);
+            Destroy(Bomb.gameObject, 0.5f);
+           
+        }
+    }
+
 }

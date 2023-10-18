@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject slashPrefab;
     public GameObject subsSkill;
     public GameObject magic;
+    public GameObject shield;
     public Transform shotPos;
 
   
@@ -37,6 +38,18 @@ public class PlayerManager : MonoBehaviour
             Magic.transform.position = shotPos.transform.position;
             Destroy(Sub.gameObject, 1.4f);
             Destroy(Magic.gameObject, 1f);
+
+
+            Sub.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 25), ForceMode.Impulse);
+        }
+        else if (Input.GetKeyDown(KeyCode.T))
+        {
+            {
+                GameObject Shield = Instantiate(shield);
+
+                Shield.transform.position = this.transform.position;
+                Destroy(Shield.gameObject, 5f);
+            }
         }
     }
 
