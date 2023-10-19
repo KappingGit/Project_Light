@@ -167,24 +167,27 @@ public class UI_Script : MonoBehaviour
     [SerializeField]
     private Image expFill; // 경험치 채워지는 바 이미지
 
-    private int playerLevel = 1;
+    public int playerLevel = 1;
 
     private int expMaxFill = 10; // 이부분 다시 생각해보기
 
     [HideInInspector]
-    public bool isLevelUp = false;
+    private bool isLevelUp;
 
     private void CurrentPlayerEXP_UI()
     {        
 
         expFill.fillAmount = PlayerStatus.instance.playerAddEXP / expMaxFill;
 
-        Debug.Log("AddEXP : " + PlayerStatus.instance.playerAddEXP);
+        //Debug.Log("AddEXP : " + PlayerStatus.instance.playerAddEXP);
         
         if (expFill.fillAmount == 1)
         {
             isLevelUp = true;
 
+            PlayerStatus.instance.playerAddEXP = 0; // 레벨업하면 현재값 초기화
+            //Debug.Log("AddEXP : " + PlayerStatus.instance.playerAddEXP);
+            //Debug.Log("레벨업 했습니다.");
             if (isLevelUp)
             {
                 isLevelUp = false;
@@ -193,7 +196,7 @@ public class UI_Script : MonoBehaviour
 
                 playerLevel++;
 
-                expMaxFill = 100;
+                expMaxFill = 20; // 경험치 최대치를 엑셀 데이터 테이블로 바꿀 것
 
                 playerLevelText.text = playerLevel.ToString();
             }

@@ -29,15 +29,13 @@ public class PlayerStatus : MonoBehaviour
         AttackDamage();
         AttackRate();
         CoolDownTime();
-        //GetEXP();
-
+        
         playerGetGold = 0; // 골드 0으로 초기화
 
     }
 
     private void Update()
-    {
-        MaxEXP();
+    {               
         //Debug.Log("현재hp테스트 : " + currHP);
         //Debug.Log("hp테스트 : " + maxHP+ "    공격력 테스트 : " + playerATK +"    추가 경험치 테스트 :"+playerAddEXP+ "    공속 테스트 : " + playerAR + "     쿨타임 테스트 : " + playerCDT);
     }
@@ -74,7 +72,7 @@ public class PlayerStatus : MonoBehaviour
         if (currHP > 0)
         {
             currHP -= 1; // 일반 몬스터의 피격은 -1
-            Debug.Log("피격 당했습니다. " + currHP);
+            //Debug.Log("피격 당했습니다. " + currHP);
         }
         else if (currHP <= 0)
         {
@@ -110,15 +108,9 @@ public class PlayerStatus : MonoBehaviour
 
     
 
-    private int playerLevel = 1;
-
+   
     public void MaxEXP()
     {
-        if (UI_Script.instance.isLevelUp)
-        {
-            playerLevel++;
-            Debug.Log("플레이어 레벨 : " + playerLevel);
-        }
         
     }
 
@@ -130,13 +122,21 @@ public class PlayerStatus : MonoBehaviour
     {
         float getEXP = statusDB.PlayerStatus[0].addEXP;
         playerAddEXP += getEXP;
+
         Debug.Log("playerAddEXP : " + playerAddEXP);
     }
+
+    private int playerLevel = 1; // PlayerStatus스크립트 부분
 
     // 플레이어 레벨
     private void PlayerLevel()
     {
+        float getEXP = statusDB.PlayerStatus[playerLevel].addEXP;
 
+        //float maxEXP = 테이블데이터 접근 statusDB.PlayerStatus[playerLevel].addEXP;
+
+        playerLevel++;
+        Debug.Log("플레이어 레벨 : " + playerLevel);
     }
 
     // 획득 골드량(나중에 추가 골드 획득량을 조절할 수 도 있어서 분리함)
