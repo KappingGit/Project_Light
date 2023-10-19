@@ -2425,7 +2425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curTime: 0
-  bossAppearanceTime: 60
+  bossAppearanceTime: 10
   bossSpawnActive: 0
 --- !u!1001 &440537713
 PrefabInstance:
@@ -3660,6 +3660,7 @@ MonoBehaviour:
   playerGold: {fileID: 2076204703}
   playerLevelText: {fileID: 336231764}
   expFill: {fileID: 1018313686}
+  playerLevel: 1
   isLevelUp: 0
 --- !u!1 &680190579
 GameObject:
@@ -6322,6 +6323,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1128690369}
   m_CullTransparentMesh: 1
+--- !u!1 &1137522303 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5053687576022558014, guid: a833aceda2f57c24ebde292129b5255e, type: 3}
+  m_PrefabInstance: {fileID: 3454410481881845927}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1151356063
 GameObject:
   m_ObjectHideFlags: 0
@@ -11161,9 +11167,23 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7625374911889225114, guid: a833aceda2f57c24ebde292129b5255e, type: 3}
   m_PrefabInstance: {fileID: 3454410481881845927}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1137522303}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd19c1d9c9a982040a17714f67ba2923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7625374911889225119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137522303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88710b3120aa81749a0f3f28c5fe75fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstSpawn: 1
+  spawnCycle: 1

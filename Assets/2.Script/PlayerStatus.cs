@@ -36,6 +36,11 @@ public class PlayerStatus : MonoBehaviour
 
     private void Update()
     {               
+        // 이부분 나중에 수정
+        if (UI_Script.instance.isLevelUp)
+        {
+            Debug.Log("레벨업했습니다.");
+        }
         //Debug.Log("현재hp테스트 : " + currHP);
         //Debug.Log("hp테스트 : " + maxHP+ "    공격력 테스트 : " + playerATK +"    추가 경험치 테스트 :"+playerAddEXP+ "    공속 테스트 : " + playerAR + "     쿨타임 테스트 : " + playerCDT);
     }

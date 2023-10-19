@@ -172,7 +172,7 @@ public class UI_Script : MonoBehaviour
     private int expMaxFill = 10; // 이부분 다시 생각해보기
 
     [HideInInspector]
-    private bool isLevelUp;
+    public bool isLevelUp;
 
     private void CurrentPlayerEXP_UI()
     {        

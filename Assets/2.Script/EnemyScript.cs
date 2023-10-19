@@ -43,6 +43,8 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
 
     private Vector3 nowPos; // 실시간 좌표 추출
 
+    private bool allReturnDone = false; // 모두 반환이 이루어졌다면
+
     private void Update()
     {
 
@@ -69,7 +71,12 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
         // 보스 등장시 모두 반환
         if (BossManager.instance.bossSpawnActive)
         {
-            OnTargetReached();
+            if (!allReturnDone)
+            {
+                OnTargetReached();
+                allReturnDone = true;
+            }
+            
         }
 
         enemyTrans.transform.position = transform.position;
@@ -187,7 +194,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
 
         //Debug.Log("죽는 이펙트 나올때 좌표 : " + newDieEffect01.transform.position);
 
-        return newDieEffect01;
+        return newDieEffect01; // EnemyScript- DieEffect()함수의 지역변수
     }
 
     // 드랍 아이템 인터페이스 - 인터페이스 스크립트에서 한번 확인할 것(아직 비활성화)

@@ -38,7 +38,7 @@ public class EffectManager : MonoBehaviour
 
         GameObject newEffectObj01 = newEffect01.gameObject; // 문제 해결: GetComponent를 남발하는 과정에서 생긴 문제 이부분을 빼면 정상작동
 
-        return newEffectObj01;
+        return newEffectObj01; // EffectManager - EnemyDieEffectPool()의 지역 변수
     }
 
     //임시 주석처리 

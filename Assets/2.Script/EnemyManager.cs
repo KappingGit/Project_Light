@@ -61,10 +61,14 @@ public class EnemyManager : MonoBehaviour
 
     // 의문 스폰 함수를 각 인덱스 값다른 오브젝트에 붙여지나 <= 이게 안되면 몬스터 스크립트에 스폰을 집어넣어야함 
 
-    public void Spawn()
+    public GameObject Spawn()
     {
         //Debug.Log("몬스터 스폰");
-        EnemyScript newEnemy = poolManager.GetFromPool<EnemyScript>(0);
+        EnemyScript newEnemy01 = poolManager.GetFromPool<EnemyScript>(0);
+
+        GameObject newEnemyObj01 = newEnemy01.gameObject;
+
+        return newEnemyObj01;
     }
 
     public void ReturnPool(EnemyScript clone) // TakeToPool은 다시 돌려준다는 행위
