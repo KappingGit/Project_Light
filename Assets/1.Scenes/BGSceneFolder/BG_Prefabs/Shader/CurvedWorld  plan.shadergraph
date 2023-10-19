@@ -160,20 +160,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "0046f51a7e004c7ca5e1e228fa99206e"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "39b56cdab3334c26a50bb6db1b71d5b2"
-                },
-                "m_SlotId": 1
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "018eb047280e41cd93ae2efa6387f783"
                 },
                 "m_SlotId": 0
@@ -286,20 +272,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "4919801f8fab43159e5edd933afa4e65"
-                },
-                "m_SlotId": 2
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "c27bbb2e69ba4d979e23b03179089ea5"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "50f4d5e6a8f84ba78ad5600d11ae475a"
                 },
                 "m_SlotId": 3
@@ -309,20 +281,6 @@
                     "m_Id": "54e7d3fb2f6f4b6b874bf2abf3474f85"
                 },
                 "m_SlotId": 3
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "54e7d3fb2f6f4b6b874bf2abf3474f85"
-                },
-                "m_SlotId": 5
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "a05c9965e2f24d51ad312221620f2063"
-                },
-                "m_SlotId": 0
             }
         },
         {
@@ -1341,10 +1299,10 @@
     "m_ShaderOutputName": "B",
     "m_StageCapability": 3,
     "m_Value": {
-        "e00": 2.0,
-        "e01": 2.0,
-        "e02": 2.0,
-        "e03": 2.0,
+        "e00": 1.0,
+        "e01": 1.0,
+        "e02": 1.0,
+        "e03": 1.0,
         "e10": 2.0,
         "e11": 2.0,
         "e12": 2.0,
@@ -2461,10 +2419,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -742.0001220703125,
-            "y": 326.00006103515627,
+            "x": -739.0,
+            "y": 326.0,
             "width": 139.0,
-            "height": 33.99993896484375
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -4035,10 +3993,10 @@
     },
     "m_Color": {
         "color": {
-            "r": 0.0,
-            "g": 0.3034653663635254,
-            "b": 1.0,
-            "a": 0.0
+            "r": 0.09189212322235108,
+            "g": 0.41149020195007326,
+            "b": 0.5566037893295288,
+            "a": 1.0
         },
         "mode": 0
     }
