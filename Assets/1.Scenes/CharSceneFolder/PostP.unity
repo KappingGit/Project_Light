@@ -1401,6 +1401,11 @@ MonoBehaviour:
   pausePopup: {fileID: 0}
   bossHPBar: {fileID: 0}
   bossHPBarFill: {fileID: 0}
+  playerHpUI: {fileID: 0}
+  playerGold: {fileID: 0}
+  playerLevelText: {fileID: 0}
+  expFill: {fileID: 0}
+  playerLevel: 1
 --- !u!4 &385396200
 Transform:
   m_ObjectHideFlags: 0
@@ -3918,7 +3923,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661554996}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
@@ -4920,8 +4925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idName: Monster01
-  maxHp: 10
-  enemySpeed: 25
+  statusDB: {fileID: 0}
   isDie: 0
   spawnerPos: {fileID: 1678471221}
 --- !u!1 &2074377778
@@ -5061,7 +5065,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2134663346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28530,6 +28534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c00cb13c2210f4cafc0bc2b27160c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statusDB: {fileID: 0}
 --- !u!114 &6997034661854877481
 MonoBehaviour:
   m_ObjectHideFlags: 0
