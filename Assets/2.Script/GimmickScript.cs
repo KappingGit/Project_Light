@@ -35,7 +35,7 @@ public class GimmickScript : MonoBehaviour, IPoolObject
     }
 
     [SerializeField]
-    private float gimmickSpeed = 25.0f;
+    public float gimmickSpeed = 25.0f;
 
     private void Gimmick01()
     {

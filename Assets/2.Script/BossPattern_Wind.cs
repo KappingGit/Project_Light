@@ -15,6 +15,8 @@ public class BossPattern_Wind : MonoBehaviour
         {
             instance = this;
         }
+
+        //InvokeRepeating("Pattern02", 1, 2); //테스트 코드
     }
 
     private int patternIndex = 1; // 보스패턴 인덱스
@@ -33,7 +35,7 @@ public class BossPattern_Wind : MonoBehaviour
                     break;
                 case 2: // 패턴2
                     Debug.Log("보스패턴2 시작");
-                    Pattern02();
+                    //Pattern02();
                     patternIndex++;
                     break;
                 case 3: // 패턴3
@@ -148,12 +150,30 @@ public class BossPattern_Wind : MonoBehaviour
         {
             GameObject newGimmick_Obj01 = GimmickManager.instance.GimmickSpawn();
 
-            xLoad[0] = spawnerPos.position.x - 2f;
-            xLoad[1] = spawnerPos.position.x + 2f;
+            xLoad[0] = spawnerPos.position.x - 2f; // 왼쪽
+            xLoad[1] = spawnerPos.position.x + 2f; // 오른쪽
             xLoad[2] = spawnerPos.position.x; // 가운데는 무조건 나와야함으로
 
             newGimmick_Obj01.transform.position = new Vector3(xLoad[xPosIndex], spawnerPos.position.y, 55f);
 
+            if (xPosIndex == 0 || xPosIndex == 1)
+            {
+                Rigidbody newGimmick_ObjRig01 = newGimmick_Obj01.gameObject.GetComponent<Rigidbody>();
+
+                if (xPosIndex == 0 || xPosIndex == 1) //왼쪽 오른쪽 토네이도일 경우...
+                {                    
+                    if (newGimmick_Obj01.transform.position.x == spawnerPos.position.x - 2f)
+                    {                        
+                        newGimmick_ObjRig01.velocity = new Vector3(5f, 0f, GimmickScript.instance.gimmickSpeed);
+                    }
+                    else if (newGimmick_Obj01.transform.position.x == spawnerPos.position.x + 2f)
+                    {
+                        newGimmick_ObjRig01.velocity = new Vector3(-5f, 0f, GimmickScript.instance.gimmickSpeed);
+                    }
+                }
+                                
+            }
+           
             return newGimmick_Obj01;
         }
 
@@ -191,9 +211,9 @@ public class BossPattern_Wind : MonoBehaviour
         {
             isCoolTime02 = false;
 
-            yield return YieldInstuctionCash.WaitForSeconds(coolTime02); // 쿨타임                      
+            yield return YieldInstuctionCash.WaitForSeconds(coolTime02); // 쿨타임                                
         }
-
+        
         StopCoroutine(Pattern02_CoolTime());
     }
 
