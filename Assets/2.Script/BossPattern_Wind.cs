@@ -17,7 +17,7 @@ public class BossPattern_Wind : MonoBehaviour
         }
     }
 
-    private int patternIndex = 1;
+    private int patternIndex = 1; // 보스패턴 인덱스
 
     private void Update()
     {
@@ -67,41 +67,68 @@ public class BossPattern_Wind : MonoBehaviour
         return newEnemy01; // BossPattern_Wind.cs - SpawnPattertn()의 지역함수
     }
 
-    private int patternDuration = 0; // 패턴 지속 시간
+    private int patternCurrDuration = 0; // 패턴 지속된 현재 시간
+
+    private int patternDuration = 5; // 패턴 지속 시간 (몇초까지 패턴이 발생되는지...)
 
     private int spanwCount = 2; // 몇초에 '몇번'소환되는지
 
-    private float spanwTime = 1f; // '몇초'에 몇번 소환되는지
+    private float delayTime = 1f; // '몇초'에 몇번 소환되는지
 
-    private bool isCoolTime = true;
+    private float coolTime = 15f; // 쿨타임
 
-    IEnumerator SpawnRate()
+    private bool isCoolTime = false;
+
+    IEnumerator SpawnRate() // 쿨타임 15초, 5초에 10마리 소환
     {
-        while (isCoolTime)
+        while (!isCoolTime)
         {
-            //for (int i = 0; i < spanwCount; i++) 
-            //{
-            //    SpawnPattern();
-            //    patternDuration++;
-            //}
+            
+            for (int i = 0; i < spanwCount; i++) // 2마리 소환
+            {
+                SpawnPattern();
+                yield return YieldInstuctionCash.WaitForSeconds(0.75f);                
+            }
 
-            SpawnPattern();
+            yield return YieldInstuctionCash.WaitForSeconds(delayTime); //1초의 시간이 흐르면...
+            patternCurrDuration++;            
+            Debug.Log("지속 시간 :" + patternCurrDuration);
 
-            patternDuration++;
-
-            yield return YieldInstuctionCash.WaitForSeconds(spanwTime);
-
-            if (patternDuration == 15)
+            if (patternCurrDuration == patternDuration) // 주의 : 5초의 지속시간이면 +1을 한 6을 기입하는 수식임
             {
                 //Debug.Log("패턴 종료");
-                isCoolTime = false;
+                isCoolTime = true;
+                patternCurrDuration = 0;
                 //todo : 쿨타임 적용
                 break;
             }
         }
         //Debug.Log("코루틴 종료");
-        isCoolTime = true;
+        
+
+        if (isCoolTime)
+        {
+            isCoolTime = false;
+
+            yield return YieldInstuctionCash.WaitForSeconds(coolTime);
+        }
+
         StopCoroutine(SpawnRate());
 
     }
+
+    //보스패턴2 흑풍 패턴
+    private void TornadoPattern()
+    {
+
+    }
+
+
+
+    //보스패턴3 거대 흑풍
+    private void NuClearPattern()
+    {
+
+    }
+
 }

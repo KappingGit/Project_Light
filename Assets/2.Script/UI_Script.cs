@@ -169,17 +169,17 @@ public class UI_Script : MonoBehaviour
 
     public int playerLevel = 1;
 
-    private int expMaxFill = 10; // 이부분 다시 생각해보기
-
+    private int expMaxFill; // 이부분 다시 생각해보기
+   
     [HideInInspector]
     public bool isLevelUp;
 
     private void CurrentPlayerEXP_UI()
-    {        
-
+    {
+        expMaxFill = PlayerStatus.instance.MaxEXP(playerLevel);
         expFill.fillAmount = PlayerStatus.instance.playerAddEXP / expMaxFill;
 
-        //Debug.Log("AddEXP : " + PlayerStatus.instance.playerAddEXP);
+        Debug.Log("AddEXP : " + PlayerStatus.instance.playerAddEXP);
         
         if (expFill.fillAmount == 1)
         {
@@ -187,7 +187,7 @@ public class UI_Script : MonoBehaviour
 
             PlayerStatus.instance.playerAddEXP = 0; // 레벨업하면 현재값 초기화
             //Debug.Log("AddEXP : " + PlayerStatus.instance.playerAddEXP);
-            //Debug.Log("레벨업 했습니다.");
+            Debug.Log("레벨업 했습니다.");
             if (isLevelUp)
             {
                 isLevelUp = false;
@@ -196,7 +196,9 @@ public class UI_Script : MonoBehaviour
 
                 playerLevel++;
 
-                expMaxFill = 20; // 경험치 최대치를 엑셀 데이터 테이블로 바꿀 것
+                //expMaxFill = PlayerStatus.instance.MaxEXP(playerLevel);
+                Debug.Log("플레이어 레벨 : " + playerLevel);
+                //expMaxFill = 20; // 경험치 최대치를 엑셀 데이터 테이블로 바꿀 것
 
                 playerLevelText.text = playerLevel.ToString();
             }

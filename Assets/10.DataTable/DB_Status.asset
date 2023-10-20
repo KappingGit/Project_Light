@@ -19,6 +19,7 @@ MonoBehaviour:
     addEXP: 1
     coolDownTime: 1
     attackDamage: 5
+    maxEXP: 10
     indexNum02: 0
     monsterHP: 0
     monsterSpeed: 0
@@ -30,6 +31,31 @@ MonoBehaviour:
     addEXP: 0
     coolDownTime: 0
     attackDamage: 0
+    maxEXP: 15
+    indexNum02: 0
+    monsterHP: 0
+    monsterSpeed: 0
+    monsterGold: 0
+    monsterEXP: 0
+  - indexNum01: 3
+    playerHP: 0
+    attackRate: 0
+    addEXP: 0
+    coolDownTime: 0
+    attackDamage: 0
+    maxEXP: 20
+    indexNum02: 0
+    monsterHP: 0
+    monsterSpeed: 0
+    monsterGold: 0
+    monsterEXP: 0
+  - indexNum01: 4
+    playerHP: 0
+    attackRate: 0
+    addEXP: 0
+    coolDownTime: 0
+    attackDamage: 0
+    maxEXP: 25
     indexNum02: 0
     monsterHP: 0
     monsterSpeed: 0
@@ -42,6 +68,7 @@ MonoBehaviour:
     addEXP: 0
     coolDownTime: 0
     attackDamage: 0
+    maxEXP: 0
     indexNum02: 1
     monsterHP: 5
     monsterSpeed: 25
@@ -53,6 +80,7 @@ MonoBehaviour:
     addEXP: 0
     coolDownTime: 0
     attackDamage: 0
+    maxEXP: 0
     indexNum02: 2
     monsterHP: 0
     monsterSpeed: 0

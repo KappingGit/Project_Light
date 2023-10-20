@@ -18,7 +18,7 @@ public class DB_StatusEntity
 
     public float attackDamage; // 공격력
 
-    //public float maxEXP; // 레벨당 최대 경험치
+    public int maxEXP; // 레벨당 최대 경험치
 
     // 몬스터 수치
 

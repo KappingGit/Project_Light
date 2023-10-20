@@ -1076,6 +1076,7 @@ GameObject:
   - component: {fileID: 7625374911889225116}
   - component: {fileID: 7625374911889225115}
   - component: {fileID: 7625374911889225114}
+  - component: {fileID: 7625374911889225119}
   m_Layer: 0
   m_Name: C_Boss-Wind_Add
   m_TagString: Untagged
@@ -1167,6 +1168,18 @@ MonoBehaviour:
   bossMaxHP: 10
   bossCurHP: 0
   spawnerPos: {fileID: 0}
+--- !u!114 &7625374911889225119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5053687576022558014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88710b3120aa81749a0f3f28c5fe75fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5190453457414032333
 GameObject:
   m_ObjectHideFlags: 0

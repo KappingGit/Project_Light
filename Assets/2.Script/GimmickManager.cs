@@ -28,25 +28,29 @@ public class GimmickManager : MonoBehaviour
     [SerializeField]
     private float spawnCycle; // 생성 주기(생성 주기부분을 캐릭터 스피드와 연결시켜서 게임 스피드가 빨라지면 스폰도 빨라지게 구현)
 
-    private bool gimmickActive=false;
+    private bool gimmickActive=true;
 
     private void Update()
     {
-        if (BossManager.instance.bossSpawnActive && !gimmickActive)
+        if (BossManager.instance.bossSpawnActive && gimmickActive)
         {
-            gimmickActive = true;
+            gimmickActive = false;
 
-            if (gimmickActive)
+            if (!gimmickActive)
             {
-                
+                CancelInvoke("GimmickSpawn"); //맵 기믹 끄기
             }
         }
         
     }
 
-    public void GimmickSpawn()
+    public GameObject GimmickSpawn()
     {
-        GimmickScript newGimmick = poolManager.GetFromPool<GimmickScript>(0);
+        GimmickScript newGimmick01 = poolManager.GetFromPool<GimmickScript>(0);
+
+        GameObject newGimmick_Obj01 = newGimmick01.gameObject;
+
+        return newGimmick_Obj01;
     }
 
     public void GimmickReturnPool(GimmickScript clone) // TakeToPool은 다시 돌려준다는 행위

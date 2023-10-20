@@ -114,9 +114,11 @@ public class PlayerStatus : MonoBehaviour
     
 
    
-    public void MaxEXP()
+    public int MaxEXP(int index)
     {
-        
+        int maxEXP = statusDB.PlayerStatus[index].maxEXP;
+
+        return maxEXP;
     }
 
     // 플레이어 추가 경험치 획득

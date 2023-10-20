@@ -50,7 +50,7 @@ public class GimmickScript : MonoBehaviour, IPoolObject
     [SerializeField]
     private Transform spawnerPos; // 스폰되는 좌표
 
-    public void GimmickSpawnPos() // 스폰되는 영역
+    private void GimmickSpawnPos() // 스폰되는 영역
     {
         #region 스폰 방식 1 : x축 제한 범위 안에서 랜덤하게 적을 스폰
 
@@ -82,6 +82,30 @@ public class GimmickScript : MonoBehaviour, IPoolObject
 
     }
 
+    private void SpawnPatternPos() // 보스 패턴용 토네이도 위치값
+    {
+        int rand = Random.Range(0, 2);
+
+        if (rand == 1)
+        {
+
+        }
+        else if (rand == 2)
+        {
+
+
+            
+        }
+        xLoad[0] = spawnerPos.position.x - 2f;
+        xLoad[1] = spawnerPos.position.x;
+        xLoad[2] = spawnerPos.position.x + 2f;
+
+        int rand01 = Random.Range(0, 3);
+
+        transform.position = new Vector3(xLoad[rand01], spawnerPos.position.y, 55f);
+      
+    }
+
     // 해당 오브젝트가 처음 생성됐을때 실행 함수
     public void OnCreatedInPool()
     {
@@ -91,6 +115,14 @@ public class GimmickScript : MonoBehaviour, IPoolObject
     // 해당 오브젝트가 가져올때마다 실행
     public void OnGettingFromPool()
     {
-        GimmickSpawnPos();
+        if (!BossManager.instance.bossSpawnActive)
+        {
+            GimmickSpawnPos();
+        }
+        else if (BossManager.instance.bossSpawnActive)
+        {
+            //SpawnPatternPos();
+        }
+        
     }
 }
