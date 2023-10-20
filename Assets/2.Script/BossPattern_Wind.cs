@@ -32,7 +32,9 @@ public class BossPattern_Wind : MonoBehaviour
                     patternIndex++;
                     break;
                 case 2: // 패턴2
-                    //Debug.Log("보스패턴2 시작");
+                    Debug.Log("보스패턴2 시작");
+                    Pattern02();
+                    patternIndex++;
                     break;
                 case 3: // 패턴3
                     break;
@@ -44,12 +46,12 @@ public class BossPattern_Wind : MonoBehaviour
 
     private void Pattern01() // 몹 소환
     {        
-        StartCoroutine(SpawnRate());
+        StartCoroutine(Pattern01_CoolTime());
     }       
 
     private void Pattern02() // 흑풍 패턴
     {
-
+        StartCoroutine(Pattern02_CoolTime());
     }
 
     private void Pattern03() // 거대 흑풍 패턴
@@ -57,7 +59,7 @@ public class BossPattern_Wind : MonoBehaviour
 
     }
 
-    // 스폰하는 패턴
+    //보스 패턴01 스폰하는 패턴
     private GameObject SpawnPattern()
     {
         GameObject newEnemy01 = EnemyManager.instance.Spawn();
@@ -75,13 +77,13 @@ public class BossPattern_Wind : MonoBehaviour
 
     private float delayTime = 1f; // '몇초'에 몇번 소환되는지
 
-    private float coolTime = 15f; // 쿨타임
+    private float coolTime01 = 15f; // 쿨타임
 
-    private bool isCoolTime = false;
+    private bool isCoolTime01 = false;
 
-    IEnumerator SpawnRate() // 쿨타임 15초, 5초에 10마리 소환
+    IEnumerator Pattern01_CoolTime() // 쿨타임 작업 쿨타임 15초, 5초에 10마리 소환
     {
-        while (!isCoolTime)
+        while (!isCoolTime01)
         {
             
             for (int i = 0; i < spanwCount; i++) // 2마리 소환
@@ -91,13 +93,13 @@ public class BossPattern_Wind : MonoBehaviour
             }
 
             yield return YieldInstuctionCash.WaitForSeconds(delayTime); //1초의 시간이 흐르면...
-            patternCurrDuration++;            
+            patternCurrDuration++;            //delayTime(딜레이 타임에 따라 지속시간 표현)
             Debug.Log("지속 시간 :" + patternCurrDuration);
 
             if (patternCurrDuration == patternDuration) // 주의 : 5초의 지속시간이면 +1을 한 6을 기입하는 수식임
             {
                 //Debug.Log("패턴 종료");
-                isCoolTime = true;
+                isCoolTime01 = true;
                 patternCurrDuration = 0;
                 //todo : 쿨타임 적용
                 break;
@@ -106,24 +108,94 @@ public class BossPattern_Wind : MonoBehaviour
         //Debug.Log("코루틴 종료");
         
 
-        if (isCoolTime)
+        if (isCoolTime01)
         {
-            isCoolTime = false;
+            isCoolTime01 = false;
 
-            yield return YieldInstuctionCash.WaitForSeconds(coolTime);
+            yield return YieldInstuctionCash.WaitForSeconds(coolTime01);
         }
 
-        StopCoroutine(SpawnRate());
+        StopCoroutine(Pattern01_CoolTime());
 
     }
+
+    private float[] xLoad = new float[3]; // x축 차선을 활용할때
+
+    [SerializeField]
+    private Transform spawnerPos; // 스폰되는 좌표
+
+    private float coolTime02 = 1f; // 쿨타임
+
+    private bool isCoolTime02 = false;
 
     //보스패턴2 흑풍 패턴
-    private void TornadoPattern()
+    private GameObject TornadoSpawnPattern(int patternNum,int xPosIndex)
     {
+        GameObject path = null; // 함수 빈호출용도
 
+        if (patternNum == 0)
+        {
+            GameObject newGimmick_Obj01 = GimmickManager.instance.GimmickSpawn();
+
+            xLoad[0] = spawnerPos.position.x - 2f;
+            xLoad[1] = spawnerPos.position.x + 2f;
+
+            newGimmick_Obj01.transform.position = new Vector3(xLoad[xPosIndex], spawnerPos.position.y, 55f);
+
+            return newGimmick_Obj01;
+        }
+        else if (patternNum == 1)
+        {
+            GameObject newGimmick_Obj01 = GimmickManager.instance.GimmickSpawn();
+
+            xLoad[0] = spawnerPos.position.x - 2f;
+            xLoad[1] = spawnerPos.position.x + 2f;
+            xLoad[2] = spawnerPos.position.x; // 가운데는 무조건 나와야함으로
+
+            newGimmick_Obj01.transform.position = new Vector3(xLoad[xPosIndex], spawnerPos.position.y, 55f);
+
+            return newGimmick_Obj01;
+        }
+
+        return path; // 함수 빈호출용도
+    }    
+
+    IEnumerator Pattern02_CoolTime()
+    {
+        while (!isCoolTime02)
+        {
+            int patternNum = Random.Range(0, 2); //0,1을 호출
+
+            if (patternNum == 0)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    TornadoSpawnPattern(patternNum, i);
+                }
+                isCoolTime02 = true;
+            }
+            else if (patternNum == 1)
+            {
+                //for문 하나로 처리하는 방법 기회되면 모색해보기
+                int xPosIndex = Random.Range(0, 2);
+                TornadoSpawnPattern(patternNum, xPosIndex); //왼쪽 or 오른쪽
+                TornadoSpawnPattern(patternNum, 2); // 가운데는 무조건 나와야한다...
+                isCoolTime02 = true;
+            }
+            
+        }
+        //임시 방지
+        yield return YieldInstuctionCash.WaitForSeconds(5f); // 이걸로 토네이도가 미친듯이 오는 것을 방지
+
+        if (isCoolTime02)
+        {
+            isCoolTime02 = false;
+
+            yield return YieldInstuctionCash.WaitForSeconds(coolTime02); // 쿨타임                      
+        }
+
+        StopCoroutine(Pattern02_CoolTime());
     }
-
-
 
     //보스패턴3 거대 흑풍
     private void NuClearPattern()

@@ -2364,7 +2364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curTime: 0
-  bossAppearanceTime: 30
+  bossAppearanceTime: 10
   bossSpawnActive: 0
 --- !u!1001 &440537713
 PrefabInstance:
@@ -6670,7 +6670,7 @@ MonoBehaviour:
   _pools:
   - _name: Gimmick01
     _component: {fileID: 440537715}
-    _count: 5
+    _count: 20
     _container: {fileID: 1263731730}
     _nonLazy: 1
 --- !u!114 &1263731732
@@ -10590,6 +10590,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7625374911889225114, guid: a833aceda2f57c24ebde292129b5255e, type: 3}
+      propertyPath: spawnerPos
+      value: 
+      objectReference: {fileID: 1755187536}
+    - target: {fileID: 7625374911889225119, guid: a833aceda2f57c24ebde292129b5255e, type: 3}
       propertyPath: spawnerPos
       value: 
       objectReference: {fileID: 1755187536}

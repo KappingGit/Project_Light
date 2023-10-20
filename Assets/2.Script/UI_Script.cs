@@ -179,7 +179,7 @@ public class UI_Script : MonoBehaviour
         expMaxFill = PlayerStatus.instance.MaxEXP(playerLevel);
         expFill.fillAmount = PlayerStatus.instance.playerAddEXP / expMaxFill;
 
-        Debug.Log("AddEXP : " + PlayerStatus.instance.playerAddEXP);
+        //Debug.Log("AddEXP : " + PlayerStatus.instance.playerAddEXP);
         
         if (expFill.fillAmount == 1)
         {

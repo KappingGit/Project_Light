@@ -82,28 +82,34 @@ public class GimmickScript : MonoBehaviour, IPoolObject
 
     }
 
-    private void SpawnPatternPos() // 보스 패턴용 토네이도 위치값
+    //보스 패턴 스폰 좌표는 보스패턴 스크립트에서 진행 
+    private void SpawnPatternPos(int index01, int index02) // 보스 패턴용 토네이도 위치값
     {
-        int rand = Random.Range(0, 2);
+        int randPattern = Random.Range(0, 2);
 
-        if (rand == 1)
+        if (randPattern == 1)
         {
+            // 왼쪽 오른쪽 하나씩 오게끔...
+            xLoad[0] = spawnerPos.position.x - 2f;
+            xLoad[2] = spawnerPos.position.x + 2f;
 
+            
+            transform.position = new Vector3(xLoad[0], spawnerPos.position.y, 55f);
         }
-        else if (rand == 2)
+        else if (randPattern == 2)
         {
 
 
             
         }
         xLoad[0] = spawnerPos.position.x - 2f;
-        xLoad[1] = spawnerPos.position.x;
+        xLoad[1] = spawnerPos.position.x; //가운데
         xLoad[2] = spawnerPos.position.x + 2f;
 
-        int rand01 = Random.Range(0, 3);
+        int rand = Random.Range(0, 3);
 
-        transform.position = new Vector3(xLoad[rand01], spawnerPos.position.y, 55f);
-      
+        transform.position = new Vector3(xLoad[rand], spawnerPos.position.y, 55f);
+
     }
 
     // 해당 오브젝트가 처음 생성됐을때 실행 함수
@@ -121,7 +127,7 @@ public class GimmickScript : MonoBehaviour, IPoolObject
         }
         else if (BossManager.instance.bossSpawnActive)
         {
-            //SpawnPatternPos();
+            //SpawnPatternPos(0,2); 보스 패턴 스폰 좌표는 보스패턴 스크립트에서 진행 
         }
         
     }
