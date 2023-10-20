@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 415440899}
-  m_IndirectSpecularColor: {r: 0.46745658, g: 0.77863085, b: 0.8492753, a: 1}
+  m_IndirectSpecularColor: {r: 0.46756566, g: 0.7786576, b: 0.84926224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -695,75 +695,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &211237899
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: dbacdcddeb0b2c84f82f87a4524ee142, type: 3}
-      propertyPath: m_RootOrder
-      value: 43
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dbacdcddeb0b2c84f82f87a4524ee142, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dbacdcddeb0b2c84f82f87a4524ee142, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dbacdcddeb0b2c84f82f87a4524ee142, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dbacdcddeb0b2c84f82f87a4524ee142, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dbacdcddeb0b2c84f82f87a4524ee142, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dbacdcddeb0b2c84f82f87a4524ee142, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dbacdcddeb0b2c84f82f87a4524ee142, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dbacdcddeb0b2c84f82f87a4524ee142, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dbacdcddeb0b2c84f82f87a4524ee142, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dbacdcddeb0b2c84f82f87a4524ee142, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -6892104518111415093, guid: dbacdcddeb0b2c84f82f87a4524ee142, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: dc489503a93f9be4796b05b66ba86c5b, type: 2}
-    - target: {fileID: -1041279737980340588, guid: dbacdcddeb0b2c84f82f87a4524ee142, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -1041279737980340588, guid: dbacdcddeb0b2c84f82f87a4524ee142, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: dc489503a93f9be4796b05b66ba86c5b, type: 2}
-    - target: {fileID: 919132149155446097, guid: dbacdcddeb0b2c84f82f87a4524ee142, type: 3}
-      propertyPath: m_Name
-      value: Water plan
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: dbacdcddeb0b2c84f82f87a4524ee142, type: 3}
 --- !u!1 &229182143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,8 +2085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idName: Monster01
-  maxHp: 10
-  enemySpeed: 25
+  statusDB: {fileID: 0}
   isDie: 0
   spawnerPos: {fileID: 479898510}
 --- !u!1 &512643420
@@ -16814,7 +16744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1650938020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24351,6 +24281,12 @@ MonoBehaviour:
   pausePopup: {fileID: 700816006}
   bossHPBar: {fileID: 139677108}
   bossHPBarFill: {fileID: 579533562}
+  playerHpUI: {fileID: 0}
+  playerGold: {fileID: 0}
+  playerLevelText: {fileID: 0}
+  expFill: {fileID: 0}
+  playerLevel: 1
+  isLevelUp: 0
 --- !u!4 &2051701939
 Transform:
   m_ObjectHideFlags: 0
@@ -24396,9 +24332,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefabs:
-  - {fileID: 8889312953863192254, guid: 23f5ccb2f962b1444b451c298b8450a5, type: 3}
-  - {fileID: 7769845746136023398, guid: 98e35642a3cf6a848bf979da916e5468, type: 3}
-  - {fileID: 2809779896482363024, guid: ebfca7d81a456cb42a3540f6522d850b, type: 3}
+  - {fileID: 4122379897495268664, guid: 0fdafb88c19331c4f9320e92d64d5fd7, type: 3}
+  - {fileID: 1288488996471834596, guid: eec182b8f579ae34b916d90ba85011d0, type: 3}
+  - {fileID: 4793580737877431578, guid: 5af836262ad669242a5925e8a82991da, type: 3}
   playerTransform: {fileID: 7390631901767520074}
   tileSpeed: 35
 --- !u!4 &2052623857
@@ -30009,8 +29945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idName: Monster01
-  maxHp: 10
-  enemySpeed: 25
+  statusDB: {fileID: 0}
   isDie: 0
   spawnerPos: {fileID: 479898510}
 --- !u!54 &2141969030
@@ -251423,6 +251358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c00cb13c2210f4cafc0bc2b27160c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statusDB: {fileID: 0}
 --- !u!1 &7003107102955674110
 GameObject:
   m_ObjectHideFlags: 0
