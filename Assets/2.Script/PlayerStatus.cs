@@ -130,7 +130,7 @@ public class PlayerStatus : MonoBehaviour
         float getEXP = statusDB.PlayerStatus[0].addEXP;
         playerAddEXP += getEXP;
 
-        Debug.Log("playerAddEXP : " + playerAddEXP);
+        //Debug.Log("playerAddEXP : " + playerAddEXP);
     }
 
     private int playerLevel = 1; // PlayerStatus스크립트 부분

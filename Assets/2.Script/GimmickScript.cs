@@ -37,9 +37,15 @@ public class GimmickScript : MonoBehaviour, IPoolObject
     [SerializeField]
     public float gimmickSpeed = 25.0f;
 
+    private int turn;
+
     private void Gimmick01()
     {
-        gimmickRig.velocity = new Vector3(0, 0, -gimmickSpeed);
+        if (!BossManager.instance.bossSpawnActive) //보스 미출현 맵기믹
+        {
+            gimmickRig.velocity = new Vector3(0, 0, -gimmickSpeed);
+        }
+                        
     }
 
     private float xMax;
@@ -82,7 +88,7 @@ public class GimmickScript : MonoBehaviour, IPoolObject
 
     }
 
-    //보스 패턴 스폰 좌표는 보스패턴 스크립트에서 진행 
+    //보스 패턴 스폰 좌표는 보스패턴 스크립트에서 진행 (해당 함수는 사용하지 않음 / 일단 보존)
     private void SpawnPatternPos(int index01, int index02) // 보스 패턴용 토네이도 위치값
     {
         int randPattern = Random.Range(0, 2);
@@ -127,7 +133,7 @@ public class GimmickScript : MonoBehaviour, IPoolObject
         }
         else if (BossManager.instance.bossSpawnActive)
         {
-            //SpawnPatternPos(0,2); 보스 패턴 스폰 좌표는 보스패턴 스크립트에서 진행 
+            //SpawnPatternPos(0,2); 보스 패턴 스폰 좌표는 보스패턴 스크립트에서 진행
         }
         
     }
