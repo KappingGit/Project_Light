@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 415440899}
-  m_IndirectSpecularColor: {r: 0.46756566, g: 0.7786576, b: 0.84926224, a: 1}
+  m_IndirectSpecularColor: {r: 0.46751368, g: 0.77864206, b: 0.8492876, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15629,7 +15629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1413482740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24333,8 +24333,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefabs:
   - {fileID: 4122379897495268664, guid: 0fdafb88c19331c4f9320e92d64d5fd7, type: 3}
-  - {fileID: 1288488996471834596, guid: eec182b8f579ae34b916d90ba85011d0, type: 3}
-  - {fileID: 4793580737877431578, guid: 5af836262ad669242a5925e8a82991da, type: 3}
+  - {fileID: 8432731182322425340, guid: 3583d4cf694f17849bb27efe2262d9df, type: 3}
+  - {fileID: 4848509578484828177, guid: f9826695aaa580a42b293d25f82c36f8, type: 3}
   playerTransform: {fileID: 7390631901767520074}
   tileSpeed: 35
 --- !u!4 &2052623857
