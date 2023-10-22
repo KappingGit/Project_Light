@@ -74,7 +74,7 @@ public class LtCircleSkill : MonoBehaviour, IPoolObject, IActiveSkiil
         skillTrans.transform.localScale = new Vector3(1f + timeVolume, 1f + timeVolume, 1f + timeVolume);
 
         if (timeVolume > skillTime) //두개의 변수가 알맞아야지 제대로 작동
-        {            
+        {
             timeVolume = 0f; // 다시 초기화가 안된다
             //Debug.Log("timeVolume초기화 시도" + timeVolume);
         }

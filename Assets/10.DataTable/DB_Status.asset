@@ -13,76 +13,47 @@ MonoBehaviour:
   m_Name: DB_Status
   m_EditorClassIdentifier: 
   PlayerStatus:
-  - indexNum01: 1
+  - indexLevel01: 1
     playerHP: 20
     attackRate: 1
     addEXP: 1
     coolDownTime: 1
     attackDamage: 5
     maxEXP: 10
-    indexNum02: 0
-    monsterHP: 0
-    monsterSpeed: 0
-    monsterGold: 0
-    monsterEXP: 0
-  - indexNum01: 2
+  - indexLevel01: 2
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     attackDamage: 0
     maxEXP: 15
-    indexNum02: 0
-    monsterHP: 0
-    monsterSpeed: 0
-    monsterGold: 0
-    monsterEXP: 0
-  - indexNum01: 3
+  - indexLevel01: 3
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     attackDamage: 0
     maxEXP: 20
-    indexNum02: 0
-    monsterHP: 0
-    monsterSpeed: 0
-    monsterGold: 0
-    monsterEXP: 0
-  - indexNum01: 4
+  - indexLevel01: 4
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     attackDamage: 0
     maxEXP: 25
-    indexNum02: 0
-    monsterHP: 0
-    monsterSpeed: 0
-    monsterGold: 0
-    monsterEXP: 0
   MonsterStatus:
-  - indexNum01: 0
-    playerHP: 0
-    attackRate: 0
-    addEXP: 0
-    coolDownTime: 0
-    attackDamage: 0
-    maxEXP: 0
-    indexNum02: 1
+  - indexLevel02: 1
     monsterHP: 5
     monsterSpeed: 25
     monsterGold: 1
     monsterEXP: 1
-  - indexNum01: 0
-    playerHP: 0
-    attackRate: 0
-    addEXP: 0
-    coolDownTime: 0
-    attackDamage: 0
-    maxEXP: 0
-    indexNum02: 2
+  - indexLevel02: 2
     monsterHP: 0
     monsterSpeed: 0
     monsterGold: 0
     monsterEXP: 0
+  AttackType:
+  - indexType: 0
+  - indexType: 1
+  - indexType: 2
+  - indexType: 3

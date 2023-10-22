@@ -11,7 +11,7 @@ public class BossManager : MonoBehaviour
     private PoolManager poolManager;
 
     [HideInInspector]
-    public float curTime = 0f;  // 게임 시간, 다른 스크립트에 사용하기 위해 만듦
+    public float curTime;  // 게임 시간, 다른 스크립트에 사용하기 위해 만듦
 
     [SerializeField]
     public float bossAppearanceTime; // 보스 출현 시간

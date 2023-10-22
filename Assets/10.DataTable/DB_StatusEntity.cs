@@ -4,9 +4,11 @@
 
 public class DB_StatusEntity
 {
+    //기존 클래스명 하나로 통일했었음... DB_StatusEntity
+    // 클래스를 늘리는 과정에서 엑셀에서 reimport 과정을 거쳐라...
     // 각 테이블별 수치 정수, 실수 데이터값(해당 값을 만들지 않으면)
     // 엑셀 데이터 에셋화(DB_Status오브젝트 에셋)에 데이터가 기입이 안된다.
-    public int indexNum01; // 데이터 테이블 열 번호
+    public int indexLevel01; // 데이터 테이블 열 번호(=> 인덱스 레벨로 변경)
 
     public int playerHP; // 캐릭터 hp
 
@@ -19,10 +21,15 @@ public class DB_StatusEntity
     public float attackDamage; // 공격력
 
     public int maxEXP; // 레벨당 최대 경험치
+        
+}
 
+[System.Serializable]
+public class DB_StatusEntity_02
+{
     // 몬스터 수치
 
-    public int indexNum02;
+    public int indexLevel02;
 
     public int monsterHP;
 
@@ -31,6 +38,14 @@ public class DB_StatusEntity
     public int monsterGold;
 
     public float monsterEXP;
+}
+
+[System.Serializable]
+public class DB_StatusEntity_03
+{
+    // 공격 타입 인덱스
+
+    public int indexType;
 
     // 열거형
     //public enum monsterState
@@ -45,5 +60,4 @@ public class DB_StatusEntity
 
     //    monsterEXP,
     //}
-
 }

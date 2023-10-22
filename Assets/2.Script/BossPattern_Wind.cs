@@ -343,7 +343,7 @@ public class BossPattern_Wind : MonoBehaviour
                 currChargeTime = 0;
                 yield return YieldInstuctionCash.WaitForSeconds(1f); // 패턴파훼 후 1초의 여백
             }
-            else if (BossScript.instance.bossCurHP <= saveBossCurrHP - (BossScript.instance.bossMaxHP * 0.01)) //최대체력의 10%의 데미지를 받는다면...
+            else if (BossScript.instance.bossCurHP <= saveBossCurrHP - (BossScript.instance.bossMaxHP * 0.09)) //최대체력의 10%의 데미지를 받는다면...
             {
                 //todo: 패턴 강제 종료
                 Debug.Log("패턴 종료 - 기믹 파훼 성공");

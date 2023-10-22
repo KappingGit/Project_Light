@@ -11,6 +11,8 @@ public class InterfaceManager : MonoBehaviour
 
 public interface IDie
 {
+    // 사용된 곳 : EnemyScript.CS, 
+
     void Die();
 
     // 죽는 이펙트
@@ -22,18 +24,24 @@ public interface IDie
 
 }
 
+public interface INomalAttack
+{
+    // 평타 관련 인터페이스(사용된 곳: BulletScript.cs, )
 
+    // 데미지 함수 이부분 스테이터스 연결 작업하면서 건들기
+
+    // 히트 이펙트
+    GameObject HitEffect();
+
+    // 슬래쉬(검 휘두르는) 이펙트
+    GameObject SlashEffect();
+}
 
 public interface IActiveSkiil
 {
+    //사용된 곳 : FireDragonSkill.cs, LtCircleSkill.cs, WindRaySkill.cs
+
     void ActiveSkillSpeed(); //스킬 속도
 
     void ActiveSkillPos(); // 스킬 포지션
-}
-
-// 실시간 좌표
-public interface ICurPos
-{
-    //실시간 좌표 인터페이스
-    void CurPos();
 }

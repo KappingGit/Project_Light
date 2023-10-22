@@ -41,8 +41,7 @@ public class SkillManager : MonoBehaviour
         {
             LtCircleSkill newActiveSkill03 = poolManager.GetFromPool<LtCircleSkill>(2); // 라이트닝 서클 idexNum2
         }
-
-        
+                
     }
 
     //반환

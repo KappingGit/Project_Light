@@ -22,7 +22,7 @@ public class EffectManager : MonoBehaviour
             instance = this;
         }
 
-        //InvokeRepeating("EnemyDieEffectPool", 1, 5);
+        //InvokeRepeating("EffectPool", 1, 5);
 
     }
 
@@ -31,14 +31,14 @@ public class EffectManager : MonoBehaviour
         
     }
 
-    public GameObject EnemyDieEffectPool()
+    public GameObject EffectPool(int effectIndex)
     {
 
-        EffectScript newEffect01 = poolManager.GetFromPool<EffectScript>(0); //인덱스 0은 사망이펙트부분
+        EffectScript newEffect01 = poolManager.GetFromPool<EffectScript>(effectIndex); //인덱스 0은 사망이펙트부분
 
         GameObject newEffectObj01 = newEffect01.gameObject; // 문제 해결: GetComponent를 남발하는 과정에서 생긴 문제 이부분을 빼면 정상작동
 
-        return newEffectObj01; // EffectManager - EnemyDieEffectPool()의 지역 변수
+        return newEffectObj01; // EffectManager - EffectPool()의 지역 변수
     }
 
     //임시 주석처리 

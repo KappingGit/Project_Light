@@ -29,14 +29,18 @@ public class BulletManager : MonoBehaviour
 
     
 
-    public void GetPoolBullet()
+    public GameObject GetPoolBullet(int bulletIndex)
     {
         // 풀링되어있는 총알 불러오기 0번째 인덱스 총알을 불러옴
-        BulletScript newBullet = poolManager.GetFromPool<BulletScript>(0); 
+        BulletScript newBullet = poolManager.GetFromPool<BulletScript>(bulletIndex);
+
+        GameObject newBulletObj_01 = newBullet.gameObject;
+
+        return newBulletObj_01;
     }
 
     public void ReturnBullet(BulletScript clone)
     {
-        poolManager.TakeToPool<BulletScript>(clone);
+        poolManager.TakeToPool<BulletScript>(clone.idName, clone);
     }
 }

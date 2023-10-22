@@ -13,12 +13,19 @@ public class PlayerShooting : MonoBehaviour
 
     private Animator anim;
 
+    public static PlayerShooting intance;
+
     [SerializeField]
     private DB_Status statusDB;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+
+        if (PlayerShooting.intance == null)
+        {
+            intance = this;
+        }
 
         isFire = false;
     }
@@ -28,6 +35,15 @@ public class PlayerShooting : MonoBehaviour
     // || Input.GetTouch(0).phase == TouchPhase.Moved
     private void Update()
     {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Debug.Log("손뗌 : 공격중단");
+            anim.SetBool("isFire", false);
+
+            isFire = false;
+
+        }
+
         #region 최적화 안한 코드
 
         if (Input.GetKeyDown(KeyCode.Space) && !isFire)  //터치 누르고 있을때...
@@ -36,6 +52,8 @@ public class PlayerShooting : MonoBehaviour
             if (!ChangeSceneManager.instance.fadeInOuting) // 페이드 중이 아니라면 발사하게
             {
                 anim.SetBool("isFire", true);
+
+                //StartCoroutine(DelayTime());
 
                 isFire = true;
 
@@ -46,48 +64,14 @@ public class PlayerShooting : MonoBehaviour
                 }
 
             }
-       
-            //bullet = Instantiate(bulletPrefab); //bullet 게임 오브젝트에 bulletPrefab의 오브젝트를 클론화
-
-            //bullet.transform.position = shotPos.transform.position;
-
-            //bullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, shotSpeed), ForceMode.Impulse); //해당 오브젝트에 Rigidbody에 접근 
+                   
         }
-        else if(Input.GetKeyUp(KeyCode.Space) && isFire)
-        {
-
-            anim.SetBool("isFire", false);
-
-            isFire = false;
-
-            if (!isFire)
-            {
-                StopCoroutine(AttackRate());
-            }
-
-            //StopCoroutine(Attack());
-        }
-
-        // 액티브 스킬 관련 : UI 배치도에 맞게 키값 설정 나중에 주의...
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            //파이어 드래곤 스킬
-            SkillManager.instance.GetPoolSkill(0);
-        }
-        else if(Input.GetKeyDown(KeyCode.K))
-        {
-            //궁극기 스킬 (합성 스킬)
-            SkillManager.instance.GetPoolSkill(2);
-        }
-        else if(Input.GetKeyDown(KeyCode.L))
-        {
-            // 윈드레이 스킬
-            SkillManager.instance.GetPoolSkill(1);
-        }
-
-
 
         #endregion
+
+
+        #region 터치식 발사
+        //Input.GetTouch(0).phase == TouchPhase.Ended => 손가락을 땠다면...
 
         // 터치 발사
         if (Input.touchCount > 0)
@@ -111,22 +95,25 @@ public class PlayerShooting : MonoBehaviour
                 }
 
             }
-            else if (Input.GetTouch(0).phase == TouchPhase.Ended && isFire) // Ended 손가락이 화면 위를 벗어나 떨어지게 되는 순간...
-            {
-                anim.SetBool("isFire", false);
+            //else
+            //{
+            //    anim.SetBool("isFire", false);
 
-                isFire = false;
+            //        isFire = false;
 
-                if (!isFire)
-                {
-                    StopCoroutine(AttackRate());
-                }
+            //        if (!isFire)
+            //        {
+            //            StopCoroutine(AttackRate());
+            //        }
 
-                Debug.Log("화면에서 손가락을 뗐습니다.");
-            }
+            //        Debug.Log("화면에서 손가락을 뗐습니다.");
+            //}
+
         }
 
         //PlayerAnimControl();
+        #endregion
+
 
     }
 
@@ -178,7 +165,7 @@ public class PlayerShooting : MonoBehaviour
        
     }
 
-    private void PlayerAnimControl()
+    private void PlayerAnimControl() //공격하는 레이어의 접근 함수
     {
         if (anim.GetCurrentAnimatorStateInfo(1).normalizedTime > 0.5f)
         {
@@ -186,23 +173,52 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    private float rateDB;
+    private float rateDB; // 데이터 테이블 적용
+
+    [HideInInspector]
+    public int weaponType; // 공격 종류를 고르는 변수 0: 바람 공격, 1: 물 공격, 2: 불 공격
 
     // 공격 속도 지연시키기(내부에 while문을 집어넣어서 터치하고 있을때~~ StartCourutine을 시키고 터치에서 때면 StopCourutine을 시킨다.)
     IEnumerator AttackRate()
     {
-        rateDB = statusDB.PlayerStatus[0].attackRate;
+        rateDB = statusDB.PlayerStatus[0].attackRate; // 공격속도 데이터 테이블 적용
 
         float rate = rateDB / 2; // 수식
 
+        // 공격 종류를 고르는 [변수 0 => 바람 공격, 1 => 물 공격, 2 => 불 공격] 나중에 테이블데이터와 연결
+
+        weaponType = 2; // 인스펙터와 지역변수의 실행 순서를 잘 이해를 해야 문제가 발생하지 않는다.
+                        // 문제점 : 인스펙터weaponType의 값을 변화시켜도 바뀌지 않는 문제가 발생, 함수안에 집어넣으니 해결
+                        //Debug.Log("장착된 무기 속성(인덱스 넘버) : " + weaponType);
+
         while (isFire)
         {
-            BulletManager.instance.GetPoolBullet(); // 총알 오브젝트 불러오게하는 코드
+
+            BulletManager.instance.GetPoolBullet(weaponType); // 총알 오브젝트 불러오게하는 코드, 인덱스 번호에 따라 일반 공격을 불러옴
             yield return YieldInstuctionCash.WaitForSeconds(rate);
             //Debug.Log("rate" + rate);
+            
+            //터치 테스트
+            //if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            //{
+            //    anim.SetBool("isFire", false);
+            //    isFire = false;
+            //    break;
+            //}
+
         }
         //Debug.Log("총알 발사 테스트");
-        
+
+        isFire = false;
+
+        StopCoroutine(AttackRate());
+    }
+
+    IEnumerator DelayTime()
+    {
+        yield return YieldInstuctionCash.WaitForSeconds(1f);
+        isFire = true;
+        StopCoroutine(DelayTime());
     }
 
 }

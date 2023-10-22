@@ -81,7 +81,7 @@ public class EffectScript : MonoBehaviour, IPoolObject
     IEnumerator EffectCoroutine() // 일정 시간에 따른 이펙트 반환
     {
         yield return YieldInstuctionCash.WaitForSeconds(1f);
-        EffectManager.instance.EffectReturnPool(this);
+        EffectManager.instance.EffectReturnPool(this); // 자기자신을 반환한다
         
         StopCoroutine(EffectCoroutine());
     }

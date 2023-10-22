@@ -169,6 +169,10 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
         // todo : 몬스터 공격관련
     }
 
+    //------------------------------------------------------------------------------------------------------------------------
+    //###############################↓↓↓↓↓↓인터페이스 함수 영역↓↓↓↓↓↓###############################--------------
+    //------------------------------------------------------------------------------------------------------------------------
+
     [HideInInspector]
     public bool isDie = false;
 
@@ -188,13 +192,13 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
     {
         //사용법: 에너미 스크립트에 죽는 이펙트를 자식으로 불러온다???, 죽는 이펙트에 에너미 스크립트를 자식으로 불러온다???
 
-        GameObject newDieEffect01 = EffectManager.instance.EnemyDieEffectPool(); // 이펙트 매니저에서 게임오브젝트화를 거쳐서 GameObject로 변경이 가능함
+        GameObject newDieEffect_01 = EffectManager.instance.EffectPool(0); // 이펙트 매니저에서 게임오브젝트화를 거쳐서 GameObject로 변경이 가능함
 
-        newDieEffect01.transform.position = gameObject.transform.position; // 적오브젝트 위치에 생성
+        newDieEffect_01.transform.position = gameObject.transform.position; // 적오브젝트 위치에 생성
 
         //Debug.Log("죽는 이펙트 나올때 좌표 : " + newDieEffect01.transform.position);
 
-        return newDieEffect01; // EnemyScript- DieEffect()함수의 지역변수
+        return newDieEffect_01; // EnemyScript- DieEffect()함수의 지역변수
     }
 
     // 드랍 아이템 인터페이스 - 인터페이스 스크립트에서 한번 확인할 것(아직 비활성화)
@@ -202,6 +206,10 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
     {
         // todo: 몬스터 드랍 아이템 관련 GameObject DropItem();
     }
+
+    //------------------------------------------------------------------------------------------------------------------------
+    //###############################↑↑↑↑↑↑인터페이스 함수 영역↑↑↑↑↑↑↑###############################------------
+    //------------------------------------------------------------------------------------------------------------------------
 
     private void OnTriggerEnter(Collider other)
     {
