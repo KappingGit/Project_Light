@@ -54,6 +54,8 @@ public class UI_Script : MonoBehaviour
         CurrentPlayerGold_UI(); // 현재 캐릭터의 골드 UI 함수
 
         CurrentPlayerEXP_UI(); // 현재 캐릭터의 경험치 UI 함수
+
+        CharImformPopup();
     }
 
     [SerializeField]
@@ -193,7 +195,7 @@ public class UI_Script : MonoBehaviour
             Debug.Log("레벨업 했습니다.");
             if (isLevelUp)
             {
-                popupAttribute.gameObject.SetActive(true); // 레벨업 하면 스킬 얻는 팝업창 띄우기
+                GetSkillPopup();
 
                 isLevelUp = false;
 
@@ -211,9 +213,57 @@ public class UI_Script : MonoBehaviour
         }
     }
 
-    private void CharImfPopup() // 캐릭터 정보창
-    {
+    [SerializeField]
+    private GameObject charImformPopup;
 
+    private bool charImformActive;
+
+    public void CharImformBtn() // 캐릭터 정보창 버튼, 나가는 버튼 포함
+    {
+        if (!charImformActive)
+        {
+            charImformActive = true;
+            Time.timeScale = 0f;
+        }
+        else if (charImformActive)
+        {
+            charImformActive = false;
+            Time.timeScale = 1f;
+        }
+    }
+
+    private void CharImformPopup() // 캐릭터 정보창
+    {
+        if (charImformActive)
+        {
+            charImformPopup.gameObject.SetActive(true);
+        }
+        else if (!charImformActive)
+        {
+            charImformPopup.gameObject.SetActive(false);
+        }
+    }
+
+    private bool isGetSkill;
+
+    public void GetSkillBtn()
+    {
+        isGetSkill = true;
+        Time.timeScale = 1f;
+
+        if (isGetSkill) // 스킬을 얻었다면...
+        {
+            popupAttribute.gameObject.SetActive(false); // 해당 스킬 얻는 팝업 끄기
+        }
+    }
+
+    private void GetSkillPopup() // 레벨업 후 스킬 획득 팝업관련
+    {
+        isGetSkill = false;
+        popupAttribute.gameObject.SetActive(true); // 레벨업 하면 스킬 얻는 팝업창 띄우기
+
+        Time.timeScale = 0f;
+                
     }
 
     //YieldInstuctionCash 미리 캐싱해둔것
