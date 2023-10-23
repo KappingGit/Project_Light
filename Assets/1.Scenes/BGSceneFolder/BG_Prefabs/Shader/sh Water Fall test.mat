@@ -63,13 +63,14 @@ Material:
     - _FoamShoreWidth: 0
     - _Metal: 0
     - _NormalStrenght: 5
-    - _WaveIntensity: 0
-    - _WaveSpeed: 0
+    - _WaveIntensity: 0.1
+    - _WaveSpeed: 10
     m_Colors:
     - _Color: {r: 0.24474904, g: 0.73312396, b: 0.9433962, a: 0}
     - _FoamColor: {r: 0, g: 0, b: 0, a: 0}
     - _RipplesSpeed: {r: 0, g: 0.5, b: 0, a: 0}
     - _ShoreColor: {r: 1, g: 1, b: 1, a: 0}
+    - _Speed: {r: 0, g: 1, b: 0, a: 0}
     - _VoronoiScale: {r: 10, g: 0, b: 0, a: 0}
     - _WaveColor: {r: 1, g: 1, b: 1, a: 0}
     - _voronoiSpeed: {r: 10, g: 0, b: 0, a: 0}
