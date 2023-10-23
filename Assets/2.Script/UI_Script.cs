@@ -174,6 +174,9 @@ public class UI_Script : MonoBehaviour
     [HideInInspector]
     public bool isLevelUp;
 
+    [SerializeField]
+    private GameObject popupAttribute; //popupAttribute는 레벨업했을 때 생성되는 팝업
+
     private void CurrentPlayerEXP_UI()
     {
         expMaxFill = PlayerStatus.instance.MaxEXP(playerLevel);
@@ -190,6 +193,8 @@ public class UI_Script : MonoBehaviour
             Debug.Log("레벨업 했습니다.");
             if (isLevelUp)
             {
+                popupAttribute.gameObject.SetActive(true); // 레벨업 하면 스킬 얻는 팝업창 띄우기
+
                 isLevelUp = false;
 
                 expFill.fillAmount = 0;
@@ -204,6 +209,11 @@ public class UI_Script : MonoBehaviour
             }
                                                
         }
+    }
+
+    private void CharImfPopup() // 캐릭터 정보창
+    {
+
     }
 
     //YieldInstuctionCash 미리 캐싱해둔것

@@ -33,7 +33,9 @@ public class EnemyManager : MonoBehaviour
 
         //}
 
-        InvokeRepeating("Spawn", firstSpawn, spawnCycle); // Invokerepeating은 해당 함수를 firstSpawn초후에 spawnCycle초 간격으로 실행하는 용도
+        //InvokeRepeating("Spawn", firstSpawn, spawnCycle); // Invokerepeating은 해당 함수를 firstSpawn초후에 spawnCycle초 간격으로 실행하는 용도
+
+        StartCoroutine(SpanwCycle());
 
         //SpawnReapeating();
 
@@ -46,7 +48,9 @@ public class EnemyManager : MonoBehaviour
         // 보스 출현시 일반 몬스터 생성 중단
         if (BossManager.instance.bossSpawnActive)
         {
-            CancelInvoke("Spawn");
+            //CancelInvoke("Spawn");
+
+            StopCoroutine(SpanwCycle());
         }
 
     }
@@ -75,6 +79,39 @@ public class EnemyManager : MonoBehaviour
     {
         //poolManager.TakeToPool<EnemyScript>(clone);
         poolManager.TakeToPool<EnemyScript>(clone.idName, clone); //TakeToPool : 지정된 풀에 반환 (idName : EnemyScript에서 idName으로 리턴 풀링시킬 오브젝트 이름 지정)
+    }
+
+    IEnumerator SpanwCycle()
+    {
+        bool isSpawn = true;
+
+        yield return YieldInstuctionCash.WaitForSeconds(1f);
+
+        while (isSpawn)
+        {
+            if (BossManager.instance.bossSpawnActive)
+            {
+                isSpawn = false;
+
+                StopCoroutine(SpanwCycle());
+
+                break;
+            }
+
+            int rand = Random.Range(1, 4); //0~1의 랜덤 수를 소환
+
+            Debug.Log("소환했습니다.");
+
+            for (int i = 0; i < rand; i++)
+            {
+                Spawn();
+                yield return YieldInstuctionCash.WaitForSeconds(0.1f);
+            }
+
+            yield return YieldInstuctionCash.WaitForSeconds(1f);
+                        
+        }
+        
     }
 
 }
