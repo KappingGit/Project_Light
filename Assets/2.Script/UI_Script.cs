@@ -257,6 +257,15 @@ public class UI_Script : MonoBehaviour
         }
     }
 
+    //3개를 분리?
+    public void GetSkillBtn02()
+    {
+
+    }
+    public void GetSkillBtn03()
+    {
+
+    }
     private void GetSkillPopup() // 레벨업 후 스킬 획득 팝업관련
     {
         isGetSkill = false;
@@ -264,6 +273,26 @@ public class UI_Script : MonoBehaviour
 
         Time.timeScale = 0f;
                 
+    }
+
+    [HideInInspector]
+    public bool isSubSkillBtn01; // 서브 스킬 버튼 01
+
+    [HideInInspector]
+    public bool isSubSkillBtn02; // 서브 스킬 버튼 02
+
+    //화면 UI 서브 스킬 버튼
+    public void SubSkillBtn01()
+    {
+        isSubSkillBtn01 = true;
+
+
+    }
+
+    public void SubSkillBtn02()
+    {
+        isSubSkillBtn02 = true;
+
     }
 
     //YieldInstuctionCash 미리 캐싱해둔것

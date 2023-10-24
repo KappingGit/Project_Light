@@ -76,7 +76,10 @@ public class PlayerStatus : MonoBehaviour
     {
         if (currHP > 0)
         {
-            currHP -= 1; // 일반 몬스터의 피격은 -1
+            //currHP -= 1;
+            StartCoroutine(Invincible()); // 일시 무적처리하기 위해 코루틴 안에서 피격 수치 들어가있음
+                        
+            // 일반 몬스터의 피격은 -1
             //Debug.Log("피격 당했습니다. " + currHP);
         }
         else if (currHP <= 0)
@@ -163,6 +166,21 @@ public class PlayerStatus : MonoBehaviour
 
     //1번 방향으로 제작해보기
 
+    private bool isInvincible = false; // 일시 무적상태라면...
 
+    IEnumerator Invincible() // 일시 무적 처리
+    {
+        if (!isInvincible)
+        {
+            currHP -= 1;
+            Debug.Log("무적상태입니다.");
+            isInvincible = true;
+            yield return YieldInstuctionCash.WaitForSeconds(2f);
+            Debug.Log("무적상태가 끝났습니다.");
+            isInvincible = false;
+        }
+               
+        StopCoroutine(Invincible());
+    }
 
 }

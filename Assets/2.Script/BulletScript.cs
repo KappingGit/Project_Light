@@ -33,6 +33,7 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
         //SlashEffect(); // 공격이 나갔을 때...
 
     }
+        
 
     private void Update()
     {
@@ -47,6 +48,7 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
     //###############################↓↓↓↓↓↓인터페이스 함수 영역↓↓↓↓↓↓###############################--------------
     //------------------------------------------------------------------------------------------------------------------------
 
+    //계산 수치는 case문을 활용해서 데이터테이블 인덱스 값을 불러오는 형식으로 나중에 변경하기
     // 히트 이펙트
     public GameObject HitEffect() //풀 가져오는 수식을 조금 쉽고 간단하며 여러 상황에 쓸수 있게 수정하기
     {
@@ -112,7 +114,7 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
     private void InitBullet() // 초기화 로직 함수
     {
         BulletSpawnPos();
-        bulletType = PlayerShooting.intance.weaponType;
+        
         SlashEffect();
         //hitObj = GetComponentInChildren<GameObject>();
 
@@ -122,7 +124,7 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
     private void OnTargetReached() // 반환 작업용 함수
     {
         BulletManager.instance.ReturnBullet(this);
-        
+        //SkillManager.instance.ReturnSkill(this);
     }
 
     // 인터페이스 IPoolObject을 명시적으로 구현
@@ -136,7 +138,7 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
     public void OnGettingFromPool() //풀에서 관련된 풀 오브젝트를 가져올때...
     {
         // 해당 오브젝트가 가져올때마다 실행
-        
+        bulletType = PlayerShooting.intance.weaponType;
         InitBullet(); // 재사용하기 위해 초기화 로직(총알 기본 상태값)을 작성
         //Debug.Log("총알을 초기화시켰습니다.");
 

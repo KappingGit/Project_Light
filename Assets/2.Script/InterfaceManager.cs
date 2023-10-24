@@ -37,11 +37,17 @@ public interface INomalAttack
     GameObject SlashEffect();
 }
 
-public interface IActiveSkiil
+public interface ISubSkiil
 {
-    //사용된 곳 : FireDragonSkill.cs, LtCircleSkill.cs, WindRaySkill.cs
+    
+    //void ActiveSkillSpeed(); //스킬 속도
 
-    void ActiveSkillSpeed(); //스킬 속도
+    //void ActiveSkillPos(); // 스킬 포지션
 
-    void ActiveSkillPos(); // 스킬 포지션
+    // 히트 이펙트
+    GameObject HitEffect(int skillType);
+
+    // 
+    GameObject MagicCircleEffect(int skillType);
+
 }

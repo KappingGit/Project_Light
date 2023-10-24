@@ -38,6 +38,14 @@ public class BossManager : MonoBehaviour
 
     }
 
+    [SerializeField]
+    private GameObject post_P_Dark;
+
+    [SerializeField]
+    private CameraShake cameraShake;
+
+    private bool isTrigger = false;
+
     // 보스 등장 시간 조절
     public void BossTimer()
     {
@@ -48,7 +56,15 @@ public class BossManager : MonoBehaviour
 
             if (curTime > bossAppearanceTime + 2f) // 경고 UI 나타나는 시간 관련으로 조율하기
             {
+                post_P_Dark.gameObject.SetActive(true);
+
+                if (!isTrigger)
+                {
+                    StartCoroutine(Delay(cameraShake));
+                }
+               
                 BossSpawn(); // 여기서 보스 소환 처리
+
                 bossSpawnActive = true;
             }
         }
@@ -64,5 +80,19 @@ public class BossManager : MonoBehaviour
         poolManager.TakeToPool<BossScript>(clone.idName, clone);
     }
 
+
+    IEnumerator Delay(CameraShake cameraShake)
+    {
+        Debug.Log("카메라 쉐이크 딜레이 코루틴 실행 ");
+        isTrigger = true;
+
+        cameraShake.enabled = true;
+
+        yield return YieldInstuctionCash.WaitForSeconds(1.5f);
+
+        cameraShake.enabled = false;
+
+        StopCoroutine(Delay(cameraShake));
+    }
 
 }

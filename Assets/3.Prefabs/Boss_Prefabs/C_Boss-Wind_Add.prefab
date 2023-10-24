@@ -1079,7 +1079,7 @@ GameObject:
   - component: {fileID: 7625374911889225119}
   m_Layer: 0
   m_Name: C_Boss-Wind_Add
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1128,7 +1128,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1.5
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0.75}
 --- !u!95 &7625374911889225115
@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idName: Boss01
-  bossMaxHP: 10
+  bossMaxHP: 100
   bossCurHP: 0
   spawnerPos: {fileID: 0}
 --- !u!114 &7625374911889225119
@@ -1180,6 +1180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88710b3120aa81749a0f3f28c5fe75fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnerPos: {fileID: 0}
 --- !u!1 &5190453457414032333
 GameObject:
   m_ObjectHideFlags: 0

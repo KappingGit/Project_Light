@@ -100,7 +100,7 @@ public class EnemyManager : MonoBehaviour
 
             int rand = Random.Range(1, 4); //0~1의 랜덤 수를 소환
 
-            Debug.Log("소환했습니다.");
+            //Debug.Log("소환했습니다.");
 
             for (int i = 0; i < rand; i++)
             {

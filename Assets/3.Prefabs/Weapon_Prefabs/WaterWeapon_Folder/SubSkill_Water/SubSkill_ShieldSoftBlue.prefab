@@ -13,14 +13,15 @@ GameObject:
   - component: {fileID: 7088072706357604764}
   - component: {fileID: 7230616492307598729}
   - component: {fileID: 5509770951798094539}
-  - component: {fileID: 6498829663858814182}
+  - component: {fileID: 7686309097895670148}
+  - component: {fileID: 3182133673692987354}
   m_Layer: 0
   m_Name: SubSkill_ShieldSoftBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3805686849394352683
 Transform:
   m_ObjectHideFlags: 0
@@ -4767,7 +4768,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7043632461781438870}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 2.51
   m_Height: 5.17
@@ -4869,7 +4870,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6498829663858814182
+--- !u!54 &7686309097895670148
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7043632461781438870}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &3182133673692987354
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4878,7 +4895,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7043632461781438870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d6ca00640c729d48a6f01d22e47a743, type: 3}
+  m_Script: {fileID: 11500000, guid: dcf5a4d0bce4d9d49beacf5082dca576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bomb: {fileID: 0}
+  idName: SubSkill_ShieldSoftBlue
+  shootPos: {fileID: 0}

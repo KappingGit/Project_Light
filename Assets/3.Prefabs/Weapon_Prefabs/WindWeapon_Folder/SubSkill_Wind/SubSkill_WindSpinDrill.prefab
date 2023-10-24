@@ -9571,14 +9571,14 @@ GameObject:
   - component: {fileID: 4332315986563828533}
   - component: {fileID: 48865190435387827}
   - component: {fileID: 971197375330140074}
-  - component: {fileID: 5556260243645965769}
+  - component: {fileID: 1967785430}
   m_Layer: 0
   m_Name: SubSkill_WindSpinDrill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4332315986563828531
 Transform:
   m_ObjectHideFlags: 0
@@ -14345,7 +14345,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5556260243645965769
+--- !u!114 &1967785430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14354,7 +14354,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4332315986563828532}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d6ca00640c729d48a6f01d22e47a743, type: 3}
+  m_Script: {fileID: 11500000, guid: dcf5a4d0bce4d9d49beacf5082dca576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bomb: {fileID: 7080467948918555121, guid: a0dc49d341d181d469b9195d728f252e, type: 3}
+  idName: SubSkill_WindSpinDrill
+  shootPos: {fileID: 0}
