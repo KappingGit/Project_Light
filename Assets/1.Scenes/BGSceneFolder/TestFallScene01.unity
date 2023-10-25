@@ -16847,6 +16847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3618a17d2b4fa64438452fa673cdd29d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idName: 
   bulletSpeed: 40
   shootPos: {fileID: 3649672517426250065}
 --- !u!82 &1688250951
@@ -23312,6 +23313,8 @@ MonoBehaviour:
   curTime: 0
   bossAppearanceTime: 60
   bossSpawnActive: 0
+  post_P_Dark: {fileID: 0}
+  cameraShake: {fileID: 0}
 --- !u!4 &1887867370
 Transform:
   m_ObjectHideFlags: 0
@@ -24287,6 +24290,10 @@ MonoBehaviour:
   expFill: {fileID: 0}
   playerLevel: 1
   isLevelUp: 0
+  popupAttribute: {fileID: 0}
+  charImformPopup: {fileID: 0}
+  isSubSkillBtn01: 0
+  isSubSkillBtn02: 0
 --- !u!4 &2051701939
 Transform:
   m_ObjectHideFlags: 0
@@ -24333,8 +24340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefabs:
   - {fileID: 4122379897495268664, guid: 0fdafb88c19331c4f9320e92d64d5fd7, type: 3}
-  - {fileID: 8432731182322425340, guid: 3583d4cf694f17849bb27efe2262d9df, type: 3}
-  - {fileID: 4848509578484828177, guid: f9826695aaa580a42b293d25f82c36f8, type: 3}
+  - {fileID: 1064939285675935698, guid: f651e03662eeff04692a677af236eaef, type: 3}
+  - {fileID: 3546762491774900008, guid: 734fcc34ae4802943987a0dc3c8da6ef, type: 3}
   playerTransform: {fileID: 7390631901767520074}
   tileSpeed: 35
 --- !u!4 &2052623857
@@ -245869,9 +245876,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679a07aa485a30441978617f93bd8d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idName: LtCircle
-  skillTime: 4
-  shootPos: {fileID: 3649672517426250065}
 --- !u!4 &6332940127520643492
 Transform:
   m_ObjectHideFlags: 0
@@ -251359,6 +251363,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusDB: {fileID: 0}
+  weaponType: 0
+  subSkillType: 0
 --- !u!1 &7003107102955674110
 GameObject:
   m_ObjectHideFlags: 0
@@ -251876,9 +251882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47f2a3f97ac7484a86ebb57438ada62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idName: FireDragon_skill
-  skillSpeed: 20
-  shootPos: {fileID: 3649672517426250065}
 --- !u!1 &7488127363761873157
 GameObject:
   m_ObjectHideFlags: 0
@@ -252917,9 +252920,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26661e58c6a9fe74ba460361ae682472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idName: WindRay_skill
-  skillTime: 3
-  shootPos: {fileID: 3649672517426250065}
 --- !u!65 &8311485296885732473
 BoxCollider:
   m_ObjectHideFlags: 0
