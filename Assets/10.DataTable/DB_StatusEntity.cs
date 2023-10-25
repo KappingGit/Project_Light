@@ -38,6 +38,9 @@ public class DB_StatusEntity_02
     public int monsterGold;
 
     public float monsterEXP;
+
+    public int monsterDamage; 
+
 }
 
 [System.Serializable]

@@ -224,7 +224,7 @@ public class PlayerShooting : MonoBehaviour
     {
         rateDB = statusDB.PlayerStatus[0].attackRate; // 공격속도 데이터 테이블 적용
 
-        float rate = rateDB / 2; // 수식
+        float rate = rateDB; // 수식
 
         // 공격 종류를 고르는 [변수 0 => 바람 공격, 1 => 물 공격, 2 => 불 공격] 나중에 테이블데이터와 연결
                 

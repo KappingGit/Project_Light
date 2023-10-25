@@ -53,6 +53,11 @@ public class PlayerStatus : MonoBehaviour
             Hit();
         }
 
+        if (other.gameObject.CompareTag("Missile")) // 기믹 또는 보스패턴 처리
+        {
+            Hit();
+        }
+
         //todo: 보스 패턴에 피격되면(태그로 취급하기)
     }
 
@@ -130,7 +135,14 @@ public class PlayerStatus : MonoBehaviour
 
     public void GetEXP()
     {
-        float getEXP = statusDB.PlayerStatus[0].addEXP;
+        int plusAddExp_Level = statusDB.PlayerStatus[0].indexLevel01; // 추가 경험치 구매, 업글 단계
+
+        float plusAddExp = statusDB.PlayerStatus[plusAddExp_Level].addEXP; // 추가 경험치 수치
+
+        //추가 경험치 기능 예) 최종 얻는 경험치 = 5 + (추가경험치 수식)
+        float getEXP = statusDB.MonsterStatus[0].monsterEXP
+            + (statusDB.MonsterStatus[0].monsterEXP * plusAddExp); //데이터 테이블 수식 적을때 유의
+                
         playerAddEXP += getEXP;
 
         //Debug.Log("playerAddEXP : " + playerAddEXP);
@@ -141,6 +153,7 @@ public class PlayerStatus : MonoBehaviour
     // 플레이어 레벨
     private void PlayerLevel()
     {
+        //추가 경험치 기능 예) 최종 얻는 경험치 = 5 + (추가경험치 수식)
         float getEXP = statusDB.PlayerStatus[playerLevel].addEXP;
 
         //float maxEXP = 테이블데이터 접근 statusDB.PlayerStatus[playerLevel].addEXP;
@@ -172,7 +185,8 @@ public class PlayerStatus : MonoBehaviour
     {
         if (!isInvincible)
         {
-            currHP -= 1;
+            currHP -= statusDB.MonsterStatus[0].monsterDamage;
+            Debug.Log(statusDB.MonsterStatus[0].monsterDamage);
             Debug.Log("무적상태입니다.");
             isInvincible = true;
             yield return YieldInstuctionCash.WaitForSeconds(2f);

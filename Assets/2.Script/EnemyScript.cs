@@ -154,7 +154,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
             
         }
 
-        if (currHp < 1) // 현재 체력이 떨어지면...
+        if (currHp <= 0) // 현재 체력이 떨어지면...
         {
             Die();
 
