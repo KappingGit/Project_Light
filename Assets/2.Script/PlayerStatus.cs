@@ -98,7 +98,7 @@ public class PlayerStatus : MonoBehaviour
     // 플레이어 공격력
     private void AttackDamage()
     {
-        playerATK = statusDB.PlayerStatus[0].attackDamage;
+        playerATK = statusDB.PlayerStatus[0].playerDamage; // 플레이어 공격력
     }
 
     //AR : 어택레이트

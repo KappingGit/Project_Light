@@ -3858,6 +3858,10 @@ PrefabInstance:
       propertyPath: shootPos
       value: 
       objectReference: {fileID: 1474131745}
+    - target: {fileID: 443499206, guid: 2c34f6cf307a5cc45a2c0685a5e98f26, type: 3}
+      propertyPath: weaponTypeName
+      value: windSlash
+      objectReference: {fileID: 0}
     - target: {fileID: 4624476961151195559, guid: 2c34f6cf307a5cc45a2c0685a5e98f26, type: 3}
       propertyPath: m_Name
       value: NomalAttack_WindSlash
@@ -12934,6 +12938,10 @@ PrefabInstance:
       propertyPath: shootPos
       value: 
       objectReference: {fileID: 1474131745}
+    - target: {fileID: 1557394545, guid: 624385acbb160c9468f155682a5d5c4b, type: 3}
+      propertyPath: weaponTypeName
+      value: waterSlash
+      objectReference: {fileID: 0}
     - target: {fileID: 892984311532896043, guid: 624385acbb160c9468f155682a5d5c4b, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -15148,6 +15156,10 @@ PrefabInstance:
       propertyPath: shootPos
       value: 
       objectReference: {fileID: 1474131745}
+    - target: {fileID: 1914333434, guid: 3e46f87552dc46045be09ccdad80bd5b, type: 3}
+      propertyPath: weaponTypeName
+      value: fireSlash
+      objectReference: {fileID: 0}
     - target: {fileID: 3634029046216712834, guid: 3e46f87552dc46045be09ccdad80bd5b, type: 3}
       propertyPath: m_Height
       value: 0.5

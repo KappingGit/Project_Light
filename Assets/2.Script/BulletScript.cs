@@ -75,6 +75,9 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
     //###############################↑↑↑↑↑↑인터페이스 함수 영역↑↑↑↑↑↑↑###############################------------
     //------------------------------------------------------------------------------------------------------------------------
 
+    [SerializeField]
+    public string weaponTypeName; // 해당 변수는 엑셀에 있는 무기 타입의 이름을 그대로 인스펙터에 입력해야한다...
+        
     
     private void OnTriggerEnter(Collider other)
     {

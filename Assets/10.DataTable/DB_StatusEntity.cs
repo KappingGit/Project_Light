@@ -18,7 +18,7 @@ public class DB_StatusEntity
 
     public float coolDownTime; // 쿨타임
 
-    public float attackDamage; // 공격력
+    public float playerDamage; // 공격력
 
     public int maxEXP; // 레벨당 최대 경험치
         
@@ -50,17 +50,10 @@ public class DB_StatusEntity_03
 
     public int indexType;
 
-    // 열거형
-    //public enum monsterState
-    //{
-    //    indexNum02,
+    public float windSlash;
 
-    //    monsterHP,
+    public float waterSlash;
 
-    //    monsterSpeed,
+    public float fireSlash;
 
-    //    monsterGold,
-
-    //    monsterEXP,
-    //}
 }

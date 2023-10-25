@@ -35,7 +35,7 @@ public class BulletManager : MonoBehaviour
         BulletScript newBullet = poolManager.GetFromPool<BulletScript>(bulletIndex);
 
         GameObject newBulletObj_01 = newBullet.gameObject;
-
+        
         return newBulletObj_01;
     }
 

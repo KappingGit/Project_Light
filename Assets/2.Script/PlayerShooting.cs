@@ -217,7 +217,7 @@ public class PlayerShooting : MonoBehaviour
     private float rateDB; // 데이터 테이블 적용
 
     [HideInInspector]
-    public int weaponType; // 공격 종류를 고르는 변수 0: 바람 공격, 1: 물 공격, 2: 불 공격
+    public int weaponType; // 임시 공격 종류를 고르는 변수 0: 바람 공격, 1: 물 공격, 2: 불 공격
 
     // 공격 속도 지연시키기(내부에 while문을 집어넣어서 터치하고 있을때~~ StartCourutine을 시키고 터치에서 때면 StopCourutine을 시킨다.)
     IEnumerator AttackRate(int weaponType) // 기본 공격의 공격속도처리
