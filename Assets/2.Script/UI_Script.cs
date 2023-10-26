@@ -56,6 +56,10 @@ public class UI_Script : MonoBehaviour
         CurrentPlayerEXP_UI(); // 현재 캐릭터의 경험치 UI 함수
 
         CharImformPopup();
+
+        VictoryUI();
+
+        DefeatUI();
     }
 
     [SerializeField]
@@ -87,6 +91,40 @@ public class UI_Script : MonoBehaviour
 
         //Debug.Log("경고 문구 생성");
         StartCoroutine(BossWarning());
+    }
+
+    [SerializeField]
+    private GameObject victoryUI;
+
+    private void VictoryUI() // 승리 UI
+    {
+        if (BossManager.instance.bossSpawnActive)
+        {
+            if (BossScript.instance.isVictory)
+            {
+                victoryUI.gameObject.SetActive(true);
+            }
+            else
+            {
+                victoryUI.gameObject.SetActive(false);
+            }
+        }
+        
+    }
+
+    [SerializeField]
+    private GameObject defeatUI;
+
+    private void DefeatUI() // 패배 UI
+    {
+        if (PlayerStatus.instance.isPlayerDie)
+        {
+            defeatUI.gameObject.SetActive(true);
+        }
+        else
+        {
+            defeatUI.gameObject.SetActive(false);
+        }
     }
 
     private bool pauseActive = false; // 일시정지 상태 여부

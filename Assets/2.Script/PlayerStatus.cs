@@ -31,7 +31,7 @@ public class PlayerStatus : MonoBehaviour
         CoolDownTime();
         
         playerGetGold = 0; // 골드 0으로 초기화
-
+        isPlayerDie = false;
     }
 
     private void Update()
@@ -76,6 +76,9 @@ public class PlayerStatus : MonoBehaviour
     [HideInInspector]
     public int currHP; // 현재HP 간섭 변수
 
+    [HideInInspector]
+    public bool isPlayerDie;
+
     // 플레이어 피격 함수
     public void Hit()
     {
@@ -83,13 +86,17 @@ public class PlayerStatus : MonoBehaviour
         {
             //currHP -= 1;
             StartCoroutine(Invincible()); // 일시 무적처리하기 위해 코루틴 안에서 피격 수치 들어가있음
-                        
+
             // 일반 몬스터의 피격은 -1
             //Debug.Log("피격 당했습니다. " + currHP);
         }
-        else if (currHP <= 0)
+        else if (currHP <= 0) // 만약 0이 되자마자 죽게할거면 upDate문에 bool값 브레이킹을 걸고 넣을것..
         {
+            //todo : 플레이어 사망 작업
+            isPlayerDie = true; // 플레이어 사망 상태
             Debug.Log("플레이어가 죽었습니다.");
+            StartCoroutine(PlayerDieDelay());
+            
         }
     }
 
@@ -195,6 +202,21 @@ public class PlayerStatus : MonoBehaviour
         }
                
         StopCoroutine(Invincible());
+    }
+
+    [HideInInspector]
+    public bool isGameOver;
+
+    IEnumerator PlayerDieDelay()
+    {
+        
+        yield return YieldInstuctionCash.WaitForSeconds(5f);
+
+        //isPlayerDie = false;
+        isGameOver = true; // 게임 오버 상태
+        yield return YieldInstuctionCash.WaitForSeconds(0.1f);
+
+        StopCoroutine(PlayerDieDelay());
     }
 
 }

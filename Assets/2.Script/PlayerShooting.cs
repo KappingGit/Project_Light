@@ -147,7 +147,7 @@ public class PlayerShooting : MonoBehaviour
                 anim.SetBool("isFire", true);
 
                 
-                subSkillType = 1; // 해당 버튼에 있는 스킬 속성 값 0바람 1물 2불
+                subSkillType = 0; // 해당 버튼에 있는 스킬 속성 값 0바람 1물 2불
 
                 StartCoroutine(SkillAttackRate(subSkillType));
 

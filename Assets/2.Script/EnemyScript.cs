@@ -8,7 +8,10 @@ public enum WeaponType
     windSlash,
     waterSlash,
     fireSlash,
-    
+    windDrill,
+    fireBall,
+    waterBarrier,
+
 }
 
 public class EnemyScript : MonoBehaviour, IPoolObject, IDie
@@ -20,7 +23,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
 
     // enum 타입의 변수를 선언
     private WeaponType currentWeaponType; // 현재 무기 타입
-
+        
     //NavMeshAgent ai;
 
     //private GameObject enemyObj;
@@ -49,7 +52,6 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
         transform.rotation = Quaternion.Euler(0f, 180f, 0f);
 
         
-
     }
 
     private Vector3 nowPos; // 실시간 좌표 추출
@@ -183,13 +185,18 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
 
         // 임시 테스트 현재 무기 타입 : 바람 기본 공격
 
-        switch(currentWeaponType) // 현재 무기타입이...
+        currentWeaponType = WeaponType.windSlash;
+       
+        switch (currentWeaponType) // 현재 무기타입이...
         {
-            case WeaponType.windSlash:
+            case WeaponType.windSlash: // 인덱스 0 = 
+                Debug.Log("바람 기본 평타입니다.");
                 break;
             case WeaponType.waterSlash:
+                Debug.Log("물 기본 평타입니다.");
                 break;
             case WeaponType.fireSlash:
+                Debug.Log("불 기본 평타입니다.");
                 break;
         }
 

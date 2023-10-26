@@ -9573,8 +9573,8 @@ GameObject:
   - component: {fileID: 971197375330140074}
   - component: {fileID: 1967785430}
   m_Layer: 0
-  m_Name: SubSkill_WindSpinDrill
-  m_TagString: Untagged
+  m_Name: SubSkill_WindDrill
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14357,5 +14357,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf5a4d0bce4d9d49beacf5082dca576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idName: SubSkill_WindSpinDrill
+  idName: SubSkill_WindDrill
   shootPos: {fileID: 0}
+  skillSpeed: 40

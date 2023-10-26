@@ -49,8 +49,6 @@ public class TileManager : MonoBehaviour
 
         //Debug.Log("     spawnZ:    " + spawnZ + "    tileOnScreen:    "+ tileOnScreen + "   tileLenght:    " + tileLenght+ "   mean:   "+ mean);
 
-        //activeTiles[0].transform.position.z => 인덱스 0의 타일 z포지션 값
-        // 끝없이 길이 생성
         if (playerTransform.position.z - safeZone > activeTiles[0].transform.position.z) // playerTransform.position.z - safeZone > mean : 플레이어의 z위치값이  [](첫 스폰 - 보여지는 타일 개수 * 스폰거리) 보다 크다면
         {
             // safeZone을 활용하여 타일의 생성 조건을 나타냄
@@ -60,7 +58,10 @@ public class TileManager : MonoBehaviour
 
             DeleteTile();
         }
-        
+        //activeTiles[0].transform.position.z => 인덱스 0의 타일 z포지션 값
+        // 끝없이 길이 생성
+
+
     }
 
     private GameObject go;
@@ -81,7 +82,7 @@ public class TileManager : MonoBehaviour
         Rigidbody tileRig = go.GetComponent<Rigidbody>(); // 순서 주의
 
         tileRig.velocity = new Vector3(0, 0, -tileSpeed); // clone 타일 속도 부여
-
+                
         #endregion
 
 

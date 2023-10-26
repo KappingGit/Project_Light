@@ -33,6 +33,17 @@ public class ChangeSceneManager : MonoBehaviour
         {
             CutScene01();
         }
+
+        if (PlayerStatus.instance.isGameOver) // 게임오버가 되면
+        {
+            PlayerStatus.instance.isGameOver = false;
+            StartCoroutine(GameOverScene());
+        }
+    }
+
+    private void ChangeScene_MainScene() // 메인씬으로 넘어가는 함수
+    {
+        SceneManager.LoadScene("MainScene01");
     }
 
     private float curProgress;
@@ -120,6 +131,19 @@ public class ChangeSceneManager : MonoBehaviour
         //Time.timeScale = 1f;
         StopCoroutine(CutSceneDelay());
 
+        StartCoroutine(FadeIn());
+    }
+
+    IEnumerator GameOverScene() // 게임 오버되었으면 메인씬으로 넘어가기
+    {
+        StartCoroutine(FadeOut());
+        yield return YieldInstuctionCash.WaitForSeconds(2f);
+
+        ChangeScene_MainScene();
+        //Debug.Log("씬전환");
+
+        yield return YieldInstuctionCash.WaitForSeconds(5f);
+        
         StartCoroutine(FadeIn());
     }
 

@@ -32,7 +32,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
         bossAnim = GetComponent<Animator>();
         bossTrans = GetComponent<Transform>();
-      
+        isVictory = false;
     }
 
     
@@ -94,11 +94,11 @@ public class BossScript : MonoBehaviour, IPoolObject
 
                 // 사망했을때 연출
 
-                BossDirectControl();
+                BossDirectControl(); // 정화 연출 작업
 
                 if (isPurification) 
                 {
-                    StartCoroutine(DieDelay());// 정화 연출 딜레이 걸기(여기 안에 반환 함수 들어가있음)
+                    StartCoroutine(DieDelay());// 정화 연출 딜레이 걸기(여기 안에 반환 함수 들어가있음), 승리 UI를 위한 여부도 포함
                 }
 
                 //OnTargetReached();
@@ -143,13 +143,26 @@ public class BossScript : MonoBehaviour, IPoolObject
         
     }
 
+    [HideInInspector]
+    public bool isVictory = false;
+
     IEnumerator DieDelay() // 해당 코루틴에는 반환 작업과 승리 UI작업이 들어가 있을거임
     {
         yield return YieldInstuctionCash.WaitForSeconds(7f);
-        Debug.Log("반환 작업 시작");
-        OnTargetReached(); //반환
 
         //todo: 여기다가 승리 UI실행하기
+        Debug.Log("승리했습니다");
+        isVictory = true;
+
+        yield return YieldInstuctionCash.WaitForSeconds(5f);
+
+        isVictory = false;
+
+        yield return YieldInstuctionCash.WaitForSeconds(2f);
+        
+                
+        //Debug.Log("반환 작업 시작");
+        OnTargetReached(); //반환
 
         StopCoroutine(DieDelay());
     }
