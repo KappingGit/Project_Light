@@ -13,6 +13,8 @@ public class BossScript : MonoBehaviour, IPoolObject
 
     //private PoolManager poolManager;
 
+    private Animator bossAnim;
+
     private void Awake()
     {
         //해당 스크립트 인스턴스
@@ -23,6 +25,8 @@ public class BossScript : MonoBehaviour, IPoolObject
 
         // 해당 몬스터 오브젝트 바라보는 방향 조정
         transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+
+        bossAnim = GetComponent<Animator>();
 
     }
 
@@ -48,6 +52,14 @@ public class BossScript : MonoBehaviour, IPoolObject
 
     }
 
+    [SerializeField]
+    private GameObject dieDirect_Effect;
+
+    private void BossAnimControl() //공격하는 레이어의 접근 함수
+    {
+        bossAnim.SetLayerWeight(1, 1);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Weapon"))
@@ -57,7 +69,13 @@ public class BossScript : MonoBehaviour, IPoolObject
             if (bossCurHP < 0f)
             {
                 //todo: 사망 처리
-                OnTargetReached();
+
+                // 사망했을때 연출
+                dieDirect_Effect.gameObject.SetActive(true);
+
+                bossAnim.SetBool("isBossPurification", true);
+
+                //OnTargetReached();
                 //BossManager.instance.bossSpawnActive = false;
 
                 //Debug.Log("보스 죽음" + BossManager.instance.bossSpawnActive);

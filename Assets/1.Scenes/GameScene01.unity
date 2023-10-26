@@ -3455,6 +3455,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336231762}
   m_CullTransparentMesh: 1
+--- !u!1 &356044104 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4729280532720925703, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+  m_PrefabInstance: {fileID: 4729280532405875023}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &356044108 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4729280532720925699, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+  m_PrefabInstance: {fileID: 4729280532405875023}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &359142322
 GameObject:
   m_ObjectHideFlags: 0
@@ -3519,7 +3529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curTime: 0
-  bossAppearanceTime: 60
+  bossAppearanceTime: 10
   bossSpawnActive: 0
   post_P_Dark: {fileID: 2000744058}
   cameraShake: {fileID: 963194232}
@@ -32567,6 +32577,7 @@ Transform:
   m_Children:
   - {fileID: 7149716822057915302}
   - {fileID: 3565153830343263161}
+  - {fileID: 356044108}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -33487,7 +33498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &4512918723351915073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33514,8 +33525,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idName: Boss01
-  bossMaxHP: 100
+  bossMaxHP: 10
   bossCurHP: 0
+  dieDirect_Effect: {fileID: 356044104}
   spawnerPos: {fileID: 1755187536}
 --- !u!95 &4512918723351915075
 Animator:
@@ -33526,7 +33538,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4512918723351915072}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 25c07f6664263b34eb59570380ee5055, type: 3}
+  m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 614cfee55115b9d47a52a47d4604324f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -33922,6 +33934,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8739108484720819031}
   m_CullTransparentMesh: 1
+--- !u!1001 &4729280532405875023
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3885140861753356538}
+    m_Modifications:
+    - target: {fileID: 4729280532720925699, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729280532720925699, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729280532720925699, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729280532720925699, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729280532720925699, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729280532720925699, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729280532720925699, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729280532720925699, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729280532720925699, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729280532720925699, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729280532720925699, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729280532720925703, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+      propertyPath: m_Name
+      value: Tornado_Orb
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729280532720925703, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
 --- !u!1 &4730056214976928322
 GameObject:
   m_ObjectHideFlags: 0
@@ -36718,7 +36791,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bef8bddc445ed1d41850c06599634ac7, type: 2}
+  - {fileID: 2100000, guid: 5618ae0134552da41a255e350148b9e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
