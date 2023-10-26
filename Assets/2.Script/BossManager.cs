@@ -70,9 +70,13 @@ public class BossManager : MonoBehaviour
         }
     }
 
-    public void BossSpawn()
+    public GameObject BossSpawn()
     {
-        BossScript newEnemy = poolManager.GetFromPool<BossScript>(0);
+        BossScript newBoss01 = poolManager.GetFromPool<BossScript>(0);
+
+        GameObject newBossObj_01 = newBoss01.gameObject;
+        
+        return newBossObj_01;
     }
 
     public void BossReturnPool(BossScript clone)

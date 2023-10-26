@@ -3529,7 +3529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curTime: 0
-  bossAppearanceTime: 10
+  bossAppearanceTime: 5
   bossSpawnActive: 0
   post_P_Dark: {fileID: 2000744058}
   cameraShake: {fileID: 963194232}
@@ -6868,6 +6868,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765778550}
   m_CullTransparentMesh: 1
+--- !u!1 &778050133 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6031075944633467709, guid: 1da3015328d4d754498bea8fc1a693b6, type: 3}
+  m_PrefabInstance: {fileID: 2011985033}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &778050137
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778050133}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85db03bbe7a12a04ba8b2f426adbf0d0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &792998760
 GameObject:
   m_ObjectHideFlags: 0
@@ -33498,7 +33524,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &4512918723351915073
 MonoBehaviour:
   m_ObjectHideFlags: 0

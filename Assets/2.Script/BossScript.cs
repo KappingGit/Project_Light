@@ -15,6 +15,10 @@ public class BossScript : MonoBehaviour, IPoolObject
 
     private Animator bossAnim;
 
+    private Transform bossTrans;
+
+    //private Vector3 target = new Vector3(bossTrans.position.x, 3f, bossTrans.position.z);
+
     private void Awake()
     {
         //해당 스크립트 인스턴스
@@ -27,12 +31,20 @@ public class BossScript : MonoBehaviour, IPoolObject
         transform.rotation = Quaternion.Euler(0f, 180f, 0f);
 
         bossAnim = GetComponent<Animator>();
-
+        bossTrans = GetComponent<Transform>();
+      
     }
+
+    
 
     private void Update()
     {
         
+        if (isPurification)
+        {
+            //bossRig.velocity = new Vector3(0f, 20f, 0f);
+            //transform.position = Vector3.Lerp(transform.position, target, 0.5f);
+        }
     }
 
     [SerializeField]
@@ -55,9 +67,19 @@ public class BossScript : MonoBehaviour, IPoolObject
     [SerializeField]
     private GameObject dieDirect_Effect;
 
-    private void BossAnimControl() //공격하는 레이어의 접근 함수
+    private bool isPurification = false;
+
+    private void BossDirectControl() //공격하는 레이어의 접근 함수
     {
+        //dieDirect_Effect.gameObject.SetActive(true);
+
+        bossAnim.SetBool("isBossPurification", true);
+        
         bossAnim.SetLayerWeight(1, 1);
+
+        dieDirect_Effect.gameObject.SetActive(true);
+
+        isPurification = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -71,9 +93,13 @@ public class BossScript : MonoBehaviour, IPoolObject
                 //todo: 사망 처리
 
                 // 사망했을때 연출
-                dieDirect_Effect.gameObject.SetActive(true);
 
-                bossAnim.SetBool("isBossPurification", true);
+                BossDirectControl();
+
+                if (isPurification) 
+                {
+                    StartCoroutine(DieDelay());// 정화 연출 딜레이 걸기(여기 안에 반환 함수 들어가있음)
+                }
 
                 //OnTargetReached();
                 //BossManager.instance.bossSpawnActive = false;
@@ -114,5 +140,17 @@ public class BossScript : MonoBehaviour, IPoolObject
     public void OnGettingFromPool()
     {
         BossInit();
+        
+    }
+
+    IEnumerator DieDelay() // 해당 코루틴에는 반환 작업과 승리 UI작업이 들어가 있을거임
+    {
+        yield return YieldInstuctionCash.WaitForSeconds(7f);
+        Debug.Log("반환 작업 시작");
+        OnTargetReached(); //반환
+
+        //todo: 여기다가 승리 UI실행하기
+
+        StopCoroutine(DieDelay());
     }
 }
