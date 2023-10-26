@@ -7,7 +7,9 @@ public class PlayerManager : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject slashPrefab;
     public GameObject subsSkill;
+    public GameObject mainsSkill;
     public GameObject magic;
+    public GameObject mainmagic;
     public GameObject shield;
     public Transform shotPos;
 
@@ -44,13 +46,21 @@ public class PlayerManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.T))
         {
-            {
+            
                 GameObject Shield = Instantiate(shield);
 
                 Shield.transform.position = this.transform.position;
                 Destroy(Shield.gameObject, 5f);
             }
+            else if (Input.GetKeyDown(KeyCode.Y))
+            {
+            GameObject Main = Instantiate(mainsSkill);
+            GameObject MainMagic = Instantiate(mainmagic);
+
+            Destroy(Main.gameObject, 5f);
+            Destroy(MainMagic.gameObject, 1.4f);
         }
     }
+    }
 
-}
+
