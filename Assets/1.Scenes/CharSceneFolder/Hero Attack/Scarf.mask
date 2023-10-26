@@ -1,0 +1,157 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Scarf
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: C_Hero
+    m_Weight: 0
+  - m_Path: C_Hero/C_H_Knee.L
+    m_Weight: 0
+  - m_Path: C_Hero/C_H_Knee.L/C_H_Knee.L_end
+    m_Weight: 0
+  - m_Path: C_Hero/C_H_Knee.R
+    m_Weight: 0
+  - m_Path: C_Hero/C_H_Knee.R/C_H_Knee.R_end
+    m_Weight: 0
+  - m_Path: C_Hero/Root
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Foot-IK.L
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Foot-IK.L/C_H_Foot.L
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Foot-IK.L/C_H_Foot.L/C_H_Toe.L
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Foot-IK.L/C_H_Foot.L/C_H_Toe.L/C_H_Toe.L_end
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Foot-IK.R
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Foot-IK.R/C_H_Foot.R
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Foot-IK.R/C_H_Foot.R/C_H_Toe.R
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Foot-IK.R/C_H_Foot.R/C_H_Toe.R/C_H_Toe.R_end
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Hip.L
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Hip.L/C_H_Thigh.L
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Hip.L/C_H_Thigh.L/C_H_Shin.L
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Hip.L/C_H_Thigh.L/C_H_Shin.L/C_H_Shin.L_end
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Hip.R
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Hip.R/C_H_Thigh.R
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Hip.R/C_H_Thigh.R/C_H_Shin.R
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Hip.R/C_H_Thigh.R/C_H_Shin.R/C_H_Shin.R_end
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Neck
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Neck/C_H_Eye
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Neck/C_H_Eye/C_H_Eye_end
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Neck/C_H_Eye-2
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Neck/C_H_Eye-2/C_H_Eye-2_end
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Neck/C_H_Head
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Neck/C_H_Head/C_H_Head_end
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Neck/EyeBrow
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Neck/EyeBrow/EyeBrow_end
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.L
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.L/C_H_Upper_Arm.L
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.L/C_H_Upper_Arm.L/C_H_ForeArm.L
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.L/C_H_Upper_Arm.L/C_H_ForeArm.L/C_H_Hand.L
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.L/C_H_Upper_Arm.L/C_H_ForeArm.L/C_H_Hand.L/C_H_Finger.1_L
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.L/C_H_Upper_Arm.L/C_H_ForeArm.L/C_H_Hand.L/C_H_Finger.1_L/C_H_Figer-2.L
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.L/C_H_Upper_Arm.L/C_H_ForeArm.L/C_H_Hand.L/C_H_Finger.1_L/C_H_Figer-2.L/C_H_Figer-2.L_end
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.L/C_H_Upper_Arm.L/C_H_ForeArm.L/C_H_Hand.L/C_H_Thumb-1.L
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.L/C_H_Upper_Arm.L/C_H_ForeArm.L/C_H_Hand.L/C_H_Thumb-1.L/C_H_Thumb-2.L
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.L/C_H_Upper_Arm.L/C_H_ForeArm.L/C_H_Hand.L/C_H_Thumb-1.L/C_H_Thumb-2.L/C_H_Thumb-3.L
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.L/C_H_Upper_Arm.L/C_H_ForeArm.L/C_H_Hand.L/C_H_Thumb-1.L/C_H_Thumb-2.L/C_H_Thumb-3.L/C_H_Thumb-3.L_end
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.L.001
+    m_Weight: 1
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.L.001/C_H_Shoulder.L.003
+    m_Weight: 1
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.L.001/C_H_Shoulder.L.003/C_H_Shoulder.L.002
+    m_Weight: 1
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.L.001/C_H_Shoulder.L.003/C_H_Shoulder.L.002/C_H_Shoulder.L.004
+    m_Weight: 1
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.L.001/C_H_Shoulder.L.003/C_H_Shoulder.L.002/C_H_Shoulder.L.004/C_H_Shoulder.L.004_end
+    m_Weight: 1
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.R
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.R/C_H_Upper_Arm.R
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.R/C_H_Upper_Arm.R/C_H_ForeArm.R
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.R/C_H_Upper_Arm.R/C_H_ForeArm.R/C_H_Hand.R
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.R/C_H_Upper_Arm.R/C_H_ForeArm.R/C_H_Hand.R/C_H_Finger.1_R
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.R/C_H_Upper_Arm.R/C_H_ForeArm.R/C_H_Hand.R/C_H_Finger.1_R/C_H_Figer-2.R
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.R/C_H_Upper_Arm.R/C_H_ForeArm.R/C_H_Hand.R/C_H_Finger.1_R/C_H_Figer-2.R/C_H_Figer-2.R_end
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.R/C_H_Upper_Arm.R/C_H_ForeArm.R/C_H_Hand.R/C_H_Thumb-1.R
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.R/C_H_Upper_Arm.R/C_H_ForeArm.R/C_H_Hand.R/C_H_Thumb-1.R/C_H_Thumb-2.R
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.R/C_H_Upper_Arm.R/C_H_ForeArm.R/C_H_Hand.R/C_H_Thumb-1.R/C_H_Thumb-2.R/C_H_Thumb-3.R
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.R/C_H_Upper_Arm.R/C_H_ForeArm.R/C_H_Hand.R/C_H_Thumb-1.R/C_H_Thumb-2.R/C_H_Thumb-3.R/C_H_Thumb-3.R_end
+    m_Weight: 0
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.R.001
+    m_Weight: 1
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.R.001/C_H_Shoulder.R.003
+    m_Weight: 1
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.R.001/C_H_Shoulder.R.003/C_H_Shoulder.R.002
+    m_Weight: 1
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.R.001/C_H_Shoulder.R.003/C_H_Shoulder.R.002/C_H_Shoulder.R.004
+    m_Weight: 1
+  - m_Path: C_Hero/Root/C_H_Hips/C_H_Spine/C_H_Chset/C_H_UpperChset/C_H_Shoulder.R.001/C_H_Shoulder.R.003/C_H_Shoulder.R.002/C_H_Shoulder.R.004/C_H_Shoulder.R.004_end
+    m_Weight: 1
+  - m_Path: Eye
+    m_Weight: 0
+  - m_Path: EyeBrow
+    m_Weight: 0
+  - m_Path: Head
+    m_Weight: 0
+  - m_Path: Scarf-P
+    m_Weight: 1
+  - m_Path: Sword
+    m_Weight: 0
