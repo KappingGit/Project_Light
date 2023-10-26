@@ -48,12 +48,14 @@ public class DB_StatusEntity_03
 {
     // 공격 타입 인덱스
 
-    public int indexType;
+    public int weaponType;
 
-    public float windSlash;
+    public string name;
 
-    public float waterSlash;
+    public float typeLevel;
 
-    public float fireSlash;
+    public float coolTime;
+
+    public float typeAbility;
 
 }

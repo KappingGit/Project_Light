@@ -164,20 +164,34 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
 
     }
     
-    private float HitCalculate() //피격했을 때 속성 종류별 피격 계산 함수
+    private float HitCalculate(int indexType) //피격했을 때 속성 종류별 피격 계산 함수
     {
         // 바람 기본 평타: 바람 기본 평타 최종 데미지 = 플레이어 공격력 * 바람 추가 피해 퍼센트
-        
+
         //테이블 데이터 다른 형태로 변경
 
-        // 임시 테스트 현재 무기 : 바람 기본 공격 1레벨
-        float weaponTypeLevel = statusDB.AttackType[1].windSlash; // 무기의 타입 레벨, 인덱스 0은 스킬, 평타를 얻지 않은 상태를 뜻함
+        // 임시 테스트 현재 무기 타입 : 바람 기본 공격
+
+        if (statusDB.AttackType[indexType].weaponType == 0) // 만약 해당 무기타입이 '0'(바람 속성이라면)
+        {
+            // 무기의 타입 레벨, 인덱스 0은 스킬, 평타를 얻지 않은 상태를 뜻함
+            if (statusDB.AttackType[1].typeLevel == 1)// 해당 무기의 레벨, 만약 무기 타입의 레벨이 '1'이라면
+            {
+                float weaponAbility = statusDB.AttackType[1].typeAbility; // 해당 능력치를 가져온다
+
+                float tureDamage = statusDB.PlayerStatus[0].playerDamage * weaponAbility;
+
+                return tureDamage; // 계산된 스킬 대미지
+            }
+        }
+
 
         // 고려해야할 것... => 해당 무기가 어떤 무기인가?, 그 해당 무기의 레벨은 어떻게 되는가? => 결과 해당 속성 무기의 레벨의 공격력 수치
+        
+        float path = 0; //만약 아무것도 없다면...
 
-        float tureDamage = statusDB.PlayerStatus[0].playerDamage * weaponTypeLevel;
-
-        return tureDamage;
+        return path;
+                
     }
 
     

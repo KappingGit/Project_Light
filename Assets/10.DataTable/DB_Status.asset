@@ -255,27 +255,93 @@ MonoBehaviour:
     monsterEXP: 0
     monsterDamage: 0
   AttackType:
-  - indexType: 0
-    windSlash: 0
-    waterSlash: 0
-    fireSlash: 0
-  - indexType: 1
-    windSlash: 1.25
-    waterSlash: 0.8
-    fireSlash: 0.5
-  - indexType: 2
-    windSlash: 1.5
-    waterSlash: 0.7
-    fireSlash: 0.25
-  - indexType: 3
-    windSlash: 1.75
-    waterSlash: 0.6
-    fireSlash: 1
-  - indexType: 4
-    windSlash: 2
-    waterSlash: 0.5
-    fireSlash: 1.25
-  - indexType: 5
-    windSlash: 2.5
-    waterSlash: 0.4
-    fireSlash: 1.5
+  - weaponType: 0
+    name: windSlash
+    typeLevel: 0
+    coolTime: 0
+    typeAbility: 0
+  - weaponType: 0
+    name: windSlash
+    typeLevel: 1
+    coolTime: 0
+    typeAbility: 1.25
+  - weaponType: 0
+    name: windSlash
+    typeLevel: 2
+    coolTime: 0
+    typeAbility: 1.5
+  - weaponType: 0
+    name: windSlash
+    typeLevel: 3
+    coolTime: 0
+    typeAbility: 1.75
+  - weaponType: 0
+    name: windSlash
+    typeLevel: 4
+    coolTime: 0
+    typeAbility: 2
+  - weaponType: 0
+    name: windSlash
+    typeLevel: 5
+    coolTime: 0
+    typeAbility: 2.5
+  - weaponType: 1
+    name: waterSlash
+    typeLevel: 0
+    coolTime: 0
+    typeAbility: 0
+  - weaponType: 1
+    name: waterSlash
+    typeLevel: 1
+    coolTime: 0
+    typeAbility: 0.8
+  - weaponType: 1
+    name: waterSlash
+    typeLevel: 2
+    coolTime: 0
+    typeAbility: 0.7
+  - weaponType: 1
+    name: waterSlash
+    typeLevel: 3
+    coolTime: 0
+    typeAbility: 0.6
+  - weaponType: 1
+    name: waterSlash
+    typeLevel: 4
+    coolTime: 0
+    typeAbility: 0.5
+  - weaponType: 1
+    name: waterSlash
+    typeLevel: 5
+    coolTime: 0
+    typeAbility: 0.4
+  - weaponType: 2
+    name: fireSlash
+    typeLevel: 0
+    coolTime: 0
+    typeAbility: 0
+  - weaponType: 2
+    name: fireSlash
+    typeLevel: 1
+    coolTime: 0
+    typeAbility: 0.5
+  - weaponType: 2
+    name: fireSlash
+    typeLevel: 2
+    coolTime: 0
+    typeAbility: 0.25
+  - weaponType: 2
+    name: fireSlash
+    typeLevel: 3
+    coolTime: 0
+    typeAbility: 1
+  - weaponType: 2
+    name: fireSlash
+    typeLevel: 4
+    coolTime: 0
+    typeAbility: 1.25
+  - weaponType: 2
+    name: fireSlash
+    typeLevel: 5
+    coolTime: 0
+    typeAbility: 1.5
