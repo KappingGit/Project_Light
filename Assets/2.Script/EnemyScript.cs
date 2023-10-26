@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using Redcode.Pools;
 
+public enum WeaponType
+{
+    windSlash,
+    waterSlash,
+    fireSlash,
+    
+}
+
 public class EnemyScript : MonoBehaviour, IPoolObject, IDie
 {
     [SerializeField]
     public string idName; // 풀링작업에 사용될 오브젝트 닉네임   
 
     public static EnemyScript instance;
+
+    // enum 타입의 변수를 선언
+    private WeaponType currentWeaponType; // 현재 무기 타입
 
     //NavMeshAgent ai;
 
@@ -172,7 +183,17 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
 
         // 임시 테스트 현재 무기 타입 : 바람 기본 공격
 
-        if (statusDB.AttackType[indexType].weaponType == 0) // 만약 해당 무기타입이 '0'(바람 속성이라면)
+        switch(currentWeaponType) // 현재 무기타입이...
+        {
+            case WeaponType.windSlash:
+                break;
+            case WeaponType.waterSlash:
+                break;
+            case WeaponType.fireSlash:
+                break;
+        }
+
+        if (statusDB.AttackType[indexType].weaponType == 0) // 만약 해당 무기타입이 '0'(바람 속성이라면(어떤 속성이라면...))
         {
             // 무기의 타입 레벨, 인덱스 0은 스킬, 평타를 얻지 않은 상태를 뜻함
             if (statusDB.AttackType[1].typeLevel == 1)// 해당 무기의 레벨, 만약 무기 타입의 레벨이 '1'이라면
