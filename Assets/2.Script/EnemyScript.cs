@@ -3,16 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Redcode.Pools;
 
-public enum WeaponType // 열거형태의 무기 타입
-{
-    windSlash,
-    waterSlash,
-    fireSlash,
-    windDrill,
-    fireBall,
-    waterBarrier,
-
-}
 
 public class EnemyScript : MonoBehaviour, IPoolObject, IDie
 {
@@ -20,10 +10,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
     public string idName; // 풀링작업에 사용될 오브젝트 닉네임   
 
     public static EnemyScript instance;
-
-    // enum 타입의 변수를 선언
-    private WeaponType currentWeaponType; // 현재 무기 타입
-        
+                
     //NavMeshAgent ai;
 
     //private GameObject enemyObj;
@@ -175,53 +162,57 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
         }
 
     }
-    
-    private float HitCalculate(int indexType) //피격했을 때 속성 종류별 피격 계산 함수
-    {
-        // 바람 기본 평타: 바람 기본 평타 최종 데미지 = 플레이어 공격력 * 바람 추가 피해 퍼센트
 
-        //테이블 데이터 다른 형태로 변경
+    #region 잘못된 코드 언젠가 다시보고 왜 이렇게 했지? 라는 생각을 가질 수 있게 내비둔다
 
-        // 임시 테스트 현재 무기 타입 : 바람 기본 공격
+    //private float HitCalculate(int indexType) //피격했을 때 속성 종류별 피격 계산 함수
+    //{
+    //    // 바람 기본 평타: 바람 기본 평타 최종 데미지 = 플레이어 공격력 * 바람 추가 피해 퍼센트
 
-        currentWeaponType = WeaponType.windSlash;
-       
-        switch (currentWeaponType) // 현재 무기타입이...
-        {
-            case WeaponType.windSlash: // 인덱스 0 = 
-                Debug.Log("바람 기본 평타입니다.");
-                break;
-            case WeaponType.waterSlash:
-                Debug.Log("물 기본 평타입니다.");
-                break;
-            case WeaponType.fireSlash:
-                Debug.Log("불 기본 평타입니다.");
-                break;
-        }
+    //    //테이블 데이터 다른 형태로 변경
 
-        if (statusDB.AttackType[indexType].weaponType == 0) // 만약 해당 무기타입이 '0'(바람 속성이라면(어떤 속성이라면...))
-        {
-            // 무기의 타입 레벨, 인덱스 0은 스킬, 평타를 얻지 않은 상태를 뜻함
-            if (statusDB.AttackType[1].typeLevel == 1)// 해당 무기의 레벨, 만약 무기 타입의 레벨이 '1'이라면
-            {
-                float weaponAbility = statusDB.AttackType[1].typeAbility; // 해당 능력치를 가져온다
+    //    // 임시 테스트 현재 무기 타입 : 바람 기본 공격
 
-                float tureDamage = statusDB.PlayerStatus[0].playerDamage * weaponAbility; // 플레이어의 공격력 기반
+    //    currentWeaponType = WeaponType.windSlash;
 
-                return tureDamage; // 계산된 스킬 대미지
-            }
-        }
+    //    switch (currentWeaponType) // 현재 무기타입이...
+    //    {
+    //        case WeaponType.windSlash: // 인덱스 0 = 
+    //            Debug.Log("바람 기본 평타입니다.");
+    //            break;
+    //        case WeaponType.waterSlash:
+    //            Debug.Log("물 기본 평타입니다.");
+    //            break;
+    //        case WeaponType.fireSlash:
+    //            Debug.Log("불 기본 평타입니다.");
+    //            break;
+    //    }
+
+    //    if (statusDB.AttackType[indexType].weaponType == 0) // 만약 해당 무기타입이 '0'(바람 속성이라면(어떤 속성이라면...))
+    //    {
+    //        // 무기의 타입 레벨, 인덱스 0은 스킬, 평타를 얻지 않은 상태를 뜻함
+    //        if (statusDB.AttackType[1].typeLevel == 1)// 해당 무기의 레벨, 만약 무기 타입의 레벨이 '1'이라면
+    //        {
+    //            float weaponAbility = statusDB.AttackType[1].typeAbility; // 해당 능력치를 가져온다
+
+    //            float tureDamage = statusDB.PlayerStatus[0].playerDamage * weaponAbility; // 플레이어의 공격력 기반
+
+    //            return tureDamage; // 계산된 스킬 대미지
+    //        }
+    //    }
 
 
-        // 고려해야할 것... => 해당 무기가 어떤 무기인가?, 그 해당 무기의 레벨은 어떻게 되는가? => 결과 해당 속성 무기의 레벨의 공격력 수치
-        
-        float path = 0; //만약 아무것도 없다면...
+    //    // 고려해야할 것... => 해당 무기가 어떤 무기인가?, 그 해당 무기의 레벨은 어떻게 되는가? => 결과 해당 속성 무기의 레벨의 공격력 수치
 
-        return path;
-                
-    }
+    //    float path = 0; //만약 아무것도 없다면...
 
-    
+    //    return path;
+
+    //}
+    #endregion
+
+
+
 
     private void Attack()
     {

@@ -18,9 +18,9 @@ public class PlayerMotor : MonoBehaviour
     }
 
     //[SerializeField] // 캐릭터 속도 조절 접근
-    private float speed; // 정면캐릭터 속도(필요없음)
+    //private float speed; // 정면캐릭터 속도(필요없음)
 
-    private float speed_X = 5f; // 좌우 속도
+    private float speed_X = 4f; // 좌우 속도
 
     private Vector3 moveVector;
 

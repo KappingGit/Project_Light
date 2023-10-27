@@ -48,6 +48,8 @@ public class DB_StatusEntity_03
 {
     // 공격 타입 인덱스
 
+    public int indexUID;
+
     public int weaponType;
 
     public string name;

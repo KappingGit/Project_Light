@@ -179,8 +179,8 @@ public class BossPattern_Wind : MonoBehaviour
             
             GameObject newGimmick_Obj01 = GimmickManager.instance.GimmickSpawn();
 
-            xLoad[0] = spawnerPos.position.x - 2f; // 왼쪽
-            xLoad[1] = spawnerPos.position.x + 2f; // 오른쪽
+            xLoad[0] = spawnerPos.position.x - 1.75f; // 왼쪽
+            xLoad[1] = spawnerPos.position.x + 1.75f; // 오른쪽
             xLoad[2] = spawnerPos.position.x; // 가운데는 무조건 나와야함으로
 
             newGimmick_Obj01.transform.position = new Vector3(xLoad[xPosIndex], spawnerPos.position.y, 55f);

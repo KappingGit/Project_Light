@@ -56,7 +56,7 @@ public class PlayerShooting : MonoBehaviour
                 //StartCoroutine(DelayTime());
 
                 isFire = true;
-                weaponType = 2; // 인스펙터와 지역변수의 실행 순서를 잘 이해를 해야 문제가 발생하지 않는다.
+                weaponType = 0; // 인스펙터와 지역변수의 실행 순서를 잘 이해를 해야 문제가 발생하지 않는다.
                                 // 문제점 : 인스펙터weaponType의 값을 변화시켜도 바뀌지 않는 문제가 발생, 함수안에 집어넣으니 해결
                                 //Debug.Log("장착된 무기 속성(인덱스 넘버) : " + weaponType);
 
