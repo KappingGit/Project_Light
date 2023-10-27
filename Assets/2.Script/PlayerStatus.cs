@@ -219,7 +219,7 @@ public class PlayerStatus : MonoBehaviour
         
         playerDieEffect.gameObject.SetActive(true);
 
-        Instantiate(playerDieEffect, transform.position, Quaternion.identity);
+        Instantiate(playerDieEffect,new Vector3 (transform.position.x, 1f, transform.position.z), Quaternion.identity);
 
         gameObject.SetActive(false);
 

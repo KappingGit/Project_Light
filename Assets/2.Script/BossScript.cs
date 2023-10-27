@@ -60,6 +60,16 @@ public class BossScript : MonoBehaviour, IPoolObject
             StartCoroutine(PatternEffectDelay()); // 보스패턴03의 코루틴
         }
 
+        //보스 패턴03 이펙트 코루틴에서 떼어옴(PatternEffectDelay())
+        if (BossPattern_Wind.instance.isStun) // 보스가 스턴을 먹는다면(기믹 파훼 성공)
+        {
+            //GameObject patternObj01 = transform.GetChild(3).gameObject;
+            //patternObj01.gameObject.SetActive(false);
+
+            pattern03_Effect.gameObject.SetActive(false);
+
+        }
+
     }
 
     [SerializeField]
@@ -169,7 +179,7 @@ public class BossScript : MonoBehaviour, IPoolObject
     }
 
     [HideInInspector]
-    public bool isVictory = false;
+    public bool isVictory;
 
     IEnumerator DieDelay() // 해당 코루틴에는 반환 작업과 승리 UI작업이 들어가 있을거임
     {
@@ -198,20 +208,20 @@ public class BossScript : MonoBehaviour, IPoolObject
 
         while (true)
         {
-            if (BossPattern_Wind.instance.isStun) // 보스가 스턴을 먹는다면(기믹 파훼 성공)
-            {
-                pattern03_Effect.gameObject.SetActive(false);
-            }
-            else if (!BossPattern_Wind.instance.isStun) // 보스가 스턴을 안먹는다면 (기믹 파훼 실패)
+            
+            if (!BossPattern_Wind.instance.isStun) // 보스가 스턴을 안먹는다면 (기믹 파훼 실패)
             {
                 yield return YieldInstuctionCash.WaitForSeconds(7f);
+                //GameObject patternObj02 = transform.GetChild(3).gameObject;
+                //patternObj02.gameObject.SetActive(false);
+
                 pattern03_Effect.gameObject.SetActive(false);
 
+                break;
+
             }
-
-
+            
             yield return YieldInstuctionCash.WaitForSeconds(0.5f);// 반복문 딜레이
-            break;
         }
         
         StopCoroutine(PatternEffectDelay());

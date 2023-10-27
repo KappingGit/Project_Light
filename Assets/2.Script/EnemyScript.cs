@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Redcode.Pools;
 
-public enum WeaponType
+public enum WeaponType // 열거형태의 무기 타입
 {
     windSlash,
     waterSlash,
@@ -50,14 +50,13 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
 
         // 해당 몬스터 오브젝트 바라보는 방향 조정
         transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-
-        
+               
     }
 
     private Vector3 nowPos; // 실시간 좌표 추출
 
     private bool allReturnDone = false; // 모두 반환이 이루어졌다면
-
+        
     private void Update()
     {
 
@@ -91,7 +90,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
             }
             
         }
-
+        
         enemyTrans.transform.position = transform.position;
 
     }    
@@ -163,7 +162,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
         if (currHp > 0)
         {
             
-            currHp -= 5; // 수치부분에 플레이어 공격 관련 수치를 넣으면 해결
+            currHp -= 10; // 수치부분에 플레이어 공격 관련 수치를 넣으면 해결
             
         }
 
@@ -207,7 +206,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
             {
                 float weaponAbility = statusDB.AttackType[1].typeAbility; // 해당 능력치를 가져온다
 
-                float tureDamage = statusDB.PlayerStatus[0].playerDamage * weaponAbility;
+                float tureDamage = statusDB.PlayerStatus[0].playerDamage * weaponAbility; // 플레이어의 공격력 기반
 
                 return tureDamage; // 계산된 스킬 대미지
             }

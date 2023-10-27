@@ -172,6 +172,13 @@ public class UI_Script : MonoBehaviour
         }
     }
 
+    public void GameOutBtn() // 일시정지 팝업에서 게임 나가는 버튼
+    {
+        isGameOver = true; // 여기 bool타입 선정은 메인 화면으로 나가기 위해 사용됨
+        Time.timeScale = 1f;
+        pausePopup.gameObject.SetActive(false);
+    }
+
     [SerializeField]
     public GameObject bossHPBar;
 

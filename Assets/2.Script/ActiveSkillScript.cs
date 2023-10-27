@@ -6,15 +6,15 @@ using Redcode.Pools;
 public class ActiveSkillScript : MonoBehaviour, IPoolObject
 {
     // 해당 스크립트 보류
-    public static ActiveSkillScript instance;
+    //public static ActiveSkillScript instance;
 
     // 플레이어 액티브 스킬
     private void Awake()
     {
-        if (ActiveSkillScript.instance == null)
-        {
-            instance = this;
-        }
+        //if (ActiveSkillScript.instance == null)
+        //{
+        //    instance = this;
+        //}
     }
 
     private void Update()

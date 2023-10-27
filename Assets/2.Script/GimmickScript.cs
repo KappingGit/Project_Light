@@ -18,11 +18,15 @@ public class GimmickScript : MonoBehaviour, IPoolObject
         {
             instance = this;
         }
+               
     }
 
+    
     private void Update()
     {
-        Gimmick01();
+        Gimmick01(); // 맵기믹 속도부여
+
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,7 +43,7 @@ public class GimmickScript : MonoBehaviour, IPoolObject
 
     private int turn;
 
-    private void Gimmick01()
+    private void Gimmick01() // 보스 미출현 맵기믹 함수
     {
         if (!BossManager.instance.bossSpawnActive) //보스 미출현 맵기믹
         {
@@ -88,6 +92,7 @@ public class GimmickScript : MonoBehaviour, IPoolObject
 
     }
 
+    // 해당 함수(보스패턴02)는 패턴 스크립트에서 사용중
     //보스 패턴 스폰 좌표는 보스패턴 스크립트에서 진행 (해당 함수는 사용하지 않음 / 일단 보존)
     private void SpawnPatternPos(int index01, int index02) // 보스 패턴용 토네이도 위치값
     {
