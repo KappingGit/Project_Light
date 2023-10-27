@@ -14,6 +14,9 @@ public class UI_Script : MonoBehaviour
     [SerializeField]
     private GameObject warningUI;
 
+    [SerializeField]
+    private DB_Status statusDB; // 에셋화 되어있는 데이터테이블 가져오기
+
     private void Awake()
     {
         StartCoroutine(StageUI());
@@ -59,7 +62,9 @@ public class UI_Script : MonoBehaviour
 
         VictoryUI();
 
-        DefeatUI();
+        DefeatUI(); // 주의 : 코루틴 걸려있음(브레이킹 해둠)
+
+        Status_UI();
     }
 
     [SerializeField]
@@ -117,14 +122,20 @@ public class UI_Script : MonoBehaviour
 
     private void DefeatUI() // 패배 UI
     {
-        if (PlayerStatus.instance.isPlayerDie)
+        if (PlayerStatus.instance.isPlayerDie) // 코루틴 업데이트 상태(브레이킹검)
         {
+            PlayerStatus.instance.isPlayerDie = false;
+            //Debug.Log("패배 UI");
             defeatUI.gameObject.SetActive(true);
+
+            if (!isGameOver)
+            {
+                StartCoroutine(DefeatDelay());
+            }
+            
         }
-        else
-        {
-            defeatUI.gameObject.SetActive(false);
-        }
+        
+        
     }
 
     private bool pauseActive = false; // 일시정지 상태 여부
@@ -207,6 +218,7 @@ public class UI_Script : MonoBehaviour
     [SerializeField]
     private Image expFill; // 경험치 채워지는 바 이미지
 
+    [HideInInspector]
     public int playerLevel = 1;
 
     private int expMaxFill; // 이부분 다시 생각해보기
@@ -245,7 +257,7 @@ public class UI_Script : MonoBehaviour
                 Debug.Log("플레이어 레벨 : " + playerLevel);
                 //expMaxFill = 20; // 경험치 최대치를 엑셀 데이터 테이블로 바꿀 것
 
-                playerLevelText.text = playerLevel.ToString();
+                playerLevelText.text = playerLevel.ToString(); // 현재 플레이어의 레벨
             }
                                                
         }
@@ -319,7 +331,7 @@ public class UI_Script : MonoBehaviour
     [HideInInspector]
     public bool isSubSkillBtn02; // 서브 스킬 버튼 02
 
-    //화면 UI 서브 스킬 버튼
+    //화면 UI 서브 스킬 버튼1
     public void SubSkillBtn01()
     {
         isSubSkillBtn01 = true;
@@ -327,9 +339,59 @@ public class UI_Script : MonoBehaviour
 
     }
 
+    //화면 UI 서브 스킬 버튼2
     public void SubSkillBtn02()
     {
         isSubSkillBtn02 = true;
+
+    }
+
+    [SerializeField]
+    private TextMeshProUGUI status_Level; //플레이어 상태창 UI - 레벨
+
+    [SerializeField]
+    private TextMeshProUGUI status_HP;//플레이어 상태창 UI - 체력
+
+    [SerializeField]
+    private TextMeshProUGUI status_ATK; //플레이어 상태창 UI - 공격력
+
+    [SerializeField]
+    private TextMeshProUGUI status_AttackSpeed; //플레이어 상태창 UI - 공격속도
+
+    [SerializeField]
+    private TextMeshProUGUI status_CoolDownTime; //플레이어 상태창 UI - 쿨타임 감소
+
+    [SerializeField]
+    private TextMeshProUGUI status_AddEXP; // 플레이어 상태창 UI - 추가 경험치 능력
+
+    private void Status_UI() // 플레이어 상태창 UI
+    {
+        status_Level.text = playerLevel.ToString();
+                
+        int currentHP = PlayerStatus.instance.currHP;
+
+        status_HP.text = currentHP.ToString();
+
+        // 밑에 부분은 인덱스 0으로 처리 되어있는 것을 모두 실시간 연동시키게 해야함
+        // 플레이어의 현재 공격력
+        float currentATK = statusDB.PlayerStatus[0].playerDamage;
+
+        status_ATK.text = currentATK.ToString();
+
+        // 플레이어의 현재 공격속도
+        float currentAttackRate = statusDB.PlayerStatus[0].attackRate;
+
+        status_AttackSpeed.text = currentAttackRate.ToString();
+
+        // 플레이어의 현재 쿨타임감소
+        float currentCoolDownTime = statusDB.PlayerStatus[0].coolDownTime;
+
+        status_CoolDownTime.text = currentCoolDownTime.ToString();
+
+        // 플레이어의 현재 추가 경험치
+        float currentAddEXP = statusDB.PlayerStatus[0].addEXP;
+
+        status_AddEXP.text = currentAddEXP.ToString();
 
     }
 
@@ -352,6 +414,21 @@ public class UI_Script : MonoBehaviour
         //페이드 아웃과 씬전환을 넣을 것
 
         StopCoroutine(BossWarning());
+    }
+
+    [HideInInspector]
+    public bool isGameOver; // 게임 오버 처리(ChangeSceneManager에서 메인씬으로 넘어가게 해줌)
+
+    IEnumerator DefeatDelay()  // 패배UI나오기 걸리는 딜레이
+    {
+
+        yield return YieldInstuctionCash.WaitForSeconds(5f); // 패배UI나오기 걸리는 딜레이
+
+        //isPlayerDie = false;
+        isGameOver = true;
+        yield return YieldInstuctionCash.WaitForSeconds(0.1f);
+
+        StopCoroutine(DefeatDelay());
     }
 
 }

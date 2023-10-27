@@ -7,7 +7,8 @@ public class BossPattern_Wind : MonoBehaviour
 {
     public static BossPattern_Wind instance;
 
-    private PoolManager poolManager;
+    //private PoolManager poolManager;
+    
 
     private void Awake()
     {
@@ -17,6 +18,8 @@ public class BossPattern_Wind : MonoBehaviour
         }
         patternIndex = Random.Range(1, 4);
         //InvokeRepeating("Pattern02", 1, 2); //테스트 코드
+
+        
     }
 
     private int patternIndex; // 보스패턴 인덱스
@@ -25,7 +28,12 @@ public class BossPattern_Wind : MonoBehaviour
     {
         if (BossManager.instance.bossSpawnActive) //보스가 등장했다면...패턴 시작
         {
-            patternIndex = Random.Range(1, 4);
+            if (!isRandomDelay) // 랜덤을 딜레이 걸어서 패턴의 생성 속도를 조절
+            {
+                isRandomDelay = true;
+                StartCoroutine(RandomDelay()); // 패턴 간격을 두는 코루틴
+            }
+            
             //Debug.Log("보스 등장");
             switch (patternIndex)
             {
@@ -49,6 +57,7 @@ public class BossPattern_Wind : MonoBehaviour
                 case 3: // 패턴3
                     if (!isCoolTime03)
                     {
+                        BossScript.instance.isTrigger = true; // BossScript의 보스패턴03 코루틴 브레이킹용
                         Debug.Log("보스패턴3 시작");
                         Pattern03();
                         isCoolTime03 = true;
@@ -308,15 +317,19 @@ public class BossPattern_Wind : MonoBehaviour
 
     private bool isCoolTime03;
         
-    private int chargeTime = 20; //차지하는 시간
+    private int chargeTime = 5; //차지하는 시간
 
     private int currChargeTime = 0; //현재 차지 정도
 
-    private bool isCharge; //차지 상태중
+    [HideInInspector]
+    public bool isCharge; //차지 상태중
 
     private bool isSaveData; // 데이터 세이브 여부
 
     private float saveBossCurrHP; // 패턴 시작했을 때 체력
+
+    [HideInInspector]
+    public bool isStun; // 보스 기믹 파훼 성공 후 잠시 스턴
 
     IEnumerator Pattern03_CoolTime() //보스패턴03 NuClearPattern
     {
@@ -332,14 +345,19 @@ public class BossPattern_Wind : MonoBehaviour
         while (isCharge)
         {
 
-            yield return YieldInstuctionCash.WaitForSeconds(1f); //1초
+            yield return YieldInstuctionCash.WaitForSeconds(1f); //1초(패턴 작동 후 흐른시간)
             currChargeTime++;
+
+            //todo: 보스패턴3 이펙트
+            
 
             if (currChargeTime == chargeTime)
             {
                 //todo: 플레이어 피격 시스템 구현 데미지 -2
+                PlayerStatus.instance.currHP -= 2;
                 Debug.Log("패턴 종료 - 기믹 파훼 실패");
-                isCharge = false;
+                isCharge = false; // 차지중 끝남
+                isStun = false; // 기믹 파훼 실패 - 보스 기절안함
                 currChargeTime = 0;
                 yield return YieldInstuctionCash.WaitForSeconds(1f); // 패턴파훼 후 1초의 여백
             }
@@ -347,9 +365,13 @@ public class BossPattern_Wind : MonoBehaviour
             {
                 //todo: 패턴 강제 종료
                 Debug.Log("패턴 종료 - 기믹 파훼 성공");
-                isCharge = false;
+                
+
+                isCharge = false; // 차지중 끝남
+                isStun = true; // 기믹 파훼 성공 - 보스 기절함
                 currChargeTime = 0;
                 yield return YieldInstuctionCash.WaitForSeconds(1f); // 패턴파훼 후 1초의 여백
+                isStun = false;
             }
         }
 
@@ -366,8 +388,16 @@ public class BossPattern_Wind : MonoBehaviour
                 
         StopCoroutine(Pattern03_CoolTime());
     }
-        
-    
 
+    private bool isRandomDelay;
+
+    IEnumerator RandomDelay()
+    {
+        patternIndex = Random.Range(1, 4);
+        yield return YieldInstuctionCash.WaitForSeconds(3f);
+        isRandomDelay = false;
+
+        StopCoroutine(RandomDelay());
+    }
     
 }

@@ -34,9 +34,9 @@ public class ChangeSceneManager : MonoBehaviour
             CutScene01();
         }
 
-        if (PlayerStatus.instance.isGameOver) // 게임오버가 되면
+        if (UI_Script.instance.isGameOver) // 게임오버가 되면
         {
-            PlayerStatus.instance.isGameOver = false;
+            UI_Script.instance.isGameOver = false;
             StartCoroutine(GameOverScene());
         }
     }

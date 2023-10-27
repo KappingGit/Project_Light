@@ -43,6 +43,20 @@ public class PlayerStatus : MonoBehaviour
         }
         //Debug.Log("현재hp테스트 : " + currHP);
         //Debug.Log("hp테스트 : " + maxHP+ "    공격력 테스트 : " + playerATK +"    추가 경험치 테스트 :"+playerAddEXP+ "    공속 테스트 : " + playerAR + "     쿨타임 테스트 : " + playerCDT);
+
+        if (currHP <= 0) // 만약 0이 되자마자 죽게할거면 upDate문에 bool값 브레이킹을 걸고 넣을것..
+        {
+            if (!isPlayerDie)
+            {
+                
+                isPlayerDie = true; // 플레이어 사망 상태
+                //Debug.Log("플레이어가 죽었습니다.");
+                
+                StartCoroutine(PlayerDieEffect());
+                                
+            }
+
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -90,14 +104,7 @@ public class PlayerStatus : MonoBehaviour
             // 일반 몬스터의 피격은 -1
             //Debug.Log("피격 당했습니다. " + currHP);
         }
-        else if (currHP <= 0) // 만약 0이 되자마자 죽게할거면 upDate문에 bool값 브레이킹을 걸고 넣을것..
-        {
-            //todo : 플레이어 사망 작업
-            isPlayerDie = true; // 플레이어 사망 상태
-            Debug.Log("플레이어가 죽었습니다.");
-            StartCoroutine(PlayerDieDelay());
-            
-        }
+        
     }
 
     private float playerATK;
@@ -193,7 +200,7 @@ public class PlayerStatus : MonoBehaviour
         if (!isInvincible)
         {
             currHP -= statusDB.MonsterStatus[0].monsterDamage;
-            Debug.Log(statusDB.MonsterStatus[0].monsterDamage);
+            //Debug.Log(statusDB.MonsterStatus[0].monsterDamage); //몬스터 데미지 측정
             Debug.Log("무적상태입니다.");
             isInvincible = true;
             yield return YieldInstuctionCash.WaitForSeconds(2f);
@@ -203,20 +210,24 @@ public class PlayerStatus : MonoBehaviour
                
         StopCoroutine(Invincible());
     }
+        
+    [SerializeField]
+    private GameObject playerDieEffect;
 
-    [HideInInspector]
-    public bool isGameOver;
-
-    IEnumerator PlayerDieDelay()
+    IEnumerator PlayerDieEffect() // Instantiate화로 작업함
     {
         
-        yield return YieldInstuctionCash.WaitForSeconds(5f);
+        playerDieEffect.gameObject.SetActive(true);
 
-        //isPlayerDie = false;
-        isGameOver = true; // 게임 오버 상태
-        yield return YieldInstuctionCash.WaitForSeconds(0.1f);
+        Instantiate(playerDieEffect, transform.position, Quaternion.identity);
 
-        StopCoroutine(PlayerDieDelay());
+        gameObject.SetActive(false);
+
+        yield return YieldInstuctionCash.WaitForSeconds(2f);
+
+        Destroy(playerDieEffect);
+                
+        StopCoroutine(PlayerDieEffect());
     }
 
 }

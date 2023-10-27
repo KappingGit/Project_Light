@@ -34,9 +34,7 @@ public class BossScript : MonoBehaviour, IPoolObject
         bossTrans = GetComponent<Transform>();
         isVictory = false;
     }
-
-    
-
+        
     private void Update()
     {
         
@@ -45,6 +43,23 @@ public class BossScript : MonoBehaviour, IPoolObject
             //bossRig.velocity = new Vector3(0f, 20f, 0f);
             //transform.position = Vector3.Lerp(transform.position, target, 0.5f);
         }
+
+        //보스 패턴3 기믹 파훼후 애니메니션 송출
+        if (BossPattern_Wind.instance.isStun)
+        {
+            bossAnim.SetBool("isStun", true);
+        }
+        else if (!BossPattern_Wind.instance.isStun)
+        {
+            bossAnim.SetBool("isStun", false);
+        }
+
+        if (isTrigger)
+        {
+            isTrigger = false; // 코루틴 브레이킹용
+            StartCoroutine(PatternEffectDelay()); // 보스패턴03의 코루틴
+        }
+
     }
 
     [SerializeField]
@@ -80,6 +95,18 @@ public class BossScript : MonoBehaviour, IPoolObject
         dieDirect_Effect.gameObject.SetActive(true);
 
         isPurification = true;
+    }
+
+    [SerializeField]
+    private GameObject pattern03_Effect;
+
+    [HideInInspector]
+    public bool isTrigger; // 코루틴 브레이킹용(BossPattern03_AnimControl 브레이킹)
+
+    private void BossPattern03_AnimControl()
+    {
+
+        pattern03_Effect.gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -124,9 +151,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
     }
 
-   
-
-
+    
 
     // 인터페이스 IPoolObject을 명시적으로 구현
 
@@ -165,5 +190,30 @@ public class BossScript : MonoBehaviour, IPoolObject
         OnTargetReached(); //반환
 
         StopCoroutine(DieDelay());
+    }
+
+    IEnumerator PatternEffectDelay() // 보스 패턴 오브젝트 비활성화 작업
+    {
+        BossPattern03_AnimControl();
+
+        while (true)
+        {
+            if (BossPattern_Wind.instance.isStun) // 보스가 스턴을 먹는다면(기믹 파훼 성공)
+            {
+                pattern03_Effect.gameObject.SetActive(false);
+            }
+            else if (!BossPattern_Wind.instance.isStun) // 보스가 스턴을 안먹는다면 (기믹 파훼 실패)
+            {
+                yield return YieldInstuctionCash.WaitForSeconds(7f);
+                pattern03_Effect.gameObject.SetActive(false);
+
+            }
+
+
+            yield return YieldInstuctionCash.WaitForSeconds(0.5f);// 반복문 딜레이
+            break;
+        }
+        
+        StopCoroutine(PatternEffectDelay());
     }
 }
