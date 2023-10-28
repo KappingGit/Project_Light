@@ -43,6 +43,15 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
         //Debug.Log("장착된 무기 속성(인덱스 넘버) : " + PlayerShooting.intance.weaponType);
         //Debug.Log("자식 오브젝트 이름 : "+hitObj.gameObject.name);
     }
+    
+    public virtual float WeaponTypeDamage()
+    {
+
+        //임시 반환
+        float path = 0;
+
+        return path;
+    }
 
     //------------------------------------------------------------------------------------------------------------------------
     //###############################↓↓↓↓↓↓인터페이스 함수 영역↓↓↓↓↓↓###############################--------------

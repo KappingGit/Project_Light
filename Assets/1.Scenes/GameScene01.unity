@@ -852,7 +852,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88582691}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2927.0115}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1672,7 +1672,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152666435}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -277.54605}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3802,7 +3802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curTime: 0
-  bossAppearanceTime: 5
+  bossAppearanceTime: 60
   bossSpawnActive: 0
   post_P_Dark: {fileID: 2000744058}
   cameraShake: {fileID: 963194232}
@@ -4217,10 +4217,6 @@ PrefabInstance:
       propertyPath: shootPos
       value: 
       objectReference: {fileID: 2074703660841281484}
-    - target: {fileID: 443499206, guid: 2c34f6cf307a5cc45a2c0685a5e98f26, type: 3}
-      propertyPath: weaponTypeName
-      value: windSlash
-      objectReference: {fileID: 0}
     - target: {fileID: 4624476961151195559, guid: 2c34f6cf307a5cc45a2c0685a5e98f26, type: 3}
       propertyPath: m_Name
       value: NomalAttack_WindSlash
@@ -4269,19 +4265,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 443499206, guid: 2c34f6cf307a5cc45a2c0685a5e98f26, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2c34f6cf307a5cc45a2c0685a5e98f26, type: 3}
---- !u!114 &443499206 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 443499206, guid: 2c34f6cf307a5cc45a2c0685a5e98f26, type: 3}
-  m_PrefabInstance: {fileID: 443499204}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3618a17d2b4fa64438452fa673cdd29d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &449750295
 GameObject:
   m_ObjectHideFlags: 0
@@ -6853,7 +6839,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680190579}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2917.7913}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7833,11 +7819,6 @@ CanvasRenderer:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6334358936616895986, guid: 2a35e28dcd903c649ab88ba9357b38e0, type: 3}
   m_PrefabInstance: {fileID: 6334358936884170591}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &811533000 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6831784531550404427, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
-  m_PrefabInstance: {fileID: 8619749779716514890}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &811707715
 GameObject:
@@ -9170,8 +9151,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -3195.2053}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1797977250}
+  m_Children: []
   m_Father: {fileID: 815500428}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10533,7 +10513,7 @@ RectTransform:
   - {fileID: 1441465355}
   - {fileID: 127831683}
   m_Father: {fileID: 2031388273}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10607,7 +10587,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127058479}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2917.6592}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11763,7 +11743,7 @@ RectTransform:
   - {fileID: 1522718315}
   - {fileID: 481312754}
   m_Father: {fileID: 2031388273}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13465,8 +13445,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af5b32a68b2c8ea45b23ea0614e998e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstSpawn: 1
-  spawnCycle: 0.5
 --- !u!114 &1439597960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13784,6 +13762,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448497859}
   m_CullTransparentMesh: 1
+--- !u!1 &1459479952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4624476961151195559, guid: 2c34f6cf307a5cc45a2c0685a5e98f26, type: 3}
+  m_PrefabInstance: {fileID: 443499204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1459479959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459479952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce301fdfeede57142a3a67024bce16e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idName: NomalAttack_WindSlash
+  bulletSpeed: 40
+  shootPos: {fileID: 2074703660841281484}
 --- !u!1 &1473391408
 GameObject:
   m_ObjectHideFlags: 0
@@ -14959,14 +14957,14 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1591691435}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2917.79}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 989578622}
   - {fileID: 257662931}
   m_Father: {fileID: 2031388273}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15711,7 +15709,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753997753}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3203.8755}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16317,7 +16315,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797977249}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.7524414}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16327,8 +16325,8 @@ RectTransform:
   - {fileID: 1615159464}
   - {fileID: 1780968066}
   - {fileID: 1020220390}
-  m_Father: {fileID: 971532453}
-  m_RootOrder: 0
+  m_Father: {fileID: 2031388273}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16511,7 +16509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pools:
   - _name: NomalAttack_WindSlash
-    _component: {fileID: 443499206}
+    _component: {fileID: 1459479959}
     _count: 15
     _container: {fileID: 1850835668}
     _nonLazy: 1
@@ -18524,6 +18522,7 @@ RectTransform:
   m_Children:
   - {fileID: 2143393592}
   - {fileID: 680190581}
+  - {fileID: 1797977250}
   - {fileID: 1121341427}
   - {fileID: 1591691436}
   - {fileID: 1295622020}
@@ -18743,7 +18742,7 @@ RectTransform:
   - {fileID: 1904728604}
   - {fileID: 893343389}
   m_Father: {fileID: 2031388273}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -29981,14 +29980,6 @@ PrefabInstance:
       propertyPath: spawnerPos
       value: 
       objectReference: {fileID: 1755187536}
-    - target: {fileID: 5277826694057070088, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
-      propertyPath: dieDirect_Effect
-      value: 
-      objectReference: {fileID: 8619749779716514891}
-    - target: {fileID: 5277826694057070088, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
-      propertyPath: pattern03_Effect
-      value: 
-      objectReference: {fileID: 811533000}
     - target: {fileID: 5277826694057070090, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
       propertyPath: m_Name
       value: C_Boss-Wind_1.0
@@ -29997,25 +29988,8 @@ PrefabInstance:
       propertyPath: spawnerPos
       value: 
       objectReference: {fileID: 1755187536}
-    - target: {fileID: 6564720513299290242, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6831784531550404431, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8619749779535685890, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
---- !u!1 &8619749779716514891 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6564720513299290242, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
-  m_PrefabInstance: {fileID: 8619749779716514890}
-  m_PrefabAsset: {fileID: 0}
 --- !u!222 &8666638655017992991
 CanvasRenderer:
   m_ObjectHideFlags: 0

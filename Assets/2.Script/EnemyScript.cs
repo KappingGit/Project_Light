@@ -148,7 +148,9 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
     {
         if (currHp > 0)
         {
-            
+            //몬스터의 피격 시스템 처리를 여기서 하지말 것, 만약 해당 몬스터가 weapon이라는 태그의 오브젝트를 맞았다면
+            // 해당 오브젝트의 공격력, 공격 타입을 받아와서 currHp에서 기입(계산하는 처리방법으로하기
+            // 현재 방식은 몬스터가 부딪혔을 때 수치만큼 데미지를 받는 형태임
             currHp -= 10; // 수치부분에 플레이어 공격 관련 수치를 넣으면 해결
             
         }

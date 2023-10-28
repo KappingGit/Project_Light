@@ -1200,7 +1200,9 @@ MonoBehaviour:
   idName: Boss01
   bossMaxHP: 10
   bossCurHP: 0
-  dieDirect_Effect: {fileID: 0}
+  dieDirect_Effect: {fileID: 6564720513299290242}
+  pattern03_Effect: {fileID: 6831784531550404427}
+  isTrigger: 0
   spawnerPos: {fileID: 0}
   isVictory: 0
 --- !u!114 &5277826694057070091
@@ -1216,6 +1218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerPos: {fileID: 0}
+  isCharge: 0
   isStun: 0
 --- !u!1 &5614095580386533333
 GameObject:
@@ -2162,8 +2165,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tornado_Orb
       objectReference: {fileID: 0}
+    - target: {fileID: 4729280532720925703, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+--- !u!1 &6564720513299290242 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4729280532720925703, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
+  m_PrefabInstance: {fileID: 1926226796880897157}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6564720513299290246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4729280532720925699, guid: 76097b7fdcd913245ba5ce95ed95330e, type: 3}
@@ -2186,7 +2198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4729280532720925699, guid: 875a402036d22da43992ce1f7fadae53, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4729280532720925699, guid: 875a402036d22da43992ce1f7fadae53, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2230,6 +2242,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 875a402036d22da43992ce1f7fadae53, type: 3}
+--- !u!1 &6831784531550404427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4729280532720925703, guid: 875a402036d22da43992ce1f7fadae53, type: 3}
+  m_PrefabInstance: {fileID: 2264915079316226892}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6831784531550404431 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4729280532720925699, guid: 875a402036d22da43992ce1f7fadae53, type: 3}
