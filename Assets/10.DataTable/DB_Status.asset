@@ -13,210 +13,240 @@ MonoBehaviour:
   m_Name: DB_Status
   m_EditorClassIdentifier: 
   PlayerStatus:
-  - indexLevel01: 1
+  - playerUID: 0
+    indexLevel01: 1
     playerHP: 5
     attackRate: 0.5
     addEXP: 0
     coolDownTime: 1
     playerDamage: 10
     maxEXP: 10
-  - indexLevel01: 2
+  - playerUID: 1
+    indexLevel01: 2
     playerHP: 0
     attackRate: 0
     addEXP: 0.1
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 15
-  - indexLevel01: 3
+  - playerUID: 2
+    indexLevel01: 3
     playerHP: 0
     attackRate: 0
     addEXP: 0.2
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 20
-  - indexLevel01: 4
+  - playerUID: 3
+    indexLevel01: 4
     playerHP: 0
     attackRate: 0
     addEXP: 0.3
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 25
-  - indexLevel01: 5
+  - playerUID: 4
+    indexLevel01: 5
     playerHP: 0
     attackRate: 0
     addEXP: 0.4
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 30
-  - indexLevel01: 6
+  - playerUID: 5
+    indexLevel01: 6
     playerHP: 0
     attackRate: 0
     addEXP: 0.5
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 35
-  - indexLevel01: 7
+  - playerUID: 6
+    indexLevel01: 7
     playerHP: 0
     attackRate: 0
     addEXP: 0.6
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 40
-  - indexLevel01: 8
+  - playerUID: 7
+    indexLevel01: 8
     playerHP: 0
     attackRate: 0
     addEXP: 0.7
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 45
-  - indexLevel01: 9
+  - playerUID: 8
+    indexLevel01: 9
     playerHP: 0
     attackRate: 0
     addEXP: 0.8
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 50
-  - indexLevel01: 10
+  - playerUID: 9
+    indexLevel01: 10
     playerHP: 0
     attackRate: 0
     addEXP: 0.9
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 55
-  - indexLevel01: 11
+  - playerUID: 10
+    indexLevel01: 11
     playerHP: 0
     attackRate: 0
     addEXP: 1
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 60
-  - indexLevel01: 12
+  - playerUID: 11
+    indexLevel01: 12
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 65
-  - indexLevel01: 13
+  - playerUID: 12
+    indexLevel01: 13
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 70
-  - indexLevel01: 14
+  - playerUID: 13
+    indexLevel01: 14
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 75
-  - indexLevel01: 15
+  - playerUID: 14
+    indexLevel01: 15
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 80
-  - indexLevel01: 16
+  - playerUID: 15
+    indexLevel01: 16
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 85
-  - indexLevel01: 17
+  - playerUID: 16
+    indexLevel01: 17
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 90
-  - indexLevel01: 18
+  - playerUID: 17
+    indexLevel01: 18
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 95
-  - indexLevel01: 19
+  - playerUID: 18
+    indexLevel01: 19
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 100
-  - indexLevel01: 20
+  - playerUID: 19
+    indexLevel01: 20
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 105
-  - indexLevel01: 21
+  - playerUID: 20
+    indexLevel01: 21
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 110
-  - indexLevel01: 22
+  - playerUID: 21
+    indexLevel01: 22
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 115
-  - indexLevel01: 23
+  - playerUID: 22
+    indexLevel01: 23
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 120
-  - indexLevel01: 24
+  - playerUID: 23
+    indexLevel01: 24
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 125
-  - indexLevel01: 25
+  - playerUID: 24
+    indexLevel01: 25
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 130
-  - indexLevel01: 26
+  - playerUID: 25
+    indexLevel01: 26
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 135
-  - indexLevel01: 27
+  - playerUID: 26
+    indexLevel01: 27
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 140
-  - indexLevel01: 28
+  - playerUID: 27
+    indexLevel01: 28
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 145
-  - indexLevel01: 29
+  - playerUID: 28
+    indexLevel01: 29
     playerHP: 0
     attackRate: 0
     addEXP: 0
     coolDownTime: 0
     playerDamage: 0
     maxEXP: 150
-  - indexLevel01: 30
+  - playerUID: 29
+    indexLevel01: 30
     playerHP: 0
     attackRate: 0
     addEXP: 0
@@ -224,142 +254,436 @@ MonoBehaviour:
     playerDamage: 0
     maxEXP: 155
   MonsterStatus:
-  - indexLevel02: 1
+  - monsterUID: 0
+    indexLevel02: 1
     monsterHP: 10
     monsterSpeed: 25
     monsterGold: 2
     monsterEXP: 5
     monsterDamage: 1
-  - indexLevel02: 2
+  - monsterUID: 1
+    indexLevel02: 2
     monsterHP: 0
     monsterSpeed: 0
     monsterGold: 0
     monsterEXP: 0
     monsterDamage: 0
-  - indexLevel02: 3
+  - monsterUID: 2
+    indexLevel02: 3
     monsterHP: 0
     monsterSpeed: 0
     monsterGold: 0
     monsterEXP: 0
     monsterDamage: 0
-  - indexLevel02: 4
+  - monsterUID: 3
+    indexLevel02: 4
     monsterHP: 0
     monsterSpeed: 0
     monsterGold: 0
     monsterEXP: 0
     monsterDamage: 0
-  - indexLevel02: 5
+  - monsterUID: 4
+    indexLevel02: 5
     monsterHP: 0
     monsterSpeed: 0
     monsterGold: 0
     monsterEXP: 0
     monsterDamage: 0
-  AttackType:
-  - indexUID: 0
+  NomalAttack:
+  - nomalAttackUID: 0
     weaponType: 0
-    name: windSlash
     typeLevel: 0
+    name: windSlash
     coolTime: 0
     typeAbility: 0
-  - indexUID: 1
+    singleDamage: 0
+    spreadDamage: 0
+    spreadRange: 0
+    speedDown: 0
+  - nomalAttackUID: 1
     weaponType: 0
-    name: windSlash
     typeLevel: 1
-    coolTime: 0
-    typeAbility: 1.25
-  - indexUID: 2
-    weaponType: 0
     name: windSlash
-    typeLevel: 2
-    coolTime: 0
-    typeAbility: 1.5
-  - indexUID: 3
-    weaponType: 0
-    name: windSlash
-    typeLevel: 3
-    coolTime: 0
-    typeAbility: 1.75
-  - indexUID: 4
-    weaponType: 0
-    name: windSlash
-    typeLevel: 4
-    coolTime: 0
-    typeAbility: 2
-  - indexUID: 5
-    weaponType: 0
-    name: windSlash
-    typeLevel: 5
-    coolTime: 0
-    typeAbility: 2.5
-  - indexUID: 6
-    weaponType: 1
-    name: waterSlash
-    typeLevel: 0
     coolTime: 0
     typeAbility: 0
-  - indexUID: 7
-    weaponType: 1
-    name: waterSlash
-    typeLevel: 1
-    coolTime: 0
-    typeAbility: 0.8
-  - indexUID: 8
-    weaponType: 1
-    name: waterSlash
+    singleDamage: 1.25
+    spreadDamage: 0
+    spreadRange: 0
+    speedDown: 0
+  - nomalAttackUID: 2
+    weaponType: 0
     typeLevel: 2
-    coolTime: 0
-    typeAbility: 0.7
-  - indexUID: 9
-    weaponType: 1
-    name: waterSlash
-    typeLevel: 3
-    coolTime: 0
-    typeAbility: 0.6
-  - indexUID: 10
-    weaponType: 1
-    name: waterSlash
-    typeLevel: 4
-    coolTime: 0
-    typeAbility: 0.5
-  - indexUID: 11
-    weaponType: 1
-    name: waterSlash
-    typeLevel: 5
-    coolTime: 0
-    typeAbility: 0.4
-  - indexUID: 12
-    weaponType: 2
-    name: fireSlash
-    typeLevel: 0
+    name: windSlash
     coolTime: 0
     typeAbility: 0
-  - indexUID: 13
-    weaponType: 2
-    name: fireSlash
-    typeLevel: 1
-    coolTime: 0
-    typeAbility: 0.5
-  - indexUID: 14
-    weaponType: 2
-    name: fireSlash
-    typeLevel: 2
-    coolTime: 0
-    typeAbility: 0.25
-  - indexUID: 15
-    weaponType: 2
-    name: fireSlash
+    singleDamage: 1.5
+    spreadDamage: 0
+    spreadRange: 0
+    speedDown: 0
+  - nomalAttackUID: 3
+    weaponType: 0
     typeLevel: 3
+    name: windSlash
     coolTime: 0
-    typeAbility: 1
-  - indexUID: 16
-    weaponType: 2
-    name: fireSlash
+    typeAbility: 0
+    singleDamage: 1.75
+    spreadDamage: 0
+    spreadRange: 0
+    speedDown: 0
+  - nomalAttackUID: 4
+    weaponType: 0
     typeLevel: 4
+    name: windSlash
     coolTime: 0
-    typeAbility: 1.25
-  - indexUID: 17
-    weaponType: 2
-    name: fireSlash
+    typeAbility: 0
+    singleDamage: 2
+    spreadDamage: 0
+    spreadRange: 0
+    speedDown: 0
+  - nomalAttackUID: 5
+    weaponType: 0
     typeLevel: 5
+    name: windSlash
     coolTime: 0
-    typeAbility: 1.5
+    typeAbility: 0
+    singleDamage: 2.5
+    spreadDamage: 0
+    spreadRange: 0
+    speedDown: 0
+  - nomalAttackUID: 6
+    weaponType: 1
+    typeLevel: 0
+    name: waterSlash
+    coolTime: 0
+    typeAbility: 0
+    singleDamage: 0
+    spreadDamage: 0
+    spreadRange: 0
+    speedDown: 0
+  - nomalAttackUID: 7
+    weaponType: 1
+    typeLevel: 1
+    name: waterSlash
+    coolTime: 0
+    typeAbility: 0
+    singleDamage: 0
+    spreadDamage: 0
+    spreadRange: 0
+    speedDown: 0.2
+  - nomalAttackUID: 8
+    weaponType: 1
+    typeLevel: 2
+    name: waterSlash
+    coolTime: 0
+    typeAbility: 0
+    singleDamage: 0
+    spreadDamage: 0
+    spreadRange: 0
+    speedDown: 0.3
+  - nomalAttackUID: 9
+    weaponType: 1
+    typeLevel: 3
+    name: waterSlash
+    coolTime: 0
+    typeAbility: 0
+    singleDamage: 0
+    spreadDamage: 0
+    spreadRange: 0
+    speedDown: 0.4
+  - nomalAttackUID: 10
+    weaponType: 1
+    typeLevel: 4
+    name: waterSlash
+    coolTime: 0
+    typeAbility: 0
+    singleDamage: 0
+    spreadDamage: 0
+    spreadRange: 0
+    speedDown: 0.5
+  - nomalAttackUID: 11
+    weaponType: 1
+    typeLevel: 5
+    name: waterSlash
+    coolTime: 0
+    typeAbility: 0
+    singleDamage: 0
+    spreadDamage: 0
+    spreadRange: 0
+    speedDown: 0.6
+  - nomalAttackUID: 12
+    weaponType: 2
+    typeLevel: 0
+    name: fireSlash
+    coolTime: 0
+    typeAbility: 0
+    singleDamage: 0
+    spreadDamage: 0
+    spreadRange: 0
+    speedDown: 0
+  - nomalAttackUID: 13
+    weaponType: 2
+    typeLevel: 1
+    name: fireSlash
+    coolTime: 0
+    typeAbility: 0
+    singleDamage: 0
+    spreadDamage: 0.5
+    spreadRange: 0
+    speedDown: 0
+  - nomalAttackUID: 14
+    weaponType: 2
+    typeLevel: 2
+    name: fireSlash
+    coolTime: 0
+    typeAbility: 0
+    singleDamage: 0
+    spreadDamage: 0.75
+    spreadRange: 0
+    speedDown: 0
+  - nomalAttackUID: 15
+    weaponType: 2
+    typeLevel: 3
+    name: fireSlash
+    coolTime: 0
+    typeAbility: 0
+    singleDamage: 0
+    spreadDamage: 1
+    spreadRange: 0
+    speedDown: 0
+  - nomalAttackUID: 16
+    weaponType: 2
+    typeLevel: 4
+    name: fireSlash
+    coolTime: 0
+    typeAbility: 0
+    singleDamage: 0
+    spreadDamage: 1.25
+    spreadRange: 0
+    speedDown: 0
+  - nomalAttackUID: 17
+    weaponType: 2
+    typeLevel: 5
+    name: fireSlash
+    coolTime: 0
+    typeAbility: 0
+    singleDamage: 0
+    spreadDamage: 1.5
+    spreadRange: 0
+    speedDown: 0
+  SubSkill:
+  - subSkillUID: 0
+    weaponType: 0
+    typeLevel: 0
+    name: windDrill
+    coolTime: 0
+    typeAbility: 0
+    drillDamage: 0
+    drillCount: 0
+    penetDamage: 0
+    penetCount: 0
+    barrierDuration: 0
+    barrierCount: 0
+  - subSkillUID: 1
+    weaponType: 0
+    typeLevel: 1
+    name: windDrill
+    coolTime: 10
+    typeAbility: 0
+    drillDamage: 1
+    drillCount: 6
+    penetDamage: 0
+    penetCount: 0
+    barrierDuration: 0
+    barrierCount: 0
+  - subSkillUID: 2
+    weaponType: 0
+    typeLevel: 2
+    name: windDrill
+    coolTime: 9
+    typeAbility: 0
+    drillDamage: 1.25
+    drillCount: 6
+    penetDamage: 0
+    penetCount: 0
+    barrierDuration: 0
+    barrierCount: 0
+  - subSkillUID: 3
+    weaponType: 0
+    typeLevel: 3
+    name: windDrill
+    coolTime: 8
+    typeAbility: 0
+    drillDamage: 1.5
+    drillCount: 6
+    penetDamage: 0
+    penetCount: 0
+    barrierDuration: 0
+    barrierCount: 0
+  - subSkillUID: 4
+    weaponType: 0
+    typeLevel: 4
+    name: windDrill
+    coolTime: 7
+    typeAbility: 0
+    drillDamage: 1.75
+    drillCount: 6
+    penetDamage: 0
+    penetCount: 0
+    barrierDuration: 0
+    barrierCount: 0
+  - subSkillUID: 5
+    weaponType: 0
+    typeLevel: 5
+    name: windDrill
+    coolTime: 6
+    typeAbility: 0
+    drillDamage: 2
+    drillCount: 6
+    penetDamage: 0
+    penetCount: 0
+    barrierDuration: 0
+    barrierCount: 0
+  - subSkillUID: 6
+    weaponType: 1
+    typeLevel: 0
+    name: waterBarrier
+    coolTime: 0
+    typeAbility: 0
+    drillDamage: 0
+    drillCount: 0
+    penetDamage: 0
+    penetCount: 0
+    barrierDuration: 0
+    barrierCount: 0
+  - subSkillUID: 7
+    weaponType: 1
+    typeLevel: 1
+    name: waterBarrier
+    coolTime: 30
+    typeAbility: 0
+    drillDamage: 0
+    drillCount: 0
+    penetDamage: 0
+    penetCount: 0
+    barrierDuration: 3
+    barrierCount: 1
+  - subSkillUID: 8
+    weaponType: 1
+    typeLevel: 2
+    name: waterBarrier
+    coolTime: 25
+    typeAbility: 0
+    drillDamage: 0
+    drillCount: 0
+    penetDamage: 0
+    penetCount: 0
+    barrierDuration: 3
+    barrierCount: 1
+  - subSkillUID: 9
+    weaponType: 1
+    typeLevel: 3
+    name: waterBarrier
+    coolTime: 20
+    typeAbility: 0
+    drillDamage: 0
+    drillCount: 0
+    penetDamage: 0
+    penetCount: 0
+    barrierDuration: 3
+    barrierCount: 1
+  - subSkillUID: 10
+    weaponType: 1
+    typeLevel: 4
+    name: waterBarrier
+    coolTime: 15
+    typeAbility: 0
+    drillDamage: 0
+    drillCount: 0
+    penetDamage: 0
+    penetCount: 0
+    barrierDuration: 3
+    barrierCount: 1
+  - subSkillUID: 11
+    weaponType: 1
+    typeLevel: 5
+    name: waterBarrier
+    coolTime: 10
+    typeAbility: 0
+    drillDamage: 0
+    drillCount: 0
+    penetDamage: 0
+    penetCount: 0
+    barrierDuration: 3
+    barrierCount: 1
+  - subSkillUID: 12
+    weaponType: 2
+    typeLevel: 0
+    name: fireBall
+    coolTime: 0
+    typeAbility: 0
+    drillDamage: 0
+    drillCount: 0
+    penetDamage: 0
+    penetCount: 0
+    barrierDuration: 0
+    barrierCount: 0
+  - subSkillUID: 13
+    weaponType: 2
+    typeLevel: 1
+    name: fireBall
+    coolTime: 10
+    typeAbility: 0
+    drillDamage: 0
+    drillCount: 0
+    penetDamage: 1.5
+    penetCount: 20
+    barrierDuration: 0
+    barrierCount: 0
+  - subSkillUID: 14
+    weaponType: 2
+    typeLevel: 2
+    name: fireBall
+    coolTime: 9
+    typeAbility: 0
+    drillDamage: 0
+    drillCount: 0
+    penetDamage: 2
+    penetCount: 20
+    barrierDuration: 0
+    barrierCount: 0
+  - subSkillUID: 15
+    weaponType: 2
+    typeLevel: 3
+    name: fireBall
+    coolTime: 8
+    typeAbility: 0
+    drillDamage: 0
+    drillCount: 0
+    penetDamage: 2.5
+    penetCount: 20
+    barrierDuration: 0
+    barrierCount: 0
+  - subSkillUID: 16
+    weaponType: 2
+    typeLevel: 4
+    name: fireBall
+    coolTime: 7
+    typeAbility: 0
+    drillDamage: 0
+    drillCount: 0
+    penetDamage: 3
+    penetCount: 20
+    barrierDuration: 0
+    barrierCount: 0
+  - subSkillUID: 17
+    weaponType: 2
+    typeLevel: 5
+    name: fireBall
+    coolTime: 6
+    typeAbility: 0
+    drillDamage: 0
+    drillCount: 0
+    penetDamage: 3.5
+    penetCount: 20
+    barrierDuration: 0
+    barrierCount: 0

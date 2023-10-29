@@ -927,7 +927,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c331403a0f99b5049883a56b14f0a303, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 938ae01c846327c4781f4f4e6bc1cc13, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3802,7 +3802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curTime: 0
-  bossAppearanceTime: 60
+  bossAppearanceTime: 10
   bossSpawnActive: 0
   post_P_Dark: {fileID: 2000744058}
   cameraShake: {fileID: 963194232}
@@ -4213,10 +4213,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 443499206, guid: 2c34f6cf307a5cc45a2c0685a5e98f26, type: 3}
+    - target: {fileID: 1459479959, guid: 2c34f6cf307a5cc45a2c0685a5e98f26, type: 3}
       propertyPath: shootPos
       value: 
       objectReference: {fileID: 2074703660841281484}
+    - target: {fileID: 1459479959, guid: 2c34f6cf307a5cc45a2c0685a5e98f26, type: 3}
+      propertyPath: statusDB
+      value: 
+      objectReference: {fileID: 11400000, guid: 004adbcc68a2c034c9deaf3a46df007b, type: 2}
     - target: {fileID: 4624476961151195559, guid: 2c34f6cf307a5cc45a2c0685a5e98f26, type: 3}
       propertyPath: m_Name
       value: NomalAttack_WindSlash
@@ -4265,8 +4269,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 443499206, guid: 2c34f6cf307a5cc45a2c0685a5e98f26, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c34f6cf307a5cc45a2c0685a5e98f26, type: 3}
 --- !u!1 &449750295
 GameObject:
@@ -13762,26 +13765,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448497859}
   m_CullTransparentMesh: 1
---- !u!1 &1459479952 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4624476961151195559, guid: 2c34f6cf307a5cc45a2c0685a5e98f26, type: 3}
+--- !u!114 &1459479959 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1459479959, guid: 2c34f6cf307a5cc45a2c0685a5e98f26, type: 3}
   m_PrefabInstance: {fileID: 443499204}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1459479959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459479952}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce301fdfeede57142a3a67024bce16e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idName: NomalAttack_WindSlash
-  bulletSpeed: 40
-  shootPos: {fileID: 2074703660841281484}
 --- !u!1 &1473391408
 GameObject:
   m_ObjectHideFlags: 0
@@ -14407,6 +14401,10 @@ PrefabInstance:
       propertyPath: shootPos
       value: 
       objectReference: {fileID: 2074703660841281484}
+    - target: {fileID: 1557394545, guid: 624385acbb160c9468f155682a5d5c4b, type: 3}
+      propertyPath: statusDB
+      value: 
+      objectReference: {fileID: 11400000, guid: 004adbcc68a2c034c9deaf3a46df007b, type: 2}
     - target: {fileID: 1557394545, guid: 624385acbb160c9468f155682a5d5c4b, type: 3}
       propertyPath: weaponTypeName
       value: waterSlash
@@ -17219,6 +17217,10 @@ PrefabInstance:
       propertyPath: shootPos
       value: 
       objectReference: {fileID: 2074703660841281484}
+    - target: {fileID: 1914333434, guid: 3e46f87552dc46045be09ccdad80bd5b, type: 3}
+      propertyPath: statusDB
+      value: 
+      objectReference: {fileID: 11400000, guid: 004adbcc68a2c034c9deaf3a46df007b, type: 2}
     - target: {fileID: 1914333434, guid: 3e46f87552dc46045be09ccdad80bd5b, type: 3}
       propertyPath: weaponTypeName
       value: fireSlash

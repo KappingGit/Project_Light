@@ -13,5 +13,13 @@ public class DB_Status : ScriptableObject
 
 	public List<DB_StatusEntity> PlayerStatus; // Replace 'EntityType' to an actual type that is serializable.
 	public List<DB_StatusEntity_02> MonsterStatus; // Replace 'EntityType' to an actual type that is serializable.
-	public List<DB_StatusEntity_03> AttackType; // Replace 'EntityType' to an actual type that is serializable.
+	//public List<DB_StatusEntity_03> AttackType; // Replace 'EntityType' to an actual type that is serializable.
+
+	// 데이터 테이블 세분화(최신화)
+
+	public List<DB_StatusEntity_03> NomalAttack; // Replace 'EntityType' to an actual type that is serializable.
+	public List<DB_StatusEntity_04> SubSkill; // Replace 'EntityType' to an actual type that is serializable.
+	//public List<DB_StatusEntity_05> MainSkill; // Replace 'EntityType' to an actual type that is serializable.
+	//public List<DB_StatusEntity_06> PassiveSkill; // Replace 'EntityType' to an actual type that is serializable.
+
 }

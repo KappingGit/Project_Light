@@ -62,7 +62,7 @@ public class PlayerShooting : MonoBehaviour
 
                 if (isFire)
                 {
-                    StartCoroutine(AttackRate(weaponType));
+                    StartCoroutine(AttackRate(weaponType)); //딕셔너리로 하면 이부분과 딕셔너리 부분이 오류남
                     
                 }
 
@@ -117,8 +117,8 @@ public class PlayerShooting : MonoBehaviour
         //PlayerAnimControl();
         #endregion
 
-
-        if (UI_Script.instance.isSubSkillBtn01)// UI 서브 스킬 버튼을 눌렀으면...
+        // 서브 스킬 1번 버튼
+        if (UI_Script.instance.isSubSkillBtn01 || Input.GetKeyDown(KeyCode.J))// UI 서브 스킬 버튼을 눌렀으면...
         {
             
             UI_Script.instance.isSubSkillBtn01 = false;
@@ -137,7 +137,8 @@ public class PlayerShooting : MonoBehaviour
 
         }
 
-        if (UI_Script.instance.isSubSkillBtn02)// UI 서브 스킬 버튼을 눌렀으면...
+        // 서브 스킬 2번 버튼
+        if (UI_Script.instance.isSubSkillBtn02 || Input.GetKeyDown(KeyCode.L))// UI 서브 스킬 버튼을 눌렀으면...
         {
             
             UI_Script.instance.isSubSkillBtn02 = false;

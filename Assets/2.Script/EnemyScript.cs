@@ -109,9 +109,9 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
     [SerializeField]
     private DB_Status statusDB; // 에셋화 되어있는 데이터테이블 가져오기
 
-    private int maxHp; // 몬스터의 최대 체력
+    private float maxHp; // 몬스터의 최대 체력
 
-    private int currHp; // 몬스터의 현재 체력
+    private float currHp; // 몬스터의 현재 체력
 
     // 몬스터 HP (난이도 테이블 사용)
     private void EnemyHP() 
@@ -152,7 +152,16 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
             // 해당 오브젝트의 공격력, 공격 타입을 받아와서 currHp에서 기입(계산하는 처리방법으로하기
             // 현재 방식은 몬스터가 부딪혔을 때 수치만큼 데미지를 받는 형태임
             currHp -= 10; // 수치부분에 플레이어 공격 관련 수치를 넣으면 해결
-            
+
+            // 만약, 해당 오브젝트의 UID nomalAttackUID가 1이라면 바람 기본 공격 1레벨짜리 공격을 받은 것
+            // 해당 nomalAttackUID의 공격 값을 currHp로 처리
+            // 원래 처음 생각으로는 if(해당 UID라면){해당하는 레벨의 함수를 불러온다}
+            // 하지만 위 방식은 너무 비효율적임 Dictionary를 활용
+
+
+
+
+
         }
 
         if (currHp <= 0) // 현재 체력이 떨어지면...
