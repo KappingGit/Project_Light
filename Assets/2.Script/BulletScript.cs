@@ -146,13 +146,13 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
 
         //해당 딕셔너리 변수를 썼을때 문제가 없음
         //windSlashType.Add(statusDB.NomalAttack[1].nomalAttackUID, statusDB.NomalAttack[1].singleDamage);
-        
-        //Debug.Log("해당 기본공격은 바람 기본 평타 1레벨입니다. " + windSlashType[0]);
-        
-        
-    }
-        
 
+        //Debug.Log("해당 기본공격은 바람 기본 평타 1레벨입니다. " + windSlashType[0]);
+
+
+    }
+
+   
     private void Update()
     {
         BulletSpeed();
@@ -182,8 +182,16 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
 
     }
 
-    
+    private void InitBullet() // 초기화 로직 함수
+    {
+        BulletSpawnPos();
+        //CurrentWindSlashType();
+        SlashEffect();
+        //hitObj = GetComponentInChildren<GameObject>();
 
+
+    }
+       
     //밑에 있는 함수는 WindSlahScript.cs의 자식 함수로 사용하려고 했던 잔재함수
     public virtual float WindSlashTypeDamage()
     {
@@ -262,15 +270,7 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
         bulletRig.velocity = new Vector3(0, 0, bulletSpeed);
     }
 
-    private void InitBullet() // 초기화 로직 함수
-    {
-        BulletSpawnPos();
-        //CurrentWindSlashType();
-        SlashEffect();
-        //hitObj = GetComponentInChildren<GameObject>();
-
-
-    }
+    
 
     private void OnTargetReached() // 반환 작업용 함수
     {

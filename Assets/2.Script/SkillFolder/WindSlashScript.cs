@@ -58,7 +58,7 @@ public class WindSlashScript : BulletScript
         //float path = 0.5f;
 
         Debug.Log("자식 스크립트의 WeaponTypeDamage() 함수 실행");
-
+                
         return finalDamage;
 
         
