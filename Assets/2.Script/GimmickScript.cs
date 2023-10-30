@@ -49,6 +49,12 @@ public class GimmickScript : MonoBehaviour, IPoolObject
         {
             gimmickRig.velocity = new Vector3(0, 0, -gimmickSpeed);
         }
+
+        // 보스가 죽게 되면 모든 기믹 토네이도가 반환되게함
+        if (BossScript.instance.isVictory)
+        {
+            GimmickManager.instance.GimmickReturnPool(this);
+        }
                         
     }
 
