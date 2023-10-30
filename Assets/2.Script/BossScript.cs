@@ -32,7 +32,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
         bossAnim = GetComponent<Animator>();
         bossTrans = GetComponent<Transform>();
-        isVictory = false;
+        isBossDie = false;
     }
         
     private void Update()
@@ -179,7 +179,7 @@ public class BossScript : MonoBehaviour, IPoolObject
     }
 
     [HideInInspector]
-    public bool isVictory;
+    public bool isBossDie;
 
     IEnumerator DieDelay() // 해당 코루틴에는 반환 작업과 승리 UI작업이 들어가 있을거임
     {
@@ -187,11 +187,11 @@ public class BossScript : MonoBehaviour, IPoolObject
 
         //todo: 여기다가 승리 UI실행하기
         Debug.Log("승리했습니다");
-        isVictory = true;
+        isBossDie = true;
 
         yield return YieldInstuctionCash.WaitForSeconds(5f);
 
-        isVictory = false;
+        isBossDie = false;
 
         yield return YieldInstuctionCash.WaitForSeconds(2f);
         

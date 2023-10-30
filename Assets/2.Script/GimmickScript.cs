@@ -51,10 +51,14 @@ public class GimmickScript : MonoBehaviour, IPoolObject
         }
 
         // 보스가 죽게 되면 모든 기믹 토네이도가 반환되게함
-        if (BossScript.instance.isVictory)
+        if (BossManager.instance.bossSpawnActive)
         {
-            GimmickManager.instance.GimmickReturnPool(this);
+            if (BossScript.instance.isBossDie)
+            {
+                GimmickManager.instance.GimmickReturnPool(this);
+            }
         }
+        
                         
     }
 

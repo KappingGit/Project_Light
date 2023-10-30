@@ -105,7 +105,7 @@ public class UI_Script : MonoBehaviour
     {
         if (BossManager.instance.bossSpawnActive)
         {
-            if (BossScript.instance.isVictory)
+            if (BossScript.instance.isBossDie)
             {
                 victoryUI.gameObject.SetActive(true);
             }
@@ -311,17 +311,31 @@ public class UI_Script : MonoBehaviour
         if (isGetSkill) // 스킬을 얻었다면...
         {
             popupAttribute.gameObject.SetActive(false); // 해당 스킬 얻는 팝업 끄기
+            isGetSkill = false;
         }
     }
 
     //3개를 분리?
     public void GetSkillBtn02()
     {
+        isGetSkill = true;
+        Time.timeScale = 1f;
 
+        if (isGetSkill) // 스킬을 얻었다면...
+        {
+            popupAttribute.gameObject.SetActive(false); // 해당 스킬 얻는 팝업 끄기
+            
+        }
     }
     public void GetSkillBtn03()
     {
+        isGetSkill = true;
+        Time.timeScale = 1f;
 
+        if (isGetSkill) // 스킬을 얻었다면...
+        {
+            popupAttribute.gameObject.SetActive(false); // 해당 스킬 얻는 팝업 끄기
+        }
     }
     private void GetSkillPopup() // 레벨업 후 스킬 획득 팝업관련
     {

@@ -75,16 +75,16 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
                 OnTargetReached(); //반환 함수
                 allReturnDone = true;
             }
-            
+
+            if (BossScript.instance.isBossDie)
+            {
+                OnTargetReached();
+            }
         }
 
         // 해당 트리거 만들 => EnemyScript.cs => isTrigger bool is true
         // 해당 Null상태라서 오류가 뜸
-        if (BossScript.instance.isVictory)
-        {
-            OnTargetReached();
-        }
-        
+                
         enemyTrans.transform.position = transform.position;
 
     }    

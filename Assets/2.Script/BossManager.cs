@@ -35,6 +35,7 @@ public class BossManager : MonoBehaviour
     private void Update()
     {
         BossTimer();
+        
 
     }
 
