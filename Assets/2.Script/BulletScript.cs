@@ -95,10 +95,12 @@ EffectManager에 있는 순서대로
 // 무기 타입 열거형
 public enum WeaponType
 {
-    windSlash,
-    warterSlash,
-    fireSlash,
-    windDrill,
+    _windSlash,
+    _warterSlash,
+    _fireSlash,
+    _windDrill,
+    _fireBall,
+    _waterBarrier
     
 }
 
@@ -111,8 +113,7 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
     // 새로운 방식의 코드(딕셔너리와 열거형)
     // 주의 함수 이름과 똑같은게 있음 (좀 더 좋은 이름이 있으면 선정)
     protected WeaponType currentWeaponType;
-    
-    
+        
 
     //[SerializeField]
     //private int nomalAttackNum; // 해당 오브젝트의 넘버
@@ -142,14 +143,15 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
         //SlashEffect(); // 공격이 나갔을 때...
 
         //자식 클래스에 있는 함수
-        WindSlashTypeDamage();
+        //WindSlashTypeDamage(1);
 
         //해당 딕셔너리 변수를 썼을때 문제가 없음
         //windSlashType.Add(statusDB.NomalAttack[1].nomalAttackUID, statusDB.NomalAttack[1].singleDamage);
 
         //Debug.Log("해당 기본공격은 바람 기본 평타 1레벨입니다. " + windSlashType[0]);
 
-
+        // Awake에서 한번만 리스트화
+        WindSlash_TypeList();
     }
 
    
@@ -165,17 +167,17 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
         switch (currentWeaponType)
         {
             // 만약 WeaponType의 형태가 바람 기본 공격이라면...
-            case WeaponType.windSlash:
+            case WeaponType._windSlash:
                 
                 break;
 
             // 만약 WeaponType의 형태가 물 기본 공격이라면...
-            case WeaponType.warterSlash:
+            case WeaponType._warterSlash:
 
                 break;
 
             // 만약 WeaponType의 형태가 불 기본 공격이라면...
-            case WeaponType.fireSlash:
+            case WeaponType._fireSlash:
 
                 break;
         }
@@ -185,17 +187,26 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
     private void InitBullet() // 초기화 로직 함수
     {
         BulletSpawnPos();
-        //CurrentWindSlashType();
+        
         SlashEffect();
         //hitObj = GetComponentInChildren<GameObject>();
 
+       
+    }
+
+    //WindSlahScript.cs의 자식 함수로 사용하려고 했던 재정의 배경 함수
+    // 윈드 슬래쉬의 데이터를 뽑아온다
+    public virtual void WindSlash_TypeList()
+    {
 
     }
-       
-    //밑에 있는 함수는 WindSlahScript.cs의 자식 함수로 사용하려고 했던 잔재함수
-    public virtual float WindSlashTypeDamage()
+
+    //밑에 있는 함수는 WindSlahScript.cs의 자식 함수로 사용하려고 했던 재정의 배경 함수
+    // 윈드 슬래쉬의 데이터를 뽑아온 데이터를 데미지 수식에 추가
+    public virtual float WindSlashTypeDamage(int nomalAttackUID)
     {
-        
+
+
         // 임시 반환용도
         float path = 0f;
         Debug.Log("해당 디버그는 부모 함수 디버그이다.");

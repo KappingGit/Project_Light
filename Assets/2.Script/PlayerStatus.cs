@@ -218,6 +218,9 @@ public class PlayerStatus : MonoBehaviour
 
     #endregion
 
+    // 公扁 加己 内靛 累己窍扁
+    [HideInInspector]
+    public int nomalAttackUID;
 
 
 

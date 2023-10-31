@@ -150,6 +150,18 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
     {
 
     }
+    
+    // 어떤 무기 닿았는지 알기 위한 함수
+    private float WhatWeaponType()
+    {
+        if (true) // 만약 바람 속성 무기라면...
+        {
+            float damage = BulletScript.instance.WindSlashTypeDamage(1);
+
+            return damage;
+
+        }
+    }
 
     private void Hit() // 최종 데미지 피격 함수
     {
@@ -158,15 +170,18 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
             //몬스터의 피격 시스템 처리를 여기서 하지말 것, 만약 해당 몬스터가 weapon이라는 태그의 오브젝트를 맞았다면
             // 해당 오브젝트의 공격력, 공격 타입을 받아와서 currHp에서 기입(계산하는 처리방법으로하기
             // 현재 방식은 몬스터가 부딪혔을 때 수치만큼 데미지를 받는 형태임
-            currHp -= 10; // 수치부분에 플레이어 공격 관련 수치를 넣으면 해결
+            //currHp -= 10; // 수치부분에 플레이어 공격 관련 수치를 넣으면 해결
 
             // 만약, 해당 오브젝트의 UID nomalAttackUID가 1이라면 바람 기본 공격 1레벨짜리 공격을 받은 것
             // 해당 nomalAttackUID의 공격 값을 currHp로 처리
             // 원래 처음 생각으로는 if(해당 UID라면){해당하는 레벨의 함수를 불러온다}
             // 하지만 위 방식은 너무 비효율적임 Dictionary를 활용
 
+            Debug.Log("몬스터가 피격 받기전 체력입니다" + currHp);
 
+            currHp -= WhatWeaponType();
 
+            Debug.Log("몬스터가 피격을 받았습니다." + currHp);
 
 
         }

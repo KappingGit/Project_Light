@@ -77,7 +77,7 @@ public class DB_StatusEntity_03
 
     public int weaponType; // 기본공격 속성(타입)
 
-    public float typeLevel; // 기본공격 레벨
+    public int typeLevel; // 기본공격 레벨
 
     public string name; // 기본공격 이름
         
