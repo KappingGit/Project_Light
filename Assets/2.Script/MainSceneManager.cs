@@ -30,15 +30,18 @@ public class MainSceneManager : MonoBehaviour
         switch (nowScene.name)
         {
             case "MainScene01":
-                if (Input.GetMouseButtonDown(0) && !clicking) // 마우스 좌클릭을 하면 씬전환
+                if (!clicking)
                 {
-                    clicking = true;
-                    Debug.Log("마우스 버튼이 눌렸습니다.");
-                    if (clicking) // 파라매터 넣어서 "현재 페이드가 진행중이라면 클릭 안되게 처리
+                    if (Input.GetMouseButtonDown(0)) // 마우스 좌클릭을 하면 씬전환
                     {
-                        StartCoroutine(FadeOut());
-                    }
+                        clicking = true;
+                        Debug.Log("마우스 버튼이 눌렸습니다.");
+                        if (clicking) // 파라매터 넣어서 "현재 페이드가 진행중이라면 클릭 안되게 처리
+                        {
+                            StartCoroutine(FadeOut());
+                        }
 
+                    }
                 }
                 break;
 

@@ -17,6 +17,12 @@ public class PlayerStatus : MonoBehaviour
     // 참고: statusDB.시트이름.(여기에 뭐가 들어가지?? 영상에서는 Count가 들어간다);
     // statusDB.시트 이름.playerHP; => 풀이 : 데이터테이블 에셋화 변수.에셋화 변수 시트이름.각 직렬화 되어있는 클래스의 변수
 
+    [SerializeField]
+    private CameraShake cameraEffect;
+
+    [SerializeField]
+    private GameObject hitEffect; // 보스 출현 이펙트 재활용 뺄수도있음
+
     private void Awake()
     {
         if (PlayerStatus.instance == null)
@@ -32,6 +38,8 @@ public class PlayerStatus : MonoBehaviour
         
         playerGetGold = 0; // 골드 0으로 초기화
         isPlayerDie = false;
+
+        hitEffect.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -222,7 +230,26 @@ public class PlayerStatus : MonoBehaviour
     [HideInInspector]
     public int nomalAttackUID;
 
+    [HideInInspector]
+    public int windSlashNum;
 
+    // 기본 공격 타입 변경 함수
+    private void ChangeWeaponType()
+    {
+
+    }
+
+    // 서브 스킬 타입 변경 함수
+    private void ChangeSubSkillType()
+    {
+
+    }
+
+    // 메인 스킬 타입 변경 함수
+    private void ChangeMainSkillType()
+    {
+
+    }
 
 
     //------------------------------------------------------------------------------------------------------------------------
@@ -236,13 +263,16 @@ public class PlayerStatus : MonoBehaviour
     //1번 방향으로 제작해보기
 
     private bool isInvincible = false; // 일시 무적상태라면...
-
+        
     IEnumerator Invincible() // 일시 무적 처리
     {
         if (!isInvincible)
         {
             currHP -= statusDB.MonsterStatus[0].monsterDamage;
             //Debug.Log(statusDB.MonsterStatus[0].monsterDamage); //몬스터 데미지 측정
+
+            StartCoroutine(HitShakeCamera()); // 피격당했을 때 화면 흔들림
+            
             Debug.Log("무적상태입니다.");
             isInvincible = true;
             yield return YieldInstuctionCash.WaitForSeconds(2f);
@@ -270,6 +300,24 @@ public class PlayerStatus : MonoBehaviour
         Destroy(playerDieEffect);
                 
         StopCoroutine(PlayerDieEffect());
+    }
+
+    
+    IEnumerator HitShakeCamera()
+    {
+        cameraEffect.enabled = true;
+
+        hitEffect.gameObject.SetActive(true); // 좀더 이펙트를 넣어봄 뺄수도있음
+
+        CameraShake.instance.shakeRange = 0.05f;
+        CameraShake.instance.duration = 0.25f;
+
+        yield return YieldInstuctionCash.WaitForSeconds(0.5f);
+
+        cameraEffect.enabled = false;
+        hitEffect.gameObject.SetActive(false);
+
+        StopCoroutine(HitShakeCamera());
     }
 
 }

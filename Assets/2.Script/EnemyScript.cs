@@ -154,13 +154,19 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
     // 어떤 무기 닿았는지 알기 위한 함수
     private float WhatWeaponType()
     {
+        
+
         if (true) // 만약 바람 속성 무기라면...
         {
-            float damage = BulletScript.instance.WindSlashTypeDamage(1);
+            float damage = BulletScript.instance.WindSlashTypeDamage(1); // 해당 무기의 데미지
 
             return damage;
 
-        }
+        } 
+        //else if (true) // 만약 바람 서브 스킬이라면...
+        //{
+
+        //}
     }
 
     private void Hit() // 최종 데미지 피격 함수
@@ -177,11 +183,11 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
             // 원래 처음 생각으로는 if(해당 UID라면){해당하는 레벨의 함수를 불러온다}
             // 하지만 위 방식은 너무 비효율적임 Dictionary를 활용
 
-            Debug.Log("몬스터가 피격 받기전 체력입니다" + currHp);
+            //Debug.Log("몬스터가 피격 받기전 체력입니다" + currHp);
 
             currHp -= WhatWeaponType();
 
-            Debug.Log("몬스터가 피격을 받았습니다." + currHp);
+            //Debug.Log("몬스터가 피격을 받았습니다." + currHp);
 
 
         }

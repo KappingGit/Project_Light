@@ -40,8 +40,8 @@ public class WindSlashScript : BulletScript
     private float[] windSlashDamage = new float[6];
 
     // 해당 무기를 리스트로 뽑아온다
-    // 윈드 슬래쉬의 데이터를 뽑아온다
-    public override void WindSlash_TypeList()
+    
+    public override void WindSlash_TypeList() // 윈드 슬래쉬의 데이터를 뽑아온 다음 리스트화 시킴
     {
         for (int i = 0; i < 6; i++)
         {
@@ -126,7 +126,7 @@ public class WindSlashScript : BulletScript
         // 해당 부분을 열거형으로 간략하게 표현하기...
         // dictionary를 활용 UID가 0이라면 바람 기본 공격
 
-        windSlashType.Add(statusDB.NomalAttack[1].nomalAttackUID, statusDB.NomalAttack[1].singleDamage);
+        //windSlashType.Add(statusDB.NomalAttack[1].nomalAttackUID, statusDB.NomalAttack[1].singleDamage);
 
         Debug.Log("해당 기본공격은 바람 기본 평타 1레벨입니다. " + windSlashType[0]);
 

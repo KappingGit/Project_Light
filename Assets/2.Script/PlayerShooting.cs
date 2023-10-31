@@ -28,47 +28,56 @@ public class PlayerShooting : MonoBehaviour
         }
 
         isFire = false;
+        isTrigger = false;
     }
 
     private bool isFire;
 
+    private bool isTrigger;
+
     // || Input.GetTouch(0).phase == TouchPhase.Moved
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.K))
+
+        if (Input.GetKeyUp(KeyCode.K) && isTrigger)
         {
             //Debug.Log("손뗌 : 공격중단");
+            isTrigger = false;
             anim.SetBool("isFire", false);
-
-            isFire = false;
-
+                                    
         }
 
         #region 키보드 코드
 
-        if (Input.GetKeyDown(KeyCode.K) && !isFire)  //터치 누르고 있을때...
-        {            
-
-            if (!ChangeSceneManager.instance.fadeInOuting) // 페이드 중이 아니라면 발사하게
+        if (!isFire) // 발사중이 아니라면
+        {
+            if (Input.GetKey(KeyCode.K))  //키를 누르고 발사중이 아니라면...
             {
-                anim.SetBool("isFire", true);
-
-                //StartCoroutine(DelayTime());
-
-                isFire = true;
-                weaponType = 0; // 인스펙터와 지역변수의 실행 순서를 잘 이해를 해야 문제가 발생하지 않는다.
-                                // 문제점 : 인스펙터weaponType의 값을 변화시켜도 바뀌지 않는 문제가 발생, 함수안에 집어넣으니 해결
-                                //Debug.Log("장착된 무기 속성(인덱스 넘버) : " + weaponType);
-
-                if (isFire)
+                
+                if (!ChangeSceneManager.instance.fadeInOuting) // 페이드 중이 아니라면 발사하게
                 {
-                    StartCoroutine(AttackRate(weaponType)); //딕셔너리로 하면 이부분과 딕셔너리 부분이 오류남
-                    
+                    anim.SetBool("isFire", true);
+
+                    isTrigger = true; // 발사버튼 클릭
+
+                    weaponType = 0; // 인스펙터와 지역변수의 실행 순서를 잘 이해를 해야 문제가 발생하지 않는다.
+                                    // 문제점 : 인스펙터weaponType의 값을 변화시켜도 바뀌지 않는 문제가 발생, 함수안에 집어넣으니 해결
+                                    //Debug.Log("장착된 무기 속성(인덱스 넘버) : " + weaponType);
+
+                    if (isTrigger) //발사버튼이 클릭이라면...
+                    {
+                        Debug.Log("발사했습니다");
+                        StartCoroutine(AttackRate(weaponType)); //딕셔너리로 하면 이부분과 딕셔너리 부분이 오류남
+
+                    }
+
                 }
 
             }
-                   
         }
+
+        // 발사 코드
+        
 
         #endregion
 
@@ -77,42 +86,42 @@ public class PlayerShooting : MonoBehaviour
         //Input.GetTouch(0).phase == TouchPhase.Ended => 손가락을 땠다면...
 
         // 터치 발사
-        if (Input.touchCount > 0)
-        {
-            if (Input.GetTouch(0).phase == TouchPhase.Moved && !isFire)
-            {
-                //todo: 총알이 발사되는 코드
-                //BulletManager.instance.GetPoolBullet(); // 총알 오브젝트를 불러오는 코드
-                if (!ChangeSceneManager.instance.fadeInOuting) // 페이드 중이 아니라면 발사하게
-                {
-                    anim.SetBool("isFire", true);
+        //if (Input.touchCount > 0)
+        //{
+        //    if (Input.GetTouch(0).phase == TouchPhase.Moved && !isFire)
+        //    {
+        //        //todo: 총알이 발사되는 코드
+        //        //BulletManager.instance.GetPoolBullet(); // 총알 오브젝트를 불러오는 코드
+        //        if (!ChangeSceneManager.instance.fadeInOuting) // 페이드 중이 아니라면 발사하게
+        //        {
+        //            anim.SetBool("isFire", true);
 
-                    isFire = true;
+        //            isFire = true;
 
-                    if (isFire)
-                    {
-                        StartCoroutine(AttackRate(weaponType));
+        //            if (isFire)
+        //            {
+        //                StartCoroutine(AttackRate(weaponType));
 
-                    }
+        //            }
 
-                }
+        //        }
 
-            }
-            //else
-            //{
-            //    anim.SetBool("isFire", false);
+        //    }
+        //    //else
+        //    //{
+        //    //    anim.SetBool("isFire", false);
 
-            //        isFire = false;
+        //    //        isFire = false;
 
-            //        if (!isFire)
-            //        {
-            //            StopCoroutine(AttackRate());
-            //        }
+        //    //        if (!isFire)
+        //    //        {
+        //    //            StopCoroutine(AttackRate());
+        //    //        }
 
-            //        Debug.Log("화면에서 손가락을 뗐습니다.");
-            //}
+        //    //        Debug.Log("화면에서 손가락을 뗐습니다.");
+        //    //}
 
-        }
+        //}
 
         //PlayerAnimControl();
         #endregion
@@ -156,6 +165,9 @@ public class PlayerShooting : MonoBehaviour
             
 
         }
+
+
+
 
     }
 
@@ -229,11 +241,13 @@ public class PlayerShooting : MonoBehaviour
 
         // 공격 종류를 고르는 [변수 0 => 바람 공격, 1 => 물 공격, 2 => 불 공격] 나중에 테이블데이터와 연결
                 
-        while (isFire)
+        while (isTrigger) // 발사버튼이 클릭이라면..
         {
+            isFire = true; // 발사중
 
             BulletManager.instance.GetPoolBullet(weaponType); // 총알 오브젝트 불러오게하는 코드, 인덱스 번호에 따라 일반 공격을 불러옴
             //SubSkillManager.instance.GetPoolSkill(weaponType); // 스킬 테스트
+            
             yield return YieldInstuctionCash.WaitForSeconds(rate);
             //Debug.Log("rate" + rate);
             
@@ -247,9 +261,7 @@ public class PlayerShooting : MonoBehaviour
 
         }
         //Debug.Log("총알 발사 테스트");
-
-        isFire = false;
-
+        isFire = false; // 발사중단
         StopCoroutine(AttackRate(weaponType));
     }
 
@@ -267,7 +279,8 @@ public class PlayerShooting : MonoBehaviour
         //indexNum = 2; // 인스펙터와 지역변수의 실행 순서를 잘 이해를 해야 문제가 발생하지 않는다.
                         // 문제점 : 인스펙터weaponType의 값을 변화시켜도 바뀌지 않는 문제가 발생, 함수안에 집어넣으니 해결
                         //Debug.Log("장착된 무기 속성(인덱스 넘버) : " + weaponType);
-                                
+                            
+        
         SubSkillManager.instance.GetPoolSkill(indexNum); // 스킬 테스트
         yield return YieldInstuctionCash.WaitForSeconds(rate);
         Debug.Log("스킬 테스트");
@@ -277,10 +290,11 @@ public class PlayerShooting : MonoBehaviour
         StopCoroutine(SkillAttackRate(indexNum));
     }
 
-    IEnumerator DelayTime()
+    IEnumerator DelayTime() // 마구 눌렀을 때 연속발사 못하게
     {
+                
         yield return YieldInstuctionCash.WaitForSeconds(1f);
-        isFire = true;
+
         StopCoroutine(DelayTime());
     }
 

@@ -10,17 +10,27 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private AudioClip audioClip;
 
+    private bool isClick; // 해당 변수는 사운드 매니저에 있는 변수
+
     private void Awake()
     {
         theAudio = GetComponent<AudioSource>();
+
+        isClick = false;
+
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // 마우스 좌클릭을 하면 씬전환
+        if (!isClick)
         {
-            MainSceneStartSound();
+            if (Input.GetMouseButtonDown(0)) // 마우스 좌클릭을 하면 씬전환
+            {
+                isClick = true;
+                MainSceneStartSound();
+            }
         }
+        
     }
 
     private void MainSceneStartSound()

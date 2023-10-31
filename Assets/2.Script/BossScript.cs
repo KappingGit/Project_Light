@@ -19,6 +19,8 @@ public class BossScript : MonoBehaviour, IPoolObject
 
     //private Vector3 target = new Vector3(bossTrans.position.x, 3f, bossTrans.position.z);
 
+    private bool isBossPatternStop; 
+
     private void Awake()
     {
         //해당 스크립트 인스턴스
@@ -38,38 +40,36 @@ public class BossScript : MonoBehaviour, IPoolObject
     private void Update()
     {
         
-        if (isPurification)
+        if (!isPurification) // 보스가 죽는 연출동안 패턴 못나오게 하기
         {
-            //bossRig.velocity = new Vector3(0f, 20f, 0f);
-            //transform.position = Vector3.Lerp(transform.position, target, 0.5f);
+            
+            //보스 패턴3 기믹 파훼후 애니메니션 송출
+            if (BossPattern_Wind.instance.isStun)
+            {
+                bossAnim.SetBool("isStun", true);
+            }
+            else if (!BossPattern_Wind.instance.isStun)
+            {
+                bossAnim.SetBool("isStun", false);
+            }
+
+            if (isTrigger)
+            {
+                isTrigger = false; // 코루틴 브레이킹용
+                StartCoroutine(PatternEffectDelay()); // 보스패턴03의 코루틴
+            }
+
+            //보스 패턴03 이펙트 코루틴에서 떼어옴(PatternEffectDelay())
+            if (BossPattern_Wind.instance.isStun) // 보스가 스턴을 먹는다면(기믹 파훼 성공)
+            {
+                //GameObject patternObj01 = transform.GetChild(3).gameObject;
+                //patternObj01.gameObject.SetActive(false);
+
+                pattern03_Effect.gameObject.SetActive(false);
+
+            }
         }
-
-        //보스 패턴3 기믹 파훼후 애니메니션 송출
-        if (BossPattern_Wind.instance.isStun)
-        {
-            bossAnim.SetBool("isStun", true);
-        }
-        else if (!BossPattern_Wind.instance.isStun)
-        {
-            bossAnim.SetBool("isStun", false);
-        }
-
-        if (isTrigger)
-        {
-            isTrigger = false; // 코루틴 브레이킹용
-            StartCoroutine(PatternEffectDelay()); // 보스패턴03의 코루틴
-        }
-
-        //보스 패턴03 이펙트 코루틴에서 떼어옴(PatternEffectDelay())
-        if (BossPattern_Wind.instance.isStun) // 보스가 스턴을 먹는다면(기믹 파훼 성공)
-        {
-            //GameObject patternObj01 = transform.GetChild(3).gameObject;
-            //patternObj01.gameObject.SetActive(false);
-
-            pattern03_Effect.gameObject.SetActive(false);
-
-        }
-
+        
     }
 
     [SerializeField]

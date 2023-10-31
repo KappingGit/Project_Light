@@ -17,6 +17,8 @@ public class UI_Script : MonoBehaviour
     [SerializeField]
     private DB_Status statusDB; // 에셋화 되어있는 데이터테이블 가져오기
 
+    
+
     private void Awake()
     {
         StartCoroutine(StageUI());
@@ -25,6 +27,8 @@ public class UI_Script : MonoBehaviour
         {
             instance = this;
         }
+
+        isVictoryTrigger = false;
 
     }
 
@@ -65,6 +69,24 @@ public class UI_Script : MonoBehaviour
         DefeatUI(); // 주의 : 코루틴 걸려있음(브레이킹 해둠)
 
         Status_UI();
+
+
+        if (popupAttribute)
+        {
+            if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Keypad1))
+            {
+                GetSkillBtn();
+            }
+            else if (Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.Keypad2))
+            {
+                GetSkillBtn02();
+            }
+            else if (Input.GetKey(KeyCode.Alpha3) || Input.GetKey(KeyCode.Keypad3))
+            {
+                GetSkillBtn03();
+            }
+        }
+
     }
 
     [SerializeField]
@@ -101,6 +123,8 @@ public class UI_Script : MonoBehaviour
     [SerializeField]
     private GameObject victoryUI;
 
+    private bool isVictoryTrigger; // 승리 UI의 코루틴 브레이킹용 트리거
+
     private void VictoryUI() // 승리 UI
     {
         if (BossManager.instance.bossSpawnActive)
@@ -108,11 +132,16 @@ public class UI_Script : MonoBehaviour
             if (BossScript.instance.isBossDie)
             {
                 victoryUI.gameObject.SetActive(true);
+
+                if (!isGameOver && !isVictoryTrigger)
+                {
+                    isVictoryTrigger = true; // 승리 UI 코루틴 브레이킹용 bool값
+
+                    StartCoroutine(DefeatDelay());
+                    
+                }
             }
-            else
-            {
-                victoryUI.gameObject.SetActive(false);
-            }
+            
         }
         
     }
@@ -302,39 +331,49 @@ public class UI_Script : MonoBehaviour
     }
 
     private bool isGetSkill;
-
+    
     public void GetSkillBtn()
     {
+        
         isGetSkill = true;
         Time.timeScale = 1f;
 
         if (isGetSkill) // 스킬을 얻었다면...
         {
-            popupAttribute.gameObject.SetActive(false); // 해당 스킬 얻는 팝업 끄기
+            Debug.Log("레벨업 : 1번 스킬 획득");
             isGetSkill = false;
+            popupAttribute.gameObject.SetActive(false); // 해당 스킬 얻는 팝업 끄기
+            
         }
     }
 
     //3개를 분리?
     public void GetSkillBtn02()
     {
+        
+
         isGetSkill = true;
         Time.timeScale = 1f;
 
         if (isGetSkill) // 스킬을 얻었다면...
         {
+            Debug.Log("레벨업 : 2번 스킬 획득");
             popupAttribute.gameObject.SetActive(false); // 해당 스킬 얻는 팝업 끄기
-            
+            isGetSkill = false;
         }
     }
     public void GetSkillBtn03()
     {
+        
+
         isGetSkill = true;
         Time.timeScale = 1f;
 
         if (isGetSkill) // 스킬을 얻었다면...
         {
+            Debug.Log("레벨업 : 3번 스킬 획득");
             popupAttribute.gameObject.SetActive(false); // 해당 스킬 얻는 팝업 끄기
+            isGetSkill = false;
         }
     }
     private void GetSkillPopup() // 레벨업 후 스킬 획득 팝업관련
@@ -435,6 +474,17 @@ public class UI_Script : MonoBehaviour
         //페이드 아웃과 씬전환을 넣을 것
 
         StopCoroutine(BossWarning());
+    }
+
+
+    IEnumerator VictoryDelay() // 현재 플레이어 사망시 메인화면으로 넘어가는 방식이 동일하기에 isGameOver로 관리 나중에 바꿀 것...
+    {
+        yield return YieldInstuctionCash.WaitForSeconds(5f);
+
+        isGameOver = true;
+
+        yield return YieldInstuctionCash.WaitForSeconds(0.1f);
+        StopCoroutine(VictoryDelay());
     }
 
     [HideInInspector]

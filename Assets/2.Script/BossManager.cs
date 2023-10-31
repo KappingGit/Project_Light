@@ -88,10 +88,12 @@ public class BossManager : MonoBehaviour
 
     IEnumerator Delay(CameraShake cameraShake)
     {
-        Debug.Log("카메라 쉐이크 딜레이 코루틴 실행 ");
+        //Debug.Log("카메라 쉐이크 딜레이 코루틴 실행 ");
         isTrigger = true;
 
         cameraShake.enabled = true;
+        CameraShake.instance.shakeRange = 0.1f;
+        CameraShake.instance.duration = 0.5f;
 
         yield return YieldInstuctionCash.WaitForSeconds(1.5f);
 

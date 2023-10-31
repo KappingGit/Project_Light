@@ -195,15 +195,15 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
     }
 
     //WindSlahScript.cs의 자식 함수로 사용하려고 했던 재정의 배경 함수
-    // 윈드 슬래쉬의 데이터를 뽑아온다
-    public virtual void WindSlash_TypeList()
+    // 윈드 슬래쉬의 데이터를 뽑아서 리스트화 시켰다
+    public virtual void WindSlash_TypeList() // 윈드 슬래쉬의 데이터를 뽑아서 리스트화 함수 자식: WindSlashScript
     {
 
     }
 
     //밑에 있는 함수는 WindSlahScript.cs의 자식 함수로 사용하려고 했던 재정의 배경 함수
     // 윈드 슬래쉬의 데이터를 뽑아온 데이터를 데미지 수식에 추가
-    public virtual float WindSlashTypeDamage(int nomalAttackUID)
+    public virtual float WindSlashTypeDamage(int nomalAttackUID)//자식: WindSlashScript
     {
 
 
