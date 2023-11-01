@@ -5186,7 +5186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curTime: 0
-  bossAppearanceTime: 60
+  bossAppearanceTime: 5
   bossSpawnActive: 0
   post_P_Dark: {fileID: 2000744058}
   cameraShake: {fileID: 963194232}
@@ -10746,10 +10746,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 891632502, guid: 11f6e204a533e084fb34872b4909fc09, type: 3}
-      propertyPath: statusDB
-      value: 
-      objectReference: {fileID: 11400000, guid: 004adbcc68a2c034c9deaf3a46df007b, type: 2}
-    - target: {fileID: 891632502, guid: 11f6e204a533e084fb34872b4909fc09, type: 3}
       propertyPath: spawnerPos
       value: 
       objectReference: {fileID: 1755187536}
@@ -10799,11 +10795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8844450475829558814, guid: 11f6e204a533e084fb34872b4909fc09, type: 3}
       propertyPath: m_Name
-      value: C_WindSlime_Add
-      objectReference: {fileID: 0}
-    - target: {fileID: 8844450475829558814, guid: 11f6e204a533e084fb34872b4909fc09, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: C_WindSlime_1.0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11f6e204a533e084fb34872b4909fc09, type: 3}
@@ -11734,7 +11726,7 @@ MonoBehaviour:
     m_Bits: 2147483648
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
-  antialiasingMode: 0
+  antialiasingMode: 3
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25
@@ -29816,10 +29808,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Death_Effect_Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6334358936616895986, guid: 2a35e28dcd903c649ab88ba9357b38e0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a35e28dcd903c649ab88ba9357b38e0, type: 3}
 --- !u!224 &6357110683265859347
@@ -30522,10 +30510,6 @@ PrefabInstance:
     - target: {fileID: 7144357244179306299, guid: ead38a5bd1b1b804c93f4fb6bf3566cd, type: 3}
       propertyPath: m_Name
       value: FoldingCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 7144357244179306299, guid: ead38a5bd1b1b804c93f4fb6bf3566cd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ead38a5bd1b1b804c93f4fb6bf3566cd, type: 3}
@@ -31728,7 +31712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5277826694057070088, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
       propertyPath: bossMaxHP
-      value: 80
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5277826694057070088, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
       propertyPath: spawnerPos

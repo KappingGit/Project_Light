@@ -76,7 +76,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie
                 allReturnDone = true;
             }
 
-            if (BossScript.instance.isBossDie)
+            if (BossScript.instance.isTimeToReturn)
             {
                 OnTargetReached();
             }

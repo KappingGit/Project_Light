@@ -1167,7 +1167,11 @@ MonoBehaviour:
   idName: Boss01
   bossMaxHP: 100
   bossCurHP: 0
+  dieDirect_Effect: {fileID: 0}
+  pattern03_Effect: {fileID: 0}
+  isTrigger: 0
   spawnerPos: {fileID: 0}
+  isBossDie: 0
 --- !u!114 &7625374911889225119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,6 +1185,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerPos: {fileID: 0}
+  isCharge: 0
+  isStun: 0
 --- !u!1 &5190453457414032333
 GameObject:
   m_ObjectHideFlags: 0

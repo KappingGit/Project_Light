@@ -903,12 +903,12 @@ GameObject:
   - component: {fileID: 891632503}
   - component: {fileID: 891632502}
   m_Layer: 0
-  m_Name: C_WindSlime_Add
+  m_Name: C_WindSlime_1.0
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8211782261942166692
 Transform:
   m_ObjectHideFlags: 0
@@ -1032,6 +1032,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idName: Monster01
-  statusDB: {fileID: 0}
+  statusDB: {fileID: 11400000, guid: 004adbcc68a2c034c9deaf3a46df007b, type: 2}
   isDie: 0
   spawnerPos: {fileID: 0}

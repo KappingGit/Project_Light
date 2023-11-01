@@ -275,7 +275,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7745099367159513484, guid: d6a95c6ce4d23f346a7844750f97cce3, type: 3}
+  - {fileID: 2100000, guid: da779d0d82117fa4abd1b26aca0cb4a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1152,7 +1152,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7745099367159513484, guid: d6a95c6ce4d23f346a7844750f97cce3, type: 3}
+  - {fileID: 2100000, guid: da779d0d82117fa4abd1b26aca0cb4a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20899,7 +20899,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7745099367159513484, guid: d6a95c6ce4d23f346a7844750f97cce3, type: 3}
+  - {fileID: 2100000, guid: da779d0d82117fa4abd1b26aca0cb4a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21132,7 +21132,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7745099367159513484, guid: d6a95c6ce4d23f346a7844750f97cce3, type: 3}
+  - {fileID: 2100000, guid: da779d0d82117fa4abd1b26aca0cb4a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21489,7 +21489,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7745099367159513484, guid: d6a95c6ce4d23f346a7844750f97cce3, type: 3}
+  - {fileID: 2100000, guid: da779d0d82117fa4abd1b26aca0cb4a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -27239,11 +27239,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusDB: {fileID: 11400000, guid: 004adbcc68a2c034c9deaf3a46df007b, type: 2}
+  cameraEffect: {fileID: 0}
+  hitEffect: {fileID: 0}
   maxHP: 0
   currHP: 0
   isPlayerDie: 0
   playerAddEXP: 0
   playerGetGold: 0
+  nomalAttackUID: 0
+  windSlashNum: 0
   playerDieEffect: {fileID: 0}
 --- !u!114 &8098061865151146535
 MonoBehaviour:

@@ -34,6 +34,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
         bossAnim = GetComponent<Animator>();
         bossTrans = GetComponent<Transform>();
+        isTimeToReturn = false;
         isBossDie = false;
     }
         
@@ -181,13 +182,18 @@ public class BossScript : MonoBehaviour, IPoolObject
     [HideInInspector]
     public bool isBossDie;
 
+    [HideInInspector]
+    public bool isTimeToReturn; // 보스가 사망하는 시점 모든 기믹 몬스터 패턴등 반환하는 작업들어가는 용도
+
     IEnumerator DieDelay() // 해당 코루틴에는 반환 작업과 승리 UI작업이 들어가 있을거임
     {
+        isTimeToReturn = true; // 보스가 죽을때 바로 반환시키게끔 하는 변수
+
         yield return YieldInstuctionCash.WaitForSeconds(7f);
 
         //todo: 여기다가 승리 UI실행하기
         Debug.Log("승리했습니다");
-        isBossDie = true;
+        isBossDie = true; // 찐 죽음
 
         yield return YieldInstuctionCash.WaitForSeconds(5f);
 
