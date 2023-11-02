@@ -13,6 +13,10 @@ public class ChangeSceneManager : MonoBehaviour
 
     private bool cutSceneisActive;
 
+    [SerializeField]
+    private GameObject cutSceneVideo01;
+      
+
     private void Awake()
     {
 
@@ -29,10 +33,35 @@ public class ChangeSceneManager : MonoBehaviour
 
     private void Update()
     {
-        if (!cutSceneisActive)
+        // 조건문 나중에 정리하기
+        //if (BossManager.instance.bossAppearanceTime + 1f < BossManager.instance.curTime && BossManager.instance.curTime < BossManager.instance.bossAppearanceTime + 2f)
+        //{
+
+        //    if (!cutSceneisActive)
+        //    {
+        //        cutSceneisActive = true; //트리거 브레이킹
+        //        Debug.Log("컷신 시작");
+        //        CutScene01();
+        //    }
+        //}
+
+        if (BossManager.instance.bossAppearanceTime + 2f < BossManager.instance.curTime && BossManager.instance.curTime < BossManager.instance.bossAppearanceTime + 3f)
         {
-            CutScene01();
+
+            if (!cutSceneisActive)
+            {
+                cutSceneisActive = true; //트리거 브레이킹
+                //StartCoroutine(CutSceneVideo());
+
+                if (cutSceneisActive)
+                {
+                    
+                    StartCoroutine(CutSceneVideo());
+                }
+
+            }
         }
+
 
         if (UI_Script.instance.isGameOver) // 게임오버가 되면
         {
@@ -53,21 +82,17 @@ public class ChangeSceneManager : MonoBehaviour
 
         //SceneManager.LoadScene("B", LoadSceneMode.Additive);
 
-        
         //SceneManager.SetActiveScene(SceneManager.GetSceneByName("B"));
 
-        curProgress = BossManager.instance.curTime;
+        //SceneManager.LoadScene("Wind-Boss_Events", LoadSceneMode.Additive);
 
-        if (BossManager.instance.bossAppearanceTime + 1f < curProgress && curProgress < BossManager.instance.bossAppearanceTime + 2f) // 해당 코루틴에 if문을 넣는 것으로 바꿀것
-        {
-            cutSceneisActive = true;
-            //todo : 보스가 나타날 시점
-            
-            //StartCoroutine(CutSceneDelay());
+        //curProgress = BossManager.instance.curTime;
 
-            //SceneManager.SetActiveScene(SceneManager.GetSceneByName("DirectActionScene01"));
+        //todo : 보스가 나타날 시점
 
-        }
+        //StartCoroutine(CutSceneDelay());
+
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("DirectActionScene01"));
 
     }
 
@@ -145,6 +170,26 @@ public class ChangeSceneManager : MonoBehaviour
         yield return YieldInstuctionCash.WaitForSeconds(5f);
         
         StartCoroutine(FadeIn());
+    }
+
+    IEnumerator CutSceneVideo()
+    {
+        //Debug.Log("코루틴 시작");
+        Time.timeScale = 0f;
+        
+        cutSceneVideo01.gameObject.SetActive(true);
+
+
+        yield return new WaitForSecondsRealtime(19f); // 타임스케일에 영향안가게
+
+        //Debug.Log("웨잇폴 세컨드 끝");
+
+        Time.timeScale = 1f;
+
+        cutSceneVideo01.gameObject.SetActive(false);
+
+
+        StopCoroutine(CutSceneVideo());
     }
 
 }

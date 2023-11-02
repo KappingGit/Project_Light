@@ -5761,7 +5761,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0d9d9cd5b9423499ccd329044d27a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 94729ca3bd7f6c84eb39bef218a01505, type: 3}
+  startAudioClip: {fileID: 0}
+  windStageBgm: {fileID: 0}
+  levelUpClip: {fileID: 0}
 --- !u!82 &174522368
 AudioSource:
   m_ObjectHideFlags: 0

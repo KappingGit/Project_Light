@@ -316,7 +316,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2214b3a54a8506747809481ea4ecf1f5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e77b2f23e90c1384784c1ffb82a7a067, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -414,7 +414,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0d9d9cd5b9423499ccd329044d27a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 94729ca3bd7f6c84eb39bef218a01505, type: 3}
+  startAudioClip: {fileID: 8300000, guid: 94729ca3bd7f6c84eb39bef218a01505, type: 3}
+  windStageBgm: {fileID: 0}
+  levelUpClip: {fileID: 0}
 --- !u!1 &72525914
 GameObject:
   m_ObjectHideFlags: 0

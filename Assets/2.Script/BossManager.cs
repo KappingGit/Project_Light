@@ -61,7 +61,7 @@ public class BossManager : MonoBehaviour
 
                 if (!isTrigger)
                 {
-                    StartCoroutine(Delay(cameraShake));
+                    //StartCoroutine(Delay(cameraShake));
                 }
                
                 BossSpawn(); // 여기서 보스 소환 처리

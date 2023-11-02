@@ -1198,13 +1198,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idName: Boss01
+  rend: {fileID: 2924330635056665919}
   bossMaxHP: 10
   bossCurHP: 0
   dieDirect_Effect: {fileID: 6564720513299290242}
   pattern03_Effect: {fileID: 6831784531550404427}
   isTrigger: 0
   spawnerPos: {fileID: 0}
-  isVictory: 0
+  isBossDie: 0
+  isTimeToReturn: 0
 --- !u!114 &5277826694057070091
 MonoBehaviour:
   m_ObjectHideFlags: 0

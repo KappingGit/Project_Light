@@ -19,7 +19,10 @@ public class BossScript : MonoBehaviour, IPoolObject
 
     //private Vector3 target = new Vector3(bossTrans.position.x, 3f, bossTrans.position.z);
 
-    private bool isBossPatternStop; 
+    private bool isBossPatternStop;
+        
+    [SerializeField]
+    private Renderer rend;
 
     private void Awake()
     {
@@ -36,14 +39,18 @@ public class BossScript : MonoBehaviour, IPoolObject
         bossTrans = GetComponent<Transform>();
         isTimeToReturn = false;
         isBossDie = false;
-    }
+
         
+
+    }
+
     private void Update()
     {
         
+
         if (!isPurification) // 보스가 죽는 연출동안 패턴 못나오게 하기
         {
-            
+
             //보스 패턴3 기믹 파훼후 애니메니션 송출
             if (BossPattern_Wind.instance.isStun)
             {
@@ -70,9 +77,9 @@ public class BossScript : MonoBehaviour, IPoolObject
 
             }
         }
-        
-    }
 
+    }
+    
     [SerializeField]
     public float bossMaxHP; // 보스 최대체력
 
@@ -100,7 +107,7 @@ public class BossScript : MonoBehaviour, IPoolObject
         //dieDirect_Effect.gameObject.SetActive(true);
 
         bossAnim.SetBool("isBossPurification", true);
-        
+
         bossAnim.SetLayerWeight(1, 1);
 
         dieDirect_Effect.gameObject.SetActive(true);
@@ -126,6 +133,14 @@ public class BossScript : MonoBehaviour, IPoolObject
         {
             bossCurHP -= 1f; //todo : 보스 공격의 데미지 스크립트를 따로 제작하기
             //Debug.Log("보스 현재 체력 : " + bossCurHP);
+
+            if (bossCurHP > 0f) // 히트 이펙트
+            {
+               
+                //Debug.Log("보스가 피격당했습니다");
+                StartCoroutine(BossHitEffect());
+            }
+
             if (bossCurHP < 0f)
             {
                 //todo: 사망 처리
@@ -134,7 +149,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
                 BossDirectControl(); // 정화 연출 작업
 
-                if (isPurification) 
+                if (isPurification)
                 {
                     StartCoroutine(DieDelay());// 정화 연출 딜레이 걸기(여기 안에 반환 함수 들어가있음), 승리 UI를 위한 여부도 포함
                 }
@@ -162,7 +177,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
     }
 
-    
+
 
     // 인터페이스 IPoolObject을 명시적으로 구현
 
@@ -176,7 +191,7 @@ public class BossScript : MonoBehaviour, IPoolObject
     public void OnGettingFromPool()
     {
         BossInit();
-        
+
     }
 
     [HideInInspector]
@@ -200,8 +215,8 @@ public class BossScript : MonoBehaviour, IPoolObject
         isBossDie = false;
 
         yield return YieldInstuctionCash.WaitForSeconds(2f);
-        
-                
+
+
         //Debug.Log("반환 작업 시작");
         OnTargetReached(); //반환
 
@@ -214,7 +229,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
         while (true)
         {
-            
+
             if (!BossPattern_Wind.instance.isStun) // 보스가 스턴을 안먹는다면 (기믹 파훼 실패)
             {
                 yield return YieldInstuctionCash.WaitForSeconds(7f);
@@ -226,10 +241,38 @@ public class BossScript : MonoBehaviour, IPoolObject
                 break;
 
             }
-            
+
             yield return YieldInstuctionCash.WaitForSeconds(0.5f);// 반복문 딜레이
         }
-        
+
         StopCoroutine(PatternEffectDelay());
     }
+
+    IEnumerator BossHitEffect()
+    {
+        // 메테리얼 파라미터 값 접근하는 것이 쉽지 않아서 애니메이션으로 처리하기로 결정
+        //bossMaterial.HasProperty("Hit_On-Off"); // 해당 프로퍼티가 있는지 확인하는 코드임
+
+        //bossMaterial.IsKeywordEnabled("Hit_On-Off"); // 해당 프로퍼티가 활성화가 되어있는지 확인하는 코드
+
+        //bossMaterial.EnableKeyword("Hit_On-Off");
+
+        //bossMaterial.SetShaderPassEnabled("Hit_On-Off", true);
+
+        // 렌더러로 접근한다
+        //rend.material.SetFloat("Hit_Effect_On-Off", 1.0f); // 메테리얼 파라미터 값에는 bool값 파라미터가 존재하지 않는다 그렇기에 SetInt로 1(true), 0(false)로 표현
+
+        bossAnim.SetBool("isHit", true);
+
+        yield return YieldInstuctionCash.WaitForSeconds(0.01f);
+
+        bossAnim.SetBool("isHit", false);
+
+        //rend.material.SetFloat("Hit_Effect_On-Off", 0.0f);
+
+        //bossMaterial.DisableKeyword("Hit_On-Off");
+
+        StopCoroutine(BossHitEffect());
+    }
+
 }

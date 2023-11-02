@@ -46,7 +46,7 @@ public class MainSceneManager : MonoBehaviour
                 break;
 
             case "StartScene01":
-                StartCoroutine(WhiteFadeIn()); // 게임씬으로 넘어감
+                StartCoroutine(WhiteFadeIn()); // 튜토리얼씬으로 넘어감
                 break;
         }
 
@@ -61,7 +61,7 @@ public class MainSceneManager : MonoBehaviour
 
     private void ChangeScene02()
     {
-        SceneManager.LoadScene("GameScene01");
+        SceneManager.LoadScene("TutorialScene01");
     }
 
     private float fadeCount = 0f; // 페이드 아웃에 사용될 변수

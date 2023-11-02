@@ -274,27 +274,13 @@ public class UI_Script : MonoBehaviour
         
         if (expFill.fillAmount == 1)
         {
-            isLevelUp = true;
+            Debug.Log("코루틴 브레이킹 확인용");
+            StartCoroutine(LevelUpDelay()); // 이거 거는 이유는 레벨업 했을때 시간을 멈추는데 이과정에서 bool값을 다른데서 참조 못함
 
             PlayerStatus.instance.playerAddEXP = 0; // 레벨업하면 현재값 초기화
             //Debug.Log("AddEXP : " + PlayerStatus.instance.playerAddEXP);
             Debug.Log("레벨업 했습니다.");
-            if (isLevelUp)
-            {
-                GetSkillPopup();
-
-                isLevelUp = false;
-
-                expFill.fillAmount = 0;
-
-                playerLevel++;
-
-                //expMaxFill = PlayerStatus.instance.MaxEXP(playerLevel);
-                Debug.Log("플레이어 레벨 : " + playerLevel);
-                //expMaxFill = 20; // 경험치 최대치를 엑셀 데이터 테이블로 바꿀 것
-
-                playerLevelText.text = playerLevel.ToString(); // 현재 플레이어의 레벨
-            }
+            
                                                
         }
     }
@@ -468,7 +454,7 @@ public class UI_Script : MonoBehaviour
     IEnumerator BossWarning()
     {
         warningUI.gameObject.SetActive(true);
-        yield return YieldInstuctionCash.WaitForSeconds(2.0f); // 경고 UI 시간조율
+        yield return YieldInstuctionCash.WaitForSeconds(1.8f); // 경고 UI 시간조율
         warningUI.gameObject.SetActive(false); // 페이드 및 씬전환 적용해보고 위치 조정
 
         //페이드 아웃과 씬전환을 넣을 것
@@ -500,6 +486,29 @@ public class UI_Script : MonoBehaviour
         yield return YieldInstuctionCash.WaitForSeconds(0.1f);
 
         StopCoroutine(DefeatDelay());
+    }
+
+    IEnumerator LevelUpDelay()
+    {
+        isLevelUp = true;
+        yield return YieldInstuctionCash.WaitForSeconds(0.1f); // 다른데서 참조할 수 있게 딜레이
+        if (isLevelUp)
+        {
+            GetSkillPopup();
+
+            isLevelUp = false;
+
+            expFill.fillAmount = 0;
+
+            playerLevel++;
+
+            //expMaxFill = PlayerStatus.instance.MaxEXP(playerLevel);
+            Debug.Log("플레이어 레벨 : " + playerLevel);
+            //expMaxFill = 20; // 경험치 최대치를 엑셀 데이터 테이블로 바꿀 것
+
+            playerLevelText.text = playerLevel.ToString(); // 현재 플레이어의 레벨
+        }
+        StopCoroutine(LevelUpDelay());
     }
 
 }
