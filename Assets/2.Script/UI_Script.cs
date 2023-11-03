@@ -178,7 +178,7 @@ public class UI_Script : MonoBehaviour
             Time.timeScale = 1f;
             pauseActive = false;
         }
-        else
+        else if(!pauseActive)
         {
             Time.timeScale = 0f;
             pauseActive = true;
@@ -191,6 +191,22 @@ public class UI_Script : MonoBehaviour
 
     private void PausePopup()
     {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!pauseActive)
+            {
+                pauseActive = true;
+                Time.timeScale = 0f;
+            }
+            else if (pauseActive)
+            {
+                pauseActive = false;
+                Time.timeScale = 1f;
+            }
+        }
+
+
         if (pauseActive)
         {
             pausePopup.gameObject.SetActive(true);
@@ -292,6 +308,7 @@ public class UI_Script : MonoBehaviour
 
     public void CharImformBtn() // 캐릭터 정보창 버튼, 나가는 버튼 포함
     {
+        
         if (!charImformActive)
         {
             charImformActive = true;
@@ -306,6 +323,21 @@ public class UI_Script : MonoBehaviour
 
     private void CharImformPopup() // 캐릭터 정보창
     {
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (!charImformActive)
+            {
+                charImformActive = true;
+                Time.timeScale = 0f;
+            }
+            else if (charImformActive)
+            {
+                charImformActive = false;
+                Time.timeScale = 1f;
+            }
+        }
+
         if (charImformActive)
         {
             charImformPopup.gameObject.SetActive(true);

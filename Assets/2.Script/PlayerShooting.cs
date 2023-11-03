@@ -51,29 +51,54 @@ public class PlayerShooting : MonoBehaviour
 
         if (!isFire) // 발사중이 아니라면
         {
-            if (Input.GetKey(KeyCode.K))  //키를 누르고 발사중이 아니라면...
+            #region 발사키 코드 였던거
+
+            //if (Input.GetKey(KeyCode.K))  //키를 누르고 발사중이 아니라면...
+            //{
+
+            //    if (!ChangeSceneManager.instance.fadeInOuting) // 페이드 중이 아니라면 발사하게
+            //    {
+            //        anim.SetBool("isFire", true);
+
+            //        isTrigger = true; // 발사버튼 클릭
+
+            //        weaponType = 0; // 인스펙터와 지역변수의 실행 순서를 잘 이해를 해야 문제가 발생하지 않는다.
+            //                        // 문제점 : 인스펙터weaponType의 값을 변화시켜도 바뀌지 않는 문제가 발생, 함수안에 집어넣으니 해결
+            //                        //Debug.Log("장착된 무기 속성(인덱스 넘버) : " + weaponType);
+
+            //        if (isTrigger) //발사버튼이 클릭이라면...
+            //        {
+            //            Debug.Log("발사했습니다");
+            //            StartCoroutine(AttackRate(weaponType)); //딕셔너리로 하면 이부분과 딕셔너리 부분이 오류남
+
+            //        }
+
+            //    }
+
+            //}
+
+            #endregion
+
+
+            if (!ChangeSceneManager.instance.fadeInOuting) // 페이드 중이 아니라면 발사하게
             {
-                
-                if (!ChangeSceneManager.instance.fadeInOuting) // 페이드 중이 아니라면 발사하게
+                anim.SetBool("isFire", true);
+
+                isTrigger = true; // 발사버튼 클릭
+
+                weaponType = 0; // 인스펙터와 지역변수의 실행 순서를 잘 이해를 해야 문제가 발생하지 않는다.
+                                // 문제점 : 인스펙터weaponType의 값을 변화시켜도 바뀌지 않는 문제가 발생, 함수안에 집어넣으니 해결
+                                //Debug.Log("장착된 무기 속성(인덱스 넘버) : " + weaponType);
+
+                if (isTrigger) //발사버튼이 클릭이라면...
                 {
-                    anim.SetBool("isFire", true);
-
-                    isTrigger = true; // 발사버튼 클릭
-
-                    weaponType = 0; // 인스펙터와 지역변수의 실행 순서를 잘 이해를 해야 문제가 발생하지 않는다.
-                                    // 문제점 : 인스펙터weaponType의 값을 변화시켜도 바뀌지 않는 문제가 발생, 함수안에 집어넣으니 해결
-                                    //Debug.Log("장착된 무기 속성(인덱스 넘버) : " + weaponType);
-
-                    if (isTrigger) //발사버튼이 클릭이라면...
-                    {
-                        Debug.Log("발사했습니다");
-                        StartCoroutine(AttackRate(weaponType)); //딕셔너리로 하면 이부분과 딕셔너리 부분이 오류남
-
-                    }
+                    Debug.Log("발사했습니다");
+                    StartCoroutine(AttackRate(weaponType)); //딕셔너리로 하면 이부분과 딕셔너리 부분이 오류남
 
                 }
 
             }
+
         }
 
         // 발사 코드
