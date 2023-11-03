@@ -4325,7 +4325,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[I]'
+  m_text: '[ S ]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e74d6d303b17ec645907847637679f8f, type: 2}
   m_sharedMaterial: {fileID: 4971431787928535230, guid: e74d6d303b17ec645907847637679f8f, type: 2}
@@ -5408,7 +5408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curTime: 0
-  bossAppearanceTime: 60
+  bossAppearanceTime: 10
   bossSpawnActive: 0
   post_P_Dark: {fileID: 2000744058}
   cameraShake: {fileID: 963194232}
@@ -11480,7 +11480,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[ J ]'
+  m_text: '[ A ]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e74d6d303b17ec645907847637679f8f, type: 2}
   m_sharedMaterial: {fileID: 4971431787928535230, guid: e74d6d303b17ec645907847637679f8f, type: 2}
@@ -13101,7 +13101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[L]'
+  m_text: '[ D ]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e74d6d303b17ec645907847637679f8f, type: 2}
   m_sharedMaterial: {fileID: 4971431787928535230, guid: e74d6d303b17ec645907847637679f8f, type: 2}
@@ -25422,7 +25422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 114.1, y: -221.6}
+  m_AnchoredPosition: {x: 114.100006, y: -221.6}
   m_SizeDelta: {x: 152, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2051951004
@@ -32797,7 +32797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5277826694057070088, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
       propertyPath: bossMaxHP
-      value: 80
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5277826694057070088, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
       propertyPath: bossShader

@@ -33,7 +33,7 @@ public class PlayerMotor : MonoBehaviour
         moveVector = Vector3.zero; // 계속 초기화
 
         // x - 왼쪽 오른쪽 컨트롤
-        moveVector.x = Input.GetAxisRaw("Horizontal") * speed_X; // 기본적인 테스트용
+        moveVector.x = Input.GetAxisRaw("Horizontal") * speed_X; // InputManager에서 a,d 키코드 빼버림 유의
 
         // y - 위 아래 컨트롤
         moveVector.y = verticalVelocity;

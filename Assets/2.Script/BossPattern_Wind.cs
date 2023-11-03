@@ -207,7 +207,7 @@ public class BossPattern_Wind : MonoBehaviour
         return path; // 함수 빈호출용도
     }
 
-    private float coolTime02 = 1f; // 쿨타임
+    private float coolTime02 = 3f; // 쿨타임
 
     private bool isCoolTime02 = false;
 
@@ -243,7 +243,7 @@ public class BossPattern_Wind : MonoBehaviour
         if (isCoolTime02)
         {
             
-            yield return YieldInstuctionCash.WaitForSeconds(coolTime02); // 1초 쿨타임
+            yield return YieldInstuctionCash.WaitForSeconds(coolTime02); // 3초 쿨타임
                                                                          
             isCoolTime02 = false;
         }

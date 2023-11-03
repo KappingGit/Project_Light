@@ -152,7 +152,7 @@ public class PlayerShooting : MonoBehaviour
         #endregion
 
         // 서브 스킬 1번 버튼
-        if (UI_Script.instance.isSubSkillBtn01 || Input.GetKeyDown(KeyCode.J))// UI 서브 스킬 버튼을 눌렀으면...
+        if (UI_Script.instance.isSubSkillBtn01 || Input.GetKeyDown(KeyCode.A))// UI 서브 스킬 버튼을 눌렀으면...
         {
             
             UI_Script.instance.isSubSkillBtn01 = false;
@@ -172,7 +172,7 @@ public class PlayerShooting : MonoBehaviour
         }
 
         // 서브 스킬 2번 버튼
-        if (UI_Script.instance.isSubSkillBtn02 || Input.GetKeyDown(KeyCode.L))// UI 서브 스킬 버튼을 눌렀으면...
+        if (UI_Script.instance.isSubSkillBtn02 || Input.GetKeyDown(KeyCode.D))// UI 서브 스킬 버튼을 눌렀으면...
         {
             
             UI_Script.instance.isSubSkillBtn02 = false;

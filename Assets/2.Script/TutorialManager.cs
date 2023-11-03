@@ -92,7 +92,15 @@ public class TutorialManager : MonoBehaviour
             rightBtn.gameObject.SetActive(false);
         }
         
-
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            LeftBtn();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            RightBtn();
+        }
 
     }
 
