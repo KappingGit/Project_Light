@@ -10,6 +10,16 @@ public class BulletManager : MonoBehaviour
 
     private PoolManager poolManager; //풀매니저 스크립트에 접근
 
+    [SerializeField]
+    private DB_Status statusDB; // 에셋화 되어있는 데이터테이블 가져오기
+
+    //딕셔너리 테스트
+    //Dictionary<int, NomalAttack_WindSlash> nomalAttack_Wind;
+
+    //Dictionary<int, NomalAttack_WaterSlash> nomalAttack_Water;
+
+    //Dictionary<int, NomalAttack_FireSlash> nomalAttack_Fire;
+
     private void Awake()
     {
         poolManager = GetComponent<PoolManager>();
@@ -20,7 +30,93 @@ public class BulletManager : MonoBehaviour
             instance = this;
         }
 
+        // 기본 평타 딕셔너리 처리
+
+        #region 딕셔너리 테스트 용 코드들 (일단 그때그때 어떻게 구현했나 확인하기 위함)
+
+        //nomalAttack_Wind = new Dictionary<int, NomalAttack_WindSlash>();
+
+        //nomalAttack_Water = new Dictionary<int, NomalAttack_WaterSlash>();
+
+        //nomalAttack_Fire = new Dictionary<int, NomalAttack_FireSlash>();
+
+        //int nomalAttack_UID;
+
+        //nomalAttack_UID = 0;
+
+        // 바람 공격 데이터값 저장
+        //for (int nomalAttack_UID = 0; nomalAttack_UID < 6; nomalAttack_UID++)
+        //{
+        //    // 가독성 높이기
+        //    int indexLevel = nomalAttack_UID;
+
+        //    int indexName = nomalAttack_UID;
+
+        //    int indexDamage = nomalAttack_UID;
+
+        //    nomalAttack_Wind.Add(nomalAttack_UID, new NomalAttack_WindSlash(statusDB.NomalAttack[indexLevel].typeLevel, statusDB.NomalAttack[indexName].name, statusDB.NomalAttack[indexDamage].singleDamage));
+
+        //}
+
+        // 물 공격 데이터값 저장
+        //for (int nomalAttack_UID = 6; nomalAttack_UID < 12; nomalAttack_UID++)
+        //{
+
+        //    int indexLevel = nomalAttack_UID;
+
+        //    int indexName = nomalAttack_UID;
+
+        //    int indexDamage = nomalAttack_UID;
+
+        //    nomalAttack_Water.Add(nomalAttack_UID, new NomalAttack_WaterSlash(statusDB.NomalAttack[indexLevel].typeLevel, statusDB.NomalAttack[indexName].name, statusDB.NomalAttack[indexDamage].speedDown));
+
+        //}
+
+        // 불 공격 데이터 값 저장
+        //for (int nomalAttack_UID = 12; nomalAttack_UID < 18; nomalAttack_UID++)
+        //{
+
+        //    int indexLevel = nomalAttack_UID;
+
+        //    int indexName = nomalAttack_UID;
+
+        //    int indexDamage = nomalAttack_UID;
+
+        //    nomalAttack_Fire.Add(nomalAttack_UID, new NomalAttack_FireSlash(statusDB.NomalAttack[indexLevel].typeLevel, statusDB.NomalAttack[indexName].name, statusDB.NomalAttack[indexDamage].spreadDamage));
+
+        //}
+
+
+        // 데이터 출력관련해서 아래 문단 참고할 것
+        //NomalAttack_WindSlash windData = nomalAttack_Wind[1];
+
+        //Debug.Log(windData.singleDamage);
+
+        //windData.CheckData(); //데이터 확인용
+
+        //NomalAttack_WaterSlash waterData = nomalAttack_Water[7];
+
+        //waterData.CheckData();
+
+        //Debug.Log("무기 UID 1의 데이터는? : ");
+
+        //Debug.Log("무기 UID 7의 데이터는? : " + nomalAttack_Water[7]);
+
+        //Debug.Log("무기 UID 13의 데이터는? : " + nomalAttack_Fire[13]);
+
+
+        //Debug.Log("바람 기본 공격 레벨은? : " + nomalAttack_Wind[0]);
+
+        //Debug.Log("바람 기본 공격 이름은? : " + nomalAttack_Wind[0]);
+
+        //Debug.Log("바람 기본 공격 단일 공격 데미지는? : " + nomalAttack_Wind[0]);
+
+        #endregion
+
+
     }
+
+
 
     private void Update()
     {

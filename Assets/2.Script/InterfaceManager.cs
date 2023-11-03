@@ -9,6 +9,11 @@ public class InterfaceManager : MonoBehaviour
     
 }
 
+public interface IDamage
+{
+    void TargetDamage(float damage);
+}
+
 public interface IDie
 {
     // 사용된 곳 : EnemyScript.CS, 

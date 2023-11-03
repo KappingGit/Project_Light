@@ -35,19 +35,50 @@ public class WindSlashScript : BulletScript
     //base.WeaponTypeDamage(); // 해당 base를 사용하면 강제로 호출하는 방식임
 
     // UID 별 해당 데이터를 리스트로 정리해보자
-    private int[] windSlashUID = new int[6];
-    private int[] windSlashLevel = new int[6];
-    private float[] windSlashDamage = new float[6];
+    //private int[] windSlashUID = new int[6];
+    //private int[] windSlashLevel = new int[6];
+    //private float[] windSlashDamage = new float[6];
 
     // 해당 무기를 리스트로 뽑아온다
-    
-    public override void WindSlash_TypeList() // 윈드 슬래쉬의 데이터를 뽑아온 다음 리스트화 시킴
+
+    //public override void WindSlash_TypeList() // 윈드 슬래쉬의 데이터를 뽑아온 다음 리스트화 시킴
+    //{
+    //    for (int i = 0; i < 6; i++)
+    //    {
+    //        windSlashUID[i] = statusDB.NomalAttack[i].nomalAttackUID;
+    //        windSlashLevel[i] = statusDB.NomalAttack[i].typeLevel;
+    //        windSlashDamage[i] = statusDB.NomalAttack[i].singleDamage;
+    //    }
+    //}
+
+    protected override void InitWindWeapon()
     {
-        for (int i = 0; i < 6; i++)
+        base.InitWindWeapon();
+
+        currentWeapon_Wind = 0; // 현재 무기의 인덱스
+
+    }
+
+    Dictionary<int, NomalAttack_WindSlash> nomalAttack_Wind;
+
+    // 해당 무기를 딕셔너리로 뽑아온다
+
+    protected override void WindSlash_TypeDictionary() // 윈드 슬래쉬의 데이터를 뽑아온 다음 리스트화 시킴
+    {
+        nomalAttack_Wind = new Dictionary<int, NomalAttack_WindSlash>();
+
+        // 바람 공격 데이터값 저장
+        for (int nomalAttack_UID = 0; nomalAttack_UID < 6; nomalAttack_UID++)
         {
-            windSlashUID[i] = statusDB.NomalAttack[i].nomalAttackUID;
-            windSlashLevel[i] = statusDB.NomalAttack[i].typeLevel;
-            windSlashDamage[i] = statusDB.NomalAttack[i].singleDamage;
+            // 가독성 높이기
+            int indexLevel = nomalAttack_UID;
+
+            int indexName = nomalAttack_UID;
+
+            int indexDamage = nomalAttack_UID;
+
+            nomalAttack_Wind.Add(nomalAttack_UID, new NomalAttack_WindSlash(statusDB.NomalAttack[indexLevel].typeLevel, statusDB.NomalAttack[indexName].name, statusDB.NomalAttack[indexDamage].singleDamage));
+
         }
     }
 
@@ -72,7 +103,7 @@ public class WindSlashScript : BulletScript
         //windSlashDamage = statusDB.NomalAttack[1].singleDamage; // 해당 코드는 하나의 데이터를 뽑는다
 
         //windSlashDamage = statusDB.NomalAttack[1].nomalAttackUID; // 해당 코드는 바람 기본평타 1레벨 UID이다(UID : 1)
-        
+
         //해당 변수는 바람 기본평타의 UID이다
         //windSlashUID = statusDB.NomalAttack[1].nomalAttackUID;
 
@@ -82,11 +113,19 @@ public class WindSlashScript : BulletScript
         // 해당 변수는 바람 기본 평타의 데미지 퍼센트다
         //windSlashDamage = statusDB.NomalAttack[1].singleDamage;
 
+
+        NomalAttack_WindSlash windData = nomalAttack_Wind[indexNum];
+
         //최종 데미지
-        float finalDamage = playerATK * windSlashDamage[indexNum];
+        float finalDamage = playerATK * windData.singleDamage;
+
+        //if (target.TryGetComponent<IDamage>(out IDamage damage))
+        //{
+        //    damage.TargetDamage(finalDamage);
+        //}
 
         //임시 반환
-        //float path = 0.5f;
+        float path = 0.5f;
 
         Debug.Log("자식 스크립트의 WeaponTypeDamage() 함수 실행");
         Debug.Log("바람 기본 평타 최종 데미지 : " + finalDamage);
@@ -95,43 +134,7 @@ public class WindSlashScript : BulletScript
                 
     }
 
-    // 해당 함수는 분리해보는 함수
-    private int WindSlashTypeUID(int indexUID)
-    {
-        //해당 변수는 바람 기본평타의 UID이다
-        //windSlashUID = statusDB.NomalAttack[indexUID].nomalAttackUID;
-
-        // 임시 반환 함수
-        return 0;
-    }
-
-    // 해당 함수는 분리해보는 함수
-    private int WindSlashTypeLevel(int typeLevel)
-    {
-        // 해당 변수는 바람 기본 평의 레벨이다
-        //windSlashLevel = statusDB.NomalAttack[typeLevel].typeLevel;
-
-        // 임시 반환 함수
-        return 0;
-    }
-
-    // UID의 넘버 , 해당 객체의 Value
-    Dictionary<int, float> windSlashType = new Dictionary<int, float>();
-
-
-    // 현재 무기 타입(딕셔너리 함수인데) (해당 함수는 초기화 로직 함수에 넣어둠)
-    private void CurrentWindSlashType() //현재 바람 기본 평타 타입(레벨이나 공격력 등등), 지역 변수로 현재 레벨을 입력
-    {
-
-        // 해당 부분을 열거형으로 간략하게 표현하기...
-        // dictionary를 활용 UID가 0이라면 바람 기본 공격
-
-        //windSlashType.Add(statusDB.NomalAttack[1].nomalAttackUID, statusDB.NomalAttack[1].singleDamage);
-
-        Debug.Log("해당 기본공격은 바람 기본 평타 1레벨입니다. " + windSlashType[0]);
-
-
-    }
-
+   
+    
     
 }
