@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8ccd3cac2f7cda04d94de8f18e829702
+guid: 765c6deea96828940b716269392ad06d
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_C_Hero
-    second: {fileID: 2100000, guid: a8540411482605d4f99db7b02cd85ae1, type: 2}
+      name: Material.002
+    second: {fileID: 2100000, guid: bef8bddc445ed1d41850c06599634ac7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -102,7 +102,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
