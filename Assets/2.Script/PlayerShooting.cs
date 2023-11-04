@@ -49,6 +49,7 @@ public class PlayerShooting : MonoBehaviour
 
         #region 키보드 코드
 
+        // 기본 공격
         if (!isFire) // 발사중이 아니라면
         {
             #region 발사키 코드 였던거
@@ -92,7 +93,7 @@ public class PlayerShooting : MonoBehaviour
 
                 if (isTrigger) //발사버튼이 클릭이라면...
                 {
-                    Debug.Log("발사했습니다");
+                    //Debug.Log("발사했습니다");
                     StartCoroutine(AttackRate(weaponType)); //딕셔너리로 하면 이부분과 딕셔너리 부분이 오류남
 
                 }
@@ -159,13 +160,16 @@ public class PlayerShooting : MonoBehaviour
             
             if (!ChangeSceneManager.instance.fadeInOuting) // 페이드 중이 아니라면 발사하게
             {
-                anim.SetBool("isFire", true);
+                if (!isCoolTime01)
+                {
+                    anim.SetBool("isFire", true);
 
-                
-                subSkillType = 2; // 해당 버튼에 있는 스킬 속성 값
 
-                StartCoroutine(SkillAttackRate(subSkillType));
+                    subSkillType = 2; // 해당 버튼에 있는 스킬 속성 값
 
+                    StartCoroutine(SkillAttackRate01(subSkillType));
+                }
+                                
             }
             
 
@@ -179,12 +183,16 @@ public class PlayerShooting : MonoBehaviour
             
             if (!ChangeSceneManager.instance.fadeInOuting) // 페이드 중이 아니라면 발사하게
             {
-                anim.SetBool("isFire", true);
+                if (!isCoolTime02)
+                {
+                    anim.SetBool("isFire", true);
 
+
+                    subSkillType = 0; // 해당 버튼에 있는 스킬 속성 값 0바람 1물 2불
+
+                    StartCoroutine(SkillAttackRate02(subSkillType));
+                }
                 
-                subSkillType = 0; // 해당 버튼에 있는 스킬 속성 값 0바람 1물 2불
-
-                StartCoroutine(SkillAttackRate(subSkillType));
 
             }
             
@@ -291,28 +299,80 @@ public class PlayerShooting : MonoBehaviour
     }
 
     [HideInInspector]
-    public int subSkillType;
-        
-    IEnumerator SkillAttackRate(int indexNum) // 서브 스킬의 공격속도 및 발사 트리거 기능(해당 기능에서 쿨타임 조절할 것)
-    {
-        rateDB = statusDB.PlayerStatus[0].attackRate; // 공격속도 데이터 테이블 적용(나중에 이곳에다가 쿨타임 적용)
+    public float subSkillCool01;
 
-        float rate = rateDB / 2; // 수식
+    [HideInInspector]
+    public float subSkillCool02;
+
+    [HideInInspector]
+    public int subSkillType;
+
+    [HideInInspector]
+    public bool isCoolTime01;
+
+    [HideInInspector]
+    public bool isCoolTime02;
+
+    IEnumerator SkillAttackRate01(int indexNum) // 서브 스킬의 공격속도 및 발사 트리거 기능(해당 기능에서 쿨타임 조절할 것)
+    {
+        SubSkillManager.instance.GetPoolSkill(indexNum); // 스킬 테스트
+
+        //yield return YieldInstuctionCash.WaitForSeconds(0.1f);
+
+        // ###################인덱스 번호 꼭꼭 잘확인할것...#########################
+
+        subSkillCool01 = SubSkillManager.instance.FireBallType_CoolTime(13); // 공격속도 데이터 테이블 적용(나중에 이곳에다가 쿨타임 적용)
+
+        //subSkillCool01 = 10f;
+
+        float rate = subSkillCool01; // 수식
 
         // 공격 종류를 고르는 [변수 0 => 바람 공격, 1 => 물 공격, 2 => 불 공격] 나중에 테이블데이터와 연결
 
         //indexNum = 2; // 인스펙터와 지역변수의 실행 순서를 잘 이해를 해야 문제가 발생하지 않는다.
                         // 문제점 : 인스펙터weaponType의 값을 변화시켜도 바뀌지 않는 문제가 발생, 함수안에 집어넣으니 해결
                         //Debug.Log("장착된 무기 속성(인덱스 넘버) : " + weaponType);
-                            
         
-        SubSkillManager.instance.GetPoolSkill(indexNum); // 스킬 테스트
+
+        isCoolTime01 = true;
         yield return YieldInstuctionCash.WaitForSeconds(rate);
-        Debug.Log("스킬 테스트");
+        isCoolTime01 = false;
+        //Debug.Log("스킬 테스트");
         anim.SetBool("isFire", false);
         
 
-        StopCoroutine(SkillAttackRate(indexNum));
+        StopCoroutine(SkillAttackRate01(indexNum));
+    }
+
+    IEnumerator SkillAttackRate02(int indexNum) // 서브 스킬의 공격속도 및 발사 트리거 기능(해당 기능에서 쿨타임 조절할 것)
+    {
+        SubSkillManager.instance.GetPoolSkill(indexNum); // 스킬 테스트
+
+        //yield return YieldInstuctionCash.WaitForSeconds(0.1f);
+        subSkillCool02 = SubSkillManager.instance.WindDrillType_CoolTime(1);
+        //subSkillCool02 = SubSkillScript.instance.WindDrillType_CoolTime(1); // 공격속도 데이터 테이블 적용(나중에 이곳에다가 쿨타임 적용)
+
+        //subSkillCool02 = 10f;
+
+        float rate = subSkillCool02; // 쿨타임
+
+        // 공격 종류를 고르는 [변수 0 => 바람 공격, 1 => 물 공격, 2 => 불 공격] 나중에 테이블데이터와 연결
+
+        //indexNum = 2; // 인스펙터와 지역변수의 실행 순서를 잘 이해를 해야 문제가 발생하지 않는다.
+        // 문제점 : 인스펙터weaponType의 값을 변화시켜도 바뀌지 않는 문제가 발생, 함수안에 집어넣으니 해결
+        //Debug.Log("장착된 무기 속성(인덱스 넘버) : " + weaponType);
+                        
+
+        isCoolTime02 = true;
+        Debug.Log("쿨타임입니다.");
+        yield return YieldInstuctionCash.WaitForSeconds(rate);
+        Debug.Log("쿨타임 띁났습니다.");
+        isCoolTime02 = false;
+        //Debug.Log("스킬 테스트");
+        anim.SetBool("isFire", false);
+
+
+        StopCoroutine(SkillAttackRate02(indexNum));
     }
 
     IEnumerator DelayTime() // 마구 눌렀을 때 연속발사 못하게

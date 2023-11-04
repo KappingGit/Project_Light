@@ -331,6 +331,9 @@ public class BossPattern_Wind : MonoBehaviour
     [HideInInspector]
     public bool isStun; // 보스 기믹 파훼 성공 후 잠시 스턴
 
+    [HideInInspector]
+    public bool isBossPattern03_Damage;
+
     IEnumerator Pattern03_CoolTime() //보스패턴03 NuClearPattern
     {
         isCharge = true;
@@ -354,7 +357,8 @@ public class BossPattern_Wind : MonoBehaviour
             if (currChargeTime == chargeTime)
             {
                 //todo: 플레이어 피격 시스템 구현 데미지 -2
-                PlayerStatus.instance.currHP -= 2;
+                PlayerStatus.instance.currHP -= 1; // 데미지 1인 이유 : 실직적으로 -2로 들어갈텐데 코드 개판으로해서 플레이어 무적에 -1 여기서 -1 두개 합쳐서 -2 처리하는 방식으로 함 미친놈
+                isBossPattern03_Damage = true;
                 Debug.Log("패턴 종료 - 기믹 파훼 실패");
                 isCharge = false; // 차지중 끝남
                 isStun = false; // 기믹 파훼 실패 - 보스 기절안함

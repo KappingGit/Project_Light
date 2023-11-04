@@ -9537,14 +9537,14 @@ GameObject:
   - component: {fileID: 3878974304636229157}
   - component: {fileID: 7005679764351817389}
   - component: {fileID: 5950618859443952857}
-  - component: {fileID: 708205048}
+  - component: {fileID: 6645926959140823587}
   m_Layer: 0
   m_Name: SubSkill_Fireball
-  m_TagString: Untagged
+  m_TagString: FireBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2510900413664556648
 Transform:
   m_ObjectHideFlags: 0
@@ -14497,7 +14497,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &708205048
+--- !u!114 &6645926959140823587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14506,12 +14506,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6851374978986040690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3618a17d2b4fa64438452fa673cdd29d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4694bb3864433a34bb26a8816c9879c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   idName: SubSkill_Fireball
-  bulletSpeed: 40
+  statusDB: {fileID: 11400000, guid: 004adbcc68a2c034c9deaf3a46df007b, type: 2}
   shootPos: {fileID: 0}
+  skillSpeed: 40
 --- !u!1 &8877890143497803524
 GameObject:
   m_ObjectHideFlags: 0

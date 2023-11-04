@@ -29,19 +29,19 @@ public class FireSlashScript : BulletScript
     private float playerATK;
 
 
-    protected override float FireSlashTypeDamage(int indexNum)
+    public override float FireSlashTypeDamage(int indexNum)
     {
 
         playerATK = statusDB.PlayerStatus[0].playerDamage; // 플레이어의 공격력 패시브로 얻는 선택지는 아직 미구현이니 인덱스 0으로 고정
 
-
-
+        NomalAttack_FireSlash fireData = nomalAttack_Fire[indexNum];
 
         //최종 데미지
-        float finalDamage = playerATK;
+        float finalDamage = playerATK + (playerATK * fireData.spreadDamage);
 
         //임시 반환
         //float path = 0.5f;
+        Debug.Log("스플데미지 수치   " + fireData.spreadDamage);
 
         Debug.Log("자식 스크립트의 FireSlashTypeDamage() 함수 실행");
         Debug.Log("불 기본 평타 최종 데미지 : " + finalDamage);
@@ -49,6 +49,46 @@ public class FireSlashScript : BulletScript
 
         return finalDamage;
 
+    }
+
+    public override float FireSlash_SpreadDamage(int indexNum, Vector3 center, float radius)
+    {
+        playerATK = statusDB.PlayerStatus[0].playerDamage; // 플레이어의 공격력 패시브로 얻는 선택지는 아직 미구현이니 인덱스 0으로 고정
+
+        NomalAttack_FireSlash fireData = nomalAttack_Fire[indexNum];
+
+        //최종 데미지
+        float finalDamage = playerATK + (playerATK * fireData.spreadDamage);
+
+        Collider[] hitColliders = Physics.OverlapSphere(center, radius);
+        int i = 0;
+        while (i < hitColliders.Length)
+        {
+            Debug.Log("범위 색출");
+            //finalDamage = playerATK + (playerATK * fireData.spreadDamage);
+            i++;
+        }
+
+        //임시 반환
+        //float path = 0.5f;
+        Debug.Log("스플데미지 수치   " + fireData.spreadDamage);
+
+        Debug.Log("자식 스크립트의 FireSlashTypeDamage() 함수 실행");
+        Debug.Log("불 기본 평타 최종 데미지 : " + finalDamage);
+
+
+        return finalDamage;
+    }
+
+    void ExplosionDamage(Vector3 center, float radius)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(center, radius);
+        int i = 0;
+        while (i < hitColliders.Length)
+        {
+            
+            i++;
+        }
     }
 
 }

@@ -29,14 +29,11 @@ public class WaterSlashScript : BulletScript
     // 플레이어의 공격력
     private float playerATK;
 
-    protected override float WaterSlashTypeDamage(int indexNum)
+    public override float WaterSlashTypeDamage(int indexNum)
     {
        
         playerATK = statusDB.PlayerStatus[0].playerDamage; // 플레이어의 공격력 패시브로 얻는 선택지는 아직 미구현이니 인덱스 0으로 고정
-
-
-        
-
+                        
         //최종 데미지
         float finalDamage = playerATK;
 
@@ -51,7 +48,7 @@ public class WaterSlashScript : BulletScript
 
     }
 
-    protected override float WaterSlashType_SlowEffect(int indexNum) //물 평타의 슬로우 효과
+    public override float WaterSlashType_SlowEffect(int indexNum) //물 평타의 슬로우 효과
     {
         NomalAttack_WaterSlash waterData = nomalAttack_Water[indexNum];
 

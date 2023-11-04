@@ -127,6 +127,179 @@ public class BossScript : MonoBehaviour, IPoolObject
         pattern03_Effect.gameObject.SetActive(true);
     }
 
+
+    #region 기본 공격 3가지 묶음(미친 짓)
+
+    private void Hit_WindSlash() // 최종 데미지 피격 함수
+    {
+        if (bossCurHP > 0)
+        {
+
+
+            Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 기본공격  " + bossCurHP);
+
+            bossCurHP -= BulletScript.instance.WindSlashTypeDamage(1);
+
+            Debug.Log("몬스터가 피격을 받았습니다.- 바람 기본공격  " + bossCurHP);
+            StartCoroutine(BossHitEffect());
+
+        }
+
+        if (bossCurHP <= 0) // 현재 체력이 떨어지면...
+        {
+            BossDirectControl(); // 정화 연출 작업
+
+            if (isPurification)
+            {
+                StartCoroutine(DieDelay());// 정화 연출 딜레이 걸기(여기 안에 반환 함수 들어가있음), 승리 UI를 위한 여부도 포함
+            }
+
+            PlayerStatus.instance.GetGold(); // 골드 획득(플레이어가 죽이면 골드 얻게 함)
+            PlayerStatus.instance.GetEXP(); // 경험치 획득(플레이어가 죽이면 경험치 얻게 함)
+        }
+
+    }
+
+    private void Hit_WaterSlash() // 최종 데미지 피격 함수
+    {
+        if (bossCurHP > 0)
+        {
+
+
+            Debug.Log("몬스터가 피격 받기전 체력입니다 - 물 기본공격  " + bossCurHP);
+
+            bossCurHP -= BulletScript.instance.WaterSlashTypeDamage(7);
+
+            //slowEffect = BulletScript.instance.WaterSlashType_SlowEffect(7); //슬로우
+
+            Debug.Log("몬스터가 피격을 받았습니다. - 물 기본공격  " + bossCurHP);
+
+            StartCoroutine(BossHitEffect());
+        }
+
+        if (bossCurHP <= 0) // 현재 체력이 떨어지면...
+        {
+            BossDirectControl(); // 정화 연출 작업
+
+            if (isPurification)
+            {
+                StartCoroutine(DieDelay());// 정화 연출 딜레이 걸기(여기 안에 반환 함수 들어가있음), 승리 UI를 위한 여부도 포함
+            }
+
+            PlayerStatus.instance.GetGold(); // 골드 획득(플레이어가 죽이면 골드 얻게 함)
+            PlayerStatus.instance.GetEXP(); // 경험치 획득(플레이어가 죽이면 경험치 얻게 함)
+        }
+
+    }
+
+    private void Hit_FireSlash() // 최종 데미지 피격 함수
+    {
+        if (bossCurHP > 0)
+        {
+
+
+            Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 기본공격  " + bossCurHP);
+
+            bossCurHP -= BulletScript.instance.FireSlashTypeDamage(14);
+
+            Debug.Log("몬스터가 피격을 받았습니다.- 불 기본공격  " + bossCurHP);
+
+            BulletScript.instance.FireSlash_SpreadDamage(14, transform.position, 1f);
+
+            StartCoroutine(BossHitEffect());
+        }
+
+        if (bossCurHP <= 0) // 현재 체력이 떨어지면...
+        {
+            BossDirectControl(); // 정화 연출 작업
+
+            if (isPurification)
+            {
+                StartCoroutine(DieDelay());// 정화 연출 딜레이 걸기(여기 안에 반환 함수 들어가있음), 승리 UI를 위한 여부도 포함
+            }
+
+            PlayerStatus.instance.GetGold(); // 골드 획득(플레이어가 죽이면 골드 얻게 함)
+            PlayerStatus.instance.GetEXP(); // 경험치 획득(플레이어가 죽이면 경험치 얻게 함)
+        }
+
+    }
+
+    #endregion
+
+    #region 서브 스킬 3가지 묶음(개미친짓)
+
+    private void Hit_WindDrill()
+    {
+        if (bossCurHP > 0)
+        {
+            //Debug.Log("드릴 횟수 확인"+SubSkillScript.instance.WindDrillType_Count(1));
+
+            Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 서브스킬  " + bossCurHP);
+
+            for (int i = 0; i < SubSkillManager.instance.WindDrillType_Count(1); i++) // 타격 횟수
+            {
+                //Debug.Log("단타 확인");
+                bossCurHP -= SubSkillManager.instance.WindDrillType_Damage(1);
+            }
+
+
+            Debug.Log("몬스터가 피격을 받았습니다.- 바람 서브스킬  " + bossCurHP);
+
+            StartCoroutine(BossHitEffect());
+        }
+
+        if (bossCurHP <= 0) // 현재 체력이 떨어지면...
+        {
+            BossDirectControl(); // 정화 연출 작업
+
+            if (isPurification)
+            {
+                StartCoroutine(DieDelay());// 정화 연출 딜레이 걸기(여기 안에 반환 함수 들어가있음), 승리 UI를 위한 여부도 포함
+            }
+
+            PlayerStatus.instance.GetGold(); // 골드 획득(플레이어가 죽이면 골드 얻게 함)
+            PlayerStatus.instance.GetEXP(); // 경험치 획득(플레이어가 죽이면 경험치 얻게 함)
+        }
+    }
+
+    private void Hit_WaterBarrier()
+    {
+
+    }
+
+    private void Hit_FireBall()
+    {
+        if (bossCurHP > 0)
+        {
+
+
+            Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 서브 스킬  " + bossCurHP);
+
+            bossCurHP -= SubSkillManager.instance.FireBallType_PenetDamage(13);
+
+            Debug.Log("몬스터가 피격을 받았습니다.- 불 서브 스킬  " + bossCurHP);
+
+            StartCoroutine(BossHitEffect());
+        }
+
+        if (bossCurHP <= 0) // 현재 체력이 떨어지면...
+        {
+            BossDirectControl(); // 정화 연출 작업
+
+            if (isPurification)
+            {
+                StartCoroutine(DieDelay());// 정화 연출 딜레이 걸기(여기 안에 반환 함수 들어가있음), 승리 UI를 위한 여부도 포함
+            }
+
+            PlayerStatus.instance.GetGold(); // 골드 획득(플레이어가 죽이면 골드 얻게 함)
+            PlayerStatus.instance.GetEXP(); // 경험치 획득(플레이어가 죽이면 경험치 얻게 함)
+        }
+    }
+
+    #endregion
+
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Weapon"))
@@ -161,6 +334,44 @@ public class BossScript : MonoBehaviour, IPoolObject
             }
 
         }
+
+
+        ///////////////////////////////////////////
+
+        if (other.gameObject.CompareTag("WindSlash"))
+        {
+            Hit_WindSlash();
+        }
+
+        if (other.gameObject.CompareTag("WaterSlash"))
+        {
+            Hit_WaterSlash();
+        }
+
+        if (other.gameObject.CompareTag("FireSlash"))
+        {
+            Hit_FireSlash();
+        }
+
+        if (other.gameObject.CompareTag("WindDrill"))
+        {
+
+            Hit_WindDrill();
+        }
+
+        if (other.gameObject.CompareTag("WaterBarrier"))
+        {
+            Hit_WaterBarrier();
+        }
+
+        if (other.gameObject.CompareTag("FireBall"))
+        {
+
+            Hit_FireBall();
+        }
+
+
+
     }
 
     private void OnTargetReached() // 반환 작업용 함수

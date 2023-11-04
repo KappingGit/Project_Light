@@ -53,9 +53,9 @@ public class WindSlashScript : BulletScript
 
     protected override void InitWindWeapon()
     {
-        base.InitWindWeapon();
+        //base.InitWindWeapon();
 
-        currentWeapon_Wind = 0; // 현재 무기의 인덱스
+        //currentWeapon_Wind = 0; // 현재 무기의 인덱스
 
     }
 
@@ -127,7 +127,7 @@ public class WindSlashScript : BulletScript
         //임시 반환
         float path = 0.5f;
 
-        Debug.Log("자식 스크립트의 WeaponTypeDamage() 함수 실행");
+        Debug.Log("자식 스크립트의 WindSlashTypeDamage() 함수 실행");
         Debug.Log("바람 기본 평타 최종 데미지 : " + finalDamage);
 
         return finalDamage;

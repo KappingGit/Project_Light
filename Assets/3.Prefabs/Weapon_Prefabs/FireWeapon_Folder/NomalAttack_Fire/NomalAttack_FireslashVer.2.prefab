@@ -14541,10 +14541,10 @@ GameObject:
   - component: {fileID: 3130571789681933891}
   - component: {fileID: 3634029046216712834}
   - component: {fileID: 910150676122288529}
-  - component: {fileID: 1914333434}
+  - component: {fileID: 1914333440}
   m_Layer: 0
   m_Name: NomalAttack_FireslashVer.2
-  m_TagString: Weapon
+  m_TagString: FireSlash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19352,9 +19352,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.1
-  m_Height: 0.57
-  m_Direction: 1
+  m_Radius: 1
+  m_Height: 0.5
+  m_Direction: 0
   m_Center: {x: 0, y: 1.89, z: 0}
 --- !u!54 &910150676122288529
 Rigidbody:
@@ -19372,7 +19372,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1914333434
+--- !u!114 &1914333440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19381,9 +19381,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4094394851494497516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3618a17d2b4fa64438452fa673cdd29d, type: 3}
+  m_Script: {fileID: 11500000, guid: 220a9d7b80c8bf34e895792e92a7709c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statusDB: {fileID: 11400000, guid: 004adbcc68a2c034c9deaf3a46df007b, type: 2}
   idName: NomalAttack_FireSlash
   bulletSpeed: 40
   shootPos: {fileID: 0}

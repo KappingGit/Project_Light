@@ -65,6 +65,17 @@ public class PlayerStatus : MonoBehaviour
             }
 
         }
+
+        if (BossManager.instance.bossSpawnActive)
+        {
+            if (BossPattern_Wind.instance.isBossPattern03_Damage)
+            {
+                Debug.Log(" 보스 패턴 피격");
+                StartCoroutine(Invincible());
+                BossPattern_Wind.instance.isBossPattern03_Damage = false;
+            }
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -112,6 +123,7 @@ public class PlayerStatus : MonoBehaviour
             // 일반 몬스터의 피격은 -1
             //Debug.Log("피격 당했습니다. " + currHP);
         }
+         
         
     }
 
@@ -262,15 +274,21 @@ public class PlayerStatus : MonoBehaviour
 
     //1번 방향으로 제작해보기
 
-    private bool isInvincible = false; // 일시 무적상태라면...
+    [HideInInspector]
+    public bool isInvincible = false; // 일시 무적상태라면...
         
     IEnumerator Invincible() // 일시 무적 처리
     {
         if (!isInvincible)
         {
+            if (BossManager.instance.bossSpawnActive)
+            {
+                BossPattern_Wind.instance.isBossPattern03_Damage = false;
+            }
+
             currHP -= statusDB.MonsterStatus[0].monsterDamage;
             //Debug.Log(statusDB.MonsterStatus[0].monsterDamage); //몬스터 데미지 측정
-
+            
             StartCoroutine(HitShakeCamera()); // 피격당했을 때 화면 흔들림
             
             Debug.Log("무적상태입니다.");

@@ -254,7 +254,7 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
 
     }
 
-    protected virtual float WaterSlashTypeDamage(int nomalAttackUID) //자식: WaterSlashScript
+    public virtual float WaterSlashTypeDamage(int nomalAttackUID) //자식: WaterSlashScript
     {
         // 물기본 평타는 6~10UID까지 유효
         // 임시 반환용도
@@ -265,7 +265,7 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
     }
 
 
-    protected virtual float WaterSlashType_SlowEffect(int nomalAttackUID) // 물속성 공격의 몬스터 슬로우 효과
+    public virtual float WaterSlashType_SlowEffect(int nomalAttackUID) // 물속성 공격의 몬스터 슬로우 효과
     {
         // 임시 반환용도
         float path = 0f;
@@ -284,7 +284,7 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
 
     }
 
-    protected virtual float FireSlashTypeDamage(int nomalAttackUID) //자식: WaterSlashScript
+    public virtual float FireSlashTypeDamage(int nomalAttackUID) //자식: WaterSlashScript
     {
         // 불기본 평타는 12~17UID까지 유효
         // 임시 반환용도
@@ -294,7 +294,18 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
 
     }
 
+    public virtual float FireSlash_SpreadDamage(int indexNum, Vector3 center, float radius)
+    {
+        
 
+        //임시 반환
+        float path = 0f;
+        Debug.Log("해당 디버그는 부모 함수 디버그이다.");
+
+        return path;
+    }
+
+    
 
 
 
@@ -302,7 +313,7 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
     //###############################↓↓↓↓↓↓인터페이스 함수 영역↓↓↓↓↓↓###############################--------------
     //------------------------------------------------------------------------------------------------------------------------
 
-    
+
     //계산 수치는 case문을 활용해서 데이터테이블 인덱스 값을 불러오는 형식으로 나중에 변경하기
     // 히트 이펙트
     public GameObject HitEffect() //풀 가져오는 수식을 조금 쉽고 간단하며 여러 상황에 쓸수 있게 수정하기

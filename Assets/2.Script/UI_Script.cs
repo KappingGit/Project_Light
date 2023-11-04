@@ -70,6 +70,9 @@ public class UI_Script : MonoBehaviour
 
         Status_UI();
 
+        SubSkill01_CoolUI();
+
+        SubSkill02_CoolUI();
 
         if (popupAttribute)
         {
@@ -348,8 +351,12 @@ public class UI_Script : MonoBehaviour
         }
     }
 
+    [HideInInspector]
     private bool isGetSkill;
     
+
+
+
     public void GetSkillBtn()
     {
         
@@ -422,6 +429,58 @@ public class UI_Script : MonoBehaviour
     {
         isSubSkillBtn02 = true;
 
+    }
+
+    [SerializeField]
+    private GameObject Cool_subSkill01;
+
+    [SerializeField]
+    private TextMeshProUGUI subSkillCooltimeText01;
+
+    [SerializeField]
+    private GameObject Cool_subSkill02;
+
+    [SerializeField]
+    private TextMeshProUGUI subSkillCooltimeText02;
+
+    private bool isTrigger01 = false; // 코루틴 브레이킹용
+
+    private bool isTrigger02 = false; // 코루틴 브레이킹용
+
+    private void SubSkill01_CoolUI()
+    {
+        if (PlayerShooting.intance.isCoolTime01)
+        {
+            Cool_subSkill01.gameObject.SetActive(true);
+            if (!isTrigger01)
+            {
+                isTrigger01 = true;
+                StartCoroutine(CoolTime_Count_UI01(PlayerShooting.intance.subSkillCool01));
+            }
+           
+        }
+        else if (!PlayerShooting.intance.isCoolTime01)
+        {
+            Cool_subSkill01.gameObject.SetActive(false);
+        }
+    }
+
+    private void SubSkill02_CoolUI()
+    {
+        if (PlayerShooting.intance.isCoolTime02)
+        {
+            Cool_subSkill02.gameObject.SetActive(true);
+
+            if (!isTrigger02)
+            {
+                isTrigger02 = true;
+                StartCoroutine(CoolTime_Count_UI02(PlayerShooting.intance.subSkillCool02));
+            }
+        }
+        else if (!PlayerShooting.intance.isCoolTime02)
+        {
+            Cool_subSkill02.gameObject.SetActive(false);
+        }
     }
 
     [SerializeField]
@@ -541,6 +600,44 @@ public class UI_Script : MonoBehaviour
             playerLevelText.text = playerLevel.ToString(); // 현재 플레이어의 레벨
         }
         StopCoroutine(LevelUpDelay());
+    }
+
+    IEnumerator CoolTime_Count_UI01(float subSkill01_CoolTime)
+    {
+        
+        while (subSkill01_CoolTime > 0f)
+        {
+            subSkill01_CoolTime -= 1f;
+
+            //쿨타임 텍스트
+
+            subSkillCooltimeText01.text = subSkill01_CoolTime.ToString();
+                        
+            yield return YieldInstuctionCash.WaitForSeconds(1f);
+        }
+
+        isTrigger01 = false; // 코루틴 브레이킹용
+
+        StopCoroutine(CoolTime_Count_UI01(subSkill01_CoolTime));
+    }
+
+    IEnumerator CoolTime_Count_UI02(float subSkill02_CoolTime)
+    {
+
+        while (subSkill02_CoolTime > 0f)
+        {
+            subSkill02_CoolTime -= 1f;
+
+            //쿨타임 텍스트
+
+            subSkillCooltimeText02.text = subSkill02_CoolTime.ToString();
+
+            yield return YieldInstuctionCash.WaitForSeconds(1f);
+        }
+
+        isTrigger02 = false; // 코루틴 브레이킹용
+
+        StopCoroutine(CoolTime_Count_UI02(subSkill02_CoolTime));
     }
 
 }

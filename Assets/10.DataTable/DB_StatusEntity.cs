@@ -104,7 +104,7 @@ public class DB_StatusEntity_04
 
     public int weaponType; // 서브 스킬 무기 속성
 
-    public float typeLevel; // 서브 스킬의 무기 레벨
+    public int typeLevel; // 서브 스킬의 무기 레벨
 
     public string name; // 서브 스킬 이름
 
@@ -118,7 +118,7 @@ public class DB_StatusEntity_04
 
     public float penetDamage; // 불 서브 스킬의 관통 데미지
 
-    public float penetCount; // 불 서브 스킬의 최대 맞는 개체수(얼만큼 관통시킬지.... 기획상으론 끝까지이지만 일단 데이터 기입)
+    public int penetCount; // 불 서브 스킬의 최대 맞는 개체수(얼만큼 관통시킬지.... 기획상으론 끝까지이지만 일단 데이터 기입)
 
     public float barrierDuration; // 물 서브 스킬 베리어의 지속시간(시간을 표현해야함으로 float으로 선언)
 

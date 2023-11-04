@@ -19,6 +19,8 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
     private Rigidbody enemyRig;
 
+    private float slowEffect;
+
     private void Awake()
     {
         //enemyObj = GetComponent<GameObject>();
@@ -102,13 +104,16 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
         isDie = false;
 
+        slowEffect = 1f;
+
         //Debug.Log("기본값");
 
         //Transform[] spawnPos = GameManger.instance.points; //  스폰 포인트를 지정
 
         //ai.SetDestination(spawnPos[Random.Range(0, spawnPos.Length)].position); //해당 스폰 포인트로 이동
 
-        
+
+
     }
 
     // 스테이터스 작업에서 상속 개념을 활용해보기
@@ -136,7 +141,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
     {
         float enemySpeed = statusDB.MonsterStatus[0].monsterSpeed;
 
-        enemyRig.velocity = new Vector3(0, 0, -enemySpeed); // 나중에 속도 느려지게 하는 효과를 넣으면 수식 변경
+        enemyRig.velocity = new Vector3(0, 0, -enemySpeed * slowEffect); // 나중에 속도 느려지게 하는 효과를 넣으면 수식 변경
     }
 
     //몬스터 획득 경험치 (난이도 테이블 사용)
@@ -152,22 +157,22 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
     }
 
     // 어떤 무기 닿았는지 알기 위한 함수
-    private float WhatWeaponType()
-    {
+    //private float WhatWeaponType()
+    //{
+        
 
+    //    if (true) // 만약 바람 속성 무기라면...
+    //    {
+    //        float damage = BulletScript.instance.WindSlashTypeDamage(1); // 해당 무기의 데미지(인덱스1)
 
-        if (true) // 만약 바람 속성 무기라면...
-        {
-            float damage = BulletScript.instance.WindSlashTypeDamage(1); // 해당 무기의 데미지
+    //        return damage;
 
-            return damage;
+    //    }
+    //    //else if (true) // 만약 바람 서브 스킬이라면...
+    //    //{
 
-        }
-        //else if (true) // 만약 바람 서브 스킬이라면...
-        //{
-
-        //}
-    }
+    //    //}
+    //}
 
     private void Hit() // 최종 데미지 피격 함수
     {
@@ -187,7 +192,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
             //TargetDamage();
 
-            currHp -= WhatWeaponType();
+            //currHp -= WhatWeaponType();
 
             Debug.Log("몬스터가 피격을 받았습니다." + currHp);
 
@@ -203,6 +208,151 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
         }
 
     }
+
+    #region 기본 공격 3가지 묶음(미친 짓)
+
+    private void Hit_WindSlash() // 최종 데미지 피격 함수
+    {
+        if (currHp > 0)
+        {
+
+
+            Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 기본공격  " + currHp);
+
+            currHp -= BulletScript.instance.WindSlashTypeDamage(1);
+
+            Debug.Log("몬스터가 피격을 받았습니다.- 바람 기본공격  " + currHp);
+
+
+        }
+
+        if (currHp <= 0) // 현재 체력이 떨어지면...
+        {
+            Die();
+
+            PlayerStatus.instance.GetGold(); // 골드 획득(플레이어가 죽이면 골드 얻게 함)
+            PlayerStatus.instance.GetEXP(); // 경험치 획득(플레이어가 죽이면 경험치 얻게 함)
+        }
+
+    }
+
+    private void Hit_WaterSlash() // 최종 데미지 피격 함수
+    {
+        if (currHp > 0)
+        {
+
+
+            Debug.Log("몬스터가 피격 받기전 체력입니다 - 물 기본공격  " + currHp);
+
+            currHp -= BulletScript.instance.WaterSlashTypeDamage(7);
+
+            slowEffect = BulletScript.instance.WaterSlashType_SlowEffect(7); //슬로우
+
+            Debug.Log("몬스터가 피격을 받았습니다. - 물 기본공격  " + currHp);
+
+
+        }
+
+        if (currHp <= 0) // 현재 체력이 떨어지면...
+        {
+            Die();
+
+            PlayerStatus.instance.GetGold(); // 골드 획득(플레이어가 죽이면 골드 얻게 함)
+            PlayerStatus.instance.GetEXP(); // 경험치 획득(플레이어가 죽이면 경험치 얻게 함)
+        }
+
+    }
+
+    private void Hit_FireSlash() // 최종 데미지 피격 함수
+    {
+        if (currHp > 0)
+        {
+
+
+            Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 기본공격  " + currHp);
+
+            currHp -= BulletScript.instance.FireSlashTypeDamage(14);
+
+            Debug.Log("몬스터가 피격을 받았습니다.- 불 기본공격  " + currHp);
+
+            BulletScript.instance.FireSlash_SpreadDamage(14,transform.position, 1f);
+
+        }
+
+        if (currHp <= 0) // 현재 체력이 떨어지면...
+        {
+            Die();
+
+            PlayerStatus.instance.GetGold(); // 골드 획득(플레이어가 죽이면 골드 얻게 함)
+            PlayerStatus.instance.GetEXP(); // 경험치 획득(플레이어가 죽이면 경험치 얻게 함)
+        }
+
+    }
+
+    #endregion
+
+    #region 서브 스킬 3가지 묶음(개미친짓)
+
+    private void Hit_WindDrill()
+    {
+        if (currHp > 0)
+        {
+            //Debug.Log("드릴 횟수 확인"+SubSkillScript.instance.WindDrillType_Count(1));
+
+            Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 서브스킬  " + currHp);
+
+            for (int i = 0; i < SubSkillManager.instance.WindDrillType_Count(1); i++) // 타격 횟수
+            {
+                //Debug.Log("단타 확인");
+                currHp -= SubSkillManager.instance.WindDrillType_Damage(1);
+            }
+            
+
+            Debug.Log("몬스터가 피격을 받았습니다.- 바람 서브스킬  " + currHp);
+
+
+        }
+
+        if (currHp <= 0) // 현재 체력이 떨어지면...
+        {
+            Die();
+
+            PlayerStatus.instance.GetGold(); // 골드 획득(플레이어가 죽이면 골드 얻게 함)
+            PlayerStatus.instance.GetEXP(); // 경험치 획득(플레이어가 죽이면 경험치 얻게 함)
+        }
+    }
+
+    private void Hit_WaterBarrier()
+    {
+
+    }
+
+    private void Hit_FireBall()
+    {
+        if (currHp > 0)
+        {
+
+
+            Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 서브 스킬  " + currHp);
+
+            currHp -= SubSkillManager.instance.FireBallType_PenetDamage(13);
+
+            Debug.Log("몬스터가 피격을 받았습니다.- 불 서브 스킬  " + currHp);
+
+
+        }
+
+        if (currHp <= 0) // 현재 체력이 떨어지면...
+        {
+            Die();
+
+            PlayerStatus.instance.GetGold(); // 골드 획득(플레이어가 죽이면 골드 얻게 함)
+            PlayerStatus.instance.GetEXP(); // 경험치 획득(플레이어가 죽이면 경험치 얻게 함)
+        }
+    }
+
+    #endregion
+
 
     #region 잘못된 코드 언젠가 다시보고 왜 이렇게 했지? 라는 생각을 가질 수 있게 내비둔다
 
@@ -323,6 +473,40 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
             //Debug.Log("몬스터를 반환시도.");
 
             Hit();
+        }
+
+        ///////////////////////////////////////////
+
+        if (other.gameObject.CompareTag("WindSlash"))
+        {
+            Hit_WindSlash();
+        }
+        
+        if (other.gameObject.CompareTag("WaterSlash"))
+        {
+            Hit_WaterSlash();
+        }
+
+        if (other.gameObject.CompareTag("FireSlash"))
+        {
+            Hit_FireSlash();
+        }
+
+        if (other.gameObject.CompareTag("WindDrill"))
+        {
+            
+            Hit_WindDrill();
+        }
+
+        if (other.gameObject.CompareTag("WaterBarrier"))
+        {
+            Hit_WaterBarrier();
+        }
+
+        if (other.gameObject.CompareTag("FireBall"))
+        {
+
+            Hit_FireBall();
         }
 
     }

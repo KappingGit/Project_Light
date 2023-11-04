@@ -71,6 +71,7 @@ public class SoundManager : MonoBehaviour
                 PlayerLevelUpSound();
                 VictorySound();
                 
+                WindBossBGM();
 
                 break;
         }
@@ -103,6 +104,7 @@ public class SoundManager : MonoBehaviour
 
         theAudio.Play();
     }
+
 
     [SerializeField]
     private AudioClip levelUpClip;
@@ -143,6 +145,11 @@ public class SoundManager : MonoBehaviour
                 {
                     isTrigger02 = false;
 
+                    if (theAudio.clip != null) // 뮤트보다 확실한 처리방법
+                    {
+                        theAudio.clip = null;
+                                                
+                    }
                     Debug.Log("승리 사운드"); 
 
                     theAudio.PlayOneShot(victoryClip);
@@ -154,6 +161,35 @@ public class SoundManager : MonoBehaviour
         }
         
     }
+
+    [SerializeField]
+    private AudioClip windBossBGM;
+
+    private bool isTrigger03 = true; // 브레이크용
+
+    private void WindBossBGM()
+    {
+        if (BossManager.instance.bossSpawnActive)
+        {
+            if (isTrigger03)
+            {
+                isTrigger03 = false;
+
+                Debug.Log("보스 등장 사운드");
+
+                if (theAudio.clip != null)
+                {
+                    theAudio.clip = null;
+
+                    StartCoroutine(Trigger03_Delay());
+                }
+            }
+
+
+        }
+
+    }
+
 
     IEnumerator Trigger01_Delay() // 레벨업 트리거용 코루틴
     {
@@ -171,6 +207,24 @@ public class SoundManager : MonoBehaviour
         //isTrigger02 = true;
 
         StopCoroutine(Trigger02_Delay());
+    }
+
+    IEnumerator Trigger03_Delay()
+    {
+        yield return YieldInstuctionCash.WaitForSeconds(0.25f);
+
+        if (theAudio.clip == null)
+        {
+            theAudio.clip = windBossBGM;
+
+            theAudio.volume = 1f;
+
+            theAudio.loop = true;
+
+            theAudio.Play();
+        }
+
+        StopCoroutine(Trigger03_Delay());
     }
 
 }

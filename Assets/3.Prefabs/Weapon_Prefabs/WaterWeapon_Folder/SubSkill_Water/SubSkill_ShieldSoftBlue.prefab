@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7230616492307598729}
   - component: {fileID: 5509770951798094539}
   - component: {fileID: 7686309097895670148}
-  - component: {fileID: 3182133673692987354}
+  - component: {fileID: 3182133673692987361}
   m_Layer: 0
   m_Name: SubSkill_ShieldSoftBlue
   m_TagString: Untagged
@@ -4886,7 +4886,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3182133673692987354
+--- !u!114 &3182133673692987361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4895,8 +4895,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7043632461781438870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf5a4d0bce4d9d49beacf5082dca576, type: 3}
+  m_Script: {fileID: 11500000, guid: 62ddaad3472ed6f46bac2bf750c8994e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   idName: SubSkill_ShieldSoftBlue
+  statusDB: {fileID: 11400000, guid: 004adbcc68a2c034c9deaf3a46df007b, type: 2}
   shootPos: {fileID: 0}
+  skillSpeed: 40

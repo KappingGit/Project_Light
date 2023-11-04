@@ -316,7 +316,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 820827d0903eb774196a3a6e9a3cdac9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cb7fed398d4b4ba468b70f2149aee2b7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -29588,6 +29588,8 @@ MonoBehaviour:
   statusDB: {fileID: 0}
   weaponType: 0
   subSkillType: 0
+  isCoolTime01: 0
+  isCoolTime02: 0
 --- !u!114 &7937290955308818767
 MonoBehaviour:
   m_ObjectHideFlags: 0
