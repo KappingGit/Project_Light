@@ -1199,7 +1199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idName: Boss01
   rend: {fileID: 2924330635056665919}
-  bossMaxHP: 10
+  bossMaxHP: 150
   bossCurHP: 0
   dieDirect_Effect: {fileID: 6564720513299290242}
   pattern03_Effect: {fileID: 6831784531550404427}
@@ -1222,6 +1222,7 @@ MonoBehaviour:
   spawnerPos: {fileID: 0}
   isCharge: 0
   isStun: 0
+  isBossPattern03_Damage: 0
 --- !u!1 &5614095580386533333
 GameObject:
   m_ObjectHideFlags: 0

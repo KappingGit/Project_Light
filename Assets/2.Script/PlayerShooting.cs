@@ -29,11 +29,35 @@ public class PlayerShooting : MonoBehaviour
 
         isFire = false;
         isTrigger = false;
+
+        isStopShoot = false;
+
+        // 초반 무기 초기화(인덱스 번호 잘 볼것...// 해당 인덱스 번호는 Pooling되어있는 순서이다)
+        // 평타 : 0 => 바람, 1 => 물, 2 => 불
+        index_WeaponType_Nomal = 0;
+
+
+        // 서브 스킬 : 0 => 바람, 1 => 물, 2 => 불
+        index_WeaponType_SubSkill_01 = 2;
+
+        index_WeaponType_SubSkill_02 = 0;
     }
 
     private bool isFire;
 
     private bool isTrigger;
+
+    private bool isStopShoot; // 공격 금지
+
+    // 무기별 인덱스(awake에서 한번 초기화거쳐야함 퍼블릭이라서)
+    [HideInInspector]
+    public int index_WeaponType_Nomal;
+
+    [HideInInspector]
+    public int index_WeaponType_SubSkill_01;
+
+    [HideInInspector]
+    public int index_WeaponType_SubSkill_02;
 
     // || Input.GetTouch(0).phase == TouchPhase.Moved
     private void Update()
@@ -46,6 +70,8 @@ public class PlayerShooting : MonoBehaviour
             anim.SetBool("isFire", false);
                                     
         }
+
+        
 
         #region 키보드 코드
 
@@ -83,16 +109,22 @@ public class PlayerShooting : MonoBehaviour
 
             if (!ChangeSceneManager.instance.fadeInOuting) // 페이드 중이 아니라면 발사하게
             {
-                anim.SetBool("isFire", true);
+                
+                isTrigger = true;
 
-                isTrigger = true; // 발사버튼 클릭
+                weaponType = index_WeaponType_Nomal;
 
-                weaponType = 0; // 인스펙터와 지역변수의 실행 순서를 잘 이해를 해야 문제가 발생하지 않는다.
-                                // 문제점 : 인스펙터weaponType의 값을 변화시켜도 바뀌지 않는 문제가 발생, 함수안에 집어넣으니 해결
-                                //Debug.Log("장착된 무기 속성(인덱스 넘버) : " + weaponType);
+                Debug.Log("현재 무기 타입(코루틴 들어가기전) : " + weaponType);
+
+                // 인스펙터와 지역변수의 실행 순서를 잘 이해를 해야 문제가 발생하지 않는다.
+                // 문제점 : 인스펙터weaponType의 값을 변화시켜도 바뀌지 않는 문제가 발생, 함수안에 집어넣으니 해결
+                //Debug.Log("장착된 무기 속성(인덱스 넘버) : " + weaponType);
+
+                // 발사버튼 클릭
 
                 if (isTrigger) //발사버튼이 클릭이라면...
                 {
+                    
                     //Debug.Log("발사했습니다");
                     StartCoroutine(AttackRate(weaponType)); //딕셔너리로 하면 이부분과 딕셔너리 부분이 오류남
 
@@ -156,20 +188,32 @@ public class PlayerShooting : MonoBehaviour
         if (UI_Script.instance.isSubSkillBtn01 || Input.GetKeyDown(KeyCode.A))// UI 서브 스킬 버튼을 눌렀으면...
         {
             
+            if (BossManager.instance.bossSpawnActive)
+            {
+                if (BossScript.instance.isPurification)
+                {
+                    isStopShoot = true;
+                }
+            }
+
+
             UI_Script.instance.isSubSkillBtn01 = false;
             
             if (!ChangeSceneManager.instance.fadeInOuting) // 페이드 중이 아니라면 발사하게
             {
-                if (!isCoolTime01)
+                if (!isStopShoot)
                 {
-                    anim.SetBool("isFire", true);
+                    if (!isCoolTime01)
+                    {
+                        anim.SetBool("isFire", true);
 
 
-                    subSkillType = 2; // 해당 버튼에 있는 스킬 속성 값
+                        subSkillType = index_WeaponType_SubSkill_01; // 해당 버튼에 있는 스킬 속성 값
 
-                    StartCoroutine(SkillAttackRate01(subSkillType));
+                        StartCoroutine(SkillAttackRate01(subSkillType));
+                    }
                 }
-                                
+                                                
             }
             
 
@@ -178,21 +222,30 @@ public class PlayerShooting : MonoBehaviour
         // 서브 스킬 2번 버튼
         if (UI_Script.instance.isSubSkillBtn02 || Input.GetKeyDown(KeyCode.D))// UI 서브 스킬 버튼을 눌렀으면...
         {
-            
+            if (BossManager.instance.bossSpawnActive)
+            {
+                if (BossScript.instance.isPurification)
+                {
+                    isStopShoot = true;
+                }
+            }
+
             UI_Script.instance.isSubSkillBtn02 = false;
             
             if (!ChangeSceneManager.instance.fadeInOuting) // 페이드 중이 아니라면 발사하게
             {
-                if (!isCoolTime02)
+                if (!isStopShoot)
                 {
-                    anim.SetBool("isFire", true);
+                    if (!isCoolTime02)
+                    {
+                        anim.SetBool("isFire", true);
 
 
-                    subSkillType = 0; // 해당 버튼에 있는 스킬 속성 값 0바람 1물 2불
+                        subSkillType = index_WeaponType_SubSkill_02; // 해당 버튼에 있는 스킬 속성 값 0바람 1물 2불
 
-                    StartCoroutine(SkillAttackRate02(subSkillType));
+                        StartCoroutine(SkillAttackRate02(subSkillType));
+                    }
                 }
-                
 
             }
             
@@ -276,6 +329,25 @@ public class PlayerShooting : MonoBehaviour
                 
         while (isTrigger) // 발사버튼이 클릭이라면..
         {
+            if (BossManager.instance.bossSpawnActive)
+            {
+                if (BossScript.instance.isPurification) // 정화작업중일때 공격금지
+                {
+                    anim.SetBool("isFire", false);
+                    break;
+                }
+            }
+
+            if (WeaponManager.instance.isChange_NA)
+            {
+                WeaponManager.instance.isChange_NA = false;
+                isTrigger = false;
+                break;
+            }
+
+            //Debug.Log("현재 무기 타임은.... :" + weaponType);
+            anim.SetBool("isFire", true);
+
             isFire = true; // 발사중
 
             BulletManager.instance.GetPoolBullet(weaponType); // 총알 오브젝트 불러오게하는 코드, 인덱스 번호에 따라 일반 공격을 불러옴
@@ -291,7 +363,7 @@ public class PlayerShooting : MonoBehaviour
             //    isFire = false;
             //    break;
             //}
-
+          
         }
         //Debug.Log("총알 발사 테스트");
         isFire = false; // 발사중단
@@ -315,7 +387,9 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator SkillAttackRate01(int indexNum) // 서브 스킬의 공격속도 및 발사 트리거 기능(해당 기능에서 쿨타임 조절할 것)
     {
-        SubSkillManager.instance.GetPoolSkill(indexNum); // 스킬 테스트
+
+
+        SubSkillManager.instance.GetPoolSkill(indexNum); // 스킬 불러오기
 
         //yield return YieldInstuctionCash.WaitForSeconds(0.1f);
 

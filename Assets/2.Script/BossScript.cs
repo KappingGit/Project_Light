@@ -40,7 +40,7 @@ public class BossScript : MonoBehaviour, IPoolObject
         isTimeToReturn = false;
         isBossDie = false;
 
-        
+        isPurification = false;
 
     }
 
@@ -100,7 +100,8 @@ public class BossScript : MonoBehaviour, IPoolObject
     [SerializeField]
     private GameObject dieDirect_Effect;
 
-    private bool isPurification = false;
+    [HideInInspector]
+    public bool isPurification;
 
     private void BossDirectControl() //공격하는 레이어의 접근 함수
     {
@@ -138,7 +139,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
             Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 기본공격  " + bossCurHP);
 
-            bossCurHP -= BulletScript.instance.WindSlashTypeDamage(1);
+            bossCurHP -= BulletManager.instance.WindSlashTypeDamage(1);
 
             Debug.Log("몬스터가 피격을 받았습니다.- 바람 기본공격  " + bossCurHP);
             StartCoroutine(BossHitEffect());
@@ -168,7 +169,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
             Debug.Log("몬스터가 피격 받기전 체력입니다 - 물 기본공격  " + bossCurHP);
 
-            bossCurHP -= BulletScript.instance.WaterSlashTypeDamage(7);
+            bossCurHP -= BulletManager.instance.WaterSlashTypeDamage(7);
 
             //slowEffect = BulletScript.instance.WaterSlashType_SlowEffect(7); //슬로우
 
@@ -200,11 +201,11 @@ public class BossScript : MonoBehaviour, IPoolObject
 
             Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 기본공격  " + bossCurHP);
 
-            bossCurHP -= BulletScript.instance.FireSlashTypeDamage(14);
+            bossCurHP -= BulletManager.instance.FireSlashTypeDamage(14);
 
             Debug.Log("몬스터가 피격을 받았습니다.- 불 기본공격  " + bossCurHP);
 
-            BulletScript.instance.FireSlash_SpreadDamage(14, transform.position, 1f);
+            BulletManager.instance.FireSlash_SpreadDamage(14, transform.position, 1f);
 
             StartCoroutine(BossHitEffect());
         }
@@ -451,6 +452,12 @@ public class BossScript : MonoBehaviour, IPoolObject
 
                 break;
 
+            }
+            else if (isPurification) // 정화작업들어가면 비활성화
+            {
+                pattern03_Effect.gameObject.SetActive(false);
+
+                break;
             }
 
             yield return YieldInstuctionCash.WaitForSeconds(0.5f);// 반복문 딜레이

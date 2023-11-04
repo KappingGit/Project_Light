@@ -30,10 +30,13 @@ public class UI_Script : MonoBehaviour
 
         isVictoryTrigger = false;
 
+        charImformActive = false; // 캐릭터 정보창 시작시 닫게 초기화
     }
 
     private void Update()
     {
+        
+
         if (!BossManager.instance.bossSpawnActive)
         {
             StageProgress();
@@ -239,7 +242,7 @@ public class UI_Script : MonoBehaviour
 
         bossHPBarFill.fillAmount = BossScript.instance.bossCurHP / BossScript.instance.bossMaxHP;
 
-        if (BossScript.instance.bossCurHP < 0f)
+        if (BossScript.instance.bossCurHP <= 0f)
         {
             bossHPBar.gameObject.SetActive(false);
         }
@@ -366,6 +369,14 @@ public class UI_Script : MonoBehaviour
         if (isGetSkill) // 스킬을 얻었다면...
         {
             Debug.Log("레벨업 : 1번 스킬 획득");
+
+            //todo: 스킬 획득 정보처리
+
+            // 일단 무기 획득 및 교체까지 해보자
+            // 방향성 : 레벨업 후 스킬 얻는게 나오면 1번을 누르면 물 평타를 얻게끔한다
+
+            // 무기 교체하기 => 물평타 해당창을 누르면 교체되게한다
+
             isGetSkill = false;
             popupAttribute.gameObject.SetActive(false); // 해당 스킬 얻는 팝업 끄기
             
@@ -532,6 +543,20 @@ public class UI_Script : MonoBehaviour
 
     }
 
+
+    //[SerializeField]
+    //private GameObject currentInstall;
+    
+    private void Status_UI_SkillSlot() // 스킬 교체용 함수
+    {
+
+    }
+
+   
+
+
+
+
     //YieldInstuctionCash 미리 캐싱해둔것
     IEnumerator StageUI() // 애니메이션 효과 시간 맞추기
     {
@@ -582,6 +607,9 @@ public class UI_Script : MonoBehaviour
     IEnumerator LevelUpDelay()
     {
         isLevelUp = true;
+
+        //todo: 스킬 선택창이 열렸을 때 랜덤하게 나오게
+
         yield return YieldInstuctionCash.WaitForSeconds(0.1f); // 다른데서 참조할 수 있게 딜레이
         if (isLevelUp)
         {

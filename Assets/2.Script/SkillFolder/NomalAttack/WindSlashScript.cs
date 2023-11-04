@@ -59,28 +59,28 @@ public class WindSlashScript : BulletScript
 
     }
 
-    Dictionary<int, NomalAttack_WindSlash> nomalAttack_Wind;
+    //Dictionary<int, NomalAttack_WindSlash> nomalAttack_Wind;
 
-    // 해당 무기를 딕셔너리로 뽑아온다
+    //// 해당 무기를 딕셔너리로 뽑아온다
 
-    protected override void WindSlash_TypeDictionary() // 윈드 슬래쉬의 데이터를 뽑아온 다음 리스트화 시킴
-    {
-        nomalAttack_Wind = new Dictionary<int, NomalAttack_WindSlash>();
+    //protected override void WindSlash_TypeDictionary() // 윈드 슬래쉬의 데이터를 뽑아온 다음 리스트화 시킴
+    //{
+    //    nomalAttack_Wind = new Dictionary<int, NomalAttack_WindSlash>();
 
-        // 바람 공격 데이터값 저장
-        for (int nomalAttack_UID = 0; nomalAttack_UID < 6; nomalAttack_UID++)
-        {
-            // 가독성 높이기
-            int indexLevel = nomalAttack_UID;
+    //    // 바람 공격 데이터값 저장
+    //    for (int nomalAttack_UID = 0; nomalAttack_UID < 6; nomalAttack_UID++)
+    //    {
+    //        // 가독성 높이기
+    //        int indexLevel = nomalAttack_UID;
 
-            int indexName = nomalAttack_UID;
+    //        int indexName = nomalAttack_UID;
 
-            int indexDamage = nomalAttack_UID;
+    //        int indexDamage = nomalAttack_UID;
 
-            nomalAttack_Wind.Add(nomalAttack_UID, new NomalAttack_WindSlash(statusDB.NomalAttack[indexLevel].typeLevel, statusDB.NomalAttack[indexName].name, statusDB.NomalAttack[indexDamage].singleDamage));
+    //        nomalAttack_Wind.Add(nomalAttack_UID, new NomalAttack_WindSlash(statusDB.NomalAttack[indexLevel].typeLevel, statusDB.NomalAttack[indexName].name, statusDB.NomalAttack[indexDamage].singleDamage));
 
-        }
-    }
+    //    }
+    //}
 
     // 플레이어의 공격력
     private float playerATK;
@@ -93,46 +93,46 @@ public class WindSlashScript : BulletScript
 
     // 주의 return 함수는 float이며 최종 데미지 계산은 finalDamage로 결과가 나오는데 여기서 해당 레벨이나 UID가 변동이 없을 수 있음
     // 윈드 슬래쉬의 데이터를 뽑아온 데이터를 데미지 수식에 추가
-    public override float WindSlashTypeDamage(int indexNum)
-    {
-        // 바람 속성 기본 공격(평타)의 효과
-        // 단일 대상에서 공격력*퍼센트의 단일 대미지를 준다라는 형식이 필요
+    //public override float WindSlashTypeDamage(int indexNum)
+    //{
+    //    // 바람 속성 기본 공격(평타)의 효과
+    //    // 단일 대상에서 공격력*퍼센트의 단일 대미지를 준다라는 형식이 필요
 
-        playerATK = statusDB.PlayerStatus[0].playerDamage; // 플레이어의 공격력 패시브로 얻는 선택지는 아직 미구현이니 인덱스 0으로 고정
+    //    playerATK = statusDB.PlayerStatus[0].playerDamage; // 플레이어의 공격력 패시브로 얻는 선택지는 아직 미구현이니 인덱스 0으로 고정
 
-        //windSlashDamage = statusDB.NomalAttack[1].singleDamage; // 해당 코드는 하나의 데이터를 뽑는다
+    //    //windSlashDamage = statusDB.NomalAttack[1].singleDamage; // 해당 코드는 하나의 데이터를 뽑는다
 
-        //windSlashDamage = statusDB.NomalAttack[1].nomalAttackUID; // 해당 코드는 바람 기본평타 1레벨 UID이다(UID : 1)
+    //    //windSlashDamage = statusDB.NomalAttack[1].nomalAttackUID; // 해당 코드는 바람 기본평타 1레벨 UID이다(UID : 1)
 
-        //해당 변수는 바람 기본평타의 UID이다
-        //windSlashUID = statusDB.NomalAttack[1].nomalAttackUID;
+    //    //해당 변수는 바람 기본평타의 UID이다
+    //    //windSlashUID = statusDB.NomalAttack[1].nomalAttackUID;
 
-        // 해당 변수는 바람 기본 평의 레벨이다
-        //windSlashLevel = statusDB.NomalAttack[1].typeLevel;
+    //    // 해당 변수는 바람 기본 평의 레벨이다
+    //    //windSlashLevel = statusDB.NomalAttack[1].typeLevel;
 
-        // 해당 변수는 바람 기본 평타의 데미지 퍼센트다
-        //windSlashDamage = statusDB.NomalAttack[1].singleDamage;
+    //    // 해당 변수는 바람 기본 평타의 데미지 퍼센트다
+    //    //windSlashDamage = statusDB.NomalAttack[1].singleDamage;
 
 
-        NomalAttack_WindSlash windData = nomalAttack_Wind[indexNum];
+    //    NomalAttack_WindSlash windData = nomalAttack_Wind[indexNum];
 
-        //최종 데미지
-        float finalDamage = playerATK * windData.singleDamage;
+    //    //최종 데미지
+    //    float finalDamage = playerATK * windData.singleDamage;
 
-        //if (target.TryGetComponent<IDamage>(out IDamage damage))
-        //{
-        //    damage.TargetDamage(finalDamage);
-        //}
+    //    //if (target.TryGetComponent<IDamage>(out IDamage damage))
+    //    //{
+    //    //    damage.TargetDamage(finalDamage);
+    //    //}
 
-        //임시 반환
-        float path = 0.5f;
+    //    //임시 반환
+    //    float path = 0.5f;
 
-        Debug.Log("자식 스크립트의 WindSlashTypeDamage() 함수 실행");
-        Debug.Log("바람 기본 평타 최종 데미지 : " + finalDamage);
+    //    Debug.Log("자식 스크립트의 WindSlashTypeDamage() 함수 실행");
+    //    Debug.Log("바람 기본 평타 최종 데미지 : " + finalDamage);
 
-        return finalDamage;
+    //    return finalDamage;
                 
-    }
+    //}
 
    
     

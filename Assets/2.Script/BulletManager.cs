@@ -13,12 +13,15 @@ public class BulletManager : MonoBehaviour
     [SerializeField]
     private DB_Status statusDB; // 에셋화 되어있는 데이터테이블 가져오기
 
+    // 플레이어의 공격력
+    private float playerATK;
+
     //딕셔너리 테스트
-    //Dictionary<int, NomalAttack_WindSlash> nomalAttack_Wind;
+    Dictionary<int, NomalAttack_WindSlash> nomalAttack_Wind;
 
-    //Dictionary<int, NomalAttack_WaterSlash> nomalAttack_Water;
+    Dictionary<int, NomalAttack_WaterSlash> nomalAttack_Water;
 
-    //Dictionary<int, NomalAttack_FireSlash> nomalAttack_Fire;
+    Dictionary<int, NomalAttack_FireSlash> nomalAttack_Fire;
 
     private void Awake()
     {
@@ -30,15 +33,15 @@ public class BulletManager : MonoBehaviour
             instance = this;
         }
 
+        
         // 기본 평타 딕셔너리 처리
+        WindSlash_TypeDictionary(); // 딕셔너리 추가
+
+        WaterSlash_TypeDictionary();
+
+        FireSlash_TypeDictionary();
 
         #region 딕셔너리 테스트 용 코드들 (일단 그때그때 어떻게 구현했나 확인하기 위함)
-
-        //nomalAttack_Wind = new Dictionary<int, NomalAttack_WindSlash>();
-
-        //nomalAttack_Water = new Dictionary<int, NomalAttack_WaterSlash>();
-
-        //nomalAttack_Fire = new Dictionary<int, NomalAttack_FireSlash>();
 
         //int nomalAttack_UID;
 
@@ -58,7 +61,7 @@ public class BulletManager : MonoBehaviour
 
         //}
 
-        // 물 공격 데이터값 저장
+        //// 물 공격 데이터값 저장
         //for (int nomalAttack_UID = 6; nomalAttack_UID < 12; nomalAttack_UID++)
         //{
 
@@ -72,7 +75,7 @@ public class BulletManager : MonoBehaviour
 
         //}
 
-        // 불 공격 데이터 값 저장
+        //// 불 공격 데이터 값 저장
         //for (int nomalAttack_UID = 12; nomalAttack_UID < 18; nomalAttack_UID++)
         //{
 
@@ -123,7 +126,7 @@ public class BulletManager : MonoBehaviour
 
     }
 
-    
+
 
     public GameObject GetPoolBullet(int bulletIndex)
     {
@@ -131,7 +134,7 @@ public class BulletManager : MonoBehaviour
         BulletScript newBullet = poolManager.GetFromPool<BulletScript>(bulletIndex);
 
         GameObject newBulletObj_01 = newBullet.gameObject;
-        
+
         return newBulletObj_01;
     }
 
@@ -139,4 +142,188 @@ public class BulletManager : MonoBehaviour
     {
         poolManager.TakeToPool<BulletScript>(clone.idName, clone);
     }
+
+
+
+
+
+    #region 바람평타 딕셔너리화
+
+    private void WindSlash_TypeDictionary() // 윈드 슬래쉬의 데이터를 뽑아온 다음 리스트화 시킴
+    {
+        nomalAttack_Wind = new Dictionary<int, NomalAttack_WindSlash>();
+
+        // 바람 공격 데이터값 저장
+        for (int nomalAttack_UID = 0; nomalAttack_UID < 6; nomalAttack_UID++)
+        {
+            // 가독성 높이기
+            int indexLevel = nomalAttack_UID;
+
+            int indexName = nomalAttack_UID;
+
+            int indexDamage = nomalAttack_UID;
+
+            nomalAttack_Wind.Add(nomalAttack_UID, new NomalAttack_WindSlash(statusDB.NomalAttack[indexLevel].typeLevel, statusDB.NomalAttack[indexName].name, statusDB.NomalAttack[indexDamage].singleDamage));
+
+        }
+    }
+
+    public float WindSlashTypeDamage(int indexNum)
+    {
+        // 바람 속성 기본 공격(평타)의 효과
+        // 단일 대상에서 공격력*퍼센트의 단일 대미지를 준다라는 형식이 필요
+
+        playerATK = statusDB.PlayerStatus[0].playerDamage; // 플레이어의 공격력 패시브로 얻는 선택지는 아직 미구현이니 인덱스 0으로 고정
+
+        NomalAttack_WindSlash windData = nomalAttack_Wind[indexNum];
+
+        //최종 데미지
+        float finalDamage = playerATK * windData.singleDamage;
+
+        //if (target.TryGetComponent<IDamage>(out IDamage damage))
+        //{
+        //    damage.TargetDamage(finalDamage);
+        //}
+
+        //임시 반환
+        
+        Debug.Log("BulletManager 스크립트의 WindSlashTypeDamage() 함수 실행");
+        Debug.Log("바람 기본 평타 최종 데미지 : " + finalDamage);
+
+        return finalDamage;
+
+    }
+
+    #endregion
+
+    #region 물평타 딕셔너리화
+
+
+    private void WaterSlash_TypeDictionary() // 윈드 슬래쉬의 데이터를 뽑아온 다음 리스트화 시킴
+    {
+        nomalAttack_Water = new Dictionary<int, NomalAttack_WaterSlash>();
+
+        // 물 공격 데이터값 저장
+        for (int nomalAttack_UID = 6; nomalAttack_UID < 12; nomalAttack_UID++)
+        {
+
+            int indexLevel = nomalAttack_UID;
+
+            int indexName = nomalAttack_UID;
+
+            int indexDamage = nomalAttack_UID;
+
+            nomalAttack_Water.Add(nomalAttack_UID, new NomalAttack_WaterSlash(statusDB.NomalAttack[indexLevel].typeLevel, statusDB.NomalAttack[indexName].name, statusDB.NomalAttack[indexDamage].speedDown));
+
+        }
+    }
+
+    public float WaterSlashTypeDamage(int indexNum) // 여기 값이 7~11이 들어가야지 유효(6은 없는 디폴트 물평타)
+    {
+
+        playerATK = statusDB.PlayerStatus[0].playerDamage; // 플레이어의 공격력 패시브로 얻는 선택지는 아직 미구현이니 인덱스 0으로 고정
+
+        //최종 데미지
+        float finalDamage = playerATK;
+
+        //임시 반환
+        //float path = 0.5f;
+
+        Debug.Log("BulletManager 스크립트의 WaterSlashTypeDamage() 함수 실행");
+        Debug.Log("물 기본 평타 최종 데미지 : " + finalDamage);
+
+
+        return finalDamage;
+
+    }
+
+    public float WaterSlashType_SlowEffect(int indexNum) //물 평타의 슬로우 효과
+    {
+        NomalAttack_WaterSlash waterData = nomalAttack_Water[indexNum];
+
+
+        float speedDownEffect = waterData.speedDown;
+        Debug.Log("물 기본 평타 슬로우 : " + speedDownEffect);
+
+        return speedDownEffect;
+    }
+
+    #endregion
+
+
+    #region 불평타 딕셔너리화
+
+    private void FireSlash_TypeDictionary() // 파이어 슬래쉬의 데이터를 뽑아온 다음 리스트화 시킴
+    {
+        nomalAttack_Fire = new Dictionary<int, NomalAttack_FireSlash>();
+
+        // 불 공격 데이터 값 저장
+        for (int nomalAttack_UID = 12; nomalAttack_UID < 18; nomalAttack_UID++)
+        {
+
+            int indexLevel = nomalAttack_UID;
+
+            int indexName = nomalAttack_UID;
+
+            int indexDamage = nomalAttack_UID;
+
+            nomalAttack_Fire.Add(nomalAttack_UID, new NomalAttack_FireSlash(statusDB.NomalAttack[indexLevel].typeLevel, statusDB.NomalAttack[indexName].name, statusDB.NomalAttack[indexDamage].spreadDamage));
+
+        }
+    }
+
+    public float FireSlashTypeDamage(int indexNum) // 여기 값이 13~17이 들어가야지 유효
+    {
+
+        playerATK = statusDB.PlayerStatus[0].playerDamage; // 플레이어의 공격력 패시브로 얻는 선택지는 아직 미구현이니 인덱스 0으로 고정
+
+        NomalAttack_FireSlash fireData = nomalAttack_Fire[indexNum];
+
+        //최종 데미지
+        float finalDamage = playerATK + (playerATK * fireData.spreadDamage);
+
+        //임시 반환
+        //float path = 0.5f;
+        Debug.Log("스플데미지 수치   " + fireData.spreadDamage);
+
+        Debug.Log("BulletManager 스크립트의 FireSlashTypeDamage() 함수 실행");
+        Debug.Log("불 기본 평타 최종 데미지 : " + finalDamage);
+
+
+        return finalDamage;
+
+    }
+
+    public float FireSlash_SpreadDamage(int indexNum, Vector3 center, float radius)
+    {
+        playerATK = statusDB.PlayerStatus[0].playerDamage; // 플레이어의 공격력 패시브로 얻는 선택지는 아직 미구현이니 인덱스 0으로 고정
+
+        NomalAttack_FireSlash fireData = nomalAttack_Fire[indexNum];
+
+        //최종 데미지
+        float finalDamage = playerATK + (playerATK * fireData.spreadDamage);
+
+        Collider[] hitColliders = Physics.OverlapSphere(center, radius);
+        int i = 0;
+        while (i < hitColliders.Length)
+        {
+            Debug.Log("범위 색출");
+            //finalDamage = playerATK + (playerATK * fireData.spreadDamage);
+            i++;
+        }
+
+        //임시 반환
+        //float path = 0.5f;
+        Debug.Log("스플데미지 수치   " + fireData.spreadDamage);
+
+        Debug.Log("BulletManager 스크립트의 FireSlashTypeDamage() 함수 실행");
+        Debug.Log("불 기본 평타 최종 데미지 : " + finalDamage);
+
+
+        return finalDamage;
+    }
+
+    #endregion
+
+
 }

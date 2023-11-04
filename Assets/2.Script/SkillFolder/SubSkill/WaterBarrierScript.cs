@@ -26,7 +26,7 @@ public class WaterBarrierScript : SubSkillScript
     {
         int i = 0;
         Debug.Log("워터 쉴드 위치 조정");
-        while (0 < SubSkillManager.instance.WaterBarrierType_Duration(7))
+        while (i < SubSkillManager.instance.WaterBarrierType_Duration(7))
         {
             transform.position = new Vector3(shootPos.position.x, 1f, shootPos.position.z); // 베리어 위치
             yield return YieldInstuctionCash.WaitForSeconds(0.1f);

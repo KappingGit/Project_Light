@@ -139,6 +139,7 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
             //Debug.Log("BulletScript.instance가 Null상태입니다");
             instance = this;
         }
+
         //Debug.Log("총알 위치: x = " + transform.position.x + "    y = " + transform.position.y + "    z = " + transform.position.z);
         //SlashEffect(); // 공격이 나갔을 때...
 
@@ -154,11 +155,11 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
         //WindSlash_TypeList();
 
 
-        WindSlash_TypeDictionary(); // 딕셔너리 추가
+        //WindSlash_TypeDictionary(); // 딕셔너리 추가
 
-        WaterSlash_TypeDictionary();
+        //WaterSlash_TypeDictionary();
 
-        FireSlash_TypeDictionary();
+        //FireSlash_TypeDictionary();
 
         
     }
@@ -219,59 +220,61 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
 
     }
 
+    #region BulletManager에서 딕셔너리 처리함(개판의 잔재를 남겨둠)
+
     //WindSlahScript.cs의 자식 함수로 사용하려고 했던 재정의 배경 함수
     // 윈드 슬래쉬의 데이터를 뽑아서 딕셔너리화 시켰다
-    protected virtual void WindSlash_TypeDictionary() // 윈드 슬래쉬의 데이터를 뽑아서 리스트화 함수 자식: WindSlashScript
-    {
+    //protected virtual void WindSlash_TypeDictionary() // 윈드 슬래쉬의 데이터를 뽑아서 리스트화 함수 자식: WindSlashScript
+    //{
 
-    }
+    //}
 
-    //밑에 있는 함수는 WindSlahScript.cs의 자식 함수로 사용하려고 했던 재정의 배경 함수
-    // 윈드 슬래쉬의 데이터를 뽑아온 데이터를 데미지 수식에 추가
-    public virtual float WindSlashTypeDamage(int nomalAttackUID)//자식: WindSlashScript
-    {
+    ////밑에 있는 함수는 WindSlahScript.cs의 자식 함수로 사용하려고 했던 재정의 배경 함수
+    //// 윈드 슬래쉬의 데이터를 뽑아온 데이터를 데미지 수식에 추가
+    //public virtual float WindSlashTypeDamage(int nomalAttackUID)//자식: WindSlashScript
+    //{
 
-        // 바람기본 평타는 0~5 UID까지 유효
+    //    // 바람기본 평타는 0~5 UID까지 유효
 
-        //if (target.TryGetComponent<IDamage>(out IDamage damage))
-        //{
-        //    damage.TargetDamage(nomalAttackUID);
-        //}
-                        
-        Debug.Log("해당 디버그는 부모 함수 디버그이다.");
+    //    //if (target.TryGetComponent<IDamage>(out IDamage damage))
+    //    //{
+    //    //    damage.TargetDamage(nomalAttackUID);
+    //    //}
 
-        // 임시 반환용도
-        return 0f;
-    }
+    //    Debug.Log("해당 디버그는 부모 함수 디버그이다.WindSlashTypeDamage");
+
+    //    // 임시 반환용도
+    //    return 0f;
+    //}
 
     /// <summary>
     /// 하단 함수는 WaterSlashScript에서 가져온 자식 함수이다
     /// </summary>
 
     // 워터 슬래쉬의 데이터를 뽑아서 딕셔너리화 시켰다
-    protected virtual void WaterSlash_TypeDictionary()
-    {
+    //protected virtual void WaterSlash_TypeDictionary()
+    //{
 
-    }
+    //}
 
-    public virtual float WaterSlashTypeDamage(int nomalAttackUID) //자식: WaterSlashScript
-    {
-        // 물기본 평타는 6~10UID까지 유효
-        // 임시 반환용도
-        float path = 0f;
-        Debug.Log("해당 디버그는 부모 함수 디버그이다.");
-        return path;
+    //public virtual float WaterSlashTypeDamage(int nomalAttackUID) //자식: WaterSlashScript
+    //{
+    //    // 물기본 평타는 6~10UID까지 유효
+    //    // 임시 반환용도
+    //    float path = 0f;
+    //    Debug.Log("해당 디버그는 부모 함수 디버그이다.WaterSlashTypeDamage");
+    //    return path;
 
-    }
+    //}
 
 
-    public virtual float WaterSlashType_SlowEffect(int nomalAttackUID) // 물속성 공격의 몬스터 슬로우 효과
-    {
-        // 임시 반환용도
-        float path = 0f;
-        Debug.Log("해당 디버그는 부모 함수 디버그이다.");
-        return path;
-    }
+    //public virtual float WaterSlashType_SlowEffect(int nomalAttackUID) // 물속성 공격의 몬스터 슬로우 효과
+    //{
+    //    // 임시 반환용도
+    //    float path = 0f;
+    //    Debug.Log("해당 디버그는 부모 함수 디버그이다.WaterSlashType_SlowEffect");
+    //    return path;
+    //}
 
 
     /// <summary>
@@ -279,33 +282,33 @@ public class BulletScript : MonoBehaviour, IPoolObject, INomalAttack
     /// </summary>
 
 
-    protected virtual void FireSlash_TypeDictionary()
-    {
+    //protected virtual void FireSlash_TypeDictionary()
+    //{
 
-    }
+    //}
 
-    public virtual float FireSlashTypeDamage(int nomalAttackUID) //자식: WaterSlashScript
-    {
-        // 불기본 평타는 12~17UID까지 유효
-        // 임시 반환용도
-        float path = 0f;
-        Debug.Log("해당 디버그는 부모 함수 디버그이다.");
-        return path;
+    //public virtual float FireSlashTypeDamage(int nomalAttackUID) //자식: WaterSlashScript
+    //{
+    //    // 불기본 평타는 12~17UID까지 유효
+    //    // 임시 반환용도
+    //    float path = 0f;
+    //    Debug.Log("해당 디버그는 부모 함수 디버그이다.FireSlashTypeDamage");
+    //    return path;
 
-    }
+    //}
 
-    public virtual float FireSlash_SpreadDamage(int indexNum, Vector3 center, float radius)
-    {
-        
+    //public virtual float FireSlash_SpreadDamage(int indexNum, Vector3 center, float radius)
+    //{
 
-        //임시 반환
-        float path = 0f;
-        Debug.Log("해당 디버그는 부모 함수 디버그이다.");
 
-        return path;
-    }
+    //    //임시 반환
+    //    float path = 0f;
+    //    Debug.Log("해당 디버그는 부모 함수 디버그이다.FireSlash_SpreadDamage");
 
-    
+    //    return path;
+    //}
+
+    #endregion
 
 
 

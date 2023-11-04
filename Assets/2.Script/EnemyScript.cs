@@ -211,6 +211,8 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
     #region 기본 공격 3가지 묶음(미친 짓)
 
+    //인덱스 번호 유의사항 : 현상황 보여져야함으로 => 바람평타1, 물평타7, 불평타13
+
     private void Hit_WindSlash() // 최종 데미지 피격 함수
     {
         if (currHp > 0)
@@ -219,7 +221,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
             Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 기본공격  " + currHp);
 
-            currHp -= BulletScript.instance.WindSlashTypeDamage(1);
+            currHp -= BulletManager.instance.WindSlashTypeDamage(1); // 여기 인덱스번호 유의할것...
 
             Debug.Log("몬스터가 피격을 받았습니다.- 바람 기본공격  " + currHp);
 
@@ -244,9 +246,9 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
             Debug.Log("몬스터가 피격 받기전 체력입니다 - 물 기본공격  " + currHp);
 
-            currHp -= BulletScript.instance.WaterSlashTypeDamage(7);
+            currHp -= BulletManager.instance.WaterSlashTypeDamage(7);
 
-            slowEffect = BulletScript.instance.WaterSlashType_SlowEffect(7); //슬로우
+            slowEffect = BulletManager.instance.WaterSlashType_SlowEffect(7); //슬로우
 
             Debug.Log("몬스터가 피격을 받았습니다. - 물 기본공격  " + currHp);
 
@@ -271,11 +273,11 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
             Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 기본공격  " + currHp);
 
-            currHp -= BulletScript.instance.FireSlashTypeDamage(14);
+            currHp -= BulletManager.instance.FireSlashTypeDamage(14);
 
             Debug.Log("몬스터가 피격을 받았습니다.- 불 기본공격  " + currHp);
 
-            BulletScript.instance.FireSlash_SpreadDamage(14,transform.position, 1f);
+            BulletManager.instance.FireSlash_SpreadDamage(14,transform.position, 1f);
 
         }
 

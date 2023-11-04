@@ -4728,7 +4728,7 @@ GameObject:
   - component: {fileID: 1459479959}
   m_Layer: 0
   m_Name: NomalAttack_WindSlash
-  m_TagString: Weapon
+  m_TagString: WindSlash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9666,6 +9666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce301fdfeede57142a3a67024bce16e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statusDB: {fileID: 11400000, guid: 004adbcc68a2c034c9deaf3a46df007b, type: 2}
   idName: NomalAttack_WindSlash
   bulletSpeed: 40
   shootPos: {fileID: 0}

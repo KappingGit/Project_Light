@@ -28,7 +28,7 @@ public class BossManager : MonoBehaviour
             instance = this;
         }
 
-        bossSpawnActive = false;
+        bossSpawnActive = false; //다시 실행할때 액티브 거짓판정으로
 
     }
 

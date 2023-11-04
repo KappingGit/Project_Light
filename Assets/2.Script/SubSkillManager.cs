@@ -12,6 +12,9 @@ public class SubSkillManager : MonoBehaviour
     [SerializeField]
     private DB_Status statusDB;
 
+    // 플레이어의 공격력
+    private float playerATK;
+
     private void Awake()
     {
         poolManager = GetComponent<PoolManager>();
@@ -93,8 +96,6 @@ public class SubSkillManager : MonoBehaviour
         return finalCoolTime;
     }
 
-    // 플레이어의 공격력
-    private float playerATK;
 
     public float WindDrillType_Damage(int indexNum)
     {
