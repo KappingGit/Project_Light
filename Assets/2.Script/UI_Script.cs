@@ -17,7 +17,7 @@ public class UI_Script : MonoBehaviour
     [SerializeField]
     private DB_Status statusDB; // 에셋화 되어있는 데이터테이블 가져오기
 
-    
+    private bool isCantBtn; // 보스가 죽을때 UI 버튼 못 작동하게 하는것
 
     private void Awake()
     {
@@ -30,7 +30,12 @@ public class UI_Script : MonoBehaviour
 
         isVictoryTrigger = false;
 
+        isDefeatTrigger = false;
+
         charImformActive = false; // 캐릭터 정보창 시작시 닫게 초기화
+
+        isCantBtn = false;
+
     }
 
     private void Update()
@@ -55,6 +60,14 @@ public class UI_Script : MonoBehaviour
         else if (BossManager.instance.bossSpawnActive)
         {
             BossHPUI();
+        }
+
+        if (BossManager.instance.bossSpawnActive)
+        {
+            if (BossScript.instance.isTimeToReturn)// 보스가 죽자마자 바로 반환때릴때 사용하는 변수(이거 작동하면 버튼 UI 입력불가하게 만들기)
+            {
+                isCantBtn = true;
+            }
         }
 
         PausePopup();
@@ -137,6 +150,7 @@ public class UI_Script : MonoBehaviour
         {
             if (BossScript.instance.isBossDie)
             {
+                
                 victoryUI.gameObject.SetActive(true);
 
                 if (!isGameOver && !isVictoryTrigger)
@@ -155,10 +169,14 @@ public class UI_Script : MonoBehaviour
     [SerializeField]
     private GameObject defeatUI;
 
+    private bool isDefeatTrigger; // 승리 UI의 코루틴 브레이킹용 트리거
+
     private void DefeatUI() // 패배 UI
     {
         if (PlayerStatus.instance.isPlayerDie) // 코루틴 업데이트 상태(브레이킹검)
         {
+            isDefeatTrigger = true;
+
             PlayerStatus.instance.isPlayerDie = false;
             //Debug.Log("패배 UI");
             defeatUI.gameObject.SetActive(true);
@@ -184,35 +202,57 @@ public class UI_Script : MonoBehaviour
             Time.timeScale = 1f;
             pauseActive = false;
         }
-        else if(!pauseActive)
+        else if (!pauseActive)
         {
             Time.timeScale = 0f;
             pauseActive = true;
         }
-
     }
 
     [SerializeField]
     private GameObject pausePopup;
-
+    
     private void PausePopup()
     {
 
-        if (!ChangeSceneManager.instance.cutSceneisActive)
+        if (!ChangeSceneManager.instance.cutSceneisActive || ChangeSceneManager.instance.isSkip) // 컷씬중에는 일시정지 금지
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (!ChangeSceneManager.instance.fadeInOuting)
             {
-                if (!pauseActive)
+                
+                if (!isVictoryTrigger)
                 {
-                    pauseActive = true;
-                    Time.timeScale = 0f;
+                    if (!isDefeatTrigger)
+                    {
+                        if (Input.GetKeyDown(KeyCode.Escape) && !popupAttribute.activeSelf)
+                        {
+
+
+                            if (!pauseActive)
+                            {
+                                pauseActive = true;
+                                Time.timeScale = 0f;
+                                if (charImformActive)
+                                {
+                                    charImformActive = false;
+                                }
+                            }
+                            else if (pauseActive)
+                            {
+                                pauseActive = false;
+                                Time.timeScale = 1f;
+                                if (charImformActive)
+                                {
+                                    charImformActive = false;
+                                }
+                            }
+                        }
+                    }
                 }
-                else if (pauseActive)
-                {
-                    pauseActive = false;
-                    Time.timeScale = 1f;
-                }
+
             }
+
+            
         }
 
 
@@ -333,19 +373,52 @@ public class UI_Script : MonoBehaviour
     private void CharImformPopup() // 캐릭터 정보창
     {
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (!ChangeSceneManager.instance.cutSceneisActive || ChangeSceneManager.instance.isSkip)
         {
-            if (!charImformActive)
+            if (!ChangeSceneManager.instance.fadeInOuting)
             {
-                charImformActive = true;
-                Time.timeScale = 0f;
+
+                if (!isDefeatTrigger)
+                {
+
+                    if (!isCantBtn)
+                    {
+                        //Debug.Log("탭 누르기 전 : "+ isDefeatTrigger);
+                        if (Input.GetKeyDown(KeyCode.Tab) && !popupAttribute.activeSelf)
+                        {
+                            //Debug.Log("탭 누른 후 : " + isDefeatTrigger);
+                            if (!charImformActive)
+                            {
+                                charImformActive = true;
+                                Time.timeScale = 0f;
+
+                                if (pauseActive)
+                                {
+                                    pauseActive = false;
+                                }
+
+                            }
+                            else if (charImformActive)
+                            {
+                                charImformActive = false;
+                                Time.timeScale = 1f;
+                                if (pauseActive)
+                                {
+                                    pauseActive = false;
+                                }
+                            }
+                        }
+                    }
+
+
+                }
+
             }
-            else if (charImformActive)
-            {
-                charImformActive = false;
-                Time.timeScale = 1f;
-            }
+
         }
+
+
+       
 
         if (charImformActive)
         {

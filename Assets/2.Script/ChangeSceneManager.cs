@@ -16,7 +16,9 @@ public class ChangeSceneManager : MonoBehaviour
 
     [SerializeField]
     private GameObject cutSceneVideo01;
-      
+
+    [HideInInspector]
+    public bool isSkip;
 
     private void Awake()
     {
@@ -30,6 +32,8 @@ public class ChangeSceneManager : MonoBehaviour
         StartCoroutine(FadeIn()); // 쌩으로 넣는 것은 하면안된다(코루틴이 지속적으로 처리가 되는 문제가 발생 단, 조건문을 활용하면 가능)
 
         cutSceneisActive = false;
+
+        isSkip = false;
     }
 
     private void Update()
@@ -66,15 +70,21 @@ public class ChangeSceneManager : MonoBehaviour
 
         if (cutSceneisActive)
         {
-            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Escape))
+            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Escape)) // 스킵하게 되면...
             {
-                //cutSceneisActive = false;
+                if (!isSkip)
+                {
+                    isSkip = true;
 
-                StopCoroutine(CutSceneVideo());
+                    //cutSceneisActive = false;
 
-                Time.timeScale = 1f;
+                    StopCoroutine(CutSceneVideo());
 
-                cutSceneVideo01.gameObject.SetActive(false);
+                    Time.timeScale = 1f;
+
+                    cutSceneVideo01.gameObject.SetActive(false);
+                }
+
                 
             }
             

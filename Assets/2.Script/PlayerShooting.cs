@@ -114,7 +114,7 @@ public class PlayerShooting : MonoBehaviour
 
                 weaponType = index_WeaponType_Nomal;
 
-                Debug.Log("현재 무기 타입(코루틴 들어가기전) : " + weaponType);
+                //Debug.Log("현재 무기 타입(코루틴 들어가기전) : " + weaponType);
 
                 // 인스펙터와 지역변수의 실행 순서를 잘 이해를 해야 문제가 발생하지 않는다.
                 // 문제점 : 인스펙터weaponType의 값을 변화시켜도 바뀌지 않는 문제가 발생, 함수안에 집어넣으니 해결

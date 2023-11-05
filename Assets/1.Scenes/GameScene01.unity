@@ -18738,6 +18738,7 @@ MonoBehaviour:
   fadeImage: {fileID: 643187129}
   cutSceneisActive: 0
   cutSceneVideo01: {fileID: 1628978623}
+  isSkip: 0
   fadeInOuting: 0
 --- !u!1 &1267931367
 GameObject:
@@ -38142,7 +38143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5277826694057070088, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
       propertyPath: bossMaxHP
-      value: 600
+      value: 650
       objectReference: {fileID: 0}
     - target: {fileID: 5277826694057070088, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
       propertyPath: spawnerPos
