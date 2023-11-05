@@ -205,7 +205,7 @@ public class PlayerShooting : MonoBehaviour
                 {
                     if (!isCoolTime01)
                     {
-                        anim.SetBool("isFire", true);
+                        
 
 
                         subSkillType = index_WeaponType_SubSkill_01; // 해당 버튼에 있는 스킬 속성 값
@@ -366,6 +366,7 @@ public class PlayerShooting : MonoBehaviour
           
         }
         //Debug.Log("총알 발사 테스트");
+        anim.SetBool("isFire", false);
         isFire = false; // 발사중단
         StopCoroutine(AttackRate(weaponType));
     }
@@ -388,7 +389,7 @@ public class PlayerShooting : MonoBehaviour
     IEnumerator SkillAttackRate01(int indexNum) // 서브 스킬의 공격속도 및 발사 트리거 기능(해당 기능에서 쿨타임 조절할 것)
     {
 
-
+        anim.SetBool("isFire", true);
         SubSkillManager.instance.GetPoolSkill(indexNum); // 스킬 불러오기
 
         //yield return YieldInstuctionCash.WaitForSeconds(0.1f);
@@ -420,6 +421,8 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator SkillAttackRate02(int indexNum) // 서브 스킬의 공격속도 및 발사 트리거 기능(해당 기능에서 쿨타임 조절할 것)
     {
+        anim.SetBool("isFire", true);
+
         SubSkillManager.instance.GetPoolSkill(indexNum); // 스킬 테스트
 
         //yield return YieldInstuctionCash.WaitForSeconds(0.1f);

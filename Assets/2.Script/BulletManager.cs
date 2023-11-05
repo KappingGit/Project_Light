@@ -225,7 +225,7 @@ public class BulletManager : MonoBehaviour
 
         //최종 데미지
         float finalDamage = playerATK;
-
+        //float finalDamage = 1f;
         //임시 반환
         //float path = 0.5f;
 

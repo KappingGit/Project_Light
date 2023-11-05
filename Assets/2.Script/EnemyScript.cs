@@ -104,7 +104,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
         isDie = false;
 
-        slowEffect = 1f;
+        slowEffect = 1f; // 초기 슬로우 효과 없으니 초기화
 
         //Debug.Log("기본값");
 
@@ -141,6 +141,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
     {
         float enemySpeed = statusDB.MonsterStatus[0].monsterSpeed;
 
+        
         enemyRig.velocity = new Vector3(0, 0, -enemySpeed * slowEffect); // 나중에 속도 느려지게 하는 효과를 넣으면 수식 변경
     }
 

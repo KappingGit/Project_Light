@@ -198,17 +198,20 @@ public class UI_Script : MonoBehaviour
     private void PausePopup()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!ChangeSceneManager.instance.cutSceneisActive)
         {
-            if (!pauseActive)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                pauseActive = true;
-                Time.timeScale = 0f;
-            }
-            else if (pauseActive)
-            {
-                pauseActive = false;
-                Time.timeScale = 1f;
+                if (!pauseActive)
+                {
+                    pauseActive = true;
+                    Time.timeScale = 0f;
+                }
+                else if (pauseActive)
+                {
+                    pauseActive = false;
+                    Time.timeScale = 1f;
+                }
             }
         }
 

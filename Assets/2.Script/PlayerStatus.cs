@@ -11,6 +11,9 @@ public class PlayerStatus : MonoBehaviour
 
     private int index; // 인덱스 넘버(일단 만들어둔것)
 
+    [HideInInspector]
+    public CharacterController barrierInvincible;
+
     [SerializeField]
     private DB_Status statusDB; // 에셋화 되어있는 데이터테이블 가져오기
 
@@ -38,7 +41,7 @@ public class PlayerStatus : MonoBehaviour
         
         playerGetGold = 0; // 골드 0으로 초기화
         isPlayerDie = false;
-
+        barrierInvincible = GetComponent<CharacterController>();
         hitEffect.gameObject.SetActive(false);
     }
 
@@ -68,10 +71,10 @@ public class PlayerStatus : MonoBehaviour
 
         if (BossManager.instance.bossSpawnActive)
         {
-            if (BossPattern_Wind.instance.isBossPattern03_Damage)
+            if (BossPattern_Wind.instance.isBossPattern03_Damage) // 보스패턴 3 데미지가 들어오면...
             {
                 Debug.Log(" 보스 패턴 피격");
-                StartCoroutine(Invincible());
+                StartCoroutine(Invincible()); // 피격후 잠깐 무적
                 BossPattern_Wind.instance.isBossPattern03_Damage = false;
             }
         }
@@ -279,11 +282,11 @@ public class PlayerStatus : MonoBehaviour
         
     IEnumerator Invincible() // 일시 무적 처리
     {
-        if (!isInvincible)
+        if (!isInvincible) // 무적상태가 아니라면..
         {
-            if (BossManager.instance.bossSpawnActive)
+            if (BossManager.instance.bossSpawnActive)  // 해당 조건문은 몬스터에게 피격당했을때 무적처리가 보스패턴에 안뚤리게하기위해
             {
-                BossPattern_Wind.instance.isBossPattern03_Damage = false;
+                BossPattern_Wind.instance.isBossPattern03_Damage = false; //이게 거짓이여야지 패턴데미지가 안들어옴
             }
 
             currHP -= statusDB.MonsterStatus[0].monsterDamage;

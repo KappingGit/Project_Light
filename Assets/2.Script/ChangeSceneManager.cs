@@ -11,7 +11,8 @@ public class ChangeSceneManager : MonoBehaviour
 
     public static ChangeSceneManager instance;
 
-    private bool cutSceneisActive;
+    [HideInInspector]
+    public bool cutSceneisActive;
 
     [SerializeField]
     private GameObject cutSceneVideo01;
@@ -60,6 +61,23 @@ public class ChangeSceneManager : MonoBehaviour
                 }
 
             }
+        }
+
+
+        if (cutSceneisActive)
+        {
+            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Escape))
+            {
+                //cutSceneisActive = false;
+
+                StopCoroutine(CutSceneVideo());
+
+                Time.timeScale = 1f;
+
+                cutSceneVideo01.gameObject.SetActive(false);
+                
+            }
+            
         }
 
 
@@ -180,7 +198,25 @@ public class ChangeSceneManager : MonoBehaviour
         cutSceneVideo01.gameObject.SetActive(true);
 
 
-        yield return new WaitForSecondsRealtime(19f); // 타임스케일에 영향안가게
+        int timeCount = 0;
+
+        while (timeCount < 19)
+        {
+            timeCount++;
+
+            //if ()
+            //{
+            //    Time.timeScale = 1f;
+
+            //    cutSceneVideo01.gameObject.SetActive(false);
+            //}
+
+            
+            yield return new WaitForSecondsRealtime(1f);
+
+        }
+
+        //yield return new WaitForSecondsRealtime(19f); // 타임스케일에 영향안가게
 
         //Debug.Log("웨잇폴 세컨드 끝");
 

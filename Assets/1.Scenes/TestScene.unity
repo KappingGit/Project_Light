@@ -1874,7 +1874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1180303947360798175
 Animator:
   serializedVersion: 5
@@ -37297,8 +37297,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusDB: {fileID: 0}
+  index_WeaponType_Nomal: 0
+  index_WeaponType_SubSkill_01: 0
+  index_WeaponType_SubSkill_02: 0
   weaponType: 0
+  subSkillCool01: 0
+  subSkillCool02: 0
   subSkillType: 0
+  isCoolTime01: 0
+  isCoolTime02: 0
 --- !u!114 &6997034660932617075
 MonoBehaviour:
   m_ObjectHideFlags: 0

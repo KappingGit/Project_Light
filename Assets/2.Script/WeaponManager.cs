@@ -64,13 +64,13 @@ public class WeaponManager : MonoBehaviour
     private GameObject yameInstall06;
 
     [SerializeField]
-    private GameObject yameInstall_Grim_01;
+    private GameObject yameInstall_GrimRight_01;
 
     [SerializeField]
-    private GameObject yameInstall_Grim_02;
+    private GameObject yameInstall_GrimRight_02;
 
     [SerializeField]
-    private GameObject yameInstall_Grim_03;
+    private GameObject yameInstall_GrimRight_03;
 
     // 버튼의 값 기입
     public void ChageWeapon_NA()
@@ -101,8 +101,8 @@ public class WeaponManager : MonoBehaviour
         yameInstall01.gameObject.SetActive(true);
         yameInstall03.gameObject.SetActive(false);
 
-        yameInstall_Grim_01.gameObject.SetActive(true);
-        yameInstall_Grim_02.gameObject.SetActive(false);
+        yameInstall_GrimRight_01.gameObject.SetActive(true);
+        yameInstall_GrimRight_02.gameObject.SetActive(false);
         //if (isLeft) // 왼쪽이냐 오른쪽이냐 확인
         //{
         //    PlayerShooting.intance.index_WeaponType_SubSkill_01 = 0;
@@ -135,8 +135,8 @@ public class WeaponManager : MonoBehaviour
         yameInstall01.gameObject.SetActive(false);
         yameInstall03.gameObject.SetActive(true);
 
-        yameInstall_Grim_01.gameObject.SetActive(false);
-        yameInstall_Grim_02.gameObject.SetActive(true);
+        yameInstall_GrimRight_01.gameObject.SetActive(false);
+        yameInstall_GrimRight_02.gameObject.SetActive(true);
 
         //if (isLeft) // 왼쪽이냐 오른쪽이냐 확인
         //{

@@ -43,4 +43,49 @@ public class WaterBarrierScript : SubSkillScript
         StopCoroutine(DurationPos());
     }
 
+    protected override void OnTriggerEnter(Collider other)
+    {
+        //if (other.gameObject.CompareTag("Tile")) // 어느 곳에서 충돌하면 총알 사라짐
+        //{
+        //    OnTargetReached();
+        //    Debug.Log("한계점 벽에 닿았습니다.");
+        //}
+
+        if (other.gameObject.CompareTag("Enemy")) // 어느 곳에서 충돌하면 총알 사라짐
+        {
+            
+
+            StartCoroutine(Barrier_Effect());
+
+            HitEffect(skillTypeBtn); //해당 스킬 타입에 맞는 히트 이펙트를 소환
+
+
+        }
+
+        if (other.gameObject.CompareTag("Missile")) // 어느 곳에서 충돌하면 총알 사라짐
+        {
+            //SubSkillManager.instance.ReturnSkill(this);
+
+            StartCoroutine(Barrier_Effect());
+
+            HitEffect(skillTypeBtn); //해당 스킬 타입에 맞는 히트 이펙트를 소환
+
+
+        }
+
+    }
+
+    IEnumerator Barrier_Effect()
+    {
+        PlayerStatus.instance.barrierInvincible.enabled = false;
+
+        yield return YieldInstuctionCash.WaitForSeconds(0.1f);
+
+        PlayerStatus.instance.barrierInvincible.enabled = true;
+
+        SubSkillManager.instance.ReturnSkill(this);
+
+        StopCoroutine(Barrier_Effect());
+    }
+
 }

@@ -28,46 +28,49 @@ public class BossPattern_Wind : MonoBehaviour
     {
         if (BossManager.instance.bossSpawnActive) //보스가 등장했다면...패턴 시작
         {
-            if (!isRandomDelay) // 랜덤을 딜레이 걸어서 패턴의 생성 속도를 조절
+            if (!BossScript.instance.isPurification) // 정화중이 아니라면...
             {
-                isRandomDelay = true;
-                StartCoroutine(RandomDelay()); // 패턴 간격을 두는 코루틴
-            }
-            
-            //Debug.Log("보스 등장");
-            switch (patternIndex)
-            {
-                case 1: // 패턴1
-                    if (!isCoolTime01)
-                    {
-                        //Debug.Log("보스 패턴1 시작");                        
-                        Pattern01();
-                        isCoolTime01 = true;
+                if (!isRandomDelay) // 랜덤을 딜레이 걸어서 패턴의 생성 속도를 조절
+                {
+                    isRandomDelay = true;
+                    StartCoroutine(RandomDelay()); // 패턴 간격을 두는 코루틴
+                }
 
-                    }
-                    break;
-                case 2: // 패턴2
-                    if (!isCoolTime02)
-                    {
-                        //Debug.Log("보스패턴2 시작");
-                        Pattern02();
-                        isCoolTime02 = true;
-                    }
-                    break;
-                case 3: // 패턴3
-                    if (!isCoolTime03)
-                    {
-                        BossScript.instance.isTrigger = true; // BossScript의 보스패턴03 코루틴 브레이킹용
-                        Debug.Log("보스패턴3 시작");
-                        Pattern03();
-                        isCoolTime03 = true;
-                    }
-                    break;
-                default:
-                    break;
+                //Debug.Log("보스 등장");
+                switch (patternIndex)
+                {
+                    case 1: // 패턴1
+                        if (!isCoolTime01)
+                        {
+                            //Debug.Log("보스 패턴1 시작");                        
+                            Pattern01();
+                            isCoolTime01 = true;
+
+                        }
+                        break;
+                    case 2: // 패턴2
+                        if (!isCoolTime02)
+                        {
+                            //Debug.Log("보스패턴2 시작");
+                            Pattern02();
+                            isCoolTime02 = true;
+                        }
+                        break;
+                    case 3: // 패턴3
+                        if (!isCoolTime03)
+                        {
+                            BossScript.instance.isTrigger = true; // BossScript의 보스패턴03 코루틴 브레이킹용
+                            Debug.Log("보스패턴3 시작");
+                            Pattern03();
+                            isCoolTime03 = true;
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
         }
-        
+
     }
 
     private void Pattern01() // 몹 소환
@@ -332,7 +335,7 @@ public class BossPattern_Wind : MonoBehaviour
     public bool isStun; // 보스 기믹 파훼 성공 후 잠시 스턴
 
     [HideInInspector]
-    public bool isBossPattern03_Damage;
+    public bool isBossPattern03_Damage; // 보스데미지가 들어왔는가?
 
     IEnumerator Pattern03_CoolTime() //보스패턴03 NuClearPattern
     {

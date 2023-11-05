@@ -13,6 +13,8 @@ public class MainSceneManager : MonoBehaviour
         
     private Scene nowScene;
 
+    private bool sceneSkip;
+
     private void Awake()
     {
         //fadeImage.color = new Color(0, 0, 0, 0f); // 기본 초기화
@@ -46,8 +48,18 @@ public class MainSceneManager : MonoBehaviour
                 break;
 
             case "StartScene01":
+
                 StartCoroutine(WhiteFadeIn()); // 튜토리얼씬으로 넘어감
+
+                // 스킵 시키기
+                if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Escape))
+                {
+                    ChangeScene02();
+                }
+
+
                 break;
+
         }
 
         
