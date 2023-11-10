@@ -90,6 +90,8 @@ public class UI_Script : MonoBehaviour
 
         SubSkill02_CoolUI();
 
+        SubSkill_SelectPos();
+
         if (popupAttribute)
         {
             if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Keypad1))
@@ -426,16 +428,91 @@ public class UI_Script : MonoBehaviour
         }
         else if (!charImformActive)
         {
+
             charImformPopup.gameObject.SetActive(false);
+
+
+            // 캐릭터 정보창 닫힐때 모두 비활성화 처리
+            WeaponManager.instance.isLeft = false;
+            WeaponManager.instance.isRight = false;
+
+            isLeftSelect.SetActive(false);
+            isRightSelect.SetActive(false);
+
         }
     }
+
+
+    #region getSet프로퍼티 활용 예시 코드(비효율적임 그저 공부용)
+
+    //// getSet프로퍼티 활용 예시 코드
+    //WeaponManager weaponManager_Class = new WeaponManager();
+
+    //private void SelectChangeSkillPos()
+    //{
+    //    if (/*왼쪽을 눌렀다면...*/ true)
+    //    {
+    //        weaponManager_Class.ChangeSkillPos_Left = true;
+    //        weaponManager_Class.ChangeSkillPos_Right = false;
+    //    }
+    //    else // 오른쪽을 눌렀다면...(임시)
+    //    {
+    //        weaponManager_Class.ChangeSkillPos_Left = false;
+    //        weaponManager_Class.ChangeSkillPos_Right = true;
+    //    }
+    //}
+
+    #endregion
+
+
+    // 교체할 스킬의 위치
+    [SerializeField]
+    private GameObject isLeftSelect;
+
+    [SerializeField]
+    private GameObject isRightSelect;
+
+
+    private void SubSkill_SelectPos() // 서브 스킬 변경 위치 선택 함수
+    {
+        if (WeaponManager.instance.isLeft)
+        {
+            isLeftSelect.SetActive(true);
+            isRightSelect.SetActive(false);
+        }
+
+        if (WeaponManager.instance.isRight)
+        {
+            isLeftSelect.SetActive(false);
+            isRightSelect.SetActive(true);
+        }
+    }
+
+    [SerializeField]
+    private GameObject installPopup; // 스킬을 교체할 것인지에 대한 여부 UI
+
+    [SerializeField]
+    private TextMeshProUGUI installPopup_SkillName; // 스킬 이름
+
+    [SerializeField]
+    private Image installPopup_SkillIcon; // 스킬 아이콘
+
+    [SerializeField]
+    private TextMeshProUGUI installPopup_SkillLevel; // 스킬 레벨
+
+    //[SerializeField]
+    //private TextMeshProUGUI installPopup_Active; // 패시브인지 액티브인지(패시브는 장착여부를 묻지 않으니 없어도 된다)
+
+    [SerializeField]
+    private TextMeshProUGUI installPopup_Explanation; // 스킬 설명
+
+
+
+
 
     [HideInInspector]
     private bool isGetSkill;
     
-
-
-
     public void GetSkillBtn()
     {
         

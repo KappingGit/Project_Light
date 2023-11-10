@@ -33,7 +33,7 @@ public class PlayerShooting : MonoBehaviour
         isStopShoot = false;
 
         // 초반 무기 초기화(인덱스 번호 잘 볼것...// 해당 인덱스 번호는 Pooling되어있는 순서이다)
-        // 평타 : 0 => 바람, 1 => 물, 2 => 불
+        // 평타 : 0 => 바람, 1 => 물, 2 => 불 해당 인덱스 번호는 오브젝트 풀링의 인덱스 번호이다...(DB인덱스랑 무관)
         index_WeaponType_Nomal = 0;
 
 
@@ -206,8 +206,6 @@ public class PlayerShooting : MonoBehaviour
                     if (!isCoolTime01)
                     {
                         
-
-
                         subSkillType = index_WeaponType_SubSkill_01; // 해당 버튼에 있는 스킬 속성 값
 
                         StartCoroutine(SkillAttackRate01(subSkillType));
