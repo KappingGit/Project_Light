@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Palm-Tree+C
-  m_Shader: {fileID: -6465566751694194690, guid: 4ff2564c9f8fcf64f87e00c6e0905337, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 1455ec15ac05b38408c2418052bbca7d, type: 3}
   m_ValidKeywords:
   - _BUILTIN_ALPHATEST_ON
   - _BUILTIN_AlphaClip
@@ -60,11 +60,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_0c12ad88d4154af7879873338d1392f0_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 16e12ff47ff74c84eb851c1b38ebebf0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 09518107da7bc6c4abae6b42919580b6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_1ae4f785b49e42488a6fe1ac679864de_Texture_1:
         m_Texture: {fileID: 2800000, guid: c5ce37253aaeb984da5a54a38dd4d56b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_f66f9c6e2cc348b1b7a3a321bf540a2d_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 86a030f31d3119c4ab66f4312212bbf2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_f86461c87d7f48c8a2a9f19c610a72a2_Texture_1:
@@ -102,6 +106,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
+    - _Coconut_Main: {r: 1, g: 0.715799, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Lava_Main: {r: 1, g: 0, b: 0, a: 0}
