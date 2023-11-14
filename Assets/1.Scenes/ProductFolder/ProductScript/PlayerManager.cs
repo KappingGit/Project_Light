@@ -58,7 +58,7 @@ public class PlayerManager : MonoBehaviour
             GameObject MainMagic = Instantiate(mainmagic);
 
             Destroy(Main.gameObject, 5f);
-            Destroy(MainMagic.gameObject, 1.4f);
+            Destroy(MainMagic.gameObject, 2f);
         }
     }
     }
