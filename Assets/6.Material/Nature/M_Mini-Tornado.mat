@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Mini-Tornado
-  m_Shader: {fileID: -6465566751694194690, guid: 1978194cbb897ac4f988e335e47c59e2, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: e929fa2e5d214084e8c976f683038562, type: 3}
   m_ValidKeywords:
   - _BUILTIN_ALPHATEST_ON
   - _BUILTIN_AlphaClip
@@ -79,6 +79,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _: -0.0003
     - _BUILTIN_AlphaClip: 1
     - _BUILTIN_Blend: 2
     - _BUILTIN_CullMode: 2
@@ -92,6 +93,7 @@ Material:
     - _BUILTIN_ZWriteControl: 0
     - _BumpScale: 1
     - _Clip_Threshold: 0.7
+    - _Curved: -0.0003
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _Dissolve: 0.079

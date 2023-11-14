@@ -85,7 +85,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _: 0.0007
+    - _: -0.0003
     - _BUILTIN_AlphaClip: 0
     - _BUILTIN_Blend: 0
     - _BUILTIN_CullMode: 2
@@ -98,6 +98,7 @@ Material:
     - _BUILTIN_ZWrite: 0
     - _BUILTIN_ZWriteControl: 0
     - _BumpScale: 1
+    - _Curved: -0.0003
     - _Cutoff: 0.5
     - _Depth: 5
     - _DepthFalloff: 0.6

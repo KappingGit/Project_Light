@@ -73,7 +73,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _: 0.0007
+    - _: -0.0003
+    - _Alpha: 1
     - _BUILTIN_AlphaClip: 0
     - _BUILTIN_Blend: 0
     - _BUILTIN_CullMode: 2
@@ -92,6 +93,7 @@ Material:
     - _CameraNearFadeDistance: 1
     - _ColorMode: 3
     - _Cull: 0
+    - _Curved: -0.0003
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DistortionBlend: 0.5
