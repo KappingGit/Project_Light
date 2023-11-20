@@ -162,9 +162,9 @@ public class GameManager : MonoBehaviour
 
     private void CheckUID_Transducer() // UID오브젝트 풀링 변환기 체크용 함수
     {
-        Debug.Log("변환기 테스트 : 현재 바람무기의 UID는  "+ wind_NomalAttackUID +"  이며 변환기로 오브젝트 풀링 인덱스 값은  "+ current_WindAttack + "이거이다.");
-        Debug.Log("변환기 테스트 : 현재 물 무기의 UID는  " + water_NomalAttackUID + "  이며 변환기로 오브젝트 풀링 인덱스 값은  " + current_WaterAttack + "이거이다.");
-        Debug.Log("변환기 테스트 : 현재 불 무기의 UID는  " + fire_NomalAttackUID + "  이며 변환기로 오브젝트 풀링 인덱스 값은  " + current_FireAttack + "이거이다.");
+        //Debug.Log("변환기 테스트 : 현재 바람무기의 UID는  "+ wind_NomalAttackUID +"  이며 변환기로 오브젝트 풀링 인덱스 값은  "+ current_WindAttack + "이거이다.");
+        //Debug.Log("변환기 테스트 : 현재 물 무기의 UID는  " + water_NomalAttackUID + "  이며 변환기로 오브젝트 풀링 인덱스 값은  " + current_WaterAttack + "이거이다.");
+        //Debug.Log("변환기 테스트 : 현재 불 무기의 UID는  " + fire_NomalAttackUID + "  이며 변환기로 오브젝트 풀링 인덱스 값은  " + current_FireAttack + "이거이다.");
     }
 
 

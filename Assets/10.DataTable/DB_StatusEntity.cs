@@ -92,6 +92,11 @@ public class DB_StatusEntity_03
     public float spreadRange; // 불 기본 공격 범위 수치(얼만큼의 범위로 조절...)
 
     public float speedDown; // 물 기본공격의 이동수치 하락치
+
+    public string attackName; // 기본 공격 이름
+
+    public string attackExplanation; // 기본 공격 설명
+
 }
 
 
@@ -123,4 +128,8 @@ public class DB_StatusEntity_04
     public float barrierDuration; // 물 서브 스킬 베리어의 지속시간(시간을 표현해야함으로 float으로 선언)
 
     public int barrierCount; // 물 서브 스킬의 막는 횟수 (횟수는 정수 int로 선언)
+
+    public string subSkillName; // 서브 스킬 이름
+
+    public string subSkillExplanation; // 서브 스킬 설명
 }

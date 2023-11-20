@@ -100,11 +100,26 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
         SpawnPos(); // 소환되는 position값
 
-        EnemyHP();       
+        //EnemyHP();       
 
         isDie = false;
 
         slowEffect = 1f; // 초기 슬로우 효과 없으니 초기화
+
+        if (BossManager.instance.curTime >= BossManager.instance.bossAppearanceTime / 2)
+        {
+            // 난이도 상승
+            //Debug.Log("난이도 상승" + maxHp);
+            currDifficulty = 1;
+            EnemyHP(currDifficulty);
+
+        }
+        else
+        {
+            //Debug.Log("난이도 상승 전");
+            currDifficulty = 0;
+            EnemyHP(currDifficulty);
+        }
 
         //Debug.Log("기본값");
 
@@ -125,11 +140,13 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
     private float currHp; // 몬스터의 현재 체력
 
+    private int currDifficulty; // 현재 난이도
+
     // 몬스터 HP (난이도 테이블 사용)
-    private void EnemyHP() 
+    private void EnemyHP(int testIndex) 
     {
         // 현재 체력에 저장
-        maxHp = statusDB.MonsterStatus[0].monsterHP;
+        maxHp = statusDB.MonsterStatus[testIndex].monsterHP;
         currHp = maxHp; // 초기화  
     }
 

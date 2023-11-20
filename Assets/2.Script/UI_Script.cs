@@ -92,17 +92,17 @@ public class UI_Script : MonoBehaviour
 
         SubSkill_SelectPos();
 
-        if (popupAttribute)
+        if (popupAttribute.activeSelf)
         {
-            if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Keypad1))
+            if (Input.GetKey(KeyCode.Alpha1) && !charImformActive && !pauseActive)
             {
                 GetSkillBtn();
             }
-            else if (Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.Keypad2))
+            else if (Input.GetKey(KeyCode.Alpha2) && !charImformActive && !pauseActive)
             {
                 GetSkillBtn02();
             }
-            else if (Input.GetKey(KeyCode.Alpha3) || Input.GetKey(KeyCode.Keypad3))
+            else if (Input.GetKey(KeyCode.Alpha3) && !charImformActive && !pauseActive)
             {
                 GetSkillBtn03();
             }
@@ -386,7 +386,7 @@ public class UI_Script : MonoBehaviour
                     if (!isCantBtn)
                     {
                         //Debug.Log("탭 누르기 전 : "+ isDefeatTrigger);
-                        if (Input.GetKeyDown(KeyCode.Tab) && !popupAttribute.activeSelf)
+                        if (Input.GetKeyDown(KeyCode.Tab) && !popupAttribute.activeSelf && !pauseActive)
                         {
                             //Debug.Log("탭 누른 후 : " + isDefeatTrigger);
                             if (!charImformActive)
@@ -751,7 +751,7 @@ public class UI_Script : MonoBehaviour
         yield return YieldInstuctionCash.WaitForSeconds(5f); // 패배UI나오기 걸리는 딜레이
 
         //isPlayerDie = false;
-        isGameOver = true;
+        //isGameOver = true;
         yield return YieldInstuctionCash.WaitForSeconds(0.1f);
 
         StopCoroutine(DefeatDelay());

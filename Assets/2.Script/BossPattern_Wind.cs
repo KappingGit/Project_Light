@@ -166,8 +166,8 @@ public class BossPattern_Wind : MonoBehaviour
            
             GameObject newGimmick_Obj01 = GimmickManager.instance.GimmickSpawn();
 
-            xLoad[0] = spawnerPos.position.x - 2f;
-            xLoad[1] = spawnerPos.position.x + 2f;
+            xLoad[0] = spawnerPos.position.x - 1.6f;
+            xLoad[1] = spawnerPos.position.x + 1.6f;
 
             newGimmick_Obj01.transform.position = new Vector3(xLoad[xPosIndex], spawnerPos.position.y, 55f);
 
@@ -182,8 +182,8 @@ public class BossPattern_Wind : MonoBehaviour
             
             GameObject newGimmick_Obj01 = GimmickManager.instance.GimmickSpawn();
 
-            xLoad[0] = spawnerPos.position.x - 2f; // 왼쪽
-            xLoad[1] = spawnerPos.position.x + 2f; // 오른쪽
+            xLoad[0] = spawnerPos.position.x - 1.6f; // 왼쪽
+            xLoad[1] = spawnerPos.position.x + 1.6f; // 오른쪽
             xLoad[2] = spawnerPos.position.x; // 가운데는 무조건 나와야함으로
 
             newGimmick_Obj01.transform.position = new Vector3(xLoad[xPosIndex], spawnerPos.position.y, 55f);
@@ -262,7 +262,7 @@ public class BossPattern_Wind : MonoBehaviour
         //왼쪽에서 시작하는 토네이도
         do
         {
-            if (newGimmick_Obj01.transform.position.x >= spawnerPos.position.x + 2f) //오른쪽 시작, 토네이도가 오른쪽범위를 벗어난다면...
+            if (newGimmick_Obj01.transform.position.x >= spawnerPos.position.x + 1.6f) //오른쪽 시작, 토네이도가 오른쪽범위를 벗어난다면...
             {
                 int i = -1;
                 //Debug.Log("속도 부여");
@@ -271,7 +271,7 @@ public class BossPattern_Wind : MonoBehaviour
 
                 yield return YieldInstuctionCash.WaitForSeconds(1f); // 이 수치에 따라 바운스가 결정된다....
             }
-            else if (newGimmick_Obj01.transform.position.x <= spawnerPos.position.x - 2f)// 왼쪽 범위를 벗어난다면...
+            else if (newGimmick_Obj01.transform.position.x <= spawnerPos.position.x - 1.6f)// 왼쪽 범위를 벗어난다면...
             {
                 int i = 1;
                 //Debug.Log("속도 부여");
@@ -282,12 +282,12 @@ public class BossPattern_Wind : MonoBehaviour
             }
             
         }
-        while (newGimmick_Obj01.transform.position.x >= spawnerPos.position.x + 2f); //토네이도가 오른쪽범위를 벗어난다면...
+        while (newGimmick_Obj01.transform.position.x >= spawnerPos.position.x + 1.6f); //토네이도가 오른쪽범위를 벗어난다면...
 
         //오른쪽에서 시작하는 토네이도
         do
         {
-            if (newGimmick_Obj01.transform.position.x <= spawnerPos.position.x - 2f)// 왼쪽 범위를 벗어난다면...
+            if (newGimmick_Obj01.transform.position.x <= spawnerPos.position.x - 1.6f)// 왼쪽 범위를 벗어난다면...
             {
                 int i = 1;
 
@@ -297,7 +297,7 @@ public class BossPattern_Wind : MonoBehaviour
 
                 yield return YieldInstuctionCash.WaitForSeconds(1f);
             }
-            else if (newGimmick_Obj01.transform.position.x >= spawnerPos.position.x + 2f) //토네이도가 오른쪽범위를 벗어난다면...
+            else if (newGimmick_Obj01.transform.position.x >= spawnerPos.position.x + 1.6f) //토네이도가 오른쪽범위를 벗어난다면...
             {
                 int i = -1;
                 //Debug.Log("속도 부여");
@@ -308,7 +308,7 @@ public class BossPattern_Wind : MonoBehaviour
             }
 
         }
-        while (newGimmick_Obj01.transform.position.x <= spawnerPos.position.x - 2f);// 왼쪽 범위를 벗어난다면...
+        while (newGimmick_Obj01.transform.position.x <= spawnerPos.position.x - 1.6f);// 왼쪽 범위를 벗어난다면...
                
     }
 

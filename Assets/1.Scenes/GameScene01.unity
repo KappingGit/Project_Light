@@ -6216,7 +6216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curTime: 0
-  bossAppearanceTime: 50
+  bossAppearanceTime: 5
   bossSpawnActive: 0
   post_P_Dark: {fileID: 2000744058}
   cameraShake: {fileID: 963194232}
@@ -12305,7 +12305,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792998760}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 60}
+  m_LocalPosition: {x: 0, y: 0, z: 47}
   m_LocalScale: {x: 15, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13130,7 +13130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &867394189
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14796,7 +14796,7 @@ MonoBehaviour:
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25
-    stationaryBlending: 0.95
+    stationaryBlending: 0.6
     motionBlending: 0.85
   subpixelMorphologicalAntialiasing:
     quality: 2
@@ -17462,7 +17462,7 @@ MonoBehaviour:
   bendRotationAxisType: 0
   bendRotationCenter2: {fileID: 0}
   bendRotationCenter2Position: {x: 0, y: 0, z: 0}
-  bendVerticalSize: -0.7
+  bendVerticalSize: 0.3
   bendVerticalOffset: 0
   bendHorizontalSize: 0
   bendHorizontalOffset: 0
@@ -21790,7 +21790,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c14a8fb3a7ba0f449a0436abc6f89e2d, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -37039,7 +37039,7 @@ RectTransform:
   m_GameObject: {fileID: 2911567304057893708}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99997383, y: 0.99997383, z: 0.99997383}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3157455834985508903}
@@ -38582,6 +38582,10 @@ PrefabInstance:
       propertyPath: spawnerPos
       value: 
       objectReference: {fileID: 1755187536}
+    - target: {fileID: 6279900667626561946, guid: ed96ae2848b85054e89357b5acd29abe, type: 3}
+      propertyPath: m_Radius
+      value: 0.45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed96ae2848b85054e89357b5acd29abe, type: 3}
 --- !u!224 &8603479815272248370

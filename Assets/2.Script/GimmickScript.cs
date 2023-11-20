@@ -90,9 +90,9 @@ public class GimmickScript : MonoBehaviour, IPoolObject
 
         #region 스폰 방식 2 : 차선 도로와 같은 방식의 스폰
 
-        xLoad[0] = spawnerPos.position.x - 2f;
+        xLoad[0] = spawnerPos.position.x - 1.6f;
         xLoad[1] = spawnerPos.position.x;
-        xLoad[2] = spawnerPos.position.x + 2f;
+        xLoad[2] = spawnerPos.position.x + 1.6f;
 
         int rand = Random.Range(0, 3);
 
@@ -111,8 +111,8 @@ public class GimmickScript : MonoBehaviour, IPoolObject
         if (randPattern == 1)
         {
             // 왼쪽 오른쪽 하나씩 오게끔...
-            xLoad[0] = spawnerPos.position.x - 2f;
-            xLoad[2] = spawnerPos.position.x + 2f;
+            xLoad[0] = spawnerPos.position.x - 1.6f;
+            xLoad[2] = spawnerPos.position.x + 1.6f;
 
             
             transform.position = new Vector3(xLoad[0], spawnerPos.position.y, 55f);
@@ -123,9 +123,9 @@ public class GimmickScript : MonoBehaviour, IPoolObject
 
             
         }
-        xLoad[0] = spawnerPos.position.x - 2f;
+        xLoad[0] = spawnerPos.position.x - 1.6f;
         xLoad[1] = spawnerPos.position.x; //가운데
-        xLoad[2] = spawnerPos.position.x + 2f;
+        xLoad[2] = spawnerPos.position.x + 1.6f;
 
         int rand = Random.Range(0, 3);
 
