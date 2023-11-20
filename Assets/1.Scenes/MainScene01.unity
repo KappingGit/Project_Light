@@ -418,6 +418,7 @@ MonoBehaviour:
   windStageBgm: {fileID: 0}
   levelUpClip: {fileID: 0}
   victoryClip: {fileID: 0}
+  windBossBGM: {fileID: 0}
 --- !u!1 &72525914
 GameObject:
   m_ObjectHideFlags: 0
@@ -29586,7 +29587,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusDB: {fileID: 0}
+  index_WeaponType_Nomal: 0
+  index_WeaponType_SubSkill_01: 0
+  index_WeaponType_SubSkill_02: 0
   weaponType: 0
+  subSkillCool01: 0
+  subSkillCool02: 0
   subSkillType: 0
   isCoolTime01: 0
   isCoolTime02: 0
