@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-800314062136899805
+--- !u!114 &-7266483721619718096
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,31 +20,37 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: sh CurvedWorld assets
-  m_Shader: {fileID: -6465566751694194690, guid: e84405206e20fd04c8d91a908b72eb44, type: 3}
+  m_Name: F_Plane_Sh_Side
+  m_Shader: {fileID: -6465566751694194690, guid: a1ea74cab7e44e44ca7e5394977a9b3c, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _Texture2D:
-        m_Texture: {fileID: 2800000, guid: f56fbca71d0a3f14caf2de7496cd95af, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
     m_Floats:
+    - _Alpha: 1
+    - _BUILTIN_AlphaClip: 0
+    - _BUILTIN_Blend: 0
+    - _BUILTIN_CullMode: 2
+    - _BUILTIN_DstBlend: 0
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Float: 0
-    - _curvestrength: -0.0003
-    - _tilingscale: 1
+    - _BUILTIN_SrcBlend: 1
+    - _BUILTIN_Surface: 0
+    - _BUILTIN_ZTest: 4
+    - _BUILTIN_ZWrite: 1
+    - _BUILTIN_ZWriteControl: 0
+    - _Curved: -0.0003
     m_Colors:
-    - _sk: {r: 5, g: 0, b: 0, a: 0}
-    - _speed: {r: 0.75, g: 0, b: 0, a: 0}
+    - _Color: {r: 0.597202, g: 0.4341537, b: 0.1620294, a: 1}
+    - _Color_1: {r: 0.0471698, g: 0.03393812, b: 0.01134745, a: 1}
+    - _Lighting: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
