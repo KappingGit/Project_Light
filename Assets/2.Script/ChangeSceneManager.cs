@@ -70,8 +70,9 @@ public class ChangeSceneManager : MonoBehaviour
 
         if (cutSceneisActive)
         {
-            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Escape)) // 스킵하게 되면...
+            if (isSkipBtn || Input.GetKey(KeyCode.Escape)) // 스킵하게 되면...
             {
+                isSkipBtn = false;
                 if (!isSkip)
                 {
                     isSkip = true;
@@ -84,10 +85,11 @@ public class ChangeSceneManager : MonoBehaviour
 
                     cutSceneVideo01.gameObject.SetActive(false);
                 }
-
-                
             }
-            
+
+
+
+
         }
 
 
@@ -96,11 +98,33 @@ public class ChangeSceneManager : MonoBehaviour
             UI_Script.instance.isGameOver = false;
             StartCoroutine(GameOverScene());
         }
+
+        if (UI_Script.instance.isRestart)
+        {
+            UI_Script.instance.isRestart = false;
+            StartCoroutine(Restart());
+
+        }
+
+
+
     }
 
     private void ChangeScene_MainScene() // 메인씬으로 넘어가는 함수
     {
         SceneManager.LoadScene("MainScene01");
+    }
+
+    private bool isSkipBtn;
+
+    public void CutSceneSkipBtn()
+    {
+        isSkipBtn = true;
+    }
+
+    private void RestartScene()
+    {
+        SceneManager.LoadScene("GameScene01");
     }
 
     private float curProgress;
@@ -197,6 +221,19 @@ public class ChangeSceneManager : MonoBehaviour
 
         yield return YieldInstuctionCash.WaitForSeconds(5f);
         
+        StartCoroutine(FadeIn());
+    }
+
+    IEnumerator Restart() // 게임 오버되었으면 메인씬으로 넘어가기
+    {
+        StartCoroutine(FadeOut());
+        yield return YieldInstuctionCash.WaitForSeconds(3f);
+
+        RestartScene();
+        //Debug.Log("씬전환");
+
+        yield return YieldInstuctionCash.WaitForSeconds(5f);
+
         StartCoroutine(FadeIn());
     }
 

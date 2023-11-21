@@ -36,6 +36,8 @@ public class UI_Script : MonoBehaviour
 
         isCantBtn = false;
 
+        isActiveGameTuto = false;
+
     }
 
     private void Update()
@@ -71,6 +73,8 @@ public class UI_Script : MonoBehaviour
         }
 
         PausePopup();
+
+        InGameTutoUI();
 
         CurrentPlayerHP_UI(); // 현재 캐릭터의 hp UI 함수
 
@@ -185,7 +189,7 @@ public class UI_Script : MonoBehaviour
 
             if (!isGameOver)
             {
-                StartCoroutine(DefeatDelay());
+                //StartCoroutine(DefeatDelay());
             }
             
         }
@@ -268,12 +272,56 @@ public class UI_Script : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private GameObject inGameTutoObj;
+
+    private bool isActiveGameTuto;
+
+    // 인게임 조작 설명 버튼
+    public void InGameTutoBtn()
+    {
+        if (!isActiveGameTuto) // 조건부 잠시 주석처리
+        {
+            isActiveGameTuto = true;
+            inGameTutoObj.gameObject.SetActive(true);
+        }
+        else if (isActiveGameTuto)
+        {
+
+            isActiveGameTuto = false;
+            inGameTutoObj.gameObject.SetActive(false);
+
+        }
+
+    }
+
+    private void InGameTutoUI()
+    {
+        if (isActiveGameTuto)
+        {
+            inGameTutoObj.gameObject.SetActive(true);
+        }
+        else if (!isActiveGameTuto)
+        {
+            inGameTutoObj.gameObject.SetActive(false);
+        }
+    }
+
     public void GameOutBtn() // 일시정지 팝업에서 게임 나가는 버튼
     {
         isGameOver = true; // 여기 bool타입 선정은 메인 화면으로 나가기 위해 사용됨
         Time.timeScale = 1f;
         pausePopup.gameObject.SetActive(false);
     }
+
+    [HideInInspector]
+    public bool isRestart;
+
+    public void GameRestartBtn()
+    {
+        isRestart = true;
+    }
+
 
     [SerializeField]
     public GameObject bossHPBar;

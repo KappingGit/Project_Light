@@ -30,6 +30,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField]
     private GameObject rightBtn;
 
+    //[SerializeField]
+    //private GameObject nextScene; // 아무 화면 클릭으로 씬전환
 
     private void Awake()
     {
@@ -56,19 +58,25 @@ public class TutorialManager : MonoBehaviour
 
     private void Update()
     {
-        if (!clicking)
-        {
-            if (Input.GetKeyDown(KeyCode.Space)) // 엔터 누르면 하면 씬전환
-            {
-                clicking = true;
-                //Debug.Log("마우스 버튼이 눌렸습니다.");
-                if (clicking) // 파라매터 넣어서 "현재 페이드가 진행중이라면 클릭 안되게 처리
-                {
-                    StartCoroutine(FadeOut());
-                }
+        //if (!clicking)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Space)) // 엔터 누르면 하면 씬전환
+        //    {
+        //        clicking = true;
+        //        //Debug.Log("마우스 버튼이 눌렸습니다.");
+        //        if (clicking) // 파라매터 넣어서 "현재 페이드가 진행중이라면 클릭 안되게 처리
+        //        {
+        //            StartCoroutine(FadeOut());
+        //        }
 
-            }
-        }
+        //    }
+        //}
+
+        //if (tutorialPage04.gameObject.activeSelf == true) // 4페이지라면
+        //{
+
+        //}
+
 
         //1페이지와 4페이지 각각 버튼 좌우 보여지는 방식이 다르므로...
         if (tutorialPage01.gameObject.activeSelf == true) // 1페이지라면 왼쪽 버튼 없애기
@@ -92,19 +100,20 @@ public class TutorialManager : MonoBehaviour
             rightBtn.gameObject.SetActive(false);
         }
         
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            LeftBtn();
-        }
+        // PC버전용 주석
+        //if (Input.GetKeyDown(KeyCode.LeftArrow))
+        //{
+        //    LeftBtn();
+        //}
         
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            RightBtn();
-        }
+        //if (Input.GetKeyDown(KeyCode.RightArrow))
+        //{
+        //    RightBtn();
+        //}
 
     }
 
-    public void SkipBtn() // 스킵 버튼
+    public virtual void SkipBtn() // 스킵 버튼
     {
         Debug.Log("스킵 버튼");
         StartCoroutine(FadeOut());
@@ -153,7 +162,10 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-
+    public virtual void StartGame() // 아무 화면을 눌러 게임시작 버튼
+    {
+        StartCoroutine(FadeOut());
+    }
 
     private void ChangeScene() // 씬전환에 사용
     {
