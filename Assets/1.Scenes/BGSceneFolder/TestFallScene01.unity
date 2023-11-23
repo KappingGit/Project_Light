@@ -25171,6 +25171,8 @@ MonoBehaviour:
   victoryUI: {fileID: 828352362}
   defeatUI: {fileID: 492569426}
   pausePopup: {fileID: 318857166}
+  inGameTutoObj: {fileID: 0}
+  isRestart: 0
   bossHPBar: {fileID: 324761242}
   bossHPBarFill: {fileID: 1271478404}
   playerHpUI: {fileID: 1467270873}
@@ -27512,7 +27514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &1465885464
 Camera:
   m_ObjectHideFlags: 0
@@ -29217,9 +29219,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefabs:
-  - {fileID: 4208738507795578445, guid: 7d40054be2227af408bd9e5825fbada3, type: 3}
-  - {fileID: 1064939285675935698, guid: f651e03662eeff04692a677af236eaef, type: 3}
-  - {fileID: 3546762491774900008, guid: 734fcc34ae4802943987a0dc3c8da6ef, type: 3}
+  - {fileID: 8529582906425532711, guid: 4dff24e8869452140b00c468ad02030a, type: 3}
+  - {fileID: 1840656467691926003, guid: cb1860c98a9f60a438db5bd81b6fb1c5, type: 3}
+  - {fileID: 7298670471013769656, guid: 12900fd8d16ad024f98c884caec9d0bc, type: 3}
   playerTransform: {fileID: 1198702714}
   tileSpeed: 35
 --- !u!4 &1556986212
