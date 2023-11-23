@@ -14,9 +14,14 @@ public class PlayerMotor : MonoBehaviour
 
     private void Update()
     {
-        Movement();
+        //Movement();
 
         //TouchMove();
+
+        //transform.position = worldPos;
+
+        MouseMove();
+
     }
 
     //[SerializeField] // 캐릭터 속도 조절 접근
@@ -74,7 +79,7 @@ public class PlayerMotor : MonoBehaviour
     private float previousTouch;
 
     [SerializeField]
-    private Camera camera;
+    private Camera mainCamera;
 
     private void TouchMove()
     {
@@ -117,7 +122,7 @@ public class PlayerMotor : MonoBehaviour
         {
             if (Input.GetTouch(0).phase == TouchPhase.Moved) // 손가락이 유지되는 순간
             {
-                controller.Move(camera.WorldToScreenPoint(transform.position) * speed_X * Time.deltaTime);
+                controller.Move(mainCamera.WorldToScreenPoint(transform.position) * speed_X * Time.deltaTime);
 
             }
 
@@ -127,6 +132,34 @@ public class PlayerMotor : MonoBehaviour
             }
         }
 
+
+    }
+
+    private Vector2 screenPos;
+    private Vector3 worldPos;
+
+    private Ray ray;
+
+    
+    private void MouseMove() // 테스트용 마우스 무브 함수(스크린 좌표와 월드 좌표 활용)
+    {
+
+        //ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+        //RaycastHit hit;
+
+        //worldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
+        //screenPos = mainCamera.WorldToScreenPoint(Input.mousePosition);
+
+        //Debug.Log("이동 테스트 : " + screenPos.x / 3800f + "   " + screenPos.y + "   ");
+
+        //transform.position = new Vector2(-screenPos.x / 3800f, 0f);
+
+        //if (Input.GetMouseButton(0))
+        //{
+        //    transform.position.anchoredPosition = Input.mousePosition;
+        //}
 
     }
 

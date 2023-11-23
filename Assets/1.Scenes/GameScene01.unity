@@ -10929,7 +10929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curTime: 0
-  bossAppearanceTime: 5
+  bossAppearanceTime: 120
   bossSpawnActive: 0
   post_P_Dark: {fileID: 2000744058}
   cameraShake: {fileID: 963194232}
@@ -69915,6 +69915,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8098061865151146533, guid: 0b7bdce5290ff5e4796efbb6096ff168, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 963194227}
     - target: {fileID: 8098061865151146534, guid: 0b7bdce5290ff5e4796efbb6096ff168, type: 3}
       propertyPath: hitEffect
       value: 
