@@ -14,13 +14,13 @@ public class PlayerMotor : MonoBehaviour
 
     private void Update()
     {
-        //Movement();
+        Movement();
 
         //TouchMove();
 
         //transform.position = worldPos;
 
-        MouseMove();
+        //MouseMove();
 
     }
 

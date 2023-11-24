@@ -24,7 +24,7 @@ public class EnemyManager : MonoBehaviour
 
         if (EnemyManager.instance == null)
         {
-            Debug.Log("EnemyManager.instance가 null상태입니다.");
+            //Debug.Log("EnemyManager.instance가 null상태입니다.");
             instance = this;
         }
 
