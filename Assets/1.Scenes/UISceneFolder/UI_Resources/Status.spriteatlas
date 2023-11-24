@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Status
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 48
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: cc0718760e7973d4caf6cd1fcb6a83a0, type: 3}
+    - {fileID: 2800000, guid: cb4e6d97a75a2754b8ab5fb498230cb7, type: 3}
+    - {fileID: 2800000, guid: 65c869a25922c4e4fb4c3f7b6ae5c5c5, type: 3}
+    - {fileID: 2800000, guid: 1ffac1b25df799a488776c272695beca, type: 3}
+    - {fileID: 2800000, guid: 9ac7942d41660564e8dad6a48464c74f, type: 3}
+    - {fileID: 2800000, guid: 987412afbc39fbb4c88e58c19bae853c, type: 3}
+    - {fileID: 2800000, guid: e694d1b3cb16ebf42942884c20bd68d0, type: 3}
+    - {fileID: 2800000, guid: fd3c473ecd43c30418893fd45d2156df, type: 3}
+    - {fileID: 2800000, guid: a4e80472486ab644cab73185c1797f66, type: 3}
+    - {fileID: 2800000, guid: 31bdd3d176841b3419036f9423f89e8d, type: 3}
+    - {fileID: 2800000, guid: 6ea1e1d607df4144c9f1e9cef55eaf83, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 31bdd3d176841b3419036f9423f89e8d, type: 3}
+  - {fileID: 21300000, guid: a4e80472486ab644cab73185c1797f66, type: 3}
+  - {fileID: 21300000, guid: 65c869a25922c4e4fb4c3f7b6ae5c5c5, type: 3}
+  - {fileID: 21300000, guid: 1ffac1b25df799a488776c272695beca, type: 3}
+  - {fileID: 21300000, guid: e694d1b3cb16ebf42942884c20bd68d0, type: 3}
+  - {fileID: 21300000, guid: cc0718760e7973d4caf6cd1fcb6a83a0, type: 3}
+  - {fileID: 21300000, guid: 6ea1e1d607df4144c9f1e9cef55eaf83, type: 3}
+  - {fileID: 21300000, guid: cb4e6d97a75a2754b8ab5fb498230cb7, type: 3}
+  - {fileID: 21300000, guid: 9ac7942d41660564e8dad6a48464c74f, type: 3}
+  - {fileID: 21300000, guid: fd3c473ecd43c30418893fd45d2156df, type: 3}
+  - {fileID: 21300000, guid: 987412afbc39fbb4c88e58c19bae853c, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - UI_Title_BG_Image
+  - UI_Status_Blank_BG_Image
+  - UI_Deco_Skillset_Image
+  - UI_Effect_Install_Image_01
+  - UI_Icon_Edge_Image
+  - UI_Bar_Status_Image
+  - UI_GuideImfo_Icon_Image
+  - UI_Btn_Return_Image
+  - UI_Icon_BG_Image_02
+  - UI_Icon_Edge_Image_Disable
+  - UI_Icon_BG_Image_02_Disable
+  m_RenderDataMap: {}
+  m_Tag: Status
+  m_IsVariant: 0
