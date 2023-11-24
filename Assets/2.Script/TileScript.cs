@@ -19,7 +19,7 @@ public class TileScript : MonoBehaviour, IPoolObject
     private float tileSpeed = 35f;
 
     [SerializeField]
-    private Transform playerTransform;
+    private Transform playerTrans;
 
     private Rigidbody tileRig;
 
@@ -31,6 +31,17 @@ public class TileScript : MonoBehaviour, IPoolObject
     private void Update()
     {
         TileSpeed();
+        // playerTransform.position.z - safeZone > mean : 플레이어의 z위치값이  [](첫 스폰 - 보여지는 타일 개수 * 스폰거리) 보다 크다면
+
+        if (0f - safeZone > transform.position.z) // 0f부분에서 플레이어 위치값이 안들어가면 오류가 생긴다...
+        {
+            TileManagerPool.instance.TileSpawn();
+            // safeZone을 활용하여 타일의 생성 조건을 나타냄
+            //Debug.Log("타일 생성 및 삭제 조건"+"  SpawnZ값   " + spawnZ);
+
+            TileManagerPool.instance.ReturnTilePool(this);
+        }
+
     }
 
     private void TileSpeed()
@@ -53,6 +64,11 @@ public class TileScript : MonoBehaviour, IPoolObject
     public void OnGettingFromPool()
     {
         // 해당 오브젝트가 가져올때마다 실행
-        TileSpawnPos();
+        //TileSpawnPos();
+        
     }
+
+    
+
+
 }

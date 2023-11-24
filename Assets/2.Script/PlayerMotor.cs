@@ -16,10 +16,11 @@ public class PlayerMotor : MonoBehaviour
     {
         Movement();
 
-        //TouchMove();
+        TouchMove();
 
         //transform.position = worldPos;
 
+        //테스트용 마우스 이동
         //MouseMove();
 
     }
@@ -81,6 +82,13 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField]
     private Camera mainCamera;
 
+    private Vector2 screenPos;
+
+    private float playerXPos;
+
+    private float ratioScreenPosPercent;
+
+
     private void TouchMove()
     {
         #region 터치식 움직임 [공기기 활용해보기] -  주석 처리했음
@@ -122,7 +130,19 @@ public class PlayerMotor : MonoBehaviour
         {
             if (Input.GetTouch(0).phase == TouchPhase.Moved) // 손가락이 유지되는 순간
             {
-                controller.Move(mainCamera.WorldToScreenPoint(transform.position) * speed_X * Time.deltaTime);
+                screenPos = mainCamera.ScreenToViewportPoint(Input.mousePosition);
+
+                ratioScreenPosPercent = Mathf.Clamp(screenPos.x, 0.2f, 0.8f) - 0.2f; // 0.6f이 100%의 수치
+
+                ratioScreenPosPercent /= 0.6f; // 요롷게하면 100%의 수치가 1이 된다
+
+                //Debug.Log("테스트 : " + ratioScreenPosPercent);
+
+                //Debug.Log("이동 테스트 : " + mainCamera.ScreenToViewportPoint(Input.mousePosition));
+
+                playerXPos = -2f + 4 * ratioScreenPosPercent;
+
+                transform.position = new Vector3(playerXPos, 0f, 0f);
 
             }
 
@@ -135,18 +155,14 @@ public class PlayerMotor : MonoBehaviour
 
     }
 
-    private Vector2 screenPos;
-    private Vector3 worldPos;
-
-    private Ray ray;
-
     
     private void MouseMove() // 테스트용 마우스 무브 함수(스크린 좌표와 월드 좌표 활용)
     {
-
-        //ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        #region 레이를 활용한 이동방식(과거의 산물)
+        //ray = mainCamera.ScreenPointToRay(Input.mousePosition); //레이를 업데이트문에 쓰면 엄청난 부하가 걸린다...(자제할 것)
 
         //RaycastHit hit;
+
 
         //worldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
@@ -154,13 +170,27 @@ public class PlayerMotor : MonoBehaviour
 
         //Debug.Log("이동 테스트 : " + screenPos.x / 3800f + "   " + screenPos.y + "   ");
 
-        //transform.position = new Vector2(-screenPos.x / 3800f, 0f);
 
         //if (Input.GetMouseButton(0))
         //{
         //    transform.position.anchoredPosition = Input.mousePosition;
         //}
+        #endregion
 
+
+        screenPos = mainCamera.ScreenToViewportPoint(Input.mousePosition);
+
+        ratioScreenPosPercent = Mathf.Clamp(screenPos.x, 0.2f, 0.8f) - 0.2f; // 0.6f이 100%의 수치
+
+        ratioScreenPosPercent /= 0.6f; // 요롷게하면 100%의 수치가 1이 된다
+
+        //Debug.Log("테스트 : " + ratioScreenPosPercent);
+
+        //Debug.Log("이동 테스트 : " + mainCamera.ScreenToViewportPoint(Input.mousePosition));
+
+        playerXPos = -2f + 4 * ratioScreenPosPercent;
+
+        transform.position = new Vector3(playerXPos, 0f, 0f);
     }
 
 
