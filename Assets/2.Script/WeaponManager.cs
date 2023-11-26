@@ -60,6 +60,15 @@ public class WeaponManager : MonoBehaviour
         //Sellect_FireSlash();
     }
 
+
+    private int nomalAttack_UID; // 가지고 있는 기본공격 저장하는 용도
+
+    private int subSkill_UID;
+
+    private int mainSkill_UID;
+
+    private int passive_UID;
+
     // 레벨업시 스킬 획득
     private void SelectWeapon()
     {

@@ -213,7 +213,9 @@ public class BulletManager : MonoBehaviour
 
             int indexDamage = nomalAttack_UID;
 
-            nomalAttack_Water.Add(nomalAttack_UID, new NomalAttack_WaterSlash(statusDB.NomalAttack[indexLevel].typeLevel, statusDB.NomalAttack[indexName].name, statusDB.NomalAttack[indexDamage].speedDown));
+            nomalAttack_Water.Add(nomalAttack_UID, 
+                new NomalAttack_WaterSlash(statusDB.NomalAttack[indexLevel].typeLevel, 
+                statusDB.NomalAttack[indexName].name, statusDB.NomalAttack[indexDamage].speedDown));
 
         }
     }

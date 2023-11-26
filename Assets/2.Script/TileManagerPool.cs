@@ -9,9 +9,8 @@ public class TileManagerPool : MonoBehaviour
 
     private PoolManager poolManager;
 
-    private float spawnZ = -10.0f;
-
-    private float safeZone = 155.0f;
+    [HideInInspector]
+    public float spawnZ = -10.0f;
 
     private float tileLenght = 150.0f; // 앞으로 나올 스폰 거리(각각 타일의 사이 길이) 변경전:296.0f
 
@@ -30,15 +29,15 @@ public class TileManagerPool : MonoBehaviour
             //Debug.Log("EnemyManager.instance가 null상태입니다.");
             instance = this;
         }
-
+        spawnZ = -10.0f;
         // 첫 생성은 여기서 처리
         for (int i = 0; i < tileOnScreen; i++)
         {
-            TileSpawn();
+            TileMap(0);
             spawnZ += tileLenght; // 먼저 소환된 해당 타일보다 앞에 생성하기위함
-            TileSpawn();
+            TileMap(1);
             spawnZ += tileLenght;
-            TileSpawn();
+            TileMap(2);
         }
 
     }
@@ -55,7 +54,7 @@ public class TileManagerPool : MonoBehaviour
         //    TileSpawn();
         //}
 
-        indexNum = Random.Range(0, 3);
+        //indexNum = Random.Range(0, 3);
     }
 
     public GameObject TileMap(int i)
@@ -63,7 +62,9 @@ public class TileManagerPool : MonoBehaviour
 
         TileScript newTile01 = poolManager.GetFromPool<TileScript>(i); // 0~2는 바람 마을
 
-        GameObject newTileObj01 = newTile01.gameObject; // 인덱스 1,2로 설정하면 오류가 생긴다...
+        GameObject newTileObj01 = newTile01.gameObject; 
+
+        //newTileObj01.transform.position = Vector3.forward * spawnZ;
 
         return newTileObj01;
 
@@ -72,19 +73,19 @@ public class TileManagerPool : MonoBehaviour
     public void ReturnTilePool(TileScript clone)
     {
         //poolManager.TakeToPool<TileScript>(clone.idName, clone);
-        poolManager.TakeToPool<TileScript>(clone);
+        poolManager.TakeToPool<TileScript>(clone.idName, clone);
     }
 
-    // 타일 스폰 함수 이 함수는 타일 스크립트에서도 작동중이다.
-    public GameObject TileSpawn()
-    {
+    
+    //public GameObject TileSpawn()
+    //{
 
-        GameObject newTile01 = TileMap(0);
+    //    GameObject newTile01 = TileMap(0);
 
-        newTile01.transform.position = Vector3.forward * spawnZ;
+    //    newTile01.transform.position = Vector3.forward * spawnZ;
 
-        return newTile01;
-    }
+    //    return newTile01;
+    //}
 
     
 

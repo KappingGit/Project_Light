@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2419803490145915971}
   - component: {fileID: -2441320194982290134}
   m_Layer: 0
-  m_Name: BG_02_Prefabs02Pool
+  m_Name: BG_02_Prefabs02_Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2137dfa1bd38fee43a99f3efce29b99e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idName: WindField02
   tileSpeed: 35
+  playerTrans: {fileID: 0}
 --- !u!1 &7769845747429668331
 GameObject:
   m_ObjectHideFlags: 0
