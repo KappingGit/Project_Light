@@ -38,8 +38,8 @@ SpriteAtlas:
       padding: 4
       blockOffset: 1
       allowAlphaSplitting: 0
-      enableRotation: 1
-      enableTightPacking: 1
+      enableRotation: 0
+      enableTightPacking: 0
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
@@ -79,7 +79,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 3073c3061f3e4d84691f0d53c1c81506, type: 3}
     - {fileID: 2800000, guid: 59b43a7fa3ed3c844b8cbb72ea98b819, type: 3}
     - {fileID: 2800000, guid: a56367a85a37f26468887c6e6235de1f, type: 3}
-    - {fileID: 2800000, guid: 094609f729bffcc41a64a0bbda8c91a5, type: 3}
+    - {fileID: 2800000, guid: 58f07dadf990b614981cb65f60490bef, type: 3}
     - {fileID: 2800000, guid: 22f298e0e02e2d24f90fd3f3d2a8572a, type: 3}
     - {fileID: 2800000, guid: 66f2d296b5c02f5429ad089be593cdcd, type: 3}
     - {fileID: 2800000, guid: 29d9c60e6e3e5b8468edb312baa5ab34, type: 3}
@@ -93,7 +93,6 @@ SpriteAtlas:
     - {fileID: 2800000, guid: cf245e0d2929f644191f003019624ce0, type: 3}
     - {fileID: 2800000, guid: b8626155e7cbc67478e0519f2020c68f, type: 3}
     - {fileID: 2800000, guid: 6d6ad33391af56a49a1eec03fb9f6f91, type: 3}
-    - {fileID: 2800000, guid: 58f07dadf990b614981cb65f60490bef, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -126,7 +125,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 66f2d296b5c02f5429ad089be593cdcd, type: 3}
   - {fileID: 21300000, guid: 852f222749164fc4184b70307f8642cd, type: 3}
   - {fileID: 21300000, guid: 05a362c78332a8b429f303d9c09d7238, type: 3}
-  - {fileID: 21300000, guid: 094609f729bffcc41a64a0bbda8c91a5, type: 3}
   - {fileID: 21300000, guid: 3b5d5058e9e99774a85f8e52b6be96a3, type: 3}
   - {fileID: 21300000, guid: a56367a85a37f26468887c6e6235de1f, type: 3}
   - {fileID: 21300000, guid: 83543419f82469942aba8f5999e6ae4b, type: 3}
@@ -176,7 +174,6 @@ SpriteAtlas:
   - UI_Btn_Arrow_Image_02
   - UI_Icon_ChImf_Image
   - UI_Btn_Common_Orange_Image
-  - UI_Tutorial_Hand_Image
   - UI_Icon_Lock_Image
   - UI_Tutorial_Arrow_Image_02
   - UI_Icon_Stat_BG_Image

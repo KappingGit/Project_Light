@@ -43,6 +43,17 @@ public class GameManager : MonoBehaviour
 
     private int fire_SubSkillUID;
 
+
+    // 데이터 저장 변수
+    private int nomalAttack_UID; // 가지고 있는 기본공격 저장하는 용도
+
+    private int subSkill_UID;
+
+    private int mainSkill_UID;
+
+    private int passive_UID;
+
+
     private void Awake()
     {
         if (GameManager.instance == null)
@@ -72,13 +83,22 @@ public class GameManager : MonoBehaviour
 
 
 
-        Wind_Transducer();
-        Water_Transducer();
-        Fire_Transducer();
+        //Wind_Transducer();
+        //Water_Transducer();
+        //Fire_Transducer();
 
 
         // 실시간 체크하게 설정
         CheckUID_Transducer();
+
+    }
+
+    private void WeaponDataSaveArchive() // 데이터를 모두저장
+    {
+        nomalAttack_UID = 0;
+
+
+
 
     }
 
