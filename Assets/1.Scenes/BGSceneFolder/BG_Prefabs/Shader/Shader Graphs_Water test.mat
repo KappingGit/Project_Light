@@ -55,22 +55,23 @@ Material:
     - _BUILTIN_ZTest: 4
     - _BUILTIN_ZWrite: 0
     - _BUILTIN_ZWriteControl: 0
-    - _Depth: 0.42
-    - _DepthFalloff: 0.1
-    - _Float: 8
-    - _FoamDepth: 0
-    - _FoamFalloff: 1
-    - _FoamShoreWidth: 0
-    - _Metal: 0
+    - _Curved: -0.0003
+    - _Depth: 3
+    - _DepthFalloff: 0.6
+    - _Float: 6
+    - _FoamDepth: 1.5
+    - _FoamFalloff: 0.7
+    - _FoamShoreWidth: 0.4
+    - _Metal: 0.5
     - _NormalStrenght: 5
     - _WaveIntensity: 0
     - _WaveSpeed: 0
     m_Colors:
-    - _Color: {r: 0.1787558, g: 0.79112905, b: 0.9716981, a: 0}
+    - _Color: {r: 0, g: 0.17856766, b: 0.7254902, a: 0}
     - _Color_1: {r: 0.13345651, g: 0.2592136, b: 0.49019602, a: 0}
-    - _FoamColor: {r: 0, g: 0, b: 0, a: 0}
-    - _ShoreColor: {r: 1, g: 1, b: 1, a: 0}
-    - _WaveColor: {r: 1, g: 1, b: 1, a: 0}
+    - _FoamColor: {r: 0.504717, g: 0.9612628, b: 1, a: 0}
+    - _ShoreColor: {r: 0, g: 0.19485182, b: 0.4339623, a: 0}
+    - _WaveColor: {r: 0.6650944, g: 0.9931609, b: 1, a: 0}
     - _diss: {r: 5, g: 0, b: 0, a: 0}
     - _sk: {r: 5, g: 0, b: 0, a: 0}
     - _speed: {r: 0.75, g: 0, b: 0, a: 0}
