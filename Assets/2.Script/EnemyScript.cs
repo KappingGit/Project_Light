@@ -206,13 +206,13 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
             // 원래 처음 생각으로는 if(해당 UID라면){해당하는 레벨의 함수를 불러온다}
             // 하지만 위 방식은 너무 비효율적임 Dictionary를 활용
 
-            Debug.Log("몬스터가 피격 받기전 체력입니다" + currHp);
+            //Debug.Log("몬스터가 피격 받기전 체력입니다" + currHp);
 
             //TargetDamage();
 
             //currHp -= WhatWeaponType();
 
-            Debug.Log("몬스터가 피격을 받았습니다." + currHp);
+            //Debug.Log("몬스터가 피격을 받았습니다." + currHp);
 
 
         }
@@ -531,15 +531,15 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
     }
 
-    private float xMax;
-    private float xMin;
+    protected float xMax;
+    protected float xMin;
 
     private float[] xLoad = new float[3]; // x축 차선을 활용할때
 
     [SerializeField]
-    private Transform spawnerPos; // 스폰되는 좌표
+    public Transform spawnerPos; // 스폰되는 좌표
 
-    public void SpawnPos() // 스폰되는 영역
+    public virtual void SpawnPos() // 스폰되는 영역
     {
         #region 스폰 방식 1 : x축 제한 범위 안에서 랜덤하게 적을 스폰 (이방식을 채택)
 

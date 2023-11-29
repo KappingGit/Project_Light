@@ -16,6 +16,7 @@ public class EnemyManager : MonoBehaviour
     //[SerializeField]
     //private float spawnCycle = 0.5f; // 생성 주기(생성 주기부분을 캐릭터 스피드와 연결시켜서 게임 스피드가 빨라지면 스폰도 빨라지게 구현)
 
+    private int changeMonsterNum;
 
     private void Awake()
     {
@@ -35,6 +36,8 @@ public class EnemyManager : MonoBehaviour
 
         //InvokeRepeating("Spawn", firstSpawn, spawnCycle); // Invokerepeating은 해당 함수를 firstSpawn초후에 spawnCycle초 간격으로 실행하는 용도
 
+        changeMonsterNum = 0;
+
         StartCoroutine(SpanwCycle());
 
         //SpawnReapeating();
@@ -53,6 +56,15 @@ public class EnemyManager : MonoBehaviour
             StopCoroutine(SpanwCycle());
         }
 
+        if (ChangeSceneManager.instance.stageNum == 2)
+        {
+            changeMonsterNum = 1;
+        }
+        else if (ChangeSceneManager.instance.stageNum == 3)
+        {
+            // changeMonsterNum = 2; //3스테이지
+        }
+
     }
 
     // 기획적인 부분 : 만약 도로와 같이 1차선 2차선 3차선으로 할 경우 랜덤함수를 쓰는 것이 아닌 배열로 값으로 해당 포지션 값을 반환하는 것
@@ -68,7 +80,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject Spawn()
     {
         //Debug.Log("몬스터 스폰");
-        EnemyScript newEnemy01 = poolManager.GetFromPool<EnemyScript>(0);
+        EnemyScript newEnemy01 = poolManager.GetFromPool<EnemyScript>(changeMonsterNum);
 
         GameObject newEnemyObj01 = newEnemy01.gameObject;
 

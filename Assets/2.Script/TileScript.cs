@@ -40,7 +40,21 @@ public class TileScript : MonoBehaviour, IPoolObject
             {
                 isSpanwTigger = true;
 
-                randIndex = Random.Range(0, 3); // 윈드 필드의 경우... 0~2
+                if (ChangeSceneManager.instance.stageNum == 1)
+                {
+                    randIndex = Random.Range(0, 3); // 윈드 필드의 경우... 0~2
+                }
+                else if (ChangeSceneManager.instance.stageNum == 2)
+                {
+                    randIndex = Random.Range(3, 6); // 워터 필드의 경우... 3~5
+                }
+                else if (ChangeSceneManager.instance.stageNum == 3)
+                {
+                    randIndex = Random.Range(6, 9); // 불 필드의 경우... 6~8
+
+                }
+
+
                 //Debug.Log("반환 및 생성 작업 진행");
                 TileManagerPool.instance.TileMap(randIndex);
                 // safeZone을 활용하여 타일의 생성 조건을 나타냄

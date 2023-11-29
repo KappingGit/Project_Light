@@ -12,7 +12,7 @@ public class TileManagerPool : MonoBehaviour
     [HideInInspector]
     public float spawnZ = -10.0f;
 
-    private float tileLenght = 150.0f; // 앞으로 나올 스폰 거리(각각 타일의 사이 길이) 변경전:296.0f
+    private float tileLenght = 147.0f; // 앞으로 나올 스폰 거리(각각 타일의 사이 길이) 변경전:296.0f
 
     // 앞으로 소환될 타일 개수 => 코드 새로 작성하면서 소환될 횟수로 변경됨(for문의 횟수에 불과함, 변수 이름과 의미 없어짐)
     private int tileOnScreen = 1; 
@@ -60,7 +60,7 @@ public class TileManagerPool : MonoBehaviour
     public GameObject TileMap(int i)
     {
 
-        TileScript newTile01 = poolManager.GetFromPool<TileScript>(i); // 0~2는 바람 마을
+        TileScript newTile01 = poolManager.GetFromPool<TileScript>(i); // 0~2는 바람 마을 3~5는 물 마을 6~8 불 마을
 
         GameObject newTileObj01 = newTile01.gameObject; 
 

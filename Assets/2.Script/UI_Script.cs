@@ -38,13 +38,19 @@ public class UI_Script : MonoBehaviour
 
         isActiveGameTuto = false;
 
+        isStageClear = false;
+
     }
 
     private void Update()
     {
-        
 
+        
         if (!BossManager.instance.bossSpawnActive)
+        {
+            StageProgress();
+        }
+        else if(isStageClear)
         {
             StageProgress();
         }
@@ -112,19 +118,22 @@ public class UI_Script : MonoBehaviour
             }
         }
 
+        //Debug.Log("보스 출현 디버그 : "+bossProgress / BossManager.instance.bossAppearanceTime);
     }
 
     [SerializeField]
-    private GameObject stageProgressbar; // 스테이지 진해도 바
+    public GameObject stageProgressbar; // 스테이지 진해도 바
 
     [SerializeField]
     private Image stageProgressFill; // 스테이지 진행도 fill이미지
 
-    private float bossProgress;
+    [HideInInspector]
+    public float bossProgress;
 
     // 스테이지 진척도
     private void StageProgress()
     {
+        
         stageProgressbar.gameObject.SetActive(true);
 
         bossProgress = BossManager.instance.curTime; // 보스매니저 스크립트에서 time변수를 가져옴
@@ -150,6 +159,10 @@ public class UI_Script : MonoBehaviour
 
     private bool isVictoryTrigger; // 승리 UI의 코루틴 브레이킹용 트리거
 
+    [HideInInspector]
+    public bool isStageClear; // 스테이지 클리어용
+
+
     private void VictoryUI() // 승리 UI
     {
         if (BossManager.instance.bossSpawnActive)
@@ -163,14 +176,19 @@ public class UI_Script : MonoBehaviour
                 {
                     isVictoryTrigger = true; // 승리 UI 코루틴 브레이킹용 bool값
 
-                    StartCoroutine(DefeatDelay());
-                    
+                    StartCoroutine(VictoryDelay());
+
+                    isStageClear = true;
+
+                   
                 }
             }
             
         }
         
     }
+
+    
 
     [SerializeField]
     private GameObject defeatUI;
@@ -783,8 +801,8 @@ public class UI_Script : MonoBehaviour
     IEnumerator VictoryDelay() // 현재 플레이어 사망시 메인화면으로 넘어가는 방식이 동일하기에 isGameOver로 관리 나중에 바꿀 것...
     {
         yield return YieldInstuctionCash.WaitForSeconds(5f);
-
-        isGameOver = true;
+        victoryUI.gameObject.SetActive(false);
+        //isGameOver = true; //게임 종료
 
         yield return YieldInstuctionCash.WaitForSeconds(0.1f);
         StopCoroutine(VictoryDelay());

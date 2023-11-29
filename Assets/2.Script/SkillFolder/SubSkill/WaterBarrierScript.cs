@@ -24,16 +24,18 @@ public class WaterBarrierScript : SubSkillScript
 
     IEnumerator DurationPos()
     {
-        int i = 0;
-        Debug.Log("워터 쉴드 위치 조정");
-        while (i < SubSkillManager.instance.WaterBarrierType_Duration(7))
-        {
-            transform.position = new Vector3(shootPos.position.x, 1f, shootPos.position.z); // 베리어 위치
-            yield return YieldInstuctionCash.WaitForSeconds(0.1f);
+        //int i = 0;
+        //Debug.Log("워터 쉴드 위치 조정");
+        //while (i < SubSkillManager.instance.WaterBarrierType_Duration(7))
+        //{
+        //    transform.position = new Vector3(shootPos.position.x, 1f, shootPos.position.z); // 베리어 위치
+        //    yield return YieldInstuctionCash.WaitForSeconds(0.1f);
 
-            i++;
+        //    i++;
             
-        }
+        //}
+
+        yield return YieldInstuctionCash.WaitForSeconds(3f);
 
         SubSkillManager.instance.ReturnSkill(this); //베리어가 안깨지면 지속시간 끝나면 종료
 

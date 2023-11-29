@@ -126,7 +126,7 @@ public class PlayerShooting : MonoBehaviour
                 {
                     
                     //Debug.Log("발사했습니다");
-                    StartCoroutine(AttackRate(weaponType)); //딕셔너리로 하면 이부분과 딕셔너리 부분이 오류남
+                    StartCoroutine(AttackRate(weaponType)); 
 
                 }
 

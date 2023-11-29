@@ -34,6 +34,8 @@ public class ChangeSceneManager : MonoBehaviour
         cutSceneisActive = false;
 
         isSkip = false;
+
+        stageNum = 1; // 스테이지 번호 변수 (나중에 스테이지 선택 기능 구현할때 다시 고려하기)
     }
 
     private void Update()
@@ -87,9 +89,6 @@ public class ChangeSceneManager : MonoBehaviour
                 }
             }
 
-
-
-
         }
 
 
@@ -106,7 +105,7 @@ public class ChangeSceneManager : MonoBehaviour
 
         }
 
-
+        StageClear();
 
     }
 
@@ -147,6 +146,21 @@ public class ChangeSceneManager : MonoBehaviour
         //SceneManager.SetActiveScene(SceneManager.GetSceneByName("DirectActionScene01"));
 
     }
+
+    [HideInInspector]
+    public int stageNum;
+
+    private void StageClear()
+    {
+
+        if (UI_Script.instance.isStageClear == true)
+        {
+            UI_Script.instance.isStageClear = false;
+            
+            StartCoroutine(StageClearCoroutine());
+        }
+    }
+
 
     private float fadeInCount; // 페이드 인에 사용될 변수
 
@@ -273,6 +287,28 @@ public class ChangeSceneManager : MonoBehaviour
 
 
         StopCoroutine(CutSceneVideo());
+    }
+
+    IEnumerator StageClearCoroutine()
+    {
+        Debug.Log("스테이지 클리어 코루틴 실행");
+        //yield return YieldInstuctionCash.WaitForSeconds(5f);
+        //StartCoroutine(FadeOut());
+
+        stageNum += 1;
+
+        //StartCoroutine(FadeIn());
+
+        yield return YieldInstuctionCash.WaitForSeconds(8f);
+        UI_Script.instance.bossProgress = 0;
+
+        UI_Script.instance.stageProgressbar.gameObject.SetActive(true);
+
+        //BossManager.instance.bossSpawnActive = false;
+
+
+        yield return YieldInstuctionCash.WaitForSeconds(1f);
+        StopCoroutine(StageClearCoroutine());
     }
 
 }

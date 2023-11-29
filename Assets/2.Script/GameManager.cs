@@ -93,17 +93,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void WeaponDataSaveArchive() // 데이터를 모두저장
-    {
-        nomalAttack_UID = 0;
-
-
-
-
-    }
-
-
-
     // 좀더 쉬운 방향 생각
     // 기존 생각 : 현재 UID가 인덱스 값 x라면 case를 0~5까지 만들어서 해당 UID의 번호라면 오브젝트 풀링 인덱스 값는 0을 출력
     // 위사항대로 만들게 되면 case의 가지수가 매우 많아진다... 이를 간략하게 표현해보자
@@ -187,5 +176,5 @@ public class GameManager : MonoBehaviour
         //Debug.Log("변환기 테스트 : 현재 불 무기의 UID는  " + fire_NomalAttackUID + "  이며 변환기로 오브젝트 풀링 인덱스 값은  " + current_FireAttack + "이거이다.");
     }
 
-
+    
 }
