@@ -65,6 +65,8 @@ public class UI_Script : MonoBehaviour
             
         }
 
+        ChangeSceneManager.instance.isStageClear_Data = isStageClear; // 싱글톤 관련 문제해결
+
         if (!BossManager.instance.bossSpawnActive)
         {
             StageProgress();
@@ -212,6 +214,11 @@ public class UI_Script : MonoBehaviour
                 }
             }
             
+        }
+        else if (!BossManager.instance.bossSpawnActive)
+        {
+            isVictoryTrigger = false;
+            isStageClear = false;
         }
         
     }
@@ -405,6 +412,9 @@ public class UI_Script : MonoBehaviour
     [HideInInspector]
     public float bossMaxHP_Data;
 
+    [SerializeField]
+    private TextMeshProUGUI bossName;
+
     private void BossHPUI()
     {
         // 밑의 주석은 싱글톤 문제로 인한 작업의 잔재이다...
@@ -416,6 +426,18 @@ public class UI_Script : MonoBehaviour
         //    bossHPBar.gameObject.SetActive(false);
         //}
 
+        if (BossManager.instance.bossSpawnActive)
+        {
+            if (ChangeSceneManager.instance.stageNum == 1)
+            {
+                bossName.text = "실프";
+            }
+            else if (ChangeSceneManager.instance.stageNum == 2)
+            {
+                bossName.text = "운디네"; // 나중에 데이터 테이블로 바꾸기
+            }
+        }
+        
         //Debug.Log("보스 HP바 생성 함수 내부");
         bossHPBarFill.fillAmount = bossCurHP_Data / bossMaxHP_Data;
 
@@ -880,6 +902,7 @@ public class UI_Script : MonoBehaviour
     {
         yield return YieldInstuctionCash.WaitForSeconds(5f);
         victoryUI.gameObject.SetActive(false);
+        
         //isGameOver = true; //게임 종료
 
         yield return YieldInstuctionCash.WaitForSeconds(0.1f);

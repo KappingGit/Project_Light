@@ -36,6 +36,10 @@ public class ChangeSceneManager : MonoBehaviour
         isSkip = false;
 
         stageNum = 1; // 스테이지 번호 변수 (나중에 스테이지 선택 기능 구현할때 다시 고려하기)
+
+        //isBreak = false; // 임시 브레이킹용 나중에 지울것
+
+
     }
 
     private void Update()
@@ -62,7 +66,7 @@ public class ChangeSceneManager : MonoBehaviour
 
                 if (cutSceneisActive)
                 {
-                    
+
                     StartCoroutine(CutSceneVideo());
                 }
 
@@ -92,11 +96,11 @@ public class ChangeSceneManager : MonoBehaviour
         }
 
 
-        if (UI_Script.instance.isGameOver) // 게임오버가 되면
-        {
-            UI_Script.instance.isGameOver = false;
-            StartCoroutine(GameOverScene());
-        }
+        //if (UI_Script.instance.isGameOver) // 게임오버가 되면
+        //{
+        //    UI_Script.instance.isGameOver = false;
+        //    //StartCoroutine(GameOverScene());
+        //}
 
         if (UI_Script.instance.isRestart)
         {
@@ -106,6 +110,13 @@ public class ChangeSceneManager : MonoBehaviour
         }
 
         StageClear();
+
+
+        //Debug.Log("스테이지 번호 : " + stageNum);
+        //Debug.Log("체인지 씬 매니저에서 유아이 이스 스테이지 클리어 디버그" + UI_Script.instance.isStageClear);
+        //Debug.Log("체인지 씬 매니저에서 빅토리 트리거 확인 : "+UI_Script.instance.isVictoryTrigger);
+        //Debug.Log("스테이지 클리어 데이터 : " + isStageClear_Data);
+        
 
     }
 
@@ -153,23 +164,43 @@ public class ChangeSceneManager : MonoBehaviour
     [HideInInspector]
     public bool nextStageActive; // 다음 스테이지 작동 여부
 
+    [HideInInspector]
+    public bool isStageClear_Data;
+
+    // 스테이지별 브레이킹 변수
+    private bool isBreak = false;
+
+    
     private void StageClear()
     {
-
-        if (UI_Script.instance.isStageClear == true)
+        if (BossManager.instance.bossSpawnActive)
         {
-            UI_Script.instance.isStageClear = false;
-            
-            if (ChangeSceneManager.instance.stageNum == 2)
-            {
-                StartCoroutine(GameOverScene());
-
-            }else if (ChangeSceneManager.instance.stageNum == 1)
+            if (isStageClear_Data)
             {
 
-                StartCoroutine(StageClearCoroutine());
+                if (stageNum == 1 && !isBreak)
+                {
+                    Debug.Log("1스테이지 클리어");
+                    isBreak = true;
+                    StartCoroutine(StageBreaking()); // 임시 : 스테이지 브레이킹용도
+                    StartCoroutine(StageClearCoroutine());
+
+                }
+                else if (stageNum == 2 && !isBreak)
+                {
+                    Debug.Log("2스테이지 클리어");
+                    isBreak = true;
+                    StartCoroutine(StageBreaking());
+                    //StartCoroutine(StageClearCoroutine());
+                    //Debug.Log("스테이지 클리어 관련 함수(2스테이지 클리어 디버그)");
+                    //StartCoroutine(StageClearCoroutine());
+                    StartCoroutine(GameOverScene());
+
+                }
+
             }
         }
+        
     }
 
 
@@ -213,7 +244,7 @@ public class ChangeSceneManager : MonoBehaviour
         fadeInOuting = false;
         yield return YieldInstuctionCash.WaitForSeconds(1.5f);
         StopCoroutine(FadeIn());
-        
+
         //ChangeScene(); // 씬전환 연출쪽으로 넘어가게 설정
 
     }
@@ -238,14 +269,15 @@ public class ChangeSceneManager : MonoBehaviour
 
     IEnumerator GameOverScene() // 게임 오버되었으면 메인씬으로 넘어가기
     {
+        yield return YieldInstuctionCash.WaitForSeconds(4f); // 빅토리 UI보여지게 하는거 시간버는 용도
         StartCoroutine(FadeOut());
         yield return YieldInstuctionCash.WaitForSeconds(2f);
-        Debug.Log("2스테이지 클리어 메인씬으로가기");
+        //Debug.Log("2스테이지 클리어 메인씬으로가기");
         ChangeScene_MainScene();
         //Debug.Log("씬전환");
 
         yield return YieldInstuctionCash.WaitForSeconds(5f);
-        
+
         StartCoroutine(FadeIn());
     }
 
@@ -266,7 +298,7 @@ public class ChangeSceneManager : MonoBehaviour
     {
         //Debug.Log("코루틴 시작");
         Time.timeScale = 0f;
-        
+
         cutSceneVideo01.gameObject.SetActive(true);
 
 
@@ -283,7 +315,7 @@ public class ChangeSceneManager : MonoBehaviour
             //    cutSceneVideo01.gameObject.SetActive(false);
             //}
 
-            
+
             yield return new WaitForSecondsRealtime(1f);
 
         }
@@ -307,7 +339,7 @@ public class ChangeSceneManager : MonoBehaviour
         //StartCoroutine(FadeOut());
 
         stageNum += 1;
-        UI_Script.instance.isVictoryTrigger = false; // 스테이지 변화되면서 승리 트리거 초기화
+        //UI_Script.instance.isVictoryTrigger = false; // 스테이지 변화되면서 승리 트리거 초기화
         //StartCoroutine(FadeIn());
 
         //yield return YieldInstuctionCash.WaitForSeconds(8f);
@@ -322,6 +354,16 @@ public class ChangeSceneManager : MonoBehaviour
 
         yield return YieldInstuctionCash.WaitForSeconds(2f);
         StopCoroutine(StageClearCoroutine());
+    }
+
+    IEnumerator StageBreaking() // 스테이지 브레이크용도
+    {
+        yield return YieldInstuctionCash.WaitForSeconds(12f);
+
+        isBreak = false;
+
+        yield return YieldInstuctionCash.WaitForSeconds(2f);
+        StopCoroutine(StageBreaking());
     }
 
 }

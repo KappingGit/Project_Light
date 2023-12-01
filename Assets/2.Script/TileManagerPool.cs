@@ -44,6 +44,9 @@ public class TileManagerPool : MonoBehaviour
 
     private int indexNum;
 
+    [SerializeField]
+    private GameObject stage02_Rain;
+
     private void Update()
     {
         //if (playerTrans.position.z - safeZone > -150f)
@@ -55,6 +58,21 @@ public class TileManagerPool : MonoBehaviour
         //}
 
         //indexNum = Random.Range(0, 3);
+
+        // 2스테이지 비내리게함
+        if (!BossManager.instance.bossSpawnActive)
+        {
+            if (ChangeSceneManager.instance.stageNum == 2)
+            {
+                stage02_Rain.gameObject.SetActive(true);
+            }
+            else
+            {
+                stage02_Rain.gameObject.SetActive(false);
+            }
+        }
+
+        
     }
 
     public GameObject TileMap(int i)

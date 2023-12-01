@@ -92,6 +92,7 @@ public class BossManager : MonoBehaviour
         //Debug.Log("보스 매니저에서 보스 반환 함수");
         bossSpawnActive = false; // 보스 반환 작업시 초기화 작업
         curTime = 0f; // 보스 반환 작업시 초기화 작업
+        
         BossScript.instance.isPurification = false; // 보스 반환 작업시 정화 초기화 작업
         BossScript.instance.isTimeToReturn = false; // 몬스터 연속 반환을 막기위한 초기화 작업(BossScript.instance.isTimeToReturn는 보스가 죽었을때 연출하는 동안을 뜻함)
         BossScript.instance.bossCurHP = BossScript.instance.bossMaxHP; // 보스 체력 맥스 hp로 초기화

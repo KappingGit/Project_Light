@@ -442,7 +442,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
         isBossDie = false;
 
-        yield return YieldInstuctionCash.WaitForSeconds(3.5f); // 여기서 다른 마을 맵 이어지는 구간을 좁힐 수 있는 시간을 설정가능
+        yield return YieldInstuctionCash.WaitForSeconds(4.5f); // 여기서 다른 마을 맵 이어지는 구간을 좁힐 수 있는 시간을 설정가능
 
 
         Debug.Log("보스 스크립트에서 반환 작업 시작");
@@ -451,7 +451,7 @@ public class BossScript : MonoBehaviour, IPoolObject
         StopCoroutine(DieDelay());
     }
 
-    IEnumerator PatternEffectDelay() // 보스 패턴 오브젝트 비활성화 작업
+    IEnumerator PatternEffectDelay() // 윈드 보스 패턴 오브젝트 비활성화 작업
     {
         BossPattern03_AnimControl();
 

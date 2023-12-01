@@ -30608,7 +30608,9 @@ MonoBehaviour:
   stageProgressFill: {fileID: 1852183341}
   bossProgress: 0
   victoryUI: {fileID: 1295622019}
+  isVictoryTrigger: 0
   isStageClear: 0
+  isBossDie_Data: 0
   defeatUI: {fileID: 2062151728}
   pausePopup: {fileID: 1000846018}
   inGameTutoObj: {fileID: 70749607}
@@ -30616,6 +30618,9 @@ MonoBehaviour:
   isRestart: 0
   bossHPBar: {fileID: 1127058479}
   bossHPBarFill: {fileID: 2504779}
+  bossCurHP_Data: 0
+  bossMaxHP_Data: 0
+  bossName: {fileID: 1584384948}
   playerHpUI: {fileID: 765778552}
   playerGold: {fileID: 2076204703}
   playerLevelText: {fileID: 336231764}
@@ -40753,6 +40758,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932095035}
   m_CullTransparentMesh: 1
+--- !u!1 &935995108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 935995108, guid: 821a99cf43af71642835ab613045e96e, type: 3}
+  m_PrefabInstance: {fileID: 3642770516713615510}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &936277429
 GameObject:
   m_ObjectHideFlags: 0
@@ -54627,6 +54637,7 @@ MonoBehaviour:
   isSkip: 0
   stageNum: 0
   nextStageActive: 0
+  isStageClear_Data: 0
   fadeInOuting: 0
 --- !u!1 &1267931367
 GameObject:
@@ -72293,6 +72304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnZ: -10
   playerTrans: {fileID: 1315253494}
+  stage02_Rain: {fileID: 1836377514}
 --- !u!1 &1705597666
 GameObject:
   m_ObjectHideFlags: 0
@@ -101242,10 +101254,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 935995108, guid: 821a99cf43af71642835ab613045e96e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149300442007, guid: 821a99cf43af71642835ab613045e96e, type: 3}
       propertyPath: spawnerPos
       value: 
       objectReference: {fileID: 1755187536}
+    - target: {fileID: 919132149300442007, guid: 821a99cf43af71642835ab613045e96e, type: 3}
+      propertyPath: dieDirect_Effect
+      value: 
+      objectReference: {fileID: 935995108}
+    - target: {fileID: 919132149300442007, guid: 821a99cf43af71642835ab613045e96e, type: 3}
+      propertyPath: pattern03_Effect
+      value: 
+      objectReference: {fileID: 935995108}
     - target: {fileID: 919132149300442008, guid: 821a99cf43af71642835ab613045e96e, type: 3}
       propertyPath: spawnerPos
       value: 
@@ -101300,22 +101324,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4489193473740276484, guid: 821a99cf43af71642835ab613045e96e, type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4864191507875026409, guid: 821a99cf43af71642835ab613045e96e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4864191507875026411, guid: 821a99cf43af71642835ab613045e96e, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 60a455f8e4da48f44b7208aeb9937668, type: 2}
-    - target: {fileID: 4864191507875026413, guid: 821a99cf43af71642835ab613045e96e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4864191507875026413, guid: 821a99cf43af71642835ab613045e96e, type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -105682,10 +105690,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5277826694057070088, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
-      propertyPath: bossMaxHP
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 5277826694057070088, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
       propertyPath: spawnerPos
       value: 
       objectReference: {fileID: 1755187536}
@@ -105693,18 +105697,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: C_Boss-Wind_1.0
       objectReference: {fileID: 0}
-    - target: {fileID: 5277826694057070090, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5277826694057070091, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
       propertyPath: spawnerPos
       value: 
       objectReference: {fileID: 1755187536}
-    - target: {fileID: 6564720513299290242, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
 --- !u!224 &8654970174702746692

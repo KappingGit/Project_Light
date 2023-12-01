@@ -44,7 +44,8 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
     private Vector3 nowPos; // 실시간 좌표 추출
 
-    private bool allReturnDone = false; // 모두 반환이 이루어졌다면
+    [HideInInspector]
+    public bool allReturnDone = false; // 모두 반환이 이루어졌다면
         
     private void Update()
     {
@@ -76,7 +77,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
             {
                 //Debug.Log("보스 생성으로 인한 몬스터 모두 반환 디버그");
                 OnTargetReached(); //반환 함수
-                allReturnDone = true;
+                allReturnDone = true; // Init에서 한번 초기화함
             }
 
             if (BossScript.instance.isTimeToReturn) //isTimeToReturn는 보스가 사망하는 시점 모든 기믹 몬스터 패턴등 반환하는 작업들어가는 용도
@@ -105,7 +106,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
         //EnemyHP();       
 
         isDie = false;
-
+        
         slowEffect = 1f; // 초기 슬로우 효과 없으니 초기화
 
         if (BossManager.instance.curTime >= BossManager.instance.bossAppearanceTime / 2)
