@@ -21,7 +21,7 @@ public class SubSkillManager : MonoBehaviour
 
         if (SubSkillManager.instance == null)
         {
-            Debug.Log("SkillManager.instance가 null상태입니다");
+            //Debug.Log("SkillManager.instance가 null상태입니다");
             instance = this;
         }
 
@@ -108,8 +108,8 @@ public class SubSkillManager : MonoBehaviour
         float finalDamage = playerATK * windDrillData.drillDamage;
 
 
-        Debug.Log("자식 스크립트의 WindDrillType_Damage() 함수 실행");
-        Debug.Log("윈드 드릴 최종 데미지 : " + finalDamage);
+        //Debug.Log("자식 스크립트의 WindDrillType_Damage() 함수 실행");
+        //Debug.Log("윈드 드릴 최종 데미지 : " + finalDamage);
 
         return finalDamage;
 
@@ -188,8 +188,8 @@ public class SubSkillManager : MonoBehaviour
         float finalDamage = playerATK * fireBallData.penetDamage;
 
 
-        Debug.Log("서브 스킬 매니저 스크립트의 FireBallType_PenetDamage() 함수 실행");
-        Debug.Log("파이어볼 최종 데미지 : " + finalDamage);
+        //Debug.Log("서브 스킬 매니저 스크립트의 FireBallType_PenetDamage() 함수 실행");
+        //Debug.Log("파이어볼 최종 데미지 : " + finalDamage);
 
         return finalDamage;
 

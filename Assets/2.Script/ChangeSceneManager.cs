@@ -150,6 +150,9 @@ public class ChangeSceneManager : MonoBehaviour
     [HideInInspector]
     public int stageNum;
 
+    [HideInInspector]
+    public bool nextStageActive; // 다음 스테이지 작동 여부
+
     private void StageClear()
     {
 
@@ -157,7 +160,15 @@ public class ChangeSceneManager : MonoBehaviour
         {
             UI_Script.instance.isStageClear = false;
             
-            StartCoroutine(StageClearCoroutine());
+            if (ChangeSceneManager.instance.stageNum == 2)
+            {
+                StartCoroutine(GameOverScene());
+
+            }else if (ChangeSceneManager.instance.stageNum == 1)
+            {
+
+                StartCoroutine(StageClearCoroutine());
+            }
         }
     }
 
@@ -229,7 +240,7 @@ public class ChangeSceneManager : MonoBehaviour
     {
         StartCoroutine(FadeOut());
         yield return YieldInstuctionCash.WaitForSeconds(2f);
-
+        Debug.Log("2스테이지 클리어 메인씬으로가기");
         ChangeScene_MainScene();
         //Debug.Log("씬전환");
 
@@ -291,23 +302,25 @@ public class ChangeSceneManager : MonoBehaviour
 
     IEnumerator StageClearCoroutine()
     {
-        Debug.Log("스테이지 클리어 코루틴 실행");
-        //yield return YieldInstuctionCash.WaitForSeconds(5f);
+        Debug.Log("다음 스테이지 넘어감");
+        //yield return YieldInstuctionCash.WaitForSeconds(3f);
         //StartCoroutine(FadeOut());
 
         stageNum += 1;
-
+        UI_Script.instance.isVictoryTrigger = false; // 스테이지 변화되면서 승리 트리거 초기화
         //StartCoroutine(FadeIn());
 
-        yield return YieldInstuctionCash.WaitForSeconds(8f);
-        UI_Script.instance.bossProgress = 0;
+        //yield return YieldInstuctionCash.WaitForSeconds(8f);
 
-        UI_Script.instance.stageProgressbar.gameObject.SetActive(true);
+        // 초기화 진행은 게임매니저 스크립트에서 작업중
+        //UI_Script.instance.bossProgress = 0;
+
+        //UI_Script.instance.stageProgressbar.gameObject.SetActive(true);
 
         //BossManager.instance.bossSpawnActive = false;
 
 
-        yield return YieldInstuctionCash.WaitForSeconds(1f);
+        yield return YieldInstuctionCash.WaitForSeconds(2f);
         StopCoroutine(StageClearCoroutine());
     }
 

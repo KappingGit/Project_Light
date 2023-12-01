@@ -25,7 +25,7 @@ public class FireBallScript : SubSkillScript
     {
         yield return YieldInstuctionCash.WaitForSeconds(3f);
 
-        Debug.Log("파이어볼 반환");
+        //Debug.Log("파이어볼 반환");
 
         SubSkillManager.instance.ReturnSkill(this);
 

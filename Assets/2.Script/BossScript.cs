@@ -37,17 +37,29 @@ public class BossScript : MonoBehaviour, IPoolObject
 
         bossAnim = GetComponent<Animator>();
         bossTrans = GetComponent<Transform>();
-        isTimeToReturn = false;
-        isBossDie = false;
+        isTimeToReturn = false; // 보스가 사망하는 시점 모든 기믹 몬스터 패턴등 반환하는 작업들어가는 용도
+        isBossDie = false; // 보스 사망 여부
 
-        isPurification = false;
+        isPurification = false; // 보스 정화 여부
 
     }
 
     private void Update()
     {
-        
+        BossPatternSetting();
 
+        //Debug.Log("정화 작업 테스트 디버그" + isPurification);
+
+        //Debug.Log("보스 현재 체력 디버그" + bossCurHP);
+
+        UI_Script.instance.bossCurHP_Data = bossCurHP; // 싱글톤으로 인해 데이터가 중구난방이여서 반대로 데이터를 불러오게 함
+        UI_Script.instance.bossMaxHP_Data = bossMaxHP; // 싱글톤으로 인해 데이터가 중구난방이여서 반대로 데이터를 불러오게 함
+        UI_Script.instance.isBossDie_Data = isBossDie;
+        PlayerShooting.intance.isBossPurification_stopShooting = isPurification;
+    }
+
+    protected virtual void BossPatternSetting()
+    {
         if (!isPurification) // 보스가 죽는 연출동안 패턴 못나오게 하기
         {
 
@@ -77,9 +89,8 @@ public class BossScript : MonoBehaviour, IPoolObject
 
             }
         }
-
     }
-    
+
     [SerializeField]
     public float bossMaxHP; // 보스 최대체력
 
@@ -94,6 +105,11 @@ public class BossScript : MonoBehaviour, IPoolObject
 
         bossCurHP = bossMaxHP; // 체력 초기화
 
+        isTimeToReturn = false; // 보스가 사망하는 시점 모든 기믹 몬스터 패턴등 반환하는 작업들어가는 용도
+
+        isBossDie = false; // 보스 사망 여부
+
+        isPurification = false; // 보스 정화 여부
 
     }
 
@@ -106,7 +122,7 @@ public class BossScript : MonoBehaviour, IPoolObject
     private void BossDirectControl() //공격하는 레이어의 접근 함수
     {
         //dieDirect_Effect.gameObject.SetActive(true);
-
+        Debug.Log("정화 연출에 사용되는 오브젝트 작업 함수");
         bossAnim.SetBool("isBossPurification", true);
 
         bossAnim.SetLayerWeight(1, 1);
@@ -137,11 +153,11 @@ public class BossScript : MonoBehaviour, IPoolObject
         {
 
 
-            Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 기본공격  " + bossCurHP);
+            //Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 기본공격  " + bossCurHP);
 
             bossCurHP -= BulletManager.instance.WindSlashTypeDamage(1);
 
-            Debug.Log("몬스터가 피격을 받았습니다.- 바람 기본공격  " + bossCurHP);
+            //Debug.Log("몬스터가 피격을 받았습니다.- 바람 기본공격  " + bossCurHP);
             StartCoroutine(BossHitEffect());
 
         }
@@ -167,13 +183,13 @@ public class BossScript : MonoBehaviour, IPoolObject
         {
 
 
-            Debug.Log("몬스터가 피격 받기전 체력입니다 - 물 기본공격  " + bossCurHP);
+            //Debug.Log("몬스터가 피격 받기전 체력입니다 - 물 기본공격  " + bossCurHP);
 
             bossCurHP -= BulletManager.instance.WaterSlashTypeDamage(7);
 
             //slowEffect = BulletScript.instance.WaterSlashType_SlowEffect(7); //슬로우
 
-            Debug.Log("몬스터가 피격을 받았습니다. - 물 기본공격  " + bossCurHP);
+            //Debug.Log("몬스터가 피격을 받았습니다. - 물 기본공격  " + bossCurHP);
 
             StartCoroutine(BossHitEffect());
         }
@@ -199,13 +215,13 @@ public class BossScript : MonoBehaviour, IPoolObject
         {
 
 
-            Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 기본공격  " + bossCurHP);
+            //Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 기본공격  " + bossCurHP);
 
             bossCurHP -= BulletManager.instance.FireSlashTypeDamage(14);
 
-            Debug.Log("몬스터가 피격을 받았습니다.- 불 기본공격  " + bossCurHP);
+            //Debug.Log("몬스터가 피격을 받았습니다.- 불 기본공격  " + bossCurHP);
 
-            BulletManager.instance.FireSlash_SpreadDamage(14, transform.position, 1f);
+            //BulletManager.instance.FireSlash_SpreadDamage(14, transform.position, 1f);
 
             StartCoroutine(BossHitEffect());
         }
@@ -235,7 +251,7 @@ public class BossScript : MonoBehaviour, IPoolObject
         {
             //Debug.Log("드릴 횟수 확인"+SubSkillScript.instance.WindDrillType_Count(1));
 
-            Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 서브스킬  " + bossCurHP);
+            //Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 서브스킬  " + bossCurHP);
 
             for (int i = 0; i < SubSkillManager.instance.WindDrillType_Count(1); i++) // 타격 횟수
             {
@@ -244,7 +260,7 @@ public class BossScript : MonoBehaviour, IPoolObject
             }
 
 
-            Debug.Log("몬스터가 피격을 받았습니다.- 바람 서브스킬  " + bossCurHP);
+            //Debug.Log("몬스터가 피격을 받았습니다.- 바람 서브스킬  " + bossCurHP);
 
             StartCoroutine(BossHitEffect());
         }
@@ -274,11 +290,11 @@ public class BossScript : MonoBehaviour, IPoolObject
         {
 
 
-            Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 서브 스킬  " + bossCurHP);
+            //Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 서브 스킬  " + bossCurHP);
 
             bossCurHP -= SubSkillManager.instance.FireBallType_PenetDamage(13);
 
-            Debug.Log("몬스터가 피격을 받았습니다.- 불 서브 스킬  " + bossCurHP);
+            //Debug.Log("몬스터가 피격을 받았습니다.- 불 서브 스킬  " + bossCurHP);
 
             StartCoroutine(BossHitEffect());
         }
@@ -421,15 +437,15 @@ public class BossScript : MonoBehaviour, IPoolObject
         //todo: 여기다가 승리 UI실행하기
         Debug.Log("승리했습니다");
         isBossDie = true; // 찐 죽음
-
+        
         yield return YieldInstuctionCash.WaitForSeconds(5f);
 
         isBossDie = false;
 
-        yield return YieldInstuctionCash.WaitForSeconds(2f);
+        yield return YieldInstuctionCash.WaitForSeconds(3.5f); // 여기서 다른 마을 맵 이어지는 구간을 좁힐 수 있는 시간을 설정가능
 
 
-        //Debug.Log("반환 작업 시작");
+        Debug.Log("보스 스크립트에서 반환 작업 시작");
         OnTargetReached(); //반환
 
         StopCoroutine(DieDelay());

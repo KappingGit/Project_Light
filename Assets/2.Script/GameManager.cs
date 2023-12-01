@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
 
+        
+
         // 기본적으로 가지고 있는 UID는 기본 속성 공격을 제외하면 없으므로 전부 0
         // 초기화 (나중에 스테이지 선택하는 경우가 생기면 이 부분 다시 건들기)
 
@@ -89,9 +91,12 @@ public class GameManager : MonoBehaviour
 
 
         // 실시간 체크하게 설정
-        CheckUID_Transducer();
+        //CheckUID_Transducer();
 
+        
     }
+
+    
 
     // 좀더 쉬운 방향 생각
     // 기존 생각 : 현재 UID가 인덱스 값 x라면 case를 0~5까지 만들어서 해당 UID의 번호라면 오브젝트 풀링 인덱스 값는 0을 출력

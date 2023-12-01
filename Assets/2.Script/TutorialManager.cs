@@ -119,8 +119,8 @@ public class TutorialManager : MonoBehaviour
         StartCoroutine(FadeOut());
     }
 
-    private bool leftActive = false;
-    private bool rightActive = false;
+    //private bool leftActive = false;
+    //private bool rightActive = false;
 
     public void LeftBtn()
     {

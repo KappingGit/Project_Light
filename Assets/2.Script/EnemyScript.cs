@@ -74,12 +74,14 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
         {
             if (!allReturnDone)
             {
+                //Debug.Log("보스 생성으로 인한 몬스터 모두 반환 디버그");
                 OnTargetReached(); //반환 함수
                 allReturnDone = true;
             }
 
-            if (BossScript.instance.isTimeToReturn)
+            if (BossScript.instance.isTimeToReturn) //isTimeToReturn는 보스가 사망하는 시점 모든 기믹 몬스터 패턴등 반환하는 작업들어가는 용도
             {
+                //Debug.Log("보스가 뒤짐으로 인한 몬스터 모두 반환 디버그");
                 OnTargetReached();
             }
         }
@@ -237,11 +239,11 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
         {
 
 
-            Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 기본공격  " + currHp);
+            //Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 기본공격  " + currHp);
 
             currHp -= BulletManager.instance.WindSlashTypeDamage(1); // 여기 인덱스번호 유의할것...
 
-            Debug.Log("몬스터가 피격을 받았습니다.- 바람 기본공격  " + currHp);
+            //Debug.Log("몬스터가 피격을 받았습니다.- 바람 기본공격  " + currHp);
 
 
         }
@@ -262,13 +264,13 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
         {
 
 
-            Debug.Log("몬스터가 피격 받기전 체력입니다 - 물 기본공격  " + currHp);
+            //Debug.Log("몬스터가 피격 받기전 체력입니다 - 물 기본공격  " + currHp);
 
             currHp -= BulletManager.instance.WaterSlashTypeDamage(7);
 
             slowEffect = BulletManager.instance.WaterSlashType_SlowEffect(7); //슬로우
 
-            Debug.Log("몬스터가 피격을 받았습니다. - 물 기본공격  " + currHp);
+            //Debug.Log("몬스터가 피격을 받았습니다. - 물 기본공격  " + currHp);
 
 
         }
@@ -289,11 +291,11 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
         {
 
 
-            Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 기본공격  " + currHp);
+            //Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 기본공격  " + currHp);
 
             currHp -= BulletManager.instance.FireSlashTypeDamage(14);
 
-            Debug.Log("몬스터가 피격을 받았습니다.- 불 기본공격  " + currHp);
+            //Debug.Log("몬스터가 피격을 받았습니다.- 불 기본공격  " + currHp);
 
             BulletManager.instance.FireSlash_SpreadDamage(14,transform.position, 1f);
 
@@ -319,7 +321,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
         {
             //Debug.Log("드릴 횟수 확인"+SubSkillScript.instance.WindDrillType_Count(1));
 
-            Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 서브스킬  " + currHp);
+            //Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 서브스킬  " + currHp);
 
             for (int i = 0; i < SubSkillManager.instance.WindDrillType_Count(1); i++) // 타격 횟수
             {
@@ -328,7 +330,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
             }
             
 
-            Debug.Log("몬스터가 피격을 받았습니다.- 바람 서브스킬  " + currHp);
+            //Debug.Log("몬스터가 피격을 받았습니다.- 바람 서브스킬  " + currHp);
 
 
         }
@@ -353,11 +355,11 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
         {
 
 
-            Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 서브 스킬  " + currHp);
+            //Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 서브 스킬  " + currHp);
 
             currHp -= SubSkillManager.instance.FireBallType_PenetDamage(13);
 
-            Debug.Log("몬스터가 피격을 받았습니다.- 불 서브 스킬  " + currHp);
+            //Debug.Log("몬스터가 피격을 받았습니다.- 불 서브 스킬  " + currHp);
 
 
         }
@@ -575,7 +577,7 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
     private void OnTargetReached() // 반환 작업용 함수
     {
         EnemyManager.instance.ReturnPool(this); // 해당 오브젝트를 다시 반환 시켜준다
-        //Debug.Log(" 몬스터 반환되었습니다.");
+        //Debug.Log(" 몬스터가 반환되었습니다.");
     }
 
     // 인터페이스 IPoolObject을 명시적으로 구현

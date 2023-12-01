@@ -71,7 +71,9 @@ public class PlayerShooting : MonoBehaviour
                                     
         }
 
-        
+        //Debug.Log("isFire 디버그 찍기 : " + isFire);
+
+        //Debug.Log("isTrigger 디버그 찍기 : " + isTrigger);
 
         #region 키보드 코드
 
@@ -190,8 +192,9 @@ public class PlayerShooting : MonoBehaviour
             
             if (BossManager.instance.bossSpawnActive)
             {
-                if (BossScript.instance.isPurification)
+                if (isBossPurification_stopShooting)
                 {
+
                     isStopShoot = true;
                 }
             }
@@ -222,7 +225,7 @@ public class PlayerShooting : MonoBehaviour
         {
             if (BossManager.instance.bossSpawnActive)
             {
-                if (BossScript.instance.isPurification)
+                if (isBossPurification_stopShooting)
                 {
                     isStopShoot = true;
                 }
@@ -316,6 +319,9 @@ public class PlayerShooting : MonoBehaviour
     [HideInInspector]
     public int weaponType; // 임시 공격 종류를 고르는 변수 0: 바람 공격, 1: 물 공격, 2: 불 공격
 
+    [HideInInspector]
+    public bool isBossPurification_stopShooting;
+
     // 공격 속도 지연시키기(내부에 while문을 집어넣어서 터치하고 있을때~~ StartCourutine을 시키고 터치에서 때면 StopCourutine을 시킨다.)
     IEnumerator AttackRate(int weaponType) // 기본 공격의 공격속도처리
     {
@@ -329,9 +335,12 @@ public class PlayerShooting : MonoBehaviour
         {
             if (BossManager.instance.bossSpawnActive)
             {
-                if (BossScript.instance.isPurification) // 정화작업중일때 공격금지
+                if (isBossPurification_stopShooting) // 정화작업중일때 공격금지
                 {
+                    //Debug.Log("공격 중단 디버그 테스트: 보스 등장 여부 => " + BossManager.instance.bossSpawnActive + "   보스 정화 참 거짓 여부 => " + BossScript.instance.isPurification);
+                    //Debug.Log("공격 중단 디버그(이게 실행되었다는 뜻은 보스가 생성 동시에 정화 작업중이라는 뜻)");
                     anim.SetBool("isFire", false);
+                    isTrigger = false;
                     break;
                 }
             }

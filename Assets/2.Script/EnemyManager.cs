@@ -18,6 +18,8 @@ public class EnemyManager : MonoBehaviour
 
     private int changeMonsterNum;
 
+    private bool isTrigger; // 코루틴 브레이킹 용도
+
     private void Awake()
     {
 
@@ -37,8 +39,8 @@ public class EnemyManager : MonoBehaviour
         //InvokeRepeating("Spawn", firstSpawn, spawnCycle); // Invokerepeating은 해당 함수를 firstSpawn초후에 spawnCycle초 간격으로 실행하는 용도
 
         changeMonsterNum = 0;
-
-        StartCoroutine(SpanwCycle());
+        isTrigger = false;
+        //StartCoroutine(SpanwCycle());
 
         //SpawnReapeating();
 
@@ -54,16 +56,37 @@ public class EnemyManager : MonoBehaviour
             //CancelInvoke("Spawn");
 
             StopCoroutine(SpanwCycle());
+            isTrigger = false;
         }
 
-        if (ChangeSceneManager.instance.stageNum == 2)
+        if (!BossManager.instance.bossSpawnActive)
         {
-            changeMonsterNum = 1;
+            if (!isTrigger)
+            {
+                if (ChangeSceneManager.instance.stageNum == 1)
+                {
+                    Debug.Log("몬스터 스폰 디버그1");
+                    isTrigger = true;
+                    StartCoroutine(SpanwCycle());
+                }
+
+                if (ChangeSceneManager.instance.stageNum == 2)
+                {
+                    Debug.Log("몬스터 스폰 디버그2");
+                    isTrigger = true;
+                    changeMonsterNum = 1;
+                    StartCoroutine(SpanwCycle());
+                }
+
+                if (ChangeSceneManager.instance.stageNum == 3)
+                {
+                    // changeMonsterNum = 2; //3스테이지
+                }
+            }
+            
         }
-        else if (ChangeSceneManager.instance.stageNum == 3)
-        {
-            // changeMonsterNum = 2; //3스테이지
-        }
+
+        
 
     }
 
@@ -91,6 +114,7 @@ public class EnemyManager : MonoBehaviour
     {
         //poolManager.TakeToPool<EnemyScript>(clone);
         poolManager.TakeToPool<EnemyScript>(clone.idName, clone); //TakeToPool : 지정된 풀에 반환 (idName : EnemyScript에서 idName으로 리턴 풀링시킬 오브젝트 이름 지정)
+
     }
 
     IEnumerator SpanwCycle()

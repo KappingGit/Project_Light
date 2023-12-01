@@ -32,7 +32,7 @@ public class SoundManager : MonoBehaviour
 
         nowScene = SceneManager.GetActiveScene(); // 해당씬이 어떤 씬인지 알 수 있는 방법
 
-        Debug.Log(nowScene.name);
+        //Debug.Log(nowScene.name);
     }
 
     private void Update()

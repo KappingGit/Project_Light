@@ -12,6 +12,11 @@ public class UI_Script : MonoBehaviour
     private GameObject stageUI;
 
     [SerializeField]
+    private TextMeshProUGUI stageUItxt;
+
+    private bool isStageTrigger; // 스테이지 UI 코루틴 브레이킹용
+
+    [SerializeField]
     private GameObject warningUI;
 
     [SerializeField]
@@ -21,12 +26,15 @@ public class UI_Script : MonoBehaviour
 
     private void Awake()
     {
-        StartCoroutine(StageUI());
+        
+        //StartCoroutine(StageUI());
 
         if (UI_Script.instance == null)
         {
             instance = this;
         }
+
+        isStageTrigger = false;
 
         isVictoryTrigger = false;
 
@@ -44,16 +52,27 @@ public class UI_Script : MonoBehaviour
 
     private void Update()
     {
+        if (!BossManager.instance.bossSpawnActive)
+        {
+            if (!isStageTrigger)
+            {
+                isStageTrigger = true;
 
-        
+                stageUItxt.text = "Stage " + ChangeSceneManager.instance.stageNum.ToString();
+
+                StartCoroutine(StageUI());
+            }
+            
+        }
+
         if (!BossManager.instance.bossSpawnActive)
         {
             StageProgress();
         }
-        else if(isStageClear)
-        {
-            StageProgress();
-        }
+        //else if(isStageClear) // 게임매니저에서 처리중 일단 주석
+        //{
+        //    StageProgress();
+        //}
 
         if (BossManager.instance.bossAppearanceTime < bossProgress && bossProgress < BossManager.instance.bossAppearanceTime + 1f) // 해당 코루틴에 if문을 넣는 것으로 바꿀것
         {
@@ -63,10 +82,13 @@ public class UI_Script : MonoBehaviour
 
         if (!BossManager.instance.bossSpawnActive)
         {
+            //Debug.Log("보스 HP바 삭제");
+            //bossHPBarFill.fillAmount = 0f; // 체력바 초기화
             bossHPBar.gameObject.SetActive(false);
         }
         else if (BossManager.instance.bossSpawnActive)
         {
+            //Debug.Log("보스 HP바 생성");
             BossHPUI();
         }
 
@@ -139,7 +161,7 @@ public class UI_Script : MonoBehaviour
         bossProgress = BossManager.instance.curTime; // 보스매니저 스크립트에서 time변수를 가져옴
 
         stageProgressFill.fillAmount = bossProgress / BossManager.instance.bossAppearanceTime; //bossProgress: 현 시간 ,bossAppearanceTime: 보스 등장 시간
-
+        //Debug.Log("유아이 스크립트 진척도 디버그 "+ bossProgress / BossManager.instance.bossAppearanceTime);
         if (BossManager.instance.bossAppearanceTime < bossProgress)
         {
             stageProgressbar.gameObject.SetActive(false);
@@ -157,17 +179,20 @@ public class UI_Script : MonoBehaviour
     [SerializeField]
     private GameObject victoryUI;
 
-    private bool isVictoryTrigger; // 승리 UI의 코루틴 브레이킹용 트리거
+    [HideInInspector]
+    public bool isVictoryTrigger; // 승리 UI의 코루틴 브레이킹용 트리거
 
     [HideInInspector]
     public bool isStageClear; // 스테이지 클리어용
 
+    [HideInInspector]
+    public bool isBossDie_Data; // 싱글톤을 최신화 데이터 처리하기위한 변수(싱근톤 문제를 해결하기 위함)
 
     private void VictoryUI() // 승리 UI
     {
         if (BossManager.instance.bossSpawnActive)
         {
-            if (BossScript.instance.isBossDie)
+            if (isBossDie_Data)
             {
                 
                 victoryUI.gameObject.SetActive(true);
@@ -178,6 +203,9 @@ public class UI_Script : MonoBehaviour
 
                     StartCoroutine(VictoryDelay());
 
+                    Debug.Log("스테이지 클리어 다음 스테이지 진행");
+
+                    isStageTrigger = false; // 스테이지 넘어갈때 해당 스테이지의 몇 스테이지 인지 표시하는 UI를 다시 부르기 위해 브레이킹을 초기화 
                     isStageClear = true;
 
                    
@@ -325,11 +353,35 @@ public class UI_Script : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private GameObject statustTutoPopup;
+
+    private bool isStatustTutoPopupActive = false;
+
+    //능력 교체 관련 설명
+    public void StatusInGameTutoUI()
+    {
+        if (!isStatustTutoPopupActive)
+        {
+            isStatustTutoPopupActive = true;
+
+            statustTutoPopup.gameObject.SetActive(true);
+        }
+        else if (isStatustTutoPopupActive)
+        {
+            isStatustTutoPopupActive = false;
+
+            statustTutoPopup.gameObject.SetActive(false);
+        }
+    }
+
     public void GameOutBtn() // 일시정지 팝업에서 게임 나가는 버튼
     {
+        //pausePopup.gameObject.SetActive(false);
+        pauseActive = false;
         isGameOver = true; // 여기 bool타입 선정은 메인 화면으로 나가기 위해 사용됨
         Time.timeScale = 1f;
-        pausePopup.gameObject.SetActive(false);
+        
     }
 
     [HideInInspector]
@@ -347,14 +399,38 @@ public class UI_Script : MonoBehaviour
     [SerializeField]
     private Image bossHPBarFill;
 
+    [HideInInspector]
+    public float bossCurHP_Data; // 싱글톤 처리로 인해 각각의 데이터를 분할(보스 스크립트 업데이트에 계속 최신화 작업)
+
+    [HideInInspector]
+    public float bossMaxHP_Data;
+
     private void BossHPUI()
     {
+        // 밑의 주석은 싱글톤 문제로 인한 작업의 잔재이다...
+        //bossHPBarFill.fillAmount = BossScript.instance.bossCurHP / BossScript.instance.bossMaxHP;
+
+        //if (BossScript.instance.bossCurHP <= 0f)// 여기서 보스 체력바 오류(문제점 현재 보스 체력이 바람 보스에 값이 저장되어있다, 싱글톤 문제로 반대로 최신화를 하는 방식으로 바꿈)
+        //{
+        //    //Debug.Log("보스 HP바 생성 함수 내부 - 보스 체력바 삭제중"+ BossScript.instance.bossCurHP); 
+        //    bossHPBar.gameObject.SetActive(false);
+        //}
+
+        //Debug.Log("보스 HP바 생성 함수 내부");
+        bossHPBarFill.fillAmount = bossCurHP_Data / bossMaxHP_Data;
+
         bossHPBar.gameObject.SetActive(true);
 
-        bossHPBarFill.fillAmount = BossScript.instance.bossCurHP / BossScript.instance.bossMaxHP;
 
-        if (BossScript.instance.bossCurHP <= 0f)
+        //Debug.Log("체력바 수식 디버그 : "+ BossScript.instance.bossCurHP / BossScript.instance.bossMaxHP);
+        //Debug.Log("보스 체력 UI의 필어마운트 값 : "+bossHPBarFill.fillAmount);
+        //Debug.Log("보스 체력 UI의 보스 최대치 값 : " + bossMaxHP_Data);
+        //Debug.Log("보스 체력 UI의 보스 현재 체력 값" + bossCurHP_Data);
+        
+
+        if (bossCurHP_Data <= 0f)// 여기서 보스 체력바 오류(문제점 현재 보스 체력이 바람 보스에 값이 저장되어있다, 반대로 보스스크립트에서 데이터를 가져옴)
         {
+            //Debug.Log("보스 HP바 생성 함수 내부 - 보스 체력바 삭제중"+ BossScript.instance.bossCurHP); 
             bossHPBar.gameObject.SetActive(false);
         }
     }
@@ -779,7 +855,9 @@ public class UI_Script : MonoBehaviour
     //YieldInstuctionCash 미리 캐싱해둔것
     IEnumerator StageUI() // 애니메이션 효과 시간 맞추기
     {
+        
         yield return YieldInstuctionCash.WaitForSeconds(1.5f);
+
         stageUI.gameObject.SetActive(true);
         yield return YieldInstuctionCash.WaitForSeconds(2f); // 나중에 애니메이션 루프 조정하기
         stageUI.gameObject.SetActive(false);

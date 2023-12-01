@@ -64,16 +64,23 @@ public class BossManager : MonoBehaviour
                     //StartCoroutine(Delay(cameraShake));
                 }
                
-                BossSpawn(); // 여기서 보스 소환 처리
+                if (ChangeSceneManager.instance.stageNum == 1)
+                {
+                    BossSpawn(0); // 여기서 보스 소환 처리
+                }
+                else if (ChangeSceneManager.instance.stageNum == 2)
+                {
+                    BossSpawn(1); // 여기서 보스 소환 처리
+                }
 
                 bossSpawnActive = true;
             }
         }
     }
 
-    public GameObject BossSpawn()
+    public GameObject BossSpawn(int index)
     {
-        BossScript newBoss01 = poolManager.GetFromPool<BossScript>(0);
+        BossScript newBoss01 = poolManager.GetFromPool<BossScript>(index);
 
         GameObject newBossObj_01 = newBoss01.gameObject;
         
@@ -82,7 +89,17 @@ public class BossManager : MonoBehaviour
 
     public void BossReturnPool(BossScript clone)
     {
+        //Debug.Log("보스 매니저에서 보스 반환 함수");
+        bossSpawnActive = false; // 보스 반환 작업시 초기화 작업
+        curTime = 0f; // 보스 반환 작업시 초기화 작업
+        BossScript.instance.isPurification = false; // 보스 반환 작업시 정화 초기화 작업
+        BossScript.instance.isTimeToReturn = false; // 몬스터 연속 반환을 막기위한 초기화 작업(BossScript.instance.isTimeToReturn는 보스가 죽었을때 연출하는 동안을 뜻함)
+        BossScript.instance.bossCurHP = BossScript.instance.bossMaxHP; // 보스 체력 맥스 hp로 초기화
+        //UI_Script.instance.bossCurHP_Data = BossScript.instance.bossCurHP;
+        post_P_Dark.gameObject.SetActive(false); // 보스 출현시 어두워지는 효과 끄기
+
         poolManager.TakeToPool<BossScript>(clone.idName, clone);
+       
     }
 
 

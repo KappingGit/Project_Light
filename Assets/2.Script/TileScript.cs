@@ -18,7 +18,7 @@ public class TileScript : MonoBehaviour, IPoolObject
 
     private Rigidbody tileRig;
 
-    private bool isSpanwTigger;
+    private bool isSpanwTrigger;
 
     private int randIndex;
 
@@ -26,7 +26,7 @@ public class TileScript : MonoBehaviour, IPoolObject
     {
         tileRig = GetComponent<Rigidbody>();
 
-        isSpanwTigger = false;
+        isSpanwTrigger = false;
     }
 
     private void Update()
@@ -36,9 +36,9 @@ public class TileScript : MonoBehaviour, IPoolObject
 
         if (0f - safeZone > this.transform.position.z) // 0f부분에서 플레이어 위치값이 안들어가면 오류가 생긴다...
         {
-            if (!isSpanwTigger)
+            if (!isSpanwTrigger)
             {
-                isSpanwTigger = true;
+                isSpanwTrigger = true;
 
                 if (ChangeSceneManager.instance.stageNum == 1)
                 {
@@ -90,7 +90,7 @@ public class TileScript : MonoBehaviour, IPoolObject
     {
         // 해당 오브젝트가 가져올때마다 실행
         TileSpawnPos();
-        isSpanwTigger = false;
+        isSpanwTrigger = false;
 
     }
 

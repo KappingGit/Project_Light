@@ -29,7 +29,7 @@ public class BulletManager : MonoBehaviour
 
         if (BulletManager.instance == null)
         {
-            Debug.Log("BulletManager.instance가 null상태입니다.");
+            //Debug.Log("BulletManager.instance가 null상태입니다.");
             instance = this;
         }
 
@@ -187,8 +187,8 @@ public class BulletManager : MonoBehaviour
 
         //임시 반환
         
-        Debug.Log("BulletManager 스크립트의 WindSlashTypeDamage() 함수 실행");
-        Debug.Log("바람 기본 평타 최종 데미지 : " + finalDamage);
+        //Debug.Log("BulletManager 스크립트의 WindSlashTypeDamage() 함수 실행");
+        //Debug.Log("바람 기본 평타 최종 데미지 : " + finalDamage);
 
         return finalDamage;
 
@@ -231,8 +231,8 @@ public class BulletManager : MonoBehaviour
         //임시 반환
         //float path = 0.5f;
 
-        Debug.Log("BulletManager 스크립트의 WaterSlashTypeDamage() 함수 실행");
-        Debug.Log("물 기본 평타 최종 데미지 : " + finalDamage);
+        //Debug.Log("BulletManager 스크립트의 WaterSlashTypeDamage() 함수 실행");
+        //Debug.Log("물 기본 평타 최종 데미지 : " + finalDamage);
 
 
         return finalDamage;
@@ -245,7 +245,7 @@ public class BulletManager : MonoBehaviour
 
 
         float speedDownEffect = waterData.speedDown;
-        Debug.Log("물 기본 평타 슬로우 : " + speedDownEffect);
+        //Debug.Log("물 기본 평타 슬로우 : " + speedDownEffect);
 
         return speedDownEffect;
     }
@@ -286,10 +286,10 @@ public class BulletManager : MonoBehaviour
 
         //임시 반환
         //float path = 0.5f;
-        Debug.Log("스플데미지 수치   " + fireData.spreadDamage);
+        //Debug.Log("스플데미지 수치   " + fireData.spreadDamage);
 
-        Debug.Log("BulletManager 스크립트의 FireSlashTypeDamage() 함수 실행");
-        Debug.Log("불 기본 평타 최종 데미지 : " + finalDamage);
+        //Debug.Log("BulletManager 스크립트의 FireSlashTypeDamage() 함수 실행");
+        //Debug.Log("불 기본 평타 최종 데미지 : " + finalDamage);
 
 
         return finalDamage;
@@ -309,17 +309,17 @@ public class BulletManager : MonoBehaviour
         int i = 0;
         while (i < hitColliders.Length)
         {
-            Debug.Log("범위 색출");
+            //Debug.Log("범위 색출");
             //finalDamage = playerATK + (playerATK * fireData.spreadDamage);
             i++;
         }
 
         //임시 반환
         //float path = 0.5f;
-        Debug.Log("스플데미지 수치   " + fireData.spreadDamage);
+        //Debug.Log("스플데미지 수치   " + fireData.spreadDamage);
 
-        Debug.Log("BulletManager 스크립트의 FireSlashTypeDamage() 함수 실행");
-        Debug.Log("불 기본 평타 최종 데미지 : " + finalDamage);
+        //Debug.Log("BulletManager 스크립트의 FireSlashTypeDamage() 함수 실행");
+        //Debug.Log("불 기본 평타 최종 데미지 : " + finalDamage);
 
 
         return finalDamage;
