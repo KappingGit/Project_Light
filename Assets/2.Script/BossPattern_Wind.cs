@@ -42,7 +42,7 @@ public class BossPattern_Wind : MonoBehaviour
                     case 1: // 패턴1
                         if (!isCoolTime01)
                         {
-                            //Debug.Log("보스 패턴1 시작");                        
+                            Debug.Log("보스 패턴1 시작");                        
                             Pattern01();
                             isCoolTime01 = true;
 
@@ -51,7 +51,7 @@ public class BossPattern_Wind : MonoBehaviour
                     case 2: // 패턴2
                         if (!isCoolTime02)
                         {
-                            //Debug.Log("보스패턴2 시작");
+                            Debug.Log("보스패턴2 시작");
                             Pattern02();
                             isCoolTime02 = true;
                         }
@@ -60,7 +60,7 @@ public class BossPattern_Wind : MonoBehaviour
                         if (!isCoolTime03)
                         {
                             BossScript.instance.isTrigger = true; // BossScript의 보스패턴03 코루틴 브레이킹용
-                            //Debug.Log("보스패턴3 시작");
+                            Debug.Log("보스패턴3 시작");
                             Pattern03();
                             isCoolTime03 = true;
                         }
@@ -91,6 +91,7 @@ public class BossPattern_Wind : MonoBehaviour
     //보스 패턴01 스폰하는 패턴
     protected virtual GameObject SpawnPattern()
     {
+        
         GameObject newEnemy01 = EnemyManager.instance.Spawn();
 
         //GameObject newEnemyObj01 = newEnemy01.gameObject;

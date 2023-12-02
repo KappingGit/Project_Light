@@ -241,8 +241,8 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
 
             //Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 기본공격  " + currHp);
-
-            currHp -= BulletManager.instance.WindSlashTypeDamage(1); // 여기 인덱스번호 유의할것...
+            //currHp -= BulletManager.instance.WindSlashTypeDamage(1); // 초기 데이터
+            currHp -= BulletManager.instance.WindSlashTypeDamage(WeaponManager.instance.windSlash_CurLevelIndex); // 여기 인덱스번호 유의할것...
 
             //Debug.Log("몬스터가 피격을 받았습니다.- 바람 기본공격  " + currHp);
 
@@ -267,9 +267,9 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
             //Debug.Log("몬스터가 피격 받기전 체력입니다 - 물 기본공격  " + currHp);
 
-            currHp -= BulletManager.instance.WaterSlashTypeDamage(7);
+            currHp -= BulletManager.instance.WaterSlashTypeDamage(WeaponManager.instance.waterSlash_CurLevelIndex);
 
-            slowEffect = BulletManager.instance.WaterSlashType_SlowEffect(7); //슬로우
+            slowEffect = BulletManager.instance.WaterSlashType_SlowEffect(WeaponManager.instance.waterSlash_CurLevelIndex); //슬로우
 
             //Debug.Log("몬스터가 피격을 받았습니다. - 물 기본공격  " + currHp);
 
@@ -294,11 +294,11 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
             //Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 기본공격  " + currHp);
 
-            currHp -= BulletManager.instance.FireSlashTypeDamage(14);
+            currHp -= BulletManager.instance.FireSlashTypeDamage(WeaponManager.instance.fireSlash_CurLevelIndex);
 
             //Debug.Log("몬스터가 피격을 받았습니다.- 불 기본공격  " + currHp);
 
-            BulletManager.instance.FireSlash_SpreadDamage(14,transform.position, 1f);
+            BulletManager.instance.FireSlash_SpreadDamage(WeaponManager.instance.fireSlash_CurLevelIndex, transform.position, 1f);
 
         }
 
@@ -324,10 +324,10 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
             //Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 서브스킬  " + currHp);
 
-            for (int i = 0; i < SubSkillManager.instance.WindDrillType_Count(1); i++) // 타격 횟수
+            for (int i = 0; i < SubSkillManager.instance.WindDrillType_Count(WeaponManager.instance.windDrill_CurLevelIndex); i++) // 타격 횟수
             {
                 //Debug.Log("단타 확인");
-                currHp -= SubSkillManager.instance.WindDrillType_Damage(1);
+                currHp -= SubSkillManager.instance.WindDrillType_Damage(WeaponManager.instance.windDrill_CurLevelIndex);
             }
             
 
@@ -357,8 +357,8 @@ public class EnemyScript : MonoBehaviour, IPoolObject, IDie, IDamage
 
 
             //Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 서브 스킬  " + currHp);
-
-            currHp -= SubSkillManager.instance.FireBallType_PenetDamage(13);
+            //Debug.Log("파이어볼 레벨 인덱스" + WeaponManager.instance.fireBall_CurLevelIndex);
+            currHp -= SubSkillManager.instance.FireBallType_PenetDamage(WeaponManager.instance.fireBall_CurLevelIndex);
 
             //Debug.Log("몬스터가 피격을 받았습니다.- 불 서브 스킬  " + currHp);
 

@@ -155,7 +155,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
             //Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 기본공격  " + bossCurHP);
 
-            bossCurHP -= BulletManager.instance.WindSlashTypeDamage(1);
+            bossCurHP -= BulletManager.instance.WindSlashTypeDamage(WeaponManager.instance.windSlash_CurLevelIndex);
 
             //Debug.Log("몬스터가 피격을 받았습니다.- 바람 기본공격  " + bossCurHP);
             StartCoroutine(BossHitEffect());
@@ -185,7 +185,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
             //Debug.Log("몬스터가 피격 받기전 체력입니다 - 물 기본공격  " + bossCurHP);
 
-            bossCurHP -= BulletManager.instance.WaterSlashTypeDamage(7);
+            bossCurHP -= BulletManager.instance.WaterSlashTypeDamage(WeaponManager.instance.waterSlash_CurLevelIndex);
 
             //slowEffect = BulletScript.instance.WaterSlashType_SlowEffect(7); //슬로우
 
@@ -217,7 +217,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
             //Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 기본공격  " + bossCurHP);
 
-            bossCurHP -= BulletManager.instance.FireSlashTypeDamage(14);
+            bossCurHP -= BulletManager.instance.FireSlashTypeDamage(WeaponManager.instance.fireSlash_CurLevelIndex);
 
             //Debug.Log("몬스터가 피격을 받았습니다.- 불 기본공격  " + bossCurHP);
 
@@ -253,10 +253,10 @@ public class BossScript : MonoBehaviour, IPoolObject
 
             //Debug.Log("몬스터가 피격 받기전 체력입니다 - 바람 서브스킬  " + bossCurHP);
 
-            for (int i = 0; i < SubSkillManager.instance.WindDrillType_Count(1); i++) // 타격 횟수
+            for (int i = 0; i < SubSkillManager.instance.WindDrillType_Count(WeaponManager.instance.windDrill_CurLevelIndex); i++) // 타격 횟수
             {
                 //Debug.Log("단타 확인");
-                bossCurHP -= SubSkillManager.instance.WindDrillType_Damage(1);
+                bossCurHP -= SubSkillManager.instance.WindDrillType_Damage(WeaponManager.instance.windDrill_CurLevelIndex);
             }
 
 
@@ -292,7 +292,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
             //Debug.Log("몬스터가 피격 받기전 체력입니다 - 불 서브 스킬  " + bossCurHP);
 
-            bossCurHP -= SubSkillManager.instance.FireBallType_PenetDamage(13);
+            bossCurHP -= SubSkillManager.instance.FireBallType_PenetDamage(WeaponManager.instance.fireBall_CurLevelIndex);
 
             //Debug.Log("몬스터가 피격을 받았습니다.- 불 서브 스킬  " + bossCurHP);
 

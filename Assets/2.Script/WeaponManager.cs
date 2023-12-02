@@ -40,6 +40,10 @@ public class WeaponManager : MonoBehaviour
         waterBarrierSlot.gameObject.SetActive(false);
         fireBallSlot.gameObject.SetActive(false);
 
+        //RandomSkillData(); // 테스트를 위해 awake
+
+        SkillLevelIndex_Initialization();
+
     }
 
     private void Update()
@@ -49,7 +53,12 @@ public class WeaponManager : MonoBehaviour
         //Sellect_WaterSlash();
         //Sellect_FireSlash();
 
-        
+        skillSolt_Level01.text = "Lv " + windDrill_CurTypeLevel; // 슬롯 순서가 꼬여있음...
+        skillSolt_Level02.text = "Lv " + waterBarrier_CurTypeLevel; // 슬롯 순서가 꼬여있음...
+        skillSolt_Level03.text = "Lv " + fireBall_CurTypeLevel; // 슬롯 순서가 꼬여있음...
+        skillSolt_Level04.text = "Lv " + windSlash_CurTypeLevel; // 슬롯 순서가 꼬여있음...
+        skillSolt_Level05.text = "Lv " + waterSlash_CurTypeLevel; // 슬롯 순서가 꼬여있음...
+        skillSolt_Level06.text = "Lv " + fireSlash_CurTypeLevel; // 슬롯 순서가 꼬여있음...
     }
 
 
@@ -119,6 +128,9 @@ public class WeaponManager : MonoBehaviour
 
     [SerializeField]
     private GameObject sellectEffectBtn_SubSkill02; // 왼쪽 서브 스킬
+
+    [SerializeField]
+    private Image selectBtn_NomalAttackImg; // 교체할 위치의 이미지 교체용(일반 공격은 하나밖에 없지만 이렇게 설명해둠)
 
     // 밑에 있는 해당 함수는 야매로 만든 스킬 장착 함수이다 나중에 수정할 것
 
@@ -219,6 +231,27 @@ public class WeaponManager : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI installSkillExplanation; // 장착 여부 스킬 설명
+
+    [SerializeField]
+    private TextMeshProUGUI installSkillProperty; // 장착 여부 소유하고 있는 상태 (액티브 이냐 패시브이냐)
+
+    [SerializeField]
+    private TextMeshProUGUI skillSolt_Level01;
+
+    [SerializeField]
+    private TextMeshProUGUI skillSolt_Level02;
+
+    [SerializeField]
+    private TextMeshProUGUI skillSolt_Level03;
+
+    [SerializeField]
+    private TextMeshProUGUI skillSolt_Level04;
+
+    [SerializeField]
+    private TextMeshProUGUI skillSolt_Level05;
+
+    [SerializeField]
+    private TextMeshProUGUI skillSolt_Level06;
 
     [SerializeField]
     private Sprite windSlashImg;
@@ -612,13 +645,15 @@ public class WeaponManager : MonoBehaviour
     [HideInInspector]
     public bool isChange_NA;
 
-    public void Sellect_WindSlash()
+    public void Sellect_WindSlash() // 결정 버튼 누르면 활성화
     {
         Debug.Log("교체시도 - 바람 평타");
 
         yameInstall04_WindSlash.gameObject.SetActive(true);
         yameInstall05_WaterSlash.gameObject.SetActive(false);
         yameInstall06_FireSlash.gameObject.SetActive(false);
+
+        selectBtn_NomalAttackImg.sprite = windSlashImg; // 교체할 위치의 이미지 교체용(일반 공격은 하나밖에 없지만 이렇게 설명해둠)
 
         isChange_NA = true;
 
@@ -638,6 +673,8 @@ public class WeaponManager : MonoBehaviour
         yameInstall05_WaterSlash.gameObject.SetActive(true);
         yameInstall06_FireSlash.gameObject.SetActive(false);
 
+        selectBtn_NomalAttackImg.sprite = waterSlashImg;
+
         isChange_NA = true;
 
         PlayerShooting.intance.index_WeaponType_Nomal = 1;
@@ -654,6 +691,8 @@ public class WeaponManager : MonoBehaviour
         yameInstall04_WindSlash.gameObject.SetActive(false);
         yameInstall05_WaterSlash.gameObject.SetActive(false);
         yameInstall06_FireSlash.gameObject.SetActive(true);
+
+        selectBtn_NomalAttackImg.sprite = fireSlashImg;
 
         isChange_NA = true;
 
@@ -687,9 +726,11 @@ public class WeaponManager : MonoBehaviour
 
         installSkillImg.sprite = windSlashImg;
 
-        //installSkillLevel.text = statusDB.NomalAttack[0].typeLevel;
+        installSkillLevel.text = "Lv." + windSlash_CurTypeLevel;
 
         installSkillExplanation.text = statusDB.NomalAttack[0].attackExplanation;
+
+        installSkillProperty.text = "[기본 공격]";
 
         decisionBtn_WindSlash.gameObject.SetActive(true);
     }
@@ -702,9 +743,11 @@ public class WeaponManager : MonoBehaviour
 
         installSkillImg.sprite = waterSlashImg;
 
-        //installSkillLevel.text = statusDB.NomalAttack[0].typeLevel;
+        installSkillLevel.text = "Lv." + waterSlash_CurTypeLevel;
 
         installSkillExplanation.text = statusDB.NomalAttack[6].attackExplanation;
+
+        installSkillProperty.text = "[기본 공격]";
 
         decisionBtn_WaterSlash.gameObject.SetActive(true);
     }
@@ -717,9 +760,11 @@ public class WeaponManager : MonoBehaviour
 
         installSkillImg.sprite = fireSlashImg;
 
-        //installSkillLevel.text = statusDB.NomalAttack[0].typeLevel;
+        installSkillLevel.text = "Lv." + fireSlash_CurTypeLevel;
 
         installSkillExplanation.text = statusDB.NomalAttack[12].attackExplanation;
+
+        installSkillProperty.text = "[기본 공격]";
 
         decisionBtn_FireSlash.gameObject.SetActive(true);
     }
@@ -734,9 +779,11 @@ public class WeaponManager : MonoBehaviour
 
         installSkillImg.sprite = windDrillImg;
 
-        //installSkillLevel.text = statusDB.NomalAttack[0].typeLevel;
+        installSkillLevel.text = "Lv." + windDrill_CurTypeLevel;
 
         installSkillExplanation.text = statusDB.SubSkill[0].subSkillExplanation;
+
+        installSkillProperty.text = "[액티브]";
 
         decisionBtn_WindDrill.gameObject.SetActive(true);
     }
@@ -749,9 +796,11 @@ public class WeaponManager : MonoBehaviour
 
         installSkillImg.sprite = waterBarrierImg;
 
-        //installSkillLevel.text = statusDB.NomalAttack[0].typeLevel;
+        installSkillLevel.text = "Lv." + waterBarrier_CurTypeLevel;
 
         installSkillExplanation.text = statusDB.SubSkill[6].subSkillExplanation;
+
+        installSkillProperty.text = "[액티브]";
 
         decisionBtn_WaterBarrier.gameObject.SetActive(true);
     }
@@ -764,11 +813,521 @@ public class WeaponManager : MonoBehaviour
 
         installSkillImg.sprite = fireBallImg;
 
-        //installSkillLevel.text = statusDB.NomalAttack[0].typeLevel;
+        installSkillLevel.text = "Lv." + fireBall_CurTypeLevel;
 
         installSkillExplanation.text = statusDB.SubSkill[12].subSkillExplanation;
 
+        installSkillProperty.text = "[액티브]";
+
         decisionBtn_FireBall.gameObject.SetActive(true);
     }
+
+
+    
+
+    [HideInInspector]
+    public int randomIndex01; // 인덱스 데이터 저장용
+
+    [HideInInspector]
+    public int randomIndex02;
+
+    [HideInInspector]
+    public int randomIndex03;
+
+    private bool getSkillData01; // 데이터가 저장되어있는지에 대한 여부
+
+    private bool getSkillData02;
+
+    private bool getSkillData03;
+
+    [SerializeField]
+    private Image attributeBtn_Img01; // 스킬 획득 이미지
+
+    [SerializeField]
+    private Image attributeBtn_Img02;
+
+    [SerializeField]
+    private Image attributeBtn_Img03;
+
+    [SerializeField]
+    private TextMeshProUGUI attributeBtn_Name01; // 스킬 획득 이름
+
+    [SerializeField]
+    private TextMeshProUGUI attributeBtn_Name02;
+
+    [SerializeField]
+    private TextMeshProUGUI attributeBtn_Name03;
+
+    [SerializeField]
+    private TextMeshProUGUI attributeBtn_Explanation01; // 스킬 획득 설명
+
+    [SerializeField]
+    private TextMeshProUGUI attributeBtn_Explanation02;
+
+    [SerializeField]
+    private TextMeshProUGUI attributeBtn_Explanation03;
+
+    [SerializeField]
+    private TextMeshProUGUI attributeBtn_TypeLevel01; // 해당 스킬의 레벨
+
+    [SerializeField]
+    private TextMeshProUGUI attributeBtn_TypeLevel02;
+
+    [SerializeField]
+    private TextMeshProUGUI attributeBtn_TypeLevel03;
+
+    [SerializeField]
+    private TextMeshProUGUI attributeBtn_Property01;
+
+    [SerializeField]
+    private TextMeshProUGUI attributeBtn_Property02;
+
+    [SerializeField]
+    private TextMeshProUGUI attributeBtn_Property03;
+
+    // 레벨업으로 스킬 얻을때 관리되는 데이터
+
+    #region 데이터 인덱스에 바로 직렬화 방법 일단 주석처리 나중에 활용한다면 활용
+
+    // 밑의 함수 일단 안사용함
+    // 랜덤 데이터
+    //private int randomIndexGet; // 데이터 분산용
+    //private void RandomSkillData() // 운좋게 데이터 테이블의 데이터를 정리해서 일반 공격, 서브 스킬의 인덱스가 엇비슷해서 변수가 적게 사용(해당 함수를 쓸때는 브레이킹 걸어야함)()
+    //{
+    //    getSkillData01 = false; // 스킬 선택창 나올때마다 초기화
+
+    //    getSkillData02 = false;
+
+    //    getSkillData03 = false;
+
+    //    while (!getSkillData01 || !getSkillData02 || !getSkillData03)
+    //    {
+    //        do
+    //        {
+    //            randomIndexGet = Random.Range(0, 18);
+    //            Debug.Log("무기 인덱스 랜덤 함수 : 확인용  " + randomIndexGet);
+    //        }
+    //        while (randomIndexGet == 0 || randomIndexGet == 6 || randomIndexGet == 12);//무기 인덱스 0 6 12는 무기데이터가 없음(없는 상태의 데이터이다) 
+
+
+    //        if (!getSkillData01)
+    //        {
+    //            getSkillData01 = true;
+
+    //            randomIndex01 = randomIndexGet; // 뽑은 데이터 넣기
+
+    //            Debug.Log("무기 인덱스 첫번째 : 확인용  " + randomIndex01);
+
+    //        }
+    //        else if (!getSkillData02)
+    //        {
+    //            getSkillData02 = true;
+
+    //            randomIndex02 = randomIndexGet; // 뽑은 데이터 넣기
+
+    //            Debug.Log("무기 인덱스 두번째 : 확인용  " + randomIndex02);
+
+    //        }
+    //        else if (!getSkillData03)
+    //        {
+    //            getSkillData03 = true;
+
+    //            randomIndex03 = randomIndexGet; // 뽑은 데이터 넣기
+
+    //            Debug.Log("무기 인덱스 세번째 : 확인용  " + randomIndex03);
+    //        }
+    //    }
+
+
+    //}
+
+    #endregion
+
+
+    //private void AttributeSkill01_Data()
+    //{
+
+    //}
+
+    //private void AttributeSkill02_Data()
+    //{
+
+    //}
+
+    //private void AttributeSkill03_Data()
+    //{
+
+    //}
+
+
+
+    // 밑에는 비효율적으로 제작된 함수
+
+    private int getWeaponType;
+
+    public void GetSkillRandom() // 상당히 비 효율적이지만 일단 제작(UI_Script에서 지금 사용중)
+    {
+        getSkillData01 = false; // 스킬 선택창 나올때마다 초기화
+
+        getSkillData02 = false;
+
+        getSkillData03 = false;
+
+        int randCount = 0; 
+
+        while (randCount < 1) //랜덤 돌리는 횟수 
+        {
+            while (!getSkillData01 || !getSkillData02 || !getSkillData03)
+            {
+                getWeaponType = Random.Range(0, 6); // 바람 기본 = 0, 물 기본 = 1, 불 기본 = 2, 위드드릴 = 3, 워터베리어 = 4, 파이어볼 = 5
+
+                if (!getSkillData01)
+                {
+                    getSkillData01 = true;
+
+                    randomIndex01 = getWeaponType; // 뽑은 데이터 넣기
+
+                    Debug.Log("무기 인덱스 첫번째 : 확인용  " + randomIndex01);
+
+                    //이름 이미지 레벨등을 넣기위함
+                    switch (randomIndex01) // 이부분은 열거형으로 변경하면 가독성이 업될거임 ㅇㅇ
+                    {
+                        case 0: // 바람 공격 레벨업 준비
+                            attributeBtn_Img01.sprite = windSlashImg;
+                            attributeBtn_Name01.text = statusDB.NomalAttack[0].attackName;
+                            attributeBtn_Explanation01.text = statusDB.NomalAttack[0].attackExplanation;
+                            attributeBtn_TypeLevel01.text = "Lv " + windSlash_CurTypeLevel;
+                            attributeBtn_Property01.text = "[기본 공격]";
+                            
+                            break;
+
+                        case 1: // 물 공격
+                            attributeBtn_Img01.sprite = waterSlashImg;
+                            attributeBtn_Name01.text = statusDB.NomalAttack[6].attackName;
+                            attributeBtn_Explanation01.text = statusDB.NomalAttack[6].attackExplanation;
+                            attributeBtn_TypeLevel01.text = "Lv " + waterSlash_CurTypeLevel;
+                            attributeBtn_Property01.text = "[기본 공격]";
+
+                            break;
+
+                        case 2: // 불 공격
+                            attributeBtn_Img01.sprite = fireSlashImg;
+                            attributeBtn_Name01.text = statusDB.NomalAttack[12].attackName;
+                            attributeBtn_Explanation01.text = statusDB.NomalAttack[12].attackExplanation;
+                            attributeBtn_TypeLevel01.text = "Lv " + fireSlash_CurTypeLevel;
+                            attributeBtn_Property01.text = "[기본 공격]";
+
+                            break;
+
+                        case 3: // 윈드 드릴
+                            attributeBtn_Img01.sprite = windDrillImg;
+                            attributeBtn_Name01.text = statusDB.SubSkill[0].subSkillName;
+                            attributeBtn_Explanation01.text = statusDB.SubSkill[0].subSkillExplanation;
+                            attributeBtn_TypeLevel01.text = "Lv " + windDrill_CurTypeLevel;
+                            attributeBtn_Property01.text = "[액티브]";
+
+                            break;
+
+                        case 4: // 워터 베리어
+                            attributeBtn_Img01.sprite = waterBarrierImg;
+                            attributeBtn_Name01.text = statusDB.SubSkill[6].subSkillName;
+                            attributeBtn_Explanation01.text = statusDB.SubSkill[6].subSkillExplanation;
+                            attributeBtn_TypeLevel01.text = "Lv " + waterBarrier_CurTypeLevel;
+                            attributeBtn_Property01.text = "[액티브]";
+
+                            break;
+
+                        case 5: // 파이어볼
+                            attributeBtn_Img01.sprite = fireBallImg;
+                            attributeBtn_Name01.text = statusDB.SubSkill[12].subSkillName;
+                            attributeBtn_Explanation01.text = statusDB.SubSkill[12].subSkillExplanation;
+                            attributeBtn_TypeLevel01.text = "Lv " + fireBall_CurTypeLevel;
+                            attributeBtn_Property01.text = "[액티브]";
+
+                            break;
+
+                    }
+
+                }
+                else if (!getSkillData02)
+                {
+                    getSkillData02 = true;
+
+                    randomIndex02 = getWeaponType; // 뽑은 데이터 넣기
+
+                    Debug.Log("무기 인덱스 두번째 : 확인용  " + randomIndex02);
+                    //이름 이미지 레벨등을 넣기위함
+                    switch (randomIndex02) // 이부분은 열거형으로 변경하면 가독성이 업될거임 ㅇㅇ
+                    {
+                        case 0: // 바람 공격 레벨업 준비
+                            attributeBtn_Img02.sprite = windSlashImg;
+                            attributeBtn_Name02.text = statusDB.NomalAttack[0].attackName;
+                            attributeBtn_Explanation02.text = statusDB.NomalAttack[0].attackExplanation;
+                            attributeBtn_TypeLevel02.text = "Lv " + windSlash_CurTypeLevel;
+                            attributeBtn_Property02.text = "[기본 공격]";
+
+                            break;
+
+                        case 1: // 물 공격
+                            attributeBtn_Img02.sprite = waterSlashImg;
+                            attributeBtn_Name02.text = statusDB.NomalAttack[6].attackName;
+                            attributeBtn_Explanation02.text = statusDB.NomalAttack[6].attackExplanation;
+                            attributeBtn_TypeLevel02.text = "Lv " + waterSlash_CurTypeLevel;
+                            attributeBtn_Property02.text = "[기본 공격]";
+
+                            break;
+
+                        case 2: // 불 공격
+                            attributeBtn_Img02.sprite = fireSlashImg;
+                            attributeBtn_Name02.text = statusDB.NomalAttack[12].attackName;
+                            attributeBtn_Explanation02.text = statusDB.NomalAttack[12].attackExplanation;
+                            attributeBtn_TypeLevel02.text = "Lv " + fireSlash_CurTypeLevel;
+                            attributeBtn_Property02.text = "[기본 공격]";
+
+                            break;
+
+                        case 3: // 윈드 드릴
+                            attributeBtn_Img02.sprite = windDrillImg;
+                            attributeBtn_Name02.text = statusDB.SubSkill[0].subSkillName;
+                            attributeBtn_Explanation02.text = statusDB.SubSkill[0].subSkillExplanation;
+                            attributeBtn_TypeLevel02.text = "Lv " + windDrill_CurTypeLevel;
+                            attributeBtn_Property02.text = "[액티브]";
+
+                            break;
+
+                        case 4: // 워터 베리어
+                            attributeBtn_Img02.sprite = waterBarrierImg;
+                            attributeBtn_Name02.text = statusDB.SubSkill[6].subSkillName;
+                            attributeBtn_Explanation02.text = statusDB.SubSkill[6].subSkillExplanation;
+                            attributeBtn_TypeLevel02.text = "Lv " + waterBarrier_CurTypeLevel;
+                            attributeBtn_Property02.text = "[액티브]";
+
+                            break;
+
+                        case 5: // 파이어볼
+                            attributeBtn_Img02.sprite = fireBallImg;
+                            attributeBtn_Name02.text = statusDB.SubSkill[12].subSkillName;
+                            attributeBtn_Explanation02.text = statusDB.SubSkill[12].subSkillExplanation;
+                            attributeBtn_TypeLevel02.text = "Lv " + fireBall_CurTypeLevel;
+                            attributeBtn_Property02.text = "[액티브]";
+
+                            break;
+                    }
+
+                }
+                else if (!getSkillData03)
+                {
+                    getSkillData03 = true;
+
+                    randomIndex03 = getWeaponType; // 뽑은 데이터 넣기
+
+                    Debug.Log("무기 인덱스 세번째 : 확인용  " + randomIndex03);
+                    //이름 이미지 레벨등을 넣기위함
+                    switch (randomIndex03) // 이부분은 열거형으로 변경하면 가독성이 업될거임 ㅇㅇ
+                    {
+                        case 0: // 바람 공격 레벨업 준비
+                            attributeBtn_Img03.sprite = windSlashImg;
+                            attributeBtn_Name03.text = statusDB.NomalAttack[0].attackName;
+                            attributeBtn_Explanation03.text = statusDB.NomalAttack[0].attackExplanation;
+                            attributeBtn_TypeLevel03.text = "Lv " + windSlash_CurTypeLevel;
+                            attributeBtn_Property03.text = "[기본 공격]";
+
+                            break;
+
+                        case 1: // 물 공격
+                            attributeBtn_Img03.sprite = waterSlashImg;
+                            attributeBtn_Name03.text = statusDB.NomalAttack[6].attackName;
+                            attributeBtn_Explanation03.text = statusDB.NomalAttack[6].attackExplanation;
+                            attributeBtn_TypeLevel03.text = "Lv " + waterSlash_CurTypeLevel;
+                            attributeBtn_Property03.text = "[기본 공격]";
+
+                            break;
+
+                        case 2: // 불 공격
+                            attributeBtn_Img03.sprite = fireSlashImg;
+                            attributeBtn_Name03.text = statusDB.NomalAttack[12].attackName;
+                            attributeBtn_Explanation03.text = statusDB.NomalAttack[12].attackExplanation;
+                            attributeBtn_TypeLevel03.text = "Lv " + fireSlash_CurTypeLevel;
+                            attributeBtn_Property03.text = "[기본 공격]";
+
+                            break;
+
+                        case 3: // 윈드 드릴
+                            attributeBtn_Img03.sprite = windDrillImg;
+                            attributeBtn_Name03.text = statusDB.SubSkill[0].subSkillName;
+                            attributeBtn_Explanation03.text = statusDB.SubSkill[0].subSkillExplanation;
+                            attributeBtn_TypeLevel03.text = "Lv " + windDrill_CurTypeLevel;
+                            attributeBtn_Property03.text = "[액티브]";
+
+                            break;
+
+                        case 4: // 워터 베리어
+                            attributeBtn_Img03.sprite = waterBarrierImg;
+                            attributeBtn_Name03.text = statusDB.SubSkill[6].subSkillName;
+                            attributeBtn_Explanation03.text = statusDB.SubSkill[6].subSkillExplanation;
+                            attributeBtn_TypeLevel03.text = "Lv " + waterBarrier_CurTypeLevel;
+                            attributeBtn_Property03.text = "[액티브]";
+
+                            break;
+
+                        case 5: // 파이어볼
+                            attributeBtn_Img03.sprite = fireBallImg;
+                            attributeBtn_Name03.text = statusDB.SubSkill[12].subSkillName;
+                            attributeBtn_Explanation03.text = statusDB.SubSkill[12].subSkillExplanation;
+                            attributeBtn_TypeLevel03.text = "Lv " + fireBall_CurTypeLevel;
+                            attributeBtn_Property03.text = "[액티브]";
+
+                            break;
+                    }
+                }
+            }
+
+            randCount++;
+        }
+
+        
+
+        
+
+    }
+
+    private void SkillLevelIndex_Initialization() // 게임 시작시 스킬 레벨 초기화
+    {
+        // 일반 공격 인덱스 값
+        windSlash_CurLevelIndex = 1;
+
+        waterSlash_CurLevelIndex = 7;
+
+        fireSlash_CurLevelIndex = 13;
+
+        //일반 공격 레벨 값
+        windSlash_CurTypeLevel = 1;
+
+        waterSlash_CurTypeLevel = 1;
+
+        fireSlash_CurTypeLevel = 1;
+
+        // 서브 스킬
+        windDrill_CurLevelIndex = 1;
+
+        waterBarrier_CurLevelIndex = 7;
+
+        fireBall_CurLevelIndex = 13;
+
+        //서브 스킬 레벨 값
+        windDrill_CurTypeLevel = 1;
+
+        waterBarrier_CurTypeLevel = 1;
+
+        fireBall_CurTypeLevel = 1;
+
+    }
+
+    [HideInInspector]
+    public int windSlash_CurLevelIndex; // 초기 인덱스 (초기화)
+
+    private int windSlash_CurTypeLevel; // 해당 스킬의 레벨
+
+    // 일반공격 레벨업
+    public void WindSlash_LeveleUp() // 바람 기본공격 인덱스 (1~5)
+    {
+        //_windSlash_CurLevelIndex = 1; // 초기 레벨
+
+        if (windSlash_CurLevelIndex != 5)
+        {
+            windSlash_CurLevelIndex++;
+            windSlash_CurTypeLevel++;
+        }
+
+        //Debug.Log("현재 바람 공격 레벨 : "+ windSlash_CurLevelIndex);
+
+
+    }
+
+    [HideInInspector]
+    public int waterSlash_CurLevelIndex;  // 초기 인덱스 (초기화)
+
+    private int waterSlash_CurTypeLevel; // 해당 스킬의 레벨
+
+    public void WaterSlash_LeveleUp() // 물 기본공격 인덱스 (7~11)
+    {
+        if (waterSlash_CurLevelIndex != 11)
+        {
+            waterSlash_CurLevelIndex++;
+            waterSlash_CurTypeLevel++;
+        }
+
+        //Debug.Log("현재 물 공격 레벨 : " + windSlash_CurLevelIndex);
+
+
+    }
+
+    [HideInInspector]
+    public int fireSlash_CurLevelIndex;  // 초기 인덱스 (초기화)
+
+    private int fireSlash_CurTypeLevel; // 해당 스킬의 레벨
+
+    public void FireSlash_LeveleUp() // 불 기본공격 인덱스 (13~17)
+    {
+        if (fireSlash_CurLevelIndex != 17)
+        {
+            fireSlash_CurLevelIndex++;
+            fireSlash_CurTypeLevel++;
+        }
+
+        
+    }
+
+    // 서브 스킬 레벨업
+
+    [HideInInspector]
+    public int windDrill_CurLevelIndex; // 초기 인덱스 (초기화)
+
+    private int windDrill_CurTypeLevel; // 해당 스킬의 레벨
+
+    public void WindDrill_LevelUp()// 윈드 드릴 기본공격 인덱스 (1~5)
+    {
+        if (windDrill_CurLevelIndex != 5)
+        {
+            windDrill_CurLevelIndex++;
+            windDrill_CurTypeLevel++;
+        }
+
+        
+    }
+
+    [HideInInspector]
+    public int waterBarrier_CurLevelIndex;  // 초기 인덱스 (초기화)
+
+    private int waterBarrier_CurTypeLevel; // 해당 스킬의 레벨
+
+    public void WaterBarrier_LevelUp()// 워터 베리어 기본공격 인덱스 (7~11)
+    {
+        if (waterBarrier_CurLevelIndex != 11)
+        {
+            waterBarrier_CurLevelIndex++;
+            waterBarrier_CurTypeLevel++;
+        }
+
+        
+    }
+
+    [HideInInspector]
+    public int fireBall_CurLevelIndex;  // 초기 인덱스 (초기화)
+
+    private int fireBall_CurTypeLevel; // 해당 스킬의 레벨
+
+    public void FireBall_LevelUp()// 파이어볼 기본공격 인덱스 (13~17)
+    {
+        if (fireBall_CurLevelIndex != 17)
+        {
+            fireBall_CurLevelIndex++;
+            fireBall_CurTypeLevel++;
+        }
+
+        
+    }
+
+
 
 }

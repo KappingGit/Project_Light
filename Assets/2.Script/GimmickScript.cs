@@ -6,6 +6,9 @@ using Redcode.Pools;
 public class GimmickScript : MonoBehaviour, IPoolObject
 {
 
+    [SerializeField]
+    public string idName; // 풀링작업에 사용될 오브젝트 닉네임   
+
     public static GimmickScript instance;
 
     private Rigidbody gimmickRig;
@@ -39,15 +42,15 @@ public class GimmickScript : MonoBehaviour, IPoolObject
     }
 
     [SerializeField]
-    public float gimmickSpeed = 20.0f;
+    public float gimmickSpeed = 20.0f; // 해당변수는 바람 보스 패턴에서도 사용중이다
 
-    private int turn;
+    //private int turn;
 
-    private void Gimmick01() // 보스 미출현 맵기믹 함수
+    protected virtual void Gimmick01() // 보스 미출현 맵기믹 함수
     {
         if (!BossManager.instance.bossSpawnActive) //보스 미출현 맵기믹
         {
-            gimmickRig.velocity = new Vector3(0, 0, -gimmickSpeed);
+            gimmickRig.velocity = new Vector3(0, 0, -gimmickSpeed); // 토네이도의 속도 부여
         }
 
         // 보스가 죽게 되면 모든 기믹 토네이도가 반환되게함
@@ -62,15 +65,15 @@ public class GimmickScript : MonoBehaviour, IPoolObject
                         
     }
 
-    private float xMax;
-    private float xMin;
+    protected float xMax;
+    protected float xMin;
 
-    private float[] xLoad = new float[3]; // x축 차선을 활용할때
+    protected float[] xLoad = new float[3]; // x축 차선을 활용할때
 
     [SerializeField]
-    private Transform spawnerPos; // 스폰되는 좌표
+    protected Transform spawnerPos; // 스폰되는 좌표
 
-    private void GimmickSpawnPos() // 스폰되는 영역
+    protected virtual void GimmickSpawnPos() // 스폰되는 영역
     {
         #region 스폰 방식 1 : x축 제한 범위 안에서 랜덤하게 적을 스폰
 
@@ -140,7 +143,7 @@ public class GimmickScript : MonoBehaviour, IPoolObject
     }
 
     // 해당 오브젝트가 가져올때마다 실행
-    public void OnGettingFromPool()
+    public virtual void OnGettingFromPool() //virtual을 해도 IPoolObject의 인터페이스에 문제가 안생기는듯
     {
         if (!BossManager.instance.bossSpawnActive)
         {

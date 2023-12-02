@@ -102,7 +102,7 @@ public class EnemyManager : MonoBehaviour
 
     public GameObject Spawn()
     {
-        Debug.Log("몬스터 스폰");
+        //Debug.Log("몬스터 스폰");
         EnemyScript newEnemy01 = poolManager.GetFromPool<EnemyScript>(changeMonsterNum);
 
         GameObject newEnemyObj01 = newEnemy01.gameObject;

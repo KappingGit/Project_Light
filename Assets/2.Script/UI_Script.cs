@@ -48,6 +48,10 @@ public class UI_Script : MonoBehaviour
 
         isStageClear = false;
 
+        isLevelUp = false;
+
+        //isGetSkill = false;
+
     }
 
     private void Update()
@@ -124,13 +128,13 @@ public class UI_Script : MonoBehaviour
 
         SubSkill02_CoolUI();
 
-        SubSkill_SelectPos();
+        //SubSkill_SelectPos(); //웨폰 매니저스크립트에서 관리중
 
         if (popupAttribute.activeSelf)
         {
             if (Input.GetKey(KeyCode.Alpha1) && !charImformActive && !pauseActive)
             {
-                GetSkillBtn();
+                GetSkillBtn01();
             }
             else if (Input.GetKey(KeyCode.Alpha2) && !charImformActive && !pauseActive)
             {
@@ -637,7 +641,7 @@ public class UI_Script : MonoBehaviour
     private GameObject isRightSelect;
 
 
-    private void SubSkill_SelectPos() // 서브 스킬 변경 위치 선택 함수
+    private void SubSkill_SelectPos() // 서브 스킬 변경 위치 선택 함수(장착 여부 활성화 UI 지금은 WeaponManager에서 관리중)
     {
         if (WeaponManager.instance.isLeft)
         {
@@ -652,6 +656,7 @@ public class UI_Script : MonoBehaviour
         }
     }
 
+    // 데이터 처리용 변수들(스킬이름, 설명, 레벨 등등 아직 사용안함)
     [SerializeField]
     private GameObject installPopup; // 스킬을 교체할 것인지에 대한 여부 UI
 
@@ -672,14 +677,48 @@ public class UI_Script : MonoBehaviour
 
 
 
-
+    // 레벨업 후 뜨는 스킬 획득 관련 UI는 여기서 처리하고 기능적 데이터는 WeaponManager에서 처리하려고 한다
 
     [HideInInspector]
     private bool isGetSkill;
     
-    public void GetSkillBtn()
+    public void GetSkillBtn01()
     {
-        
+        // 1번 스킬을 얻는 버튼
+        switch (WeaponManager.instance.randomIndex01) // 이부분은 열거형으로 변경하면 가독성이 업될거임 ㅇㅇ
+        {
+            case 0: // 바람 공격 레벨업 준비
+                Debug.Log("바람 공격 레벨업");
+                WeaponManager.instance.WindSlash_LeveleUp();
+                break;
+
+            case 1: // 물 공격
+                Debug.Log("물 공격 레벨업");
+                WeaponManager.instance.WaterSlash_LeveleUp();
+                break;
+
+            case 2: // 불 공격
+                Debug.Log("불 공격 레벨업");
+                WeaponManager.instance.FireBall_LevelUp();
+                break;
+
+            case 3: // 윈드 드릴
+                Debug.Log("윈드 드릴 레벨업");
+                WeaponManager.instance.WindDrill_LevelUp();
+                break;
+
+            case 4: // 워터 베리어
+                Debug.Log("워터 베리어 레벨업");
+                WeaponManager.instance.WaterBarrier_LevelUp();
+                break;
+
+            case 5: // 파이어볼
+                Debug.Log("파이어볼 레벨업");
+                WeaponManager.instance.FireBall_LevelUp();
+                break;
+
+        }
+
         isGetSkill = true;
         Time.timeScale = 1f;
 
@@ -703,7 +742,40 @@ public class UI_Script : MonoBehaviour
     //3개를 분리?
     public void GetSkillBtn02()
     {
-        
+        // 2번 스킬을 얻는 버튼
+        switch (WeaponManager.instance.randomIndex02) // 이부분은 열거형으로 변경하면 가독성이 업될거임 ㅇㅇ
+        {
+            case 0: // 바람 공격 레벨업 준비
+                Debug.Log("바람 공격 레벨업");
+                WeaponManager.instance.WindSlash_LeveleUp();
+                break;
+
+            case 1: // 물 공격
+                Debug.Log("물 공격 레벨업");
+                WeaponManager.instance.WaterSlash_LeveleUp();
+                break;
+
+            case 2: // 불 공격
+                Debug.Log("불 공격 레벨업");
+                WeaponManager.instance.FireSlash_LeveleUp();
+                break;
+
+            case 3: // 윈드 드릴
+                Debug.Log("윈드 드릴 레벨업");
+                WeaponManager.instance.WindDrill_LevelUp();
+                break;
+
+            case 4: // 워터 베리어
+                Debug.Log("워터 베리어 레벨업");
+                WeaponManager.instance.WaterBarrier_LevelUp();
+                break;
+
+            case 5: // 파이어볼
+                Debug.Log("파이어볼 레벨업");
+                WeaponManager.instance.FireBall_LevelUp();
+                break;
+
+        }
 
         isGetSkill = true;
         Time.timeScale = 1f;
@@ -717,7 +789,40 @@ public class UI_Script : MonoBehaviour
     }
     public void GetSkillBtn03()
     {
-        
+        // 3번 스킬을 얻는 버튼
+        switch (WeaponManager.instance.randomIndex03) // 이부분은 열거형으로 변경하면 가독성이 업될거임 ㅇㅇ
+        {
+            case 0: // 바람 공격 레벨업 준비
+                Debug.Log("바람 공격 레벨업");
+                WeaponManager.instance.WindSlash_LeveleUp();
+                break;
+
+            case 1: // 물 공격
+                Debug.Log("물 공격 레벨업");
+                WeaponManager.instance.WaterSlash_LeveleUp();
+                break;
+
+            case 2: // 불 공격
+                Debug.Log("불 공격 레벨업");
+                WeaponManager.instance.FireBall_LevelUp();
+                break;
+
+            case 3: // 윈드 드릴
+                Debug.Log("윈드 드릴 레벨업");
+                WeaponManager.instance.WindDrill_LevelUp();
+                break;
+
+            case 4: // 워터 베리어
+                Debug.Log("워터 베리어 레벨업");
+                WeaponManager.instance.WaterBarrier_LevelUp();
+                break;
+
+            case 5: // 파이어볼
+                Debug.Log("파이어볼 레벨업");
+                WeaponManager.instance.FireBall_LevelUp();
+                break;
+
+        }
 
         isGetSkill = true;
         Time.timeScale = 1f;
@@ -929,6 +1034,8 @@ public class UI_Script : MonoBehaviour
         isLevelUp = true;
 
         //todo: 스킬 선택창이 열렸을 때 랜덤하게 나오게
+        
+        WeaponManager.instance.GetSkillRandom(); //웨폰 매니저에서 스킬 랜덤 인덱스 함수
 
         yield return YieldInstuctionCash.WaitForSeconds(0.1f); // 다른데서 참조할 수 있게 딜레이
         if (isLevelUp)

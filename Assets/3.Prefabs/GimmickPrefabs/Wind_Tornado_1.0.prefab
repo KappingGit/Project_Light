@@ -4812,7 +4812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4307726413663307329
 Transform:
   m_ObjectHideFlags: 0
@@ -4910,7 +4910,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.3
+  m_Radius: 0.45
   m_Height: 1.3277286
   m_Direction: 1
   m_Center: {x: 0, y: 0.40000004, z: 0}
@@ -4926,6 +4926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca181bcd6b62384282660506fc12591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idName: WindGimmick01
   gimmickSpeed: 25
   spawnerPos: {fileID: 0}
 --- !u!1 &4342216766067917055
