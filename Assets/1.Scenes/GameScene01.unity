@@ -9813,7 +9813,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exit
+  m_text: Skip
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e74d6d303b17ec645907847637679f8f, type: 2}
   m_sharedMaterial: {fileID: 4971431787928535230, guid: e74d6d303b17ec645907847637679f8f, type: 2}
@@ -13717,7 +13717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curTime: 0
-  bossAppearanceTime: 120
+  bossAppearanceTime: 5
   bossSpawnActive: 0
   post_P_Dark: {fileID: 2000744058}
   cameraShake: {fileID: 963194232}
@@ -40897,11 +40897,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932095035}
   m_CullTransparentMesh: 1
---- !u!1 &935995108 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 935995108, guid: 821a99cf43af71642835ab613045e96e, type: 3}
-  m_PrefabInstance: {fileID: 3642770516713615510}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &936277429
 GameObject:
   m_ObjectHideFlags: 0
@@ -101590,26 +101585,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 935995108, guid: 821a99cf43af71642835ab613045e96e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 919132149300442007, guid: 821a99cf43af71642835ab613045e96e, type: 3}
       propertyPath: spawnerPos
       value: 
       objectReference: {fileID: 1755187536}
-    - target: {fileID: 919132149300442007, guid: 821a99cf43af71642835ab613045e96e, type: 3}
-      propertyPath: dieDirect_Effect
-      value: 
-      objectReference: {fileID: 935995108}
-    - target: {fileID: 919132149300442007, guid: 821a99cf43af71642835ab613045e96e, type: 3}
-      propertyPath: pattern03_Effect
-      value: 
-      objectReference: {fileID: 935995108}
     - target: {fileID: 919132149300442008, guid: 821a99cf43af71642835ab613045e96e, type: 3}
       propertyPath: spawnerPos
       value: 
       objectReference: {fileID: 1755187536}
+    - target: {fileID: 919132149300442008, guid: 821a99cf43af71642835ab613045e96e, type: 3}
+      propertyPath: warningLine
+      value: 
+      objectReference: {fileID: 280310208}
+    - target: {fileID: 919132149300442008, guid: 821a99cf43af71642835ab613045e96e, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 1315253494}
     - target: {fileID: 3821023914280802750, guid: 821a99cf43af71642835ab613045e96e, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -101657,10 +101648,6 @@ PrefabInstance:
     - target: {fileID: 4489193473740276484, guid: 821a99cf43af71642835ab613045e96e, type: 3}
       propertyPath: m_Name
       value: C_Boss-Water_1.0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4489193473740276484, guid: 821a99cf43af71642835ab613045e96e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 821a99cf43af71642835ab613045e96e, type: 3}
@@ -102652,10 +102639,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterBeam_1.0
       objectReference: {fileID: 0}
-    - target: {fileID: 4768753976408325428, guid: 8138edc3a6cdca04da08ca4d2b38c188, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4768753976408325430, guid: 8138edc3a6cdca04da08ca4d2b38c188, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -102699,14 +102682,6 @@ PrefabInstance:
     - target: {fileID: 4768753976408325430, guid: 8138edc3a6cdca04da08ca4d2b38c188, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768753976408325431, guid: 8138edc3a6cdca04da08ca4d2b38c188, type: 3}
-      propertyPath: m_Height
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768753976408325431, guid: 8138edc3a6cdca04da08ca4d2b38c188, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4768753976408325432, guid: 8138edc3a6cdca04da08ca4d2b38c188, type: 3}
       propertyPath: spawnerPos

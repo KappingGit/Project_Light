@@ -45,7 +45,7 @@ public class BossManager : MonoBehaviour
     [SerializeField]
     private CameraShake cameraShake;
 
-    private bool isTrigger = false;
+    private bool isTrigger = false; // 카메라 쉐이크 코루틴 브레이크용(지금 안사용함)
 
     // 보스 등장 시간 조절
     public void BossTimer()

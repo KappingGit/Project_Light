@@ -62,7 +62,7 @@ public class GimmickWarningLine : MonoBehaviour
         gameObject.SetActive(false);
 
         //Debug.Log("경고 라인 코루틴 종료");
-        yield return YieldInstuctionCash.WaitForSeconds(0.1f);
+        yield return YieldInstuctionCash.WaitForSeconds(0.1f); // 정상적으로 초기화 시키기위해
 
         StopCoroutine(FlashingLight());
     }

@@ -43453,10 +43453,10 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4768753976408325428}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.35
-  m_Height: 20
+  m_Height: 0
   m_Direction: 1
   m_Center: {x: 0, y: -6, z: 0}
 --- !u!114 &4768753976408325432
@@ -43474,6 +43474,9 @@ MonoBehaviour:
   idName: WaterGimmick01
   gimmickSpeed: 20
   spawnerPos: {fileID: 0}
+  warningLine01: {fileID: 0}
+  warningLine02: {fileID: 0}
+  warningLine03: {fileID: 0}
 --- !u!1 &4768753976795903334
 GameObject:
   m_ObjectHideFlags: 0

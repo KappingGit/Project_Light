@@ -56,6 +56,8 @@ public class GimmickManager : MonoBehaviour
             }
         }
 
+        gimmickIndexNum = ChangeSceneManager.instance.stageNum - 1; // 실시간 최신화 (이걸 하면 다른 스크립트에서 기믹 스폰(GimmickSpawn())을 호출할 때 해당 스테이지에 맞게 호출될거임)
+        //(-1의 이유 : 오브젝트 풀링의 인덱스와 스테이지 번호의 차이로 인해 조정한것이다. 토네이도 기믹은 인덱스 0부터 시작)
     }
 
     private int gimmickIndexNum;
@@ -81,7 +83,8 @@ public class GimmickManager : MonoBehaviour
 
         while (true)
         {
-            if (ChangeSceneManager.instance.stageNum == 1)
+            // 위에 업데이트에서 gimmickIndexNum를 최신화 선언해서 코드를 단순화 할 수 있을 거임 일단 내비둠
+            if (ChangeSceneManager.instance.stageNum == 1) // 1스테이지라면 토네이도 기믹
             {
                 gimmickIndexNum = 0;
                 //Debug.Log("맵기믹 코루틴 작업 중");
@@ -97,7 +100,7 @@ public class GimmickManager : MonoBehaviour
                 yield return YieldInstuctionCash.WaitForSeconds(spawnCycle); // 스폰싸이클
             }
 
-            if (ChangeSceneManager.instance.stageNum == 2) // 2스테이지의 맵기믹
+            if (ChangeSceneManager.instance.stageNum == 2) // 2스테이지의 맵기믹(워터빔)
             {
                 gimmickIndexNum = 1;
 

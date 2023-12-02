@@ -56,7 +56,7 @@ public class GimmickScript : MonoBehaviour, IPoolObject
         // 보스가 죽게 되면 모든 기믹 토네이도가 반환되게함
         if (BossManager.instance.bossSpawnActive)
         {
-            if (BossScript.instance.isTimeToReturn)
+            if (BossScript.instance.isTimeToReturn) //isTimeToReturn는 보스가 죽어서 맵기믹 반환하는 시간입니다~ 하는 변수이다
             {
                 GimmickManager.instance.GimmickReturnPool(this);
             }

@@ -100,10 +100,29 @@ public class UI_Script : MonoBehaviour
 
         if (BossManager.instance.bossSpawnActive)
         {
-            if (BossScript.instance.isTimeToReturn)// 보스가 죽자마자 바로 반환때릴때 사용하는 변수(이거 작동하면 버튼 UI 입력불가하게 만들기)
+            // 밑의 수식은 첫 조건문이 조금 다른 접근방식 일단 주석
+            //if (BossScript.instance.isTimeToReturn)// 보스가 죽자마자 바로 반환때릴때 사용하는 변수(이거 작동하면 버튼 UI 입력불가하게 만들기)
+            //{
+            //    isCantBtn = true;
+            //}
+            //else if(!BossManager.instance.bossSpawnActive) // 2스테이지 넘어갈때 보스가 반환되는 시점에서 다시 UI버튼 활성화
+            //{
+            //    isCantBtn = false; // 다시 초기화 작업
+            //}
+
+            if (BossScript.instance.isPurification)// 보스가 정화중일 때 UI작동 불가 기능 변수(이거 작동하면 버튼 UI 입력불가하게 만들기)
             {
+                //Debug.Log("정화 작업중 능력치 UI버튼 비활성화 전" + isCantBtn);
                 isCantBtn = true;
+                //Debug.Log("정화 작업중 능력치 UI버튼 비활성화 후" + isCantBtn);
             }
+
+        }
+
+        if (!BossManager.instance.bossSpawnActive) // 2스테이지 넘어갈때 보스가 반환되는 시점에서 다시 UI버튼 활성화
+        {
+            isCantBtn = false; // 다시 초기화 작업
+            //Debug.Log("isCantBtn : 이걸로 초기화됨 : " + isCantBtn);
         }
 
         PausePopup();
@@ -528,12 +547,12 @@ public class UI_Script : MonoBehaviour
     public void CharImformBtn() // 캐릭터 정보창 버튼, 나가는 버튼 포함
     {
         
-        if (!charImformActive)
+        if (!charImformActive && !isCantBtn)
         {
             charImformActive = true;
             Time.timeScale = 0f;
         }
-        else if (charImformActive)
+        else if (charImformActive) //여기에는 !isCantBtn 안넣음, 잘생각해보면 해당 조건문은 능력치 UI에서 나가기 버튼의 역할인데 !isCantBtn를 여기에 넣으면 나가지 못하는 상황이 벌어질수있다(진짜 찰나의 순간이지만..)
         {
             charImformActive = false;
             Time.timeScale = 1f;
@@ -551,7 +570,7 @@ public class UI_Script : MonoBehaviour
                 if (!isDefeatTrigger)
                 {
 
-                    if (!isCantBtn)
+                    if (!isCantBtn) // UI버튼 못누르게 하는 변수 isCantBtn 이게 true라면 버튼 못누름
                     {
                         //Debug.Log("탭 누르기 전 : "+ isDefeatTrigger);
                         if (Input.GetKeyDown(KeyCode.Tab) && !popupAttribute.activeSelf && !pauseActive)

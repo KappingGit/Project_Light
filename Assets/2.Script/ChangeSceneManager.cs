@@ -56,6 +56,11 @@ public class ChangeSceneManager : MonoBehaviour
         //    }
         //}
 
+        /*#########################################################################################*/
+        // 아래 코드는 컷씬 비디오 관련
+
+        #region 보스 출현 연출 컷씬 비디오 관련(일시 테스트로 주석처리)
+
         if (BossManager.instance.bossAppearanceTime + 2f < BossManager.instance.curTime && BossManager.instance.curTime < BossManager.instance.bossAppearanceTime + 3f)
         {
 
@@ -95,6 +100,10 @@ public class ChangeSceneManager : MonoBehaviour
 
         }
 
+        #endregion
+
+
+        /*#########################################################################################*/
 
         //if (UI_Script.instance.isGameOver) // 게임오버가 되면
         //{

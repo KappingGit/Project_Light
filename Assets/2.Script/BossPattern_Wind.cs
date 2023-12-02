@@ -51,16 +51,16 @@ public class BossPattern_Wind : MonoBehaviour
                     case 2: // 패턴2
                         if (!isCoolTime02)
                         {
-                            Debug.Log("보스패턴2 시작");
+                            Debug.Log("보스 패턴2 시작");
                             Pattern02();
-                            isCoolTime02 = true;
+                            //isCoolTime02 = true; // 코루틴에서 바로 브레이크 검
                         }
                         break;
                     case 3: // 패턴3
                         if (!isCoolTime03)
                         {
                             BossScript.instance.isTrigger = true; // BossScript의 보스패턴03 코루틴 브레이킹용
-                            Debug.Log("보스패턴3 시작");
+                            Debug.Log("보스 패턴3 시작");
                             Pattern03();
                             isCoolTime03 = true;
                         }
@@ -80,6 +80,7 @@ public class BossPattern_Wind : MonoBehaviour
 
     protected virtual void Pattern02() // 흑풍 패턴
     {
+        //Debug.Log("보스패턴2 코루틴 확인 디버그");
         StartCoroutine(Pattern02_CoolTime());
     }
 
@@ -134,7 +135,7 @@ public class BossPattern_Wind : MonoBehaviour
             {
                 //Debug.Log("패턴01 종료");
                 isDone = true;
-                patternCurrDuration = 0;
+                patternCurrDuration = 0; // 다시 초기화
                 //todo : 쿨타임 적용
 
             }
@@ -145,7 +146,7 @@ public class BossPattern_Wind : MonoBehaviour
             yield return YieldInstuctionCash.WaitForSeconds(coolTime01); //15초 쿨타임
 
             isCoolTime01 = false;
-            isDone = false;
+            isDone = false; // 쿨타임 돌고 다시 초기화
         }
 
         StopCoroutine(Pattern01_CoolTime());
@@ -181,7 +182,7 @@ public class BossPattern_Wind : MonoBehaviour
         else if (patternNum == 1) // 보스패턴 2 중 2패턴(지그재그)
         {
             
-            GameObject newGimmick_Obj01 = GimmickManager.instance.GimmickSpawn();
+            GameObject newGimmick_Obj01 = GimmickManager.instance.GimmickSpawn(); // 오브젝트 풀링을 꺼내온 오브젝트를 지역변수로 재정의해서 위치를 조정
 
             xLoad[0] = spawnerPos.position.x - 1.6f; // 왼쪽
             xLoad[1] = spawnerPos.position.x + 1.6f; // 오른쪽
@@ -189,7 +190,7 @@ public class BossPattern_Wind : MonoBehaviour
 
             newGimmick_Obj01.transform.position = new Vector3(xLoad[xPosIndex], spawnerPos.position.y, 55f);
 
-            if (xPosIndex == 2) // 가운데 토네이도는 일직선으로 오게 설정
+            if (xPosIndex == 2) // 가운데 토네이도는 일직선으로 오게 설정(<= 이게 어떻게 되냐... 해당 코루틴 시작점에 가면 xPosIndex의 값은 랜덤 함수로 돌려 왼쪽 또는 오른쪽 방향을 지정해주는 변수이기도하다)
             {
                 Rigidbody newGimmick_ObjRig01 = newGimmick_Obj01.gameObject.GetComponent<Rigidbody>();
 
@@ -199,7 +200,7 @@ public class BossPattern_Wind : MonoBehaviour
 
             if (xPosIndex == 0 || xPosIndex == 1)
             {
-                Rigidbody newGimmick_ObjRig01 = newGimmick_Obj01.gameObject.GetComponent<Rigidbody>();
+                Rigidbody newGimmick_ObjRig01 = newGimmick_Obj01.gameObject.GetComponent<Rigidbody>(); // 꺼내온 오브젝트의 리지드 바디 접근
 
                 StartCoroutine(TurnCoroutine(newGimmick_Obj01, newGimmick_ObjRig01));
 
@@ -211,9 +212,9 @@ public class BossPattern_Wind : MonoBehaviour
         return path; // 함수 빈호출용도
     }
 
-    private float coolTime02 = 3f; // 쿨타임
+    protected float coolTime02 = 3f; // 쿨타임
 
-    private bool isCoolTime02 = false;
+    protected bool isCoolTime02 = false;
 
     IEnumerator Pattern02_CoolTime()
     {
@@ -224,7 +225,7 @@ public class BossPattern_Wind : MonoBehaviour
             if (patternNum == 0)
             {
                 isCoolTime02 = true;
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 2; i++) //0,1 까지
                 {
                     TornadoSpawnPattern(patternNum, i);
                 }
@@ -246,7 +247,7 @@ public class BossPattern_Wind : MonoBehaviour
 
         if (isCoolTime02)
         {
-            
+            //Debug.Log("보스 토네이도 패턴 쿨타임 시작");
             yield return YieldInstuctionCash.WaitForSeconds(coolTime02); // 3초 쿨타임
                                                                          
             isCoolTime02 = false;
@@ -399,10 +400,11 @@ public class BossPattern_Wind : MonoBehaviour
 
     private bool isRandomDelay;
 
-    IEnumerator RandomDelay()
+    IEnumerator RandomDelay() // 패턴의 시간 간격을 조절하는 코루틴
     {
         patternIndex = Random.Range(1, 4);
-        yield return YieldInstuctionCash.WaitForSeconds(3f);
+        yield return YieldInstuctionCash.WaitForSeconds(1.0f);
+        Debug.Log("보스 패턴 딜레이 종료");
         isRandomDelay = false;
 
         StopCoroutine(RandomDelay());

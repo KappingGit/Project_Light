@@ -13,7 +13,7 @@ public class BossScript : MonoBehaviour, IPoolObject
 
     //private PoolManager poolManager;
 
-    private Animator bossAnim;
+    protected Animator bossAnim;
 
     private Transform bossTrans;
 
@@ -58,9 +58,9 @@ public class BossScript : MonoBehaviour, IPoolObject
         PlayerShooting.intance.isBossPurification_stopShooting = isPurification;
     }
 
-    protected virtual void BossPatternSetting()
+    protected virtual void BossPatternSetting() // 윈드 보스의 3번째 패턴 때문에 자식 스크립트에서 재정의해서 관리 
     {
-        if (!isPurification) // 보스가 죽는 연출동안 패턴 못나오게 하기
+        if (!isPurification) // 보스가 죽는 연출동안 3번째 패턴 못나오게 하기
         {
 
             //보스 패턴3 기믹 파훼후 애니메니션 송출
@@ -76,7 +76,7 @@ public class BossScript : MonoBehaviour, IPoolObject
             if (isTrigger)
             {
                 isTrigger = false; // 코루틴 브레이킹용
-                StartCoroutine(PatternEffectDelay()); // 보스패턴03의 코루틴
+                StartCoroutine(PatternEffectDelay()); // 보스패턴03의 코루틴()
             }
 
             //보스 패턴03 이펙트 코루틴에서 떼어옴(PatternEffectDelay())
@@ -136,7 +136,7 @@ public class BossScript : MonoBehaviour, IPoolObject
     private GameObject pattern03_Effect;
 
     [HideInInspector]
-    public bool isTrigger; // 코루틴 브레이킹용(BossPattern03_AnimControl 브레이킹)
+    public bool isTrigger; // 코루틴 브레이킹용(PatternEffectDelay 코루틴 브레이킹 용 ,,,주목적은 코루틴안에 있는 요거 브레이크용 =>BossPattern03_AnimControl)
 
     private void BossPattern03_AnimControl()
     {
@@ -451,7 +451,7 @@ public class BossScript : MonoBehaviour, IPoolObject
         StopCoroutine(DieDelay());
     }
 
-    IEnumerator PatternEffectDelay() // 윈드 보스 패턴 오브젝트 비활성화 작업
+    IEnumerator PatternEffectDelay() // 윈드 보스 3번째 패턴 오브젝트 비활성화 작업
     {
         BossPattern03_AnimControl();
 

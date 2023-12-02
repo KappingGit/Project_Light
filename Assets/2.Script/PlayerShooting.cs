@@ -137,7 +137,7 @@ public class PlayerShooting : MonoBehaviour
         }
 
         // 발사 코드
-        
+
 
         #endregion
 
@@ -186,19 +186,26 @@ public class PlayerShooting : MonoBehaviour
         //PlayerAnimControl();
         #endregion
 
+        if (!BossManager.instance.bossSpawnActive)
+        {
+           
+            isStopShoot = false; // 다시 초기화 시켜서 스테이지 넘어가도 발사가능하게
+        }
+
         // 서브 스킬 1번 버튼
         if (UI_Script.instance.isSubSkillBtn01 || Input.GetKeyDown(KeyCode.A))// UI 서브 스킬 버튼을 눌렀으면...
         {
-            
+            //Debug.Log("서브 스킬 1번 버튼 눌림");
+
             if (BossManager.instance.bossSpawnActive)
             {
-                if (isBossPurification_stopShooting)
+                if (isBossPurification_stopShooting) // 정화작업중일때 공격금지
                 {
 
                     isStopShoot = true;
                 }
             }
-
+            
 
             UI_Script.instance.isSubSkillBtn01 = false;
             
@@ -223,6 +230,8 @@ public class PlayerShooting : MonoBehaviour
         // 서브 스킬 2번 버튼
         if (UI_Script.instance.isSubSkillBtn02 || Input.GetKeyDown(KeyCode.D))// UI 서브 스킬 버튼을 눌렀으면...
         {
+            //Debug.Log("서브 스킬 2번 버튼 눌림");
+
             if (BossManager.instance.bossSpawnActive)
             {
                 if (isBossPurification_stopShooting)
@@ -230,6 +239,8 @@ public class PlayerShooting : MonoBehaviour
                     isStopShoot = true;
                 }
             }
+            
+
 
             UI_Script.instance.isSubSkillBtn02 = false;
             
@@ -320,7 +331,7 @@ public class PlayerShooting : MonoBehaviour
     public int weaponType; // 임시 공격 종류를 고르는 변수 0: 바람 공격, 1: 물 공격, 2: 불 공격
 
     [HideInInspector]
-    public bool isBossPurification_stopShooting;
+    public bool isBossPurification_stopShooting; // 보스 정화중이오니 발사 금지 변수 (해당 변수는 보스 스크립트에서 정화 변수 isPurification에서 bool값을 받아온다)
 
     // 공격 속도 지연시키기(내부에 while문을 집어넣어서 터치하고 있을때~~ StartCourutine을 시키고 터치에서 때면 StopCourutine을 시킨다.)
     IEnumerator AttackRate(int weaponType) // 기본 공격의 공격속도처리
@@ -345,12 +356,14 @@ public class PlayerShooting : MonoBehaviour
                 }
             }
 
-            if (WeaponManager.instance.isChange_NA)
+            if (WeaponManager.instance.isChange_NA) // 무기 바꿀때마다 아주 잠깐 발사 중지(버그 방지)
             {
                 WeaponManager.instance.isChange_NA = false;
                 isTrigger = false;
                 break;
             }
+
+            // 위의 조건식을 따지고 총알 발사
 
             //Debug.Log("현재 무기 타임은.... :" + weaponType);
             anim.SetBool("isFire", true);
@@ -358,19 +371,10 @@ public class PlayerShooting : MonoBehaviour
             isFire = true; // 발사중
 
             BulletManager.instance.GetPoolBullet(weaponType); // 총알 오브젝트 불러오게하는 코드, 인덱스 번호에 따라 일반 공격을 불러옴
-            //SubSkillManager.instance.GetPoolSkill(weaponType); // 스킬 테스트
             
             yield return YieldInstuctionCash.WaitForSeconds(rate);
             //Debug.Log("rate" + rate);
             
-            //터치 테스트
-            //if (Input.GetTouch(0).phase == TouchPhase.Ended)
-            //{
-            //    anim.SetBool("isFire", false);
-            //    isFire = false;
-            //    break;
-            //}
-          
         }
         //Debug.Log("총알 발사 테스트");
         anim.SetBool("isFire", false);
