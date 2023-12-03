@@ -105,11 +105,11 @@ public class ChangeSceneManager : MonoBehaviour
 
         /*#########################################################################################*/
 
-        //if (UI_Script.instance.isGameOver) // 게임오버가 되면
-        //{
-        //    UI_Script.instance.isGameOver = false;
-        //    //StartCoroutine(GameOverScene());
-        //}
+        if (UI_Script.instance.isGameOver) // 게임오버가 되면
+        {
+            UI_Script.instance.isGameOver = false;
+            StartCoroutine(GameOverScene());
+        }
 
         if (UI_Script.instance.isRestart)
         {
@@ -278,9 +278,10 @@ public class ChangeSceneManager : MonoBehaviour
 
     IEnumerator GameOverScene() // 게임 오버되었으면 메인씬으로 넘어가기
     {
-        yield return YieldInstuctionCash.WaitForSeconds(4f); // 빅토리 UI보여지게 하는거 시간버는 용도
+        //Debug.Log("게임 종료 코루틴");
+        yield return YieldInstuctionCash.WaitForSeconds(1f); // 빅토리 UI보여지게 하는거 시간버는 용도
         StartCoroutine(FadeOut());
-        yield return YieldInstuctionCash.WaitForSeconds(2f);
+        yield return YieldInstuctionCash.WaitForSeconds(4f);
         //Debug.Log("2스테이지 클리어 메인씬으로가기");
         ChangeScene_MainScene();
         //Debug.Log("씬전환");

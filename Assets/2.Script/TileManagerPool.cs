@@ -12,7 +12,7 @@ public class TileManagerPool : MonoBehaviour
     [HideInInspector]
     public float spawnZ = -10.0f;
 
-    private float tileLenght = 147.0f; // 앞으로 나올 스폰 거리(각각 타일의 사이 길이) 변경전:296.0f
+    private float tileLenght = 148.0f; // 앞으로 나올 스폰 거리(각각 타일의 사이 길이) 변경전:296.0f  150.0f
 
     // 앞으로 소환될 타일 개수 => 코드 새로 작성하면서 소환될 횟수로 변경됨(for문의 횟수에 불과함, 변수 이름과 의미 없어짐)
     private int tileOnScreen = 1; 

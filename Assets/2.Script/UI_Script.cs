@@ -50,6 +50,12 @@ public class UI_Script : MonoBehaviour
 
         isLevelUp = false;
 
+        isRestartActive = false;
+
+        isRestart = false;
+
+        isGameOutActive = false;
+
         //isGetSkill = false;
 
     }
@@ -123,6 +129,12 @@ public class UI_Script : MonoBehaviour
         {
             isCantBtn = false; // 다시 초기화 작업
             //Debug.Log("isCantBtn : 이걸로 초기화됨 : " + isCantBtn);
+        }
+
+        // 버그 막기
+        if (charImformActive || pauseActive)
+        {
+            Time.timeScale = 0f;
         }
 
         PausePopup();
@@ -279,16 +291,21 @@ public class UI_Script : MonoBehaviour
     public void PauseBtn() // 재시작 버튼도 겸하고있음
     {
 
-        if (pauseActive)
+        if (!isGameOutActive || !charImformActive)
         {
-            Time.timeScale = 1f;
-            pauseActive = false;
+            if (pauseActive && !charImformActive)
+            {
+                Time.timeScale = 1f;
+                pauseActive = false;
+            }
+            else if (!pauseActive)
+            {
+                Time.timeScale = 0f;
+                pauseActive = true;
+            }
         }
-        else if (!pauseActive)
-        {
-            Time.timeScale = 0f;
-            pauseActive = true;
-        }
+
+        
     }
 
     [SerializeField]
@@ -405,21 +422,37 @@ public class UI_Script : MonoBehaviour
         }
     }
 
+    [HideInInspector]
+    public bool isGameOutActive;
+
     public void GameOutBtn() // 일시정지 팝업에서 게임 나가는 버튼
     {
         //pausePopup.gameObject.SetActive(false);
-        pauseActive = false;
-        isGameOver = true; // 여기 bool타입 선정은 메인 화면으로 나가기 위해 사용됨
-        Time.timeScale = 1f;
+        //Debug.Log("나가기 버튼 눌름");
+        if (!isGameOutActive)
+        {
+            isGameOutActive = true;
+            pauseActive = false;
+            isGameOver = true; // 여기 bool타입 선정은 메인 화면으로 나가기 위해 사용됨
+            Time.timeScale = 1f;
+        }
+        
         
     }
 
     [HideInInspector]
     public bool isRestart;
 
+    private bool isRestartActive;
+
     public void GameRestartBtn()
     {
-        isRestart = true;
+        if (!isRestartActive)
+        {
+            isRestartActive = true;
+            isRestart = true;
+        }
+        
     }
 
 
@@ -546,17 +579,21 @@ public class UI_Script : MonoBehaviour
 
     public void CharImformBtn() // 캐릭터 정보창 버튼, 나가는 버튼 포함
     {
+
+        if (!isGameOutActive)
+        {
+            if (!charImformActive && !isCantBtn)
+            {
+                charImformActive = true;
+                Time.timeScale = 0f;
+            }
+            else if (charImformActive) //여기에는 !isCantBtn 안넣음, 잘생각해보면 해당 조건문은 능력치 UI에서 나가기 버튼의 역할인데 !isCantBtn를 여기에 넣으면 나가지 못하는 상황이 벌어질수있다(진짜 찰나의 순간이지만..)
+            {
+                charImformActive = false;
+                Time.timeScale = 1f;
+            }
+        }
         
-        if (!charImformActive && !isCantBtn)
-        {
-            charImformActive = true;
-            Time.timeScale = 0f;
-        }
-        else if (charImformActive) //여기에는 !isCantBtn 안넣음, 잘생각해보면 해당 조건문은 능력치 UI에서 나가기 버튼의 역할인데 !isCantBtn를 여기에 넣으면 나가지 못하는 상황이 벌어질수있다(진짜 찰나의 순간이지만..)
-        {
-            charImformActive = false;
-            Time.timeScale = 1f;
-        }
     }
 
     private void CharImformPopup() // 캐릭터 정보창

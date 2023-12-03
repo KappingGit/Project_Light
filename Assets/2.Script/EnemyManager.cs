@@ -124,7 +124,7 @@ public class EnemyManager : MonoBehaviour
     {
         bool isSpawn = true;
 
-        yield return YieldInstuctionCash.WaitForSeconds(1f);
+        yield return YieldInstuctionCash.WaitForSeconds(1.7f);
 
         while (isSpawn)
         {

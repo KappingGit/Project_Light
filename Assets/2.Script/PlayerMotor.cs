@@ -244,7 +244,7 @@ public class PlayerMotor : MonoBehaviour
     IEnumerator TouchDelay() // 터치 지연
     {
 
-        yield return YieldInstuctionCash.WaitForSeconds(0.05f);
+        yield return YieldInstuctionCash.WaitForSeconds(0.1f);
         
         while (Input.touchCount > 0)
         {

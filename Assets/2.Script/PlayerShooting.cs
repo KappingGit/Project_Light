@@ -356,7 +356,7 @@ public class PlayerShooting : MonoBehaviour
                 }
             }
 
-            if (WeaponManager.instance.isChange_NA) // 무기 바꿀때마다 아주 잠깐 발사 중지(버그 방지)
+            if (WeaponManager.instance.isChange_NA || UI_Script.instance.isGameOutActive) // 무기 바꿀때마다 아주 잠깐 발사 중지(버그 방지)
             {
                 WeaponManager.instance.isChange_NA = false;
                 isTrigger = false;
