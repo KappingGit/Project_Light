@@ -61,44 +61,44 @@ public class ChangeSceneManager : MonoBehaviour
 
         #region 보스 출현 연출 컷씬 비디오 관련(일시 테스트로 주석처리)
 
-        if (BossManager.instance.bossAppearanceTime + 2f < BossManager.instance.curTime && BossManager.instance.curTime < BossManager.instance.bossAppearanceTime + 3f)
-        {
+        //if (BossManager.instance.bossAppearanceTime + 2f < BossManager.instance.curTime && BossManager.instance.curTime < BossManager.instance.bossAppearanceTime + 3f)
+        //{
 
-            if (!cutSceneisActive)
-            {
-                cutSceneisActive = true; //트리거 브레이킹
-                //StartCoroutine(CutSceneVideo());
+        //    if (!cutSceneisActive)
+        //    {
+        //        cutSceneisActive = true; //트리거 브레이킹
+        //        //StartCoroutine(CutSceneVideo());
 
-                if (cutSceneisActive)
-                {
+        //        if (cutSceneisActive)
+        //        {
 
-                    StartCoroutine(CutSceneVideo());
-                }
+        //            StartCoroutine(CutSceneVideo());
+        //        }
 
-            }
-        }
+        //    }
+        //}
 
 
-        if (cutSceneisActive)
-        {
-            if (isSkipBtn || Input.GetKey(KeyCode.Escape)) // 스킵하게 되면...
-            {
-                isSkipBtn = false;
-                if (!isSkip)
-                {
-                    isSkip = true;
+        //if (cutSceneisActive)
+        //{
+        //    if (isSkipBtn || Input.GetKey(KeyCode.Escape)) // 스킵하게 되면...
+        //    {
+        //        isSkipBtn = false;
+        //        if (!isSkip)
+        //        {
+        //            isSkip = true;
 
-                    //cutSceneisActive = false;
+        //            //cutSceneisActive = false;
 
-                    StopCoroutine(CutSceneVideo());
+        //            StopCoroutine(CutSceneVideo());
 
-                    Time.timeScale = 1f;
+        //            Time.timeScale = 1f;
 
-                    cutSceneVideo01.gameObject.SetActive(false);
-                }
-            }
+        //            cutSceneVideo01.gameObject.SetActive(false);
+        //        }
+        //    }
 
-        }
+        //}
 
         #endregion
 

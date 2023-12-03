@@ -13717,7 +13717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curTime: 0
-  bossAppearanceTime: 5
+  bossAppearanceTime: 60
   bossSpawnActive: 0
   post_P_Dark: {fileID: 2000744058}
   cameraShake: {fileID: 963194232}
@@ -36510,7 +36510,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1440, y: 3200}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -101586,6 +101586,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 919132149300442007, guid: 821a99cf43af71642835ab613045e96e, type: 3}
+      propertyPath: bossMaxHP
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149300442007, guid: 821a99cf43af71642835ab613045e96e, type: 3}
       propertyPath: spawnerPos
       value: 
       objectReference: {fileID: 1755187536}
@@ -106076,6 +106080,10 @@ PrefabInstance:
     - target: {fileID: 4788817096310576304, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5277826694057070088, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
+      propertyPath: bossMaxHP
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 5277826694057070088, guid: 2afa04271964ac441a9d3b72f8065b36, type: 3}
       propertyPath: spawnerPos

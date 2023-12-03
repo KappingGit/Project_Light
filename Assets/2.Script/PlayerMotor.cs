@@ -88,6 +88,7 @@ public class PlayerMotor : MonoBehaviour
 
     private float ratioScreenPosPercent;
 
+    private bool isTrigger = false;
 
     private void TouchMove()
     {
@@ -128,28 +129,48 @@ public class PlayerMotor : MonoBehaviour
 
         if (Input.touchCount > 0) // Input.touchCount => 손가락 개수
         {
-            if (Input.GetTouch(0).phase == TouchPhase.Moved) // 손가락이 유지되는 순간
+            screenPos = mainCamera.ScreenToViewportPoint(Input.mousePosition);
+
+            ratioScreenPosPercent = Mathf.Clamp(screenPos.x, 0.2f, 0.8f) - 0.2f; // 0.6f이 100%의 수치
+
+            ratioScreenPosPercent /= 0.6f; // 요롷게하면 100%의 수치가 1이 된다(100%의 범위를 클리하면 1을 출력한다고 생각하면 쉽다)
+
+            //Debug.Log("테스트 : " + ratioScreenPosPercent);
+
+            //Debug.Log("이동 테스트 : " + mainCamera.ScreenToViewportPoint(Input.mousePosition));
+
+            playerXPos = -2f + 4 * ratioScreenPosPercent; // 캐릭터의 포지션은 최소 -2f에서 2f이므로...
+
+         
+            //if (Input.GetTouch(0).phase == TouchPhase.Stationary)
+            //{
+            //    transform.position = new Vector3(transform.position.x, 0f, 0f); // 한번 터치했을땐 움직이지 않기
+            //}
+            //else if(Input.GetTouch(0).phase == TouchPhase.Moved) // 손가락이 유지되는 순간
+            //{
+            //    transform.position = new Vector3(playerXPos, 0f, 0f);
+
+            //}
+
+            if (Input.GetTouch(0).phase == TouchPhase.Moved)
             {
-                screenPos = mainCamera.ScreenToViewportPoint(Input.mousePosition);
+                
+                if (!isTrigger)
+                {
+                    isTrigger = true;
+                    Debug.Log("캐릭터 움직임 시작");
 
-                ratioScreenPosPercent = Mathf.Clamp(screenPos.x, 0.2f, 0.8f) - 0.2f; // 0.6f이 100%의 수치
+                    StartCoroutine(TouchDelay());
 
-                ratioScreenPosPercent /= 0.6f; // 요롷게하면 100%의 수치가 1이 된다
-
-                //Debug.Log("테스트 : " + ratioScreenPosPercent);
-
-                //Debug.Log("이동 테스트 : " + mainCamera.ScreenToViewportPoint(Input.mousePosition));
-
-                playerXPos = -2f + 4 * ratioScreenPosPercent;
-
-                transform.position = new Vector3(playerXPos, 0f, 0f);
-
+                }
             }
-
-            if (Input.GetTouch(0).phase == TouchPhase.Ended) // Ended 손가락이 화면 위를 벗어나 떨어지게 되는 순간...
+            else if (Input.GetTouch(0).phase == TouchPhase.Ended) // Ended 손가락이 화면 위를 벗어나 떨어지게 되는 순간...
             {
                 //Debug.Log("화면에서 손가락을 뗐습니다.");
+                Debug.Log("캐릭터 움직임 종료");
+                isTrigger = false;
             }
+
         }
 
 
@@ -220,5 +241,24 @@ public class PlayerMotor : MonoBehaviour
 
     }
 
+    IEnumerator TouchDelay() // 터치 지연
+    {
 
+        yield return YieldInstuctionCash.WaitForSeconds(0.05f);
+        
+        while (Input.touchCount > 0)
+        {
+            if (Input.GetTouch(0).phase == TouchPhase.Moved)
+            {
+                transform.position = new Vector3(playerXPos, 0f, 0f);
+            }
+
+            yield return YieldInstuctionCash.WaitForSeconds(0.01f);
+        }
+
+
+        yield return YieldInstuctionCash.WaitForSeconds(0.1f);
+
+        StopCoroutine(TouchDelay());
+    }
 }
