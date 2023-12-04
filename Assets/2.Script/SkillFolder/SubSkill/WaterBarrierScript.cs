@@ -8,7 +8,9 @@ public class WaterBarrierScript : SubSkillScript
     protected override void SkillSpawnPos()
     {
         transform.position = new Vector3(shootPos.position.x, 1f, shootPos.position.z); // 베리어 위치
-        
+
+        StartCoroutine(DurationPos());
+
     }
 
     //실시간으로 따라오게

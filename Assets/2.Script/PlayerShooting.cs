@@ -397,6 +397,7 @@ public class PlayerShooting : MonoBehaviour
     [HideInInspector]
     public bool isCoolTime02;
 
+
     IEnumerator SkillAttackRate01(int indexNum) // 서브 스킬의 공격속도 및 발사 트리거 기능(해당 기능에서 쿨타임 조절할 것)
     {
 
@@ -411,7 +412,7 @@ public class PlayerShooting : MonoBehaviour
 
         //subSkillCool01 = 10f;
 
-        float rate = subSkillCool01; // 수식
+        float rate = subSkillCool01; // 수식(쿨타임)
 
         // 공격 종류를 고르는 [변수 0 => 바람 공격, 1 => 물 공격, 2 => 불 공격] 나중에 테이블데이터와 연결
 

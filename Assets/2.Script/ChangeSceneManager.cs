@@ -276,10 +276,26 @@ public class ChangeSceneManager : MonoBehaviour
         StartCoroutine(FadeIn());
     }
 
+    private float fadeTiming; // 승리했을때랑 게임나가기 버튼눌렀을 때랑 타이밍을 맞춰야한다
+
+    private float isVictoryTime = 4f; // 4f
+
+    private float isGetOutBtnTime = 1f; // 1f
+
     IEnumerator GameOverScene() // 게임 오버되었으면 메인씬으로 넘어가기
     {
         //Debug.Log("게임 종료 코루틴");
-        yield return YieldInstuctionCash.WaitForSeconds(1f); // 빅토리 UI보여지게 하는거 시간버는 용도
+
+        if (UI_Script.instance.isGameOutActive)
+        {
+            fadeTiming = isGetOutBtnTime;
+        }
+        else if (UI_Script.instance.isVictoryTrigger)
+        {
+            fadeTiming = isVictoryTime;
+        }
+
+        yield return YieldInstuctionCash.WaitForSeconds(fadeTiming); // 빅토리 UI보여지게 하는거 시간버는 용도
         StartCoroutine(FadeOut());
         yield return YieldInstuctionCash.WaitForSeconds(4f);
         //Debug.Log("2스테이지 클리어 메인씬으로가기");

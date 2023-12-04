@@ -927,10 +927,16 @@ public class UI_Script : MonoBehaviour
     private TextMeshProUGUI subSkillCooltimeText01;
 
     [SerializeField]
+    private GameObject coolTime_Done_Effect01; // 쿨타임 끝나고 생기는 이펙트
+
+    [SerializeField]
     private GameObject Cool_subSkill02;
 
     [SerializeField]
     private TextMeshProUGUI subSkillCooltimeText02;
+
+    [SerializeField]
+    private GameObject coolTime_Done_Effect02; // 쿨타임 끝나고 생기는 이펙트
 
     private bool isTrigger01 = false; // 코루틴 브레이킹용
 
@@ -1127,6 +1133,12 @@ public class UI_Script : MonoBehaviour
             yield return YieldInstuctionCash.WaitForSeconds(1f);
         }
 
+        coolTime_Done_Effect01.gameObject.SetActive(true);
+
+        yield return YieldInstuctionCash.WaitForSeconds(0.5f);
+
+        coolTime_Done_Effect01.gameObject.SetActive(false);
+
         isTrigger01 = false; // 코루틴 브레이킹용
 
         StopCoroutine(CoolTime_Count_UI01(subSkill01_CoolTime));
@@ -1145,6 +1157,12 @@ public class UI_Script : MonoBehaviour
 
             yield return YieldInstuctionCash.WaitForSeconds(1f);
         }
+
+        coolTime_Done_Effect02.gameObject.SetActive(true);
+
+        yield return YieldInstuctionCash.WaitForSeconds(0.5f);
+
+        coolTime_Done_Effect02.gameObject.SetActive(false);
 
         isTrigger02 = false; // 코루틴 브레이킹용
 

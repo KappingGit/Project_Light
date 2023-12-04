@@ -282,7 +282,7 @@ public class BulletManager : MonoBehaviour
         NomalAttack_FireSlash fireData = nomalAttack_Fire[indexNum];
 
         //최종 데미지
-        float finalDamage = playerATK + (playerATK * fireData.spreadDamage);
+        float finalDamage = playerATK * fireData.spreadDamage;
 
         //임시 반환
         //float path = 0.5f;
@@ -303,7 +303,7 @@ public class BulletManager : MonoBehaviour
         NomalAttack_FireSlash fireData = nomalAttack_Fire[indexNum];
 
         //최종 데미지
-        float finalDamage = playerATK + (playerATK * fireData.spreadDamage);
+        float finalDamage = playerATK * fireData.spreadDamage;
 
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
         int i = 0;
