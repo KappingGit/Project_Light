@@ -745,17 +745,17 @@ public class UI_Script : MonoBehaviour
         {
             case 0: // 바람 공격 레벨업 준비
                 Debug.Log("바람 공격 레벨업");
-                WeaponManager.instance.WindSlash_LeveleUp();
+                WeaponManager.instance.WindSlash_LevelUp();
                 break;
 
             case 1: // 물 공격
                 Debug.Log("물 공격 레벨업");
-                WeaponManager.instance.WaterSlash_LeveleUp();
+                WeaponManager.instance.WaterSlash_LevelUp();
                 break;
 
             case 2: // 불 공격
                 Debug.Log("불 공격 레벨업");
-                WeaponManager.instance.FireBall_LevelUp();
+                WeaponManager.instance.FireSlash_LevelUp();
                 break;
 
             case 3: // 윈드 드릴
@@ -803,17 +803,17 @@ public class UI_Script : MonoBehaviour
         {
             case 0: // 바람 공격 레벨업 준비
                 Debug.Log("바람 공격 레벨업");
-                WeaponManager.instance.WindSlash_LeveleUp();
+                WeaponManager.instance.WindSlash_LevelUp();
                 break;
 
             case 1: // 물 공격
                 Debug.Log("물 공격 레벨업");
-                WeaponManager.instance.WaterSlash_LeveleUp();
+                WeaponManager.instance.WaterSlash_LevelUp();
                 break;
 
             case 2: // 불 공격
                 Debug.Log("불 공격 레벨업");
-                WeaponManager.instance.FireSlash_LeveleUp();
+                WeaponManager.instance.FireSlash_LevelUp();
                 break;
 
             case 3: // 윈드 드릴
@@ -850,17 +850,17 @@ public class UI_Script : MonoBehaviour
         {
             case 0: // 바람 공격 레벨업 준비
                 Debug.Log("바람 공격 레벨업");
-                WeaponManager.instance.WindSlash_LeveleUp();
+                WeaponManager.instance.WindSlash_LevelUp();
                 break;
 
             case 1: // 물 공격
                 Debug.Log("물 공격 레벨업");
-                WeaponManager.instance.WaterSlash_LeveleUp();
+                WeaponManager.instance.WaterSlash_LevelUp();
                 break;
 
             case 2: // 불 공격
                 Debug.Log("불 공격 레벨업");
-                WeaponManager.instance.FireBall_LevelUp();
+                WeaponManager.instance.FireSlash_LevelUp();
                 break;
 
             case 3: // 윈드 드릴

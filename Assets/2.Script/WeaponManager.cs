@@ -1229,7 +1229,7 @@ public class WeaponManager : MonoBehaviour
     private int windSlash_CurTypeLevel; // 해당 스킬의 레벨
 
     // 일반공격 레벨업
-    public void WindSlash_LeveleUp() // 바람 기본공격 인덱스 (1~5)
+    public void WindSlash_LevelUp() // 바람 기본공격 인덱스 (1~5)
     {
         //_windSlash_CurLevelIndex = 1; // 초기 레벨
 
@@ -1249,7 +1249,7 @@ public class WeaponManager : MonoBehaviour
 
     private int waterSlash_CurTypeLevel; // 해당 스킬의 레벨
 
-    public void WaterSlash_LeveleUp() // 물 기본공격 인덱스 (7~11)
+    public void WaterSlash_LevelUp() // 물 기본공격 인덱스 (7~11)
     {
         if (waterSlash_CurLevelIndex != 11)
         {
@@ -1267,7 +1267,7 @@ public class WeaponManager : MonoBehaviour
 
     private int fireSlash_CurTypeLevel; // 해당 스킬의 레벨
 
-    public void FireSlash_LeveleUp() // 불 기본공격 인덱스 (13~17)
+    public void FireSlash_LevelUp() // 불 기본공격 인덱스 (13~17)
     {
         if (fireSlash_CurLevelIndex != 17)
         {
